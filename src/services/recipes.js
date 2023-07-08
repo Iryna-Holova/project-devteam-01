@@ -1,7 +1,9 @@
 import recipes from 'data/recipes';
 import categories from 'data/categories';
 
-const getRecipesMain = () => {
+// TODO: remove function getRecipesMain as it's not needed anymore
+
+export const getRecipesMain = () => {
   const screenWidth = window.screen.width;
 
   if (screenWidth < 768) {
@@ -48,7 +50,7 @@ const getRecipesMain = () => {
   return { breakfast, miscellaneous, vegan, dessert };
 };
 
-const getCategories = () => {
+export const getCategories = () => {
   const array = [];
   categories.map(category => array.push(category.name));
   return array;
