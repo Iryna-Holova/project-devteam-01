@@ -1,7 +1,25 @@
-import MainTitle from "components/MainTitle/MainTitle";
+import { FavoriteRecipes } from 'components/FavoriteRecipes/FavoriteRecipes';
+import { useEffect } from 'react';
 
-const Favorite = () => {
-    return <MainTitle>Favorite page</MainTitle>
-}
+import { Helmet } from 'react-helmet-async';
+import { scrollToTop } from 'components/utils/scrollToTop';
+import MainTitle from 'components/MainTitle/MainTitle'
 
-export default Favorite;
+const FavoritePage = () => {
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+  return (
+    <>
+      <Helmet>
+        <title>My favorites</title>
+      </Helmet>
+      <MainTitle
+        text={'Favorites'}
+      />
+      <FavoriteRecipes />
+    </>
+  );
+};
+
+export default FavoritePage;
