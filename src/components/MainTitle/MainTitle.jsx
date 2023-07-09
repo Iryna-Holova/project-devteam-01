@@ -6,7 +6,7 @@ const MainTitle = ({ children }) => {
 };
 
 MainTitle.propTypes = {
-  message: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default MainTitle;
