@@ -9,7 +9,7 @@ import {
 
 export const StyledForm = styled(Form)`
   max-width: 400px;
-  height: 384px;
+  max-height: 384px;
   flex-shrink: 0;
   border-radius: 30px;
   background: #2a2c36;
