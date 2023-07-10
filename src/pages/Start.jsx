@@ -1,15 +1,11 @@
+
 import { Link } from 'react-router-dom';
 
+import StartPage from "components/StartPage/StartPage";
+
+
 const Start = () => {
-  return (
-    <>
-      <h1>Start page</h1>
-      <nav>
-        <Link to="/register">Registration</Link>
-        <Link to="/signin">Sign in</Link>
-      </nav>
-    </>
-  );
+  return <StartPage/>;
 };
 
 export default Start;
