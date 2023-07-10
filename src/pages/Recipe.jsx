@@ -1,5 +1,6 @@
+import RecipePage from "components/Recipe/Recipe";
 const Recipe = () => {
-    return <h1>Recipe page</h1>
+    return <RecipePage/>
 }
 
 export default Recipe;
