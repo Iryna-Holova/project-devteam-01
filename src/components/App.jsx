@@ -28,23 +28,23 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  console.log('isRefreshing', isRefreshing);
+
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <b> Refreshing user...</b>
   ) : (
     <Routes>
       <Route
         path="/start"
-        element={<RestrictedRoute redirectTo="/main" component={<Start />} />}
+        element={<RestrictedRoute redirectTo="/" component={<Start />} />}
       />
       <Route
         path="/register"
-        element={
-          <RestrictedRoute redirectTo="/main" component={<Register />} />
-        }
+        element={<RestrictedRoute redirectTo="/" component={<Register />} />}
       />
       <Route
         path="/signin"
-        element={<RestrictedRoute redirectTo="/main" component={<Signin />} />}
+        element={<RestrictedRoute redirectTo="/" component={<Signin />} />}
       />
       <Route
         path="/"
@@ -53,7 +53,7 @@ export const App = () => {
         }
       >
         <Route
-          path="main"
+          index
           element={<PrivateRoute redirectTo="/start" component={<Main />} />}
         />
         <Route
