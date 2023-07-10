@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 export const ContainerRecipe = styled.section`
-  padding-bottom: 100px;
   
   background-size: 315px 487px;
   background-repeat: no-repeat;
