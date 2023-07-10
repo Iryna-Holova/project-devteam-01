@@ -28,8 +28,6 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  console.log('isRefreshing', isRefreshing);
-
   return isRefreshing ? (
     <b> Refreshing user...</b>
   ) : (
