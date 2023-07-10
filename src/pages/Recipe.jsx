@@ -2,8 +2,8 @@ import { RecipePageHero } from 'components/Recipe/RecipePageHero/RecipePageHero'
 import { RecipePreparation } from 'components/Recipe/RecipePreparation/RecipePreparation';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ContainerRecipe, TableRecipe, InngredientsList, Container, RecipeItem, ContainerError } from 'components/Recipe/Recipe.styled';
-
+import { ContainerRecipe, Container } from 'components/Recipe/Recipe.styled';
+import { InngredientsList, RecipeItem, TableRecipe } from 'components/Recipe/RecipeInngredientsList/RecipeInngredientsList.styled';
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState({});
@@ -61,11 +61,7 @@ const Recipe = () => {
 
   return (
     <ContainerRecipe>
-      {error && (
-        <ContainerError>
-          
-        </ContainerError>
-      )}
+      
       {recipe && !error && (
         <>
           <RecipePageHero
