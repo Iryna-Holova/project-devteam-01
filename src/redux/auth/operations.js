@@ -67,9 +67,9 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    //const persistedToken = state.auth.token;
-    const persistedToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWFiZWZiNTZjMDgwNmFjMWI1N2JkMiIsImlhdCI6MTY4ODkxODQyOSwiZXhwIjoxNjg5MDAxMjI5fQ.ZFANn7RtafoDYYZ2mRex5Qf_JFU7PJdbQp_9uqLZDnk';
+    const persistedToken = state.auth.token;
+    // const persistedToken =
+    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWMxMWE3OWIwNTVhNDYzNmY3OTA2NCIsImlhdCI6MTY4ODk5ODMzNywiZXhwIjoxNjg5MDgxMTM3fQ.fPqRlVaQ0La44NgwS6v6XiaTbd3B_Q07rU6WAO7LKAg';
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -78,7 +78,28 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
+      // const result = { ...res.data, token: persistedToken };
       return res.data;
+      //return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+/*
+ * GET @ /users/users/verify/:verificationToken
+ *
+ */
+export const verifyUser = createAsyncThunk(
+  'auth/verify',
+  async (verificationToken, thunkAPI) => {
+    try {
+      const res = await axios.get(`users/verify/${verificationToken}`);
+      console.log(res);
+
+      return res;
+      //return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

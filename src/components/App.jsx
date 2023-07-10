@@ -19,18 +19,25 @@ import MyRecipes from 'pages/MyRecipes';
 import Search from 'pages/Search';
 import ShoppingList from 'pages/ShoppingList';
 import NotFound from 'pages/NotFound';
+import Verify from 'pages/Verify';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth;
+  const { isRefreshing, isLoggedIn, token } = useAuth;
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (!isLoggedIn || token !== null) {
+      //console.log('dispatch refreshing');
+      dispatch(refreshUser());
+    }
+  }, [dispatch, isLoggedIn, token]);
 
-  return isRefreshing ? (
-    <b> Refreshing user...</b>
-  ) : (
+  // if (isRefreshing) {
+  //   console.log('refreshing');
+  //   return <b> Refreshing user...</b>;
+  // }
+
+  return (
     <Routes>
       <Route
         path="/start"
@@ -45,11 +52,11 @@ export const App = () => {
         element={<RestrictedRoute redirectTo="/" component={<Signin />} />}
       />
       <Route
-        path="/"
-        element={
-          <PrivateRoute redirectTo="/start" component={<SharedLayout />} />
-        }
-      >
+        path="/verify/:verificationToken"
+        element={<RestrictedRoute redirectTo="/" component={<Verify />} />}
+      />
+      {!isRefreshing} && (
+      <Route path="/" element={<SharedLayout />}>
         <Route
           index
           element={<PrivateRoute redirectTo="/start" component={<Main />} />}
@@ -61,7 +68,7 @@ export const App = () => {
           }
         />
         <Route
-          path="add"
+          path="/add"
           element={
             <PrivateRoute redirectTo="/start" component={<AddRecipe />} />
           }
@@ -69,7 +76,9 @@ export const App = () => {
         <Route
           path="favorite"
           element={
-            <PrivateRoute redirectTo="/start" component={<Favorite />} />
+            <PrivateRoute redirectTo="/start" component={<Favorite />}>
+              <Favorite />
+            </PrivateRoute>
           }
         />
         <Route
@@ -94,6 +103,7 @@ export const App = () => {
         />
         <Route path="*" element={<NotFound />} />
       </Route>
+      )
     </Routes>
   );
 };
