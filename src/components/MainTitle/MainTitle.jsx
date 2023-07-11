@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import Title from './MainTitle.styled';
 
 const MainTitle = ({ children }) => {
-  return <Title>{children}</Title>;
+  return <div className='container'><Title>{children}</Title></div>;
 };
 
 MainTitle.propTypes = {
-  message: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default MainTitle;

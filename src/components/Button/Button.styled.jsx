@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 const setBackgroundColor = props => {
-  if (props.backgroundColor === `${props => props.theme.colors.searchBtn}`) {
-    return `${props => props.theme.colors.btnHoverText}`;
-  }else if(props.backgroundColor === `${props.theme.colors.btnHoverText}`){
-    return `${props => props.theme.colors.searchBtn}`
+  if (props.backgroundColor === '#22252A') {
+    return '#FAFAFA';
+  } else if (props.backgroundColor === '#FAFAFA') {
+    return '#22252A';
   }
   return props.backgroundColor;
 };
@@ -14,7 +14,7 @@ export const StyledBtn = styled.button`
   line-height: 1.5;
   letter-spacing: 0.02em;
   width: ${props => props.width};
-  height:${props => props.height};
+  height: ${props => props.height};
   color: ${props => props.textColor};
   border-radius: ${props => props.borderRadius};
   border: ${props => props.border};
@@ -23,8 +23,8 @@ export const StyledBtn = styled.button`
   filter: ${props => props.filter};
   cursor: pointer;
 
-    &:hover {
-   background-color: ${setBackgroundColor};
-   transform: scale(0.95);
+  &:hover {
+    background-color: ${setBackgroundColor};
+    transform: scale(0.95);
   }
- `;
+`;

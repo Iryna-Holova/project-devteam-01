@@ -9,14 +9,7 @@ import {
   RecipeItemText,
 } from './RecipeItem.styled';
 
-export const RecipeItem = ({
-  img,
-  id,
-  title,
-  description,
-  time,
-}) => {
-  
+export const RecipeItem = ({ img, id, title, description, time }) => {
   const navigate = useNavigate();
 
   return (
@@ -47,8 +40,7 @@ export const RecipeItem = ({
                 navigate(`/recipe/${id}`);
               }}
             >
-              {' '}
-              See recipe{' '}
+              See recipe
             </Button>
           </RecipeItemBtn>
         </RecipeItemBox>

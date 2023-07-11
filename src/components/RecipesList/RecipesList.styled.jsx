@@ -1,13 +1,13 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const RecipesListContainer = styled.div`
-display: flex;
-flex-direction: column;
-    gap: 18px;
-  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  @media (min-width: 768px) {
     gap: 40px;
   }
-  @media (min-width: ${props => props.theme.breakpoints.desktop}) {
+  @media (min-width: 1440px) {
     gap: 50px;
   }
 `;

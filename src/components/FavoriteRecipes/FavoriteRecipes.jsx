@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RecipesList } from 'components/RecipesList/RecipesList';
-import { getFavoriteRecipes, removeFromFavorite } from 'components/redux/favoriteRecipes/favoriteRecipesOperations';
+import {
+  getFavoriteRecipes,
+  removeFromFavorite,
+} from '../../redux/favoriteRecipes/favoriteRecipesOperations';
 import {
   selectFavRecipes,
   selectFavIsLoading,
-  selectFavRecipesCount
-} from 'components/redux/favoriteRecipes/favoriteRecipesSelectors';
+  selectFavRecipesCount,
+} from '../../redux/favoriteRecipes/favoriteRecipesSelectors';
 import { FavoriteRecipesContainer } from './FavoriteRecipes.styled';
 
-import 'react-responsive-pagination/themes/minimal.css';
+//import 'react-responsive-pagination/themes/minimal.css';
 
 import { scrollToTop } from '../utils/scrollToTop';
-
 
 export const FavoriteRecipes = () => {
   const [paginationPage, setPaginationPage] = useState(1);
@@ -52,18 +54,13 @@ export const FavoriteRecipes = () => {
           </Paginator> */}
         </>
       ) : (
-        <div >
+        <div>
           <img
             // src={placeholder}
             alt="error"
-
           />
-          <p>
-            We are sorry,
-          </p>
-          <p >
-            You don't have any added recipes ...
-          </p>
+          <p>We are sorry,</p>
+          <p>You don't have any added recipes ...</p>
         </div>
       )}
     </FavoriteRecipesContainer>
