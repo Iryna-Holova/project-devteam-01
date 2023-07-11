@@ -1,8 +1,6 @@
-
 import styled, { css } from 'styled-components';
 
 export const TabsList = styled.ul`
-  list-style: none;
   display: flex;
   margin-bottom: 32px;
   margin-top: 60px;
@@ -23,7 +21,7 @@ export const TabsList = styled.ul`
     transform: matrix(1, 0, 0, 1, 0, 0);
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 110px;
   }
 `;
