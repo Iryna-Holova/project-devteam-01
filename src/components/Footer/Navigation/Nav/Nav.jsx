@@ -1,27 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { NavContainer, NavList, NavItem, NavLinkStyled } from './NavStyles';
 
 function Nav() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/search">Ingredients</NavLink>
-        </li>
-        <li>
-          <NavLink to="/add">Add Recipe</NavLink>
-        </li>
-        <li>
-          <NavLink to="/my">My Recipes</NavLink>
-        </li>
-        <li>
-          <NavLink to="/favorite">Favorite</NavLink>
-        </li>
-        <li>
-          <NavLink to="/shopping-list">Shopping List</NavLink>
-        </li>
-      </ul>
-    </nav>
+    <NavContainer>
+      <NavList>
+        <NavItem>
+          <NavLinkStyled to="/search">Ingredients</NavLinkStyled>
+        </NavItem>
+        <NavItem>
+          <NavLinkStyled to="/add">Add Recipe</NavLinkStyled>
+        </NavItem>
+        <NavItem>
+          <NavLinkStyled to="/my">My Recipes</NavLinkStyled>
+        </NavItem>
+        <NavItem>
+          <NavLinkStyled to="/favorite">Favorite</NavLinkStyled>
+        </NavItem>
+        <NavItem>
+          <NavLinkStyled to="/shopping-list">Shopping List</NavLinkStyled>
+        </NavItem>
+      </NavList>
+    </NavContainer>
   );
 }
 

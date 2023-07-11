@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import Title from './MainTitle.styled';
 
@@ -6,7 +7,7 @@ const MainTitle = ({ children }) => {
 };
 
 MainTitle.propTypes = {
-  message: PropTypes.node.isRequired,
+  message: PropTypes.string.isRequired,
 };
 
 export default MainTitle;
