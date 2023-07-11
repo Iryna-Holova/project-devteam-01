@@ -34,7 +34,7 @@ const CategoriesList = () => {
                         </Recipe>
                         )))}
                     </List>
-                    <button to={`/categories/${category}`}>See all</button>
+                    <Link to={`/categories/${category}`}>See all</Link>
                 </ListItem>
             ))}
         </List>

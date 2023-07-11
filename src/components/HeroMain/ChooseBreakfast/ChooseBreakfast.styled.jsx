@@ -25,13 +25,3 @@ export const Text = styled.p`
     line-height: 1.2;
     letter-spacing: -0.24px;
 `
-
-// export const Link = styled.a`
-//     color: #3E4462;
-//     text-decoration: none;
-//     text-align: right;
-//     font-size: 10px;
-//     font-weight: 400;
-//     line-height: 1.2;
-//     letter-spacing: 0.2px;
-// `
