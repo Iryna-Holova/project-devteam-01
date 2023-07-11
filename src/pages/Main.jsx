@@ -1,8 +1,15 @@
-import MainTitle from "components/MainTitle/MainTitle";
-
+import CategoriesPreview from "components/CategoriesPreview/CategoriesPreview";
+import HeroMain from "components/HeroMain/HeroMain";
+// import SearchForm from "components/SeachForm/SeachForm";
 
 const Main = () => {
-    return <MainTitle>Main page</MainTitle>
+    return (
+        <>
+            <HeroMain/>
+            {/* <SearchForm /> */}
+            <CategoriesPreview/>
+        </>
+    )
 }
 
 export default Main;

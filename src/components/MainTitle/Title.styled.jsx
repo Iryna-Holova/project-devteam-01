@@ -5,7 +5,7 @@ padding-top: 50px;
 color: #001833;
 font-size: 28px;
 font-weight: 600;
-line-height: 28px;
+line-height: 1.0;
 letter-spacing: -0.56px;
 `;
 
