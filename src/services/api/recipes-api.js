@@ -32,6 +32,7 @@ export const getRecipesMain = async ({ limit = 1, token }) => {
     } else return null;
   } catch (error) {
     console.log(error.message);
+    return Promise.reject(error.message);
   }
 };
 
@@ -54,6 +55,7 @@ export const getRecipesByCategory = async ({
     } else return null;
   } catch (error) {
     console.log(error.message);
+    return Promise.reject(error.message);
   }
 };
 
@@ -69,6 +71,7 @@ const getRecipe = async ({ id, token }) => {
     } else return null;
   } catch (error) {
     console.log(error.message);
+    return Promise.reject(error.message);
   }
 };
 
@@ -92,6 +95,7 @@ export const getSearchByName = async ({
     } else return null;
   } catch (error) {
     console.log(error.message);
+    return Promise.reject(error.message);
   }
 };
 
@@ -107,6 +111,7 @@ export const getAllCategories = async ({ token }) => {
     } else return null;
   } catch (error) {
     console.log(error.message);
+    return Promise.reject(error.message);
   }
 };
 

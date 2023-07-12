@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSearchByNameThunk } from './operations';
+import { getSearchByCategoryThunk } from './operations';
 
 const initialState = {
   items: [],
@@ -12,8 +12,8 @@ const initialState = {
   pages: 0,
 };
 
-export const searchByNameSlice = createSlice({
-  name: 'searchByName',
+export const searchByCategorySlice = createSlice({
+  name: 'searchByCategory',
   initialState,
   reducers: {
     setLimit(state, { payload }) {
@@ -28,19 +28,19 @@ export const searchByNameSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(getSearchByNameThunk.pending, state => {
+      .addCase(getSearchByCategoryThunk.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getSearchByNameThunk.fulfilled, (state, { payload }) => {
-        console.log('SearchByName', payload);
+      .addCase(getSearchByCategoryThunk.fulfilled, (state, { payload }) => {
+        //console.log('SearchByCategory', payload);
         state.error = null;
         state.items = [...payload.items.recipes];
         state.pages = payload.items.pages;
         state.total = payload.items.total;
         state.isLoading = false;
       })
-      .addCase(getSearchByNameThunk.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(getSearchByCategoryThunk.rejected, (state, action) => {
+        console.log('SearchByCategory rejected', action.payload);
         state.isLoading = false;
         state.error = null;
         state.items = [];
@@ -51,5 +51,5 @@ export const searchByNameSlice = createSlice({
   },
 });
 
-export const { setLimit, setPage, setQuery } = searchByNameSlice.actions;
-export const searchByNameReducer = searchByNameSlice.reducer;
+export const { setLimit, setPage, setQuery } = searchByCategorySlice.actions;
+export const searchByCategoryReducer = searchByCategorySlice.reducer;
