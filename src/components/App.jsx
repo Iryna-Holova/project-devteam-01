@@ -20,6 +20,7 @@ import Search from 'pages/Search';
 import ShoppingList from 'pages/ShoppingList';
 import NotFound from 'pages/NotFound';
 import Verify from 'pages/Verify';
+import Test from 'pages/Test';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -104,6 +105,10 @@ export const App = () => {
         <Route path="*" element={<NotFound />} />
       </Route>
       )
+      <Route
+        path="/test"
+        element={<RestrictedRoute redirectTo="/" component={<Test />} />}
+      />
     </Routes>
   );
 };
