@@ -8,12 +8,11 @@ export const getMainPage = createAsyncThunk(
   async ({ limit = 1 }, thunkAPI) => {
     try {
       const response = await getRecipesMain(limit);
-      console.log(response);
+      //      console.log(response);
       return {
         items: response,
       };
     } catch (error) {
-      //  toast.error('Something went wrong, please try again later');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

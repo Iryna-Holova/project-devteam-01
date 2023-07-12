@@ -7,7 +7,7 @@ import { searchByCategoryReducer } from './searchByCategory/slice';
 // Код редюсеров tasksReducer и filtersReducer
 export const recipesReducer = combineReducers({
   favorites: favoriteReducer,
-  mainpage: mainPageReducer,
+  // mainpage: mainPageReducer,
   searchByName: searchByNameReducer,
   searchByCategory: searchByCategoryReducer,
 });

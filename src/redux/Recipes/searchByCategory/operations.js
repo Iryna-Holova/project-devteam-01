@@ -7,19 +7,19 @@ export const getSearchByCategoryThunk = createAsyncThunk(
   'search/getSearchByNameThunk',
   async ({ limit = 6, query = '', page = 1 }, thunkAPI) => {
     try {
-      console.log('CategoryThunk', query);
+      //  console.log('CategoryThunk', query);
       const response = await getRecipesByCategory({
         limit,
         category: query,
         page,
       });
-      console.log(response);
+      // console.log(response);
 
       return {
         items: response,
       };
     } catch (error) {
-      console.log(error.message);
+      //   console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

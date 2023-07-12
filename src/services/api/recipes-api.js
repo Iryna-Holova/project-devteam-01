@@ -66,7 +66,7 @@ const getRecipe = async ({ id, token }) => {
     const { status, data } = await axios.get(`/api/recipes/${id}`);
     clearAuthHeader();
     if (status === 200) {
-      console.log(data);
+      //  console.log(data);
       return data;
     } else return null;
   } catch (error) {
@@ -90,7 +90,7 @@ export const getSearchByName = async ({
     );
     clearAuthHeader();
     if (status === 200) {
-      console.log(data);
+      //   console.log(data);
       return data;
     } else return null;
   } catch (error) {
@@ -106,7 +106,7 @@ export const getAllCategories = async ({ token }) => {
     const { status, data } = await axios.get(`/api/recipes/category-list`);
     clearAuthHeader();
     if (status === 200) {
-      console.log(data);
+      //  console.log(data);
       return data;
     } else return null;
   } catch (error) {
@@ -124,8 +124,9 @@ const recipesServices = {
   getRecipesByCategory,
   getRecipe,
   getSearchByName,
+  getAllCategories,
 };
 
 export default recipesServices;
 
-console.log(getAllCategories({}));
+//console.log(getAllCategories({}));

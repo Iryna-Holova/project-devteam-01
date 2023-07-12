@@ -32,7 +32,7 @@ export const searchByNameSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getSearchByNameThunk.fulfilled, (state, { payload }) => {
-        console.log('SearchByName', payload);
+        // console.log('SearchByName', payload);
         state.error = null;
         state.items = [...payload.items.recipes];
         state.pages = payload.items.pages;
@@ -42,7 +42,7 @@ export const searchByNameSlice = createSlice({
       .addCase(getSearchByNameThunk.rejected, (state, action) => {
         console.log(action.payload);
         state.isLoading = false;
-        state.error = null;
+        state.error = true;
         state.items = [];
         state.query = '';
         state.page = 1;

@@ -29,20 +29,20 @@ export const Test = () => {
   };
 
   const handleClick = () => {
-    console.log('click', inputValue);
+    //  console.log('click', inputValue);
     dispatch(setQuery(inputValue));
   };
 
   useEffect(() => {
     //if (!categories)
     // dispatch(getMainPage(2));
-    // dispatch(getCategoriesList());
-    console.log('useEffect', query, queryByCategory);
+    dispatch(getCategoriesList());
+    // console.log('useEffect', query, queryByCategory);
 
     if (query || queryByCategory) {
-      console.log('useEffect', query, queryByCategory);
+      // console.log('useEffect', query, queryByCategory);
 
-      //  dispatch(getSearchByNameThunk({ query }));
+      dispatch(getSearchByNameThunk({ query: queryByCategory }));
       dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
     }
   }, [dispatch, query, queryByCategory]);
