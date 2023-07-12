@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  background-color: #22252a;
-  height: 348px;
+  /* height: 348px;
 
   @media (max-width: 768px) {
     height: 357px;
@@ -10,61 +9,59 @@ export const FooterContainer = styled.footer`
 
   @media (max-width: 480px) {
     height: 435px;
-  }
+  } */
 `;
 
 export const FooterContent = styled.div`
+  background-color: #22252a;
+  padding-top: 28px;
+  padding-bottom: 18px;
+  align-items: center;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   color: #fafafa;
-  height: 100%;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 24px;
   }
 `;
 
 export const FooterTextContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 44px;
+  /* justify-content: space-between; */
+  align-items: center;
 
-  @media (max-width: 768px) {
-    display: flex;
+  @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-
-  @media (max-width: 480px) {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
+    justify-content: center;
+    gap: 72px 175px;
+    margin-bottom: 38px;
   }
 `;
 
-export const FooterText = styled.div`
-  width: 100%;
-  color: #fafafa;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+export const FooterText = styled.ul`
+  display: none;
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
+    display: block;
     font-size: 14px;
     line-height: 18px;
+    letter-spacing: -0.28px;
+    list-style: inside;
   }
 
-  @media (max-width: 482px) {
+  /* @media (max-width: 482px) {
     display: none;
-  }
+  } */
 `;
 
 export const SubscribeButton = styled.button`
-  background-color: green;
+  /* background-color: green;
   color: #22252a;
   border: none;
   font-size: 1rem;
@@ -73,11 +70,11 @@ export const SubscribeButton = styled.button`
 
   &:hover {
     background-color: #e5e5e5;
-  }
+  } */
 `;
 
 export const LogoText = styled.div`
-  color: #fafafa;
+  /* color: #fafafa;
   font-weight: bold;
   font-size: 28px;
   line-height: 28px;
@@ -102,19 +99,19 @@ export const LogoText = styled.div`
     margin-right: auto;
     margin-top: 28px;
     margin-bottom: 32px;
-  }
+  } */
 `;
 
 export const LogoImage = styled.a`
-  width: 44px;
+  /* width: 44px;
   height: 44px;
   background-image: url('путь_к_изображению');
   background-size: cover;
-  background-position: center;
+  background-position: center; */
 `;
 
 export const FooterLogoText = styled.div`
-  margin-left: 100px;
+  /* margin-left: 100px;
   margin-top: 64px;
   margin-bottom: 110px;
   width: 418px;
@@ -133,16 +130,16 @@ export const FooterLogoText = styled.div`
 
   @media (max-width: 480px) {
     padding-bottom: 0;
-  }
+  } */
 `;
 
 export const FooterNav = styled.div`
-  margin-top: 64px;
+  /* margin-top: 64px;
   margin-bottom: 50px;
 
   @media (max-width: 768px) {
     margin: 0;
-  }
+  } */
 `;
 
 export const Text = styled.li`
@@ -150,18 +147,21 @@ export const Text = styled.li`
 `;
 
 export const FooterBarText = styled.div`
+  padding: 28px 0;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  margin-top: 32px;
+  /* margin-top: 32px;
   margin-bottom: 32px;
-  font-size: 14px;
+  font-size: 14px; */
+  @media (min-width: 768px) {
+  padding-top: 32px;
+  padding-bottom: 46px;
+  }
 `;
 
-export const LeftText = styled.span`
-  margin-right: 28px;
-`;
+export const LeftText = styled.span``;
 
 export const RightText = styled.span`
-  /* Стили для текста справа */
+  margin-left: 14px;
 `;

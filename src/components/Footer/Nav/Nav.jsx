@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavContainer, NavItem, NavLinkStyled } from './HeaderStyles';
+import { NavItem, NavList, NavLinkStyled } from './Nav.styled';
 
-function Navigation() {
+function Nav() {
   return (
-    <NavContainer>
+    <NavList>
       <NavItem>
-        <NavLinkStyled to="/categories/beef">Categories</NavLinkStyled>
+        <NavLinkStyled to="/search">Ingredients</NavLinkStyled>
       </NavItem>
       <NavItem>
         <NavLinkStyled to="/add">Add Recipe</NavLinkStyled>
@@ -14,16 +14,13 @@ function Navigation() {
         <NavLinkStyled to="/my">My Recipes</NavLinkStyled>
       </NavItem>
       <NavItem>
-        <NavLinkStyled to="/favorite">Favorites</NavLinkStyled>
+        <NavLinkStyled to="/favorite">Favorite</NavLinkStyled>
       </NavItem>
       <NavItem>
         <NavLinkStyled to="/shopping-list">Shopping List</NavLinkStyled>
       </NavItem>
-      <NavItem>
-        <NavLinkStyled to="/search">Search</NavLinkStyled>
-      </NavItem>
-    </NavContainer>
+    </NavList>
   );
 }
 
-export default Navigation;
+export default Nav;

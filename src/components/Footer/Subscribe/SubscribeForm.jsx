@@ -8,7 +8,7 @@ import {
   FormTitle,
   FormText,
   SuccessMessage,
-} from './SubscribeFormStyles';
+} from './SubscribeForm.styled';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
