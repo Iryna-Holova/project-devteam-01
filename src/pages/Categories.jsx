@@ -18,11 +18,11 @@ const Categories = () => {
       setRecipes(categoryRecipes);
   }, [categoryName]);
 
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = category => {
     console.log('category change');
     window.location.href = `http://localhost:3000/project-devteam-01/categories/${category.toLowerCase()}`;
   };
-  
+
 
   const handleOpenRecipe = id => {
     // написать код для перехода на страницу рецепта
@@ -31,7 +31,7 @@ const Categories = () => {
 
   return (
     <>
-      <MainTitle message='categories'>Categories</MainTitle>
+      <MainTitle>Categories</MainTitle>
       <CategoriesTabs
         categories={categories}
         selectedCategory={categoryName}

@@ -56,6 +56,8 @@ export const Description = styled.div`
   @media screen and (min-width: 1440px) {
   }
 
+/* Не давать стили на теги */
+
   p {
     font-weight: 500;
     font-size: 16px;
