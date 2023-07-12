@@ -19,9 +19,10 @@ const Categories = () => {
   }, [categoryName]);
 
   const handleCategoryChange = category => {
-    // написать код для смены url
-    console.log('category change')
+    console.log('category change');
+    window.location.href = `http://localhost:3000/project-devteam-01/categories/${category.toLowerCase()}`;
   };
+
 
   const handleOpenRecipe = id => {
     // написать код для перехода на страницу рецепта

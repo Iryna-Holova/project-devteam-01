@@ -10,9 +10,9 @@ import IngredientsPlaceholder from '../../assets/food-default.svg';
 const RecipeGallery = ({ recipes }) => {
   return (
     <List className="container">
-      {recipes.map(({ id, title, thumb }, index) => (
+      {recipes.map(({id,  title, thumb }, index) => (
         <Recipe key={index}>
-          <Link to={`recipe.id`}>
+          <Link>
             <RecipeContainer>
               <Description>
                 <p>{title}</p>
