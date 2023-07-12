@@ -54,7 +54,8 @@ export const Description = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width:275px;
+    width:253px;
+   padding-right:0px;
   }
 
 /* Не давать стили на теги */
