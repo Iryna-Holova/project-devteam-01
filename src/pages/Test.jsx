@@ -1,7 +1,7 @@
-import useCategories from 'hooks/useCategories';
+//import useCategories from 'hooks/useCategories';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getMainPage } from 'redux/Recipes/main-page/operations';
+//import { getMainPage } from 'redux/Recipes/main-page/operations';
 import { getCategoriesList } from 'redux/Categories/operations';
 import { getSearchByNameThunk } from 'redux/Recipes/searchByName/operations';
 import useSearchByName from 'hooks/useSearchByName';
@@ -12,13 +12,13 @@ import useSearchByCategory from 'hooks/useSearchByCategory';
 
 export const Test = () => {
   const dispatch = useDispatch();
-  const { categories, isLoading, isError } = useCategories();
-  const { data, query, limit, page } = useSearchByName();
+  //const { categories, isLoading, isError } = useCategories();
+  const { data, query } = useSearchByName();
   const {
-    data: dataByCategory,
+    //   data: dataByCategory,
     query: queryByCategory,
-    limit: limitByCategory,
-    page: pageByCategory,
+    //   limit: limitByCategory,
+    //    page: pageByCategory,
   } = useSearchByCategory();
   //const payload = { query: 'beef', page: 5, limit: 4 };
 

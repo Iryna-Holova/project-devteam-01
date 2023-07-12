@@ -4,8 +4,8 @@ const BASE_URL = 'https://so-yummi.onrender.com';
 
 axios.defaults.baseURL = BASE_URL;
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTExMjM4NCwiZXhwIjoxNjg5MTk1MTg0fQ.lk-w0gXTD2OPg6CAjtmxjVBmAd48vJdfDd4a9dzYD6g';
+// const token =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTExMjM4NCwiZXhwIjoxNjg5MTk1MTg0fQ.lk-w0gXTD2OPg6CAjtmxjVBmAd48vJdfDd4a9dzYD6g';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

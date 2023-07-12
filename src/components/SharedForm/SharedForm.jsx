@@ -1,17 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
-import { 
+import {
   StyledForm,
   WordForm,
   StyledField,
   List,
   SubButton,
   Router,
-  Wrapper, 
-} from 'components/RegisterPage/RegisterPage.styled';
+  Wrapper,
+} from './SharedForm.styled';
 
-const SharedForm = ({ initialValues, validationSchema, handleSubmit,router,nameForm,urlRouter,isRegisterForm  }) => {
+const SharedForm = ({
+  initialValues,
+  validationSchema,
+  handleSubmit,
+  router,
+  nameForm,
+  urlRouter,
+  isRegisterForm,
+  nameBut,
+}) => {
   return (
     <Wrapper>
       <Formik
@@ -59,7 +68,7 @@ const SharedForm = ({ initialValues, validationSchema, handleSubmit,router,nameF
             </li>
           </List>
 
-          <SubButton type="submit">Sign up</SubButton>
+          <SubButton type="submit">{nameBut}</SubButton>
         </StyledForm>
       </Formik>
 

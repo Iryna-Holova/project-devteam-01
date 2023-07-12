@@ -71,7 +71,7 @@ const Recipe = () => {
             id={recipeId}
                   />
                   
-          <Container>
+          <Container className="container">
             <TableRecipe>
               <p>Ingredients</p>
               <p>
