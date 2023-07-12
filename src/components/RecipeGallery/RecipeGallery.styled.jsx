@@ -57,6 +57,8 @@ export const Description = styled.div`
     width:275px;
   }
 
+/* Не давать стили на теги */
+
   p {
     font-weight: 500;
     font-size: 16px;
