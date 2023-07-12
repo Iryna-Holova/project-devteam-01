@@ -4,6 +4,9 @@ const BASE_URL = 'https://so-yummi.onrender.com';
 
 axios.defaults.baseURL = BASE_URL;
 
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTExMjM4NCwiZXhwIjoxNjg5MTk1MTg0fQ.lk-w0gXTD2OPg6CAjtmxjVBmAd48vJdfDd4a9dzYD6g';
+
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -12,6 +15,9 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+//*****************
+//*
+//****************
 export const getRecipesMain = async ({ limit = 1, token }) => {
   try {
     setAuthHeader(token);
@@ -67,16 +73,17 @@ const getRecipe = async ({ id, token }) => {
 };
 
 export const getSearchByName = async ({
-  name = '',
+  query = '',
   limit = 6,
   page = 1,
   token,
 }) => {
   try {
     setAuthHeader(token);
+    const queryStr = query !== '' ? `q=${query}` : '';
 
     const { status, data } = await axios.get(
-      `/api/search?q=${name}&limit=${limit}&page=${page}`
+      `/api/search?${queryStr}&limit=${limit}&page=${page}`
     );
     clearAuthHeader();
     if (status === 200) {
@@ -102,6 +109,10 @@ export const getAllCategories = async ({ token }) => {
     console.log(error.message);
   }
 };
+
+//*****************
+//*
+//****************
 
 const recipesServices = {
   getRecipesMain,

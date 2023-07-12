@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { favoritesReducer } from './favorite/favoriteRecipesSlice';
-
-import { getRecipesMain } from '../../services/api/recipes-api';
+import { favoriteReducer } from './favorite/favoriteRecipesSlice';
+import { mainPageReducer } from './main-page/slice';
+import { searchByNameReducer } from './searchByName/slice';
 
 // Код редюсеров tasksReducer и filtersReducer
 export const recipesReducer = combineReducers({
-  favorites: favoritesReducer,
+  favorites: favoriteReducer,
+  mainpage: mainPageReducer,
+  searchByName: searchByNameReducer,
 });

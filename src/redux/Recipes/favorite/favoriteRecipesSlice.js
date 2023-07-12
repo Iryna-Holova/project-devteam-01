@@ -65,4 +65,4 @@ export const favoriteRecipesSlice = createSlice({
   },
 });
 
-export const favoritesReducer = favoriteRecipesSlice.reducer;
+export const favoriteReducer = favoriteRecipesSlice.reducer;
