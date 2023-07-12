@@ -25,6 +25,10 @@ export const searchByNameSlice = createSlice({
     setPage(state, { payload }) {
       state.page = payload;
     },
+    // SetQueryParams(state, { payload }) {
+    //   console.log('SetQueryParams', payload);
+    //   state = { ...state, ...payload };
+    // },
   },
   extraReducers: builder => {
     builder
@@ -32,9 +36,9 @@ export const searchByNameSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getSearchByNameThunk.fulfilled, (state, { payload }) => {
-        console.log(state, payload);
+        console.log('SearchByName', payload);
         state.error = null;
-        state.items = { ...payload.items.recipes };
+        state.items = [...payload.items.recipes];
         state.pages = payload.items.pages;
         state.total = payload.items.total;
         state.isLoading = false;
@@ -51,4 +55,5 @@ export const searchByNameSlice = createSlice({
   },
 });
 
+export const { setLimit, setPage, setQuery } = searchByNameSlice.actions;
 export const searchByNameReducer = searchByNameSlice.reducer;

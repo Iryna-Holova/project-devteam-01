@@ -8,7 +8,7 @@ export const getSearchByNameThunk = createAsyncThunk(
   async ({ limit = 6, query = '', page = 1 }, thunkAPI) => {
     try {
       const response = await getSearchByName({ limit, query, page });
-      console.log(response);
+      //console.log(response);
       return {
         items: response,
       };

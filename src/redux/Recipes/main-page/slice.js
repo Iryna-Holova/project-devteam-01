@@ -16,13 +16,13 @@ export const mainPageSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getMainPage.fulfilled, (state, { payload }) => {
-        console.log(state, payload);
+        console.log('main', payload);
         state.error = null;
         state.items = { ...payload.items };
         state.isLoading = false;
       })
       .addCase(getMainPage.rejected, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.isLoading = false;
         state.error = null;
         state.items = null;

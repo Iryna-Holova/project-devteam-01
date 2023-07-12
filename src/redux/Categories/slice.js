@@ -16,9 +16,9 @@ export const categoriesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getCategoriesList.fulfilled, (state, { payload }) => {
-        console.log(payload);
+        //console.log(payload);
         state.error = null;
-        state.items = { ...payload.items };
+        state.items = [...payload.items];
         state.isLoading = false;
       })
       .addCase(getCategoriesList.rejected, (state, action) => {
