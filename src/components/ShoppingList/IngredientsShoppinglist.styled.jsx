@@ -246,10 +246,6 @@ const RemoveButton = styled.button`
 `;
 
 
-
-
-
-
 export {
   Container,
   HeaderContainer,

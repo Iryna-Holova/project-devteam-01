@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import ingredientsData from '../../../data/ingredients';
+import React from 'react';
 import {
   Container,
   HeaderContainer,
@@ -13,26 +12,11 @@ import {
   IngredientQuantity,
   RemoveButton,
   QuantityIndicator,
-} from './IngredientsShoppingList.styled';
+} from './IngredientsShoppinglist.styled';
 
-import removeIcon from '../../../assets/X.png';
+import removeIcon from '../../assets/X.png';
 
-const IngredientsShoppingList = () => {
-  const [ingredients, setIngredients] = useState([]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIngredients(ingredientsData.slice(0, 5));
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleDelete = (id) => {
-    const updatedIngredients = ingredients.filter((ingredient) => ingredient._id.$oid !== id);
-    setIngredients(updatedIngredients);
-  };
-
+const IngredientsShoppingList = ({ ingredients, onDelete }) => {
   return (
     <Container>
       <HeaderContainer>
@@ -49,8 +33,8 @@ const IngredientsShoppingList = () => {
               <IngredientQuantity>
                 <QuantityIndicator>10</QuantityIndicator>
               </IngredientQuantity>
-              <RemoveButton onClick={() => handleDelete(ingredient._id.$oid)}>
-               <img src={removeIcon} alt="Remove" className="remove-icon" />
+              <RemoveButton onClick={() => onDelete(ingredient._id.$oid)}>
+                <img src={removeIcon} alt="Remove" className="remove-icon" />
               </RemoveButton>
             </IngredientDetails>
           </IngredientItem>
