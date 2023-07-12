@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Title from './MainTitle.styled';
+import Title from './Title.styled';
 
 const MainTitle = ({ children }) => {
   return <Title>{children}</Title>;
