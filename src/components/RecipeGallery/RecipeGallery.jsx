@@ -12,7 +12,7 @@ const RecipeGallery = ({ recipes }) => {
     <List className="container">
       {recipes.map(({id,  title, thumb }, index) => (
         <Recipe key={index}>
-          <Link>
+          <Link to={`/recipe/${id}`}>
             <RecipeContainer>
               <Description>
                 <p>{title}</p>
