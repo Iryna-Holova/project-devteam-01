@@ -70,8 +70,9 @@ export const RecipeItemTitle = styled.div`
     justify-content: center;
     width: 24px;
     height: 24px;
+    border: none;
     border-radius: 4px;
-    background-color: #22252a;
+    background-color: #EBF3D4;
 
     @media (min-width: 768px) {
       width: 38px;

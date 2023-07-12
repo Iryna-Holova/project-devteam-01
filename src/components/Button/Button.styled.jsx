@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const setBackgroundColor = props => {
-  if (props.backgroundColor === '#22252A') {
-    return '#FAFAFA';
-  } else if (props.backgroundColor === '#FAFAFA') {
-    return '#22252A';
-  }
-  return props.backgroundColor;
-};
+// const setBackgroundColor = props => {
+//   if (props.backgroundColor === '#22252A') {
+//     return '#FAFAFA';
+//   } else if (props.backgroundColor === '#FAFAFA') {
+//     return '#22252A';
+//   }
+//   return props.backgroundColor;
+// };
 
 export const StyledBtn = styled.button`
   font-size: 16px;
@@ -22,9 +22,10 @@ export const StyledBtn = styled.button`
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   filter: ${props => props.filter};
   cursor: pointer;
+  
 
   &:hover {
-    background-color: ${setBackgroundColor};
+    background-color: #FAFAFA;
     transform: scale(0.95);
   }
 `;
