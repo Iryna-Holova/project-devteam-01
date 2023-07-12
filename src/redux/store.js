@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { recipesReducer } from './Recipes/reducer';
 import { categoriesReducer } from './Categories/slice';
-import { searchByNameReducer } from './Recipes/searchByName/slice';
+//import { searchByNameReducer } from './Recipes/searchByName/slice';
 
 const middleware = [
   ...getDefaultMiddleware({

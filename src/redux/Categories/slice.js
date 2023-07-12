@@ -1,5 +1,5 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getCategories, getCategoriesList } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
+import { getCategoriesList } from './operations';
 
 const initialState = {
   items: [],
