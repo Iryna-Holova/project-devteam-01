@@ -1,13 +1,9 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 export const List = styled.ul`
-  list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 28px;
-  padding-bottom: 32px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -16,7 +12,7 @@ export const List = styled.ul`
     gap: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     gap: 14px;
     row-gap: 100px;
   }
@@ -26,7 +22,6 @@ export const Recipe = styled.li`
   z-index: 2;
   overflow: hidden;
   border-radius: 8px;
-  padding: 0;
   transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover,
@@ -58,7 +53,7 @@ export const Description = styled.div`
     left: 16px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 
   p {
@@ -84,12 +79,8 @@ export const RecipeImg = styled.img`
     width: 336px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     width: 299px;
     gap: 14px;
   }
-`;
-
-export const RecipeNavLink = styled(NavLink)`
-  text-decoration: none;
 `;
