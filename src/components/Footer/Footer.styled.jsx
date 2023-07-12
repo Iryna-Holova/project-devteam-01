@@ -42,6 +42,10 @@ export const FooterTextContainer = styled.div`
     gap: 72px 175px;
     margin-bottom: 38px;
   }
+
+  @media (min-width: 1440px) {
+    align-items: flex-start;
+  }
 `;
 
 export const FooterText = styled.ul`
@@ -155,8 +159,8 @@ export const FooterBarText = styled.div`
   margin-bottom: 32px;
   font-size: 14px; */
   @media (min-width: 768px) {
-  padding-top: 32px;
-  padding-bottom: 46px;
+    padding-top: 32px;
+    padding-bottom: 46px;
   }
 `;
 

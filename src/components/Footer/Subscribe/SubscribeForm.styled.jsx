@@ -107,7 +107,7 @@ export const FormText = styled.p`
   font-size: 14px;
   margin-bottom: 28px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     display: block;
   }
 `;
