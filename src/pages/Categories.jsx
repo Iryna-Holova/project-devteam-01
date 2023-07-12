@@ -19,13 +19,11 @@ const Categories = () => {
   }, [categoryName]);
 
   const handleCategoryChange = category => {
-    console.log('category change');
     navigate(`/categories/${category.toLowerCase()}`);
   };
 
 
   const handleOpenRecipe = id => {
-    console.log('open recipe');
   navigate(`/recipes/${id}`);
   };
 
