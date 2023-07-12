@@ -19,7 +19,7 @@ const Register = () => {
     password: Yup.string().required('Required'),
   });
 
-  const handleSubmit = (values, { setSubmitting, setFieldTouched }) => {
+  const handleSubmit = (values, { setSubmitting, setFieldTouched,resetForm }) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
@@ -33,6 +33,7 @@ const Register = () => {
         password: values.password,
       }))
       console.log(register);
+      resetForm();
     }
 
     setSubmitting(false);
