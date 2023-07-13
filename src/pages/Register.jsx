@@ -1,11 +1,22 @@
 import React from 'react';
-import SharedForm from 'components/SharedForm/SharedForm';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import * as Yup from 'yup';
+import { useState } from 'react';
+import SharedForm from 'components/SharedForm/SharedForm';
+import ModalRegister from 'components/ModalRegister/ModalRegister';
 
 const Register = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const initialValues = {
     name: '',
@@ -19,7 +30,10 @@ const Register = () => {
     password: Yup.string().required('Required'),
   });
 
-  const handleSubmit = (values, { setSubmitting, setFieldTouched }) => {
+  const handleSubmit = (
+    values,
+    { setSubmitting, setFieldTouched, resetForm }
+  ) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
@@ -27,12 +41,15 @@ const Register = () => {
       console.log('Порожні поля');
     } else {
       console.log('Всі поля заповнені');
-      dispatch(register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      }))
-      console.log(register);
+      dispatch(
+        register({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
+      resetForm();
+      openModal();
     }
 
     setSubmitting(false);
@@ -50,6 +67,8 @@ const Register = () => {
         nameBut={'Sign up'}
         isRegisterForm
       />
+
+      {isModalOpen && <ModalRegister closeModal={closeModal}/>}
     </div>
   );
 };

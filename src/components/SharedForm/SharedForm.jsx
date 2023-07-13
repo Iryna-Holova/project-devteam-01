@@ -17,7 +17,7 @@ const SharedForm = ({
   handleSubmit,
   router,
   nameForm,
-  urlRouter,
+  urlRouter, 
   isRegisterForm,
   nameBut,
 }) => {
