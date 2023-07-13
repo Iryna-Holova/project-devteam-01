@@ -37,10 +37,8 @@ export const StyledField = styled(Field)`
   flex-shrink: 0;
   stroke-width: 1px;
   stroke: #fff;
-
   padding-top: 16px;
   padding-bottom: 16px;
-
   padding-left: 50px;
   background: transparent;
   border-radius: 6px;
