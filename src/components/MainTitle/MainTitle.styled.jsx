@@ -5,7 +5,7 @@ const Title = styled.h2`
   color: #001833;
   font-size: 28px;
   font-weight: 600;
-  line-height: 1;
+  line-height: 28px;
   letter-spacing: -0.56px;
   @media screen and (min-width: 768px) {
     margin-top: 72px;
