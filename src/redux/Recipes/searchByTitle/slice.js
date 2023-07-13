@@ -40,7 +40,7 @@ export const searchByTitleSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getSearchByTitleThunk.rejected, (state, action) => {
-        console.log(action);
+        //console.log(action);
         state.isLoading = false;
         state.error = true;
         state.items = [];

@@ -5,7 +5,7 @@ export const getSearchByTitleThunk = createAsyncThunk(
   'search/getSearchByTitle',
   async ({ limit = 6, query = '', page = 1 }, thunkAPI) => {
     try {
-      console.log('Search by Title');
+      //console.log('Search by Title');
       const response = await recipesServices.getSearchByTitle({
         limit,
         query,

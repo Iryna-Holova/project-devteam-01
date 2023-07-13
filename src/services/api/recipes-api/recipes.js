@@ -34,7 +34,7 @@ export const getRecipesByCategory = async ({
 }) => {
   try {
     setAuthHeader(axios, token);
-    console.log('getRecipesByCategory', query);
+    //console.log('getRecipesByCategory', query);
 
     const { status, data } = await axios.get(
       `/api/recipes/categories/${query}?limit=${limit}&page=${page}`

@@ -37,12 +37,12 @@ export const Test = () => {
     //if (!categories)
     // dispatch(getMainPage(2));
     dispatch(getCategoriesList());
-    console.log('useEffect', query, queryByCategory);
+    // console.log('useEffect', query, queryByCategory);
 
     if (query || queryByCategory) {
-      console.log('useEffect', query, queryByCategory);
+      //   console.log('useEffect', query, queryByCategory);
       dispatch(getSearchByTitleThunk({ query: queryByCategory }));
-      // dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
+      dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
     }
   }, [dispatch, query, queryByCategory]);
 
