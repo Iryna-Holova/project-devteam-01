@@ -60,7 +60,7 @@ export const RecipePageHeroTitle = styled.title`
   line-height: 1.3;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
-  color: #8BAA36;
+  color: var(--color-accent);
   max-width: 330px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -88,7 +88,7 @@ export const RecipePageHeroText = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   overflow-y: clip;
-  color: #22252A;
+  color: var(--color-footer);
 
   @media screen and (min-width: 768px) {
     width: 506px;
