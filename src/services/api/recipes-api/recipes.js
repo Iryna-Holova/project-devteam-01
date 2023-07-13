@@ -12,7 +12,8 @@ axios.defaults.baseURL = BASE_URL;
 export const getRecipesMain = async ({ limit = 1, token }) => {
   try {
     setAuthHeader(axios, token);
-
+    console.log(axios.defaults);
+    axios.defaults.baseURL = BASE_URL;
     const { status, data } = await axios.get(
       `/api/recipes/main-page/?limit=${limit}`
     );
@@ -32,6 +33,7 @@ export const getRecipesByCategory = async ({
   page = 1,
   token,
 }) => {
+  axios.defaults.baseURL = BASE_URL;
   try {
     setAuthHeader(axios, token);
     //console.log('getRecipesByCategory', query);
@@ -50,6 +52,7 @@ export const getRecipesByCategory = async ({
 };
 
 export const getRecipe = async ({ id, token }) => {
+  axios.defaults.baseURL = BASE_URL;
   try {
     setAuthHeader(axios, token);
 
@@ -70,6 +73,7 @@ export const getSearchByTitle = async ({
   page = 1,
   token,
 }) => {
+  axios.defaults.baseURL = BASE_URL;
   try {
     setAuthHeader(axios, token);
     const queryStr = query !== '' ? `q=${query}` : '';
