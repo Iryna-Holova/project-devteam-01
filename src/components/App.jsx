@@ -28,18 +28,26 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth;
 
-  const handlerOnWindowResize = () => {
+  useEffect(() => {
     const device = getMedia();
     dispatch(setDevice(device));
-  };
 
-  useEffect(() => {
-    window.addEventListener('resize', handlerOnWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handlerOnWindowResize);
+    const handlerOnWindowResize = () => {
+      const device = getMedia();
+      dispatch(setDevice(device));
     };
-  }, []);
+    const addHandler = () => {
+      window.addEventListener('resize', handlerOnWindowResize);
+    };
+
+    addHandler();
+    return () => {
+      const removeHandler = () => {
+        window.removeEventListener('resize', handlerOnWindowResize);
+      };
+      removeHandler();
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isLoggedIn || token !== null) {
