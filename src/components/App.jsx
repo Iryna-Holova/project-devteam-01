@@ -21,10 +21,25 @@ import ShoppingList from 'pages/ShoppingList';
 import NotFound from 'pages/NotFound';
 import Verify from 'pages/Verify';
 import Test from 'pages/Test';
+import { getMedia } from 'utils/getMedia';
+import { setDevice } from 'redux/App/slice';
 
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth;
+
+  const handlerOnWindowResize = () => {
+    const device = getMedia();
+    dispatch(setDevice(device));
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handlerOnWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handlerOnWindowResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isLoggedIn || token !== null) {
