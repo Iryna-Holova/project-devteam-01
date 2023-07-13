@@ -7,7 +7,7 @@ import {
   selectSearchByCategoryLimit,
   selectSearchByCategoryPages,
   selectSearchByCategoryTotal,
-  selectSearchByCategoryPage
+  selectSearchByCategoryPage,
 } from 'redux/Recipes/searchByCategory/selectors';
 
 const useSearchByCategory = () => {
@@ -31,7 +31,6 @@ const useSearchByCategory = () => {
     total,
     pages,
     limit,
-    // queryParams,
   };
 };
 

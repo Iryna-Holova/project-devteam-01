@@ -5,7 +5,7 @@ const initialState = {
   items: [],
   query: '',
   page: 1,
-  limit: 6,
+  limit: 8,
   isLoading: false,
   error: null,
   total: 0,
@@ -30,6 +30,8 @@ export const searchByCategorySlice = createSlice({
     builder
       .addCase(getSearchByCategoryThunk.pending, state => {
         state.isLoading = true;
+        state.error = null;
+        state.items = [];
       })
       .addCase(getSearchByCategoryThunk.fulfilled, (state, { payload }) => {
         //console.log('SearchByCategory', payload);

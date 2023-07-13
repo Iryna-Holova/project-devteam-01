@@ -1,6 +1,6 @@
 import CategoriesPreview from 'components/CategoriesPreview/CategoriesPreview';
 import HeroMain from 'components/HeroMain/HeroMain';
-import { getRecipesMainAPI } from 'api/recipesMain';
+//import { getRecipesMainAPI } from 'api/recipesMain';
 import { useEffect, useState } from 'react';
 import useApp from 'hooks/useApp';
 import recipesServices from 'services/api/recipes-api';
