@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
 `;
 
@@ -67,6 +69,7 @@ font-size: 12px;
 font-weight: 600;
 
 
+
  @media screen and (min-width: 768px) {
    font-size: 18px;
    margin-left: 260px;
@@ -85,6 +88,7 @@ const IngredientsListContainer = styled.div`
    height: 1379px;
    display: flex;
    flex-direction: column;
+   align-items: center;
    margin-top: 8px;
    margin-left: 16px
 
@@ -108,6 +112,7 @@ const IngredientItem = styled.div`
   padding-bottom: 24px;
   margin-left: 16px;
   margin-right: 16px;
+  width: 343px;
 
   @media screen and (min-width: 768px) {
    padding-top: 43px;
@@ -182,7 +187,7 @@ const QuantityIndicator = styled.div`
   font-size: 12px;
   font-weight: bold;
   border-radius: 4px;
-  margin-right: 38px; 
+  margin-right: 26px; 
 
    @media screen and (min-width: 768px) {
     width: 68px;
@@ -225,7 +230,8 @@ const RemoveButton = styled.button`
     margin-right: 26px;
 
     @media screen and (min-width: 1280px) {
-    margin-right: 66px;
+    margin-right: 57px;
+    margin-left: 13px;
 
 
    .remove-icon {
@@ -245,6 +251,23 @@ const RemoveButton = styled.button`
   }
 `;
 
+export const EmptyListImage = styled.img`
+  width: 350px;
+  height: 225px;
+  margin-left: 10px;
+  margin-top: 32px;
+  
+`;
+
+export const EmptyListText = styled.p`
+  color: #000;
+  font-family: Poppins;
+  font-size: 24px;
+  margin-left: 55px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+`;
+
 
 export {
   Container,
@@ -259,4 +282,5 @@ export {
   IngredientQuantity,
   RemoveButton,
   QuantityIndicator,
+  
 };

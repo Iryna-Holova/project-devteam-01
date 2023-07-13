@@ -12,11 +12,23 @@ import {
   IngredientQuantity,
   RemoveButton,
   QuantityIndicator,
+  EmptyListImage,
+  EmptyListText,
 } from './IngredientsShoppinglist.styled';
 
 import removeIcon from '../../assets/X.png';
+import emptyListImage from '../../assets/images/empty-img.png';
 
 const IngredientsShoppingList = ({ ingredients, onDelete }) => {
+  if (ingredients.length === 0) {
+    return (
+      <Container>
+        <EmptyListImage src={emptyListImage} alt="Empty List" />
+        <EmptyListText>Shopping list is empty</EmptyListText>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <HeaderContainer>
