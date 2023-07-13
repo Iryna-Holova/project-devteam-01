@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import categories from '../data/categories.json';
 import recipesData from '../data/recipes.json';
 import CategoriesTabs from '../components/CategoriesTabs/CategoriesTabs';
@@ -9,7 +9,7 @@ import MainTitle from 'components/MainTitle/MainTitle';
 const Categories = () => {
   const { categoryName } = useParams();
   const [recipes, setRecipes] = useState([]);
-
+  const navigate = useNavigate();
   // переписать на бек
   useEffect(() => {
       const categoryRecipes = recipesData.filter(
@@ -19,13 +19,12 @@ const Categories = () => {
   }, [categoryName]);
 
   const handleCategoryChange = category => {
-    // написать код для смены url
-    console.log('category change')
+    navigate(`/categories/${category.toLowerCase()}`);
   };
 
+
   const handleOpenRecipe = id => {
-    // написать код для перехода на страницу рецепта
-    console.log('open recipe')
+  navigate(`/recipes/${id}`);
   };
 
   return (

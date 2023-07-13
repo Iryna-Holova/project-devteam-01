@@ -16,7 +16,7 @@ const clearAuthHeader = () => {
  * body: { name, email, password }
  */
 export const register = createAsyncThunk(
-  '/users/register',
+  '/auth/register',
   async (credentials, thunkAPI) => {
     try {
       console.log('rere');

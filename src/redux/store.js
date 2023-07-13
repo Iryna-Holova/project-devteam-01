@@ -11,6 +11,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
+import { recipesReducer } from './Recipes/reducer';
+import { categoriesReducer } from './Categories/slice';
+import { appReducer } from './App/slice';
+//import { searchByNameReducer } from './Recipes/searchByName/slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -29,6 +33,9 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    recipes: recipesReducer,
+    categories: categoriesReducer,
+    app: appReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

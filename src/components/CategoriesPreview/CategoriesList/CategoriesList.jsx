@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Title from "../../MainTitle/Title.styled";
 import { ListItem } from "./CategoriesList.styled";
 // TODO: uncomment when merged with main, because deleted buttons folder 
 // import { SeeAllButton } from "components/Buttons/Buttons.styled";
-import { getRecipesMainAPI } from "api/recipesMain";
 import { Recipe, RecipeImg, Description, RecipeContainer, List} from "components/RecipeGallery/RecipeGallery.styled";
 import IngredientsPlaceholder from '../../../assets/food-default.svg';
 
-const CategoriesList = () => {
-    const [recipes, setRecipes] = useState([]);
-    useEffect(() => {
-        getRecipesMainAPI().then(recipesMain => setRecipes(recipesMain))
-    }, [])
+const CategoriesList = ({ recipes }) => {
     return (
         <List>
             {recipes && Object.keys(recipes).map(category => (
