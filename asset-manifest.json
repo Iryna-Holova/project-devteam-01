@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/project-devteam-01/static/css/main.7313b27e.css",
+    "main.css": "/project-devteam-01/static/css/main.0f876f0b.css",
     "main.js": "/project-devteam-01/static/js/main.2f34287b.js",
     "static/media/authNavBackgroundDesk.jpg": "/project-devteam-01/static/media/authNavBackgroundDesk.02ea8653e48084566980.jpg",
     "static/media/Poppins-Regular.ttf": "/project-devteam-01/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
@@ -10,11 +10,11 @@
     "static/media/empty-img.png": "/project-devteam-01/static/media/empty-img.dda62daaae2dd65dd071.png",
     "static/media/food-default.svg": "/project-devteam-01/static/media/food-default.fbc5287cc49b9e075c403aa3a5bf471e.svg",
     "index.html": "/project-devteam-01/index.html",
-    "main.7313b27e.css.map": "/project-devteam-01/static/css/main.7313b27e.css.map",
+    "main.0f876f0b.css.map": "/project-devteam-01/static/css/main.0f876f0b.css.map",
     "main.2f34287b.js.map": "/project-devteam-01/static/js/main.2f34287b.js.map"
   },
   "entrypoints": [
-    "static/css/main.7313b27e.css",
+    "static/css/main.0f876f0b.css",
     "static/js/main.2f34287b.js"
   ]
 }
