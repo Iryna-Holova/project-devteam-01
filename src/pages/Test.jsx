@@ -1,11 +1,11 @@
 //import useCategories from 'hooks/useCategories';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { getMainPage } from 'redux/Recipes/main-page/operations';
+//import { getMainPage } from 'redux/Recipes/main-page/operations';
 import { getCategoriesList } from 'redux/Categories/operations';
-import { getSearchByNameThunk } from 'redux/Recipes/searchByName/operations';
-import useSearchByName from 'hooks/useSearchByName';
-//import { setQuery } from 'redux/Recipes/searchByName/slice';
+import { getSearchByTitleThunk } from 'redux/Recipes/searchByTitle/operations';
+import useSearchByTitle from 'hooks/useSearchByTitle';
+//import { setQuery } from 'redux/Recipes/searchByTitle/slice';
 import { setQuery } from 'redux/Recipes/searchByCategory/slice';
 import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
 import useSearchByCategory from 'hooks/useSearchByCategory';
@@ -13,7 +13,7 @@ import useSearchByCategory from 'hooks/useSearchByCategory';
 export const Test = () => {
   const dispatch = useDispatch();
   // const { categories, isLoading, isError } = useCategories();
-  const { data, query } = useSearchByName();
+  const { data, query } = useSearchByTitle();
   const {
     //   data: dataByCategory,
     query: queryByCategory,
@@ -37,13 +37,12 @@ export const Test = () => {
     //if (!categories)
     // dispatch(getMainPage(2));
     dispatch(getCategoriesList());
-    // console.log('useEffect', query, queryByCategory);
+    console.log('useEffect', query, queryByCategory);
 
     if (query || queryByCategory) {
-      // console.log('useEffect', query, queryByCategory);
-
-      dispatch(getSearchByNameThunk({ query: queryByCategory }));
-      dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
+      console.log('useEffect', query, queryByCategory);
+      dispatch(getSearchByTitleThunk({ query: queryByCategory }));
+      // dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
     }
   }, [dispatch, query, queryByCategory]);
 

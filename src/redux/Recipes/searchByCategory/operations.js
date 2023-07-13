@@ -1,25 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getRecipesByCategory } from 'services/api/recipes-api';
+import recipesServices from 'services/api/recipes-api';
+console.log(recipesServices);
 
 //const screenWidth = window.screen.width;
 
 export const getSearchByCategoryThunk = createAsyncThunk(
-  'search/getSearchByNameThunk',
+  'search/getSearchByCategory',
   async ({ limit = 6, query = '', page = 1 }, thunkAPI) => {
     try {
-      //  console.log('CategoryThunk', query);
-      const response = await getRecipesByCategory({
+      console.log('SearchByCategoryThunk', query);
+      const response = await recipesServices.getRecipesByCategory({
         limit,
         category: query,
         page,
       });
-      // console.log(response);
+      console.log(response);
 
       return {
         items: response,
       };
     } catch (error) {
-      //   console.log(error.message);
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
