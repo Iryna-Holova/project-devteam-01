@@ -12,3 +12,5 @@ export const getMedia = () => {
     return DESKTOP;
   }
 };
+
+export default getMedia;

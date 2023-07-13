@@ -1,2 +1,2 @@
-export const theme = state => state.theme;
-export const device = state => state.device;
+export const selectTheme = state => state.app.theme;
+export const selectDevice = state => state.app.device;

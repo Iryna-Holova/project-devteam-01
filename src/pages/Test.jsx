@@ -9,11 +9,16 @@ import useSearchByTitle from 'hooks/useSearchByTitle';
 import { setQuery } from 'redux/Recipes/searchByCategory/slice';
 import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
 import useSearchByCategory from 'hooks/useSearchByCategory';
+import useApp from 'hooks/useApp';
+import utils from 'utils';
+import recipesServices from 'services/api/recipes-api';
 
 export const Test = () => {
   const dispatch = useDispatch();
   // const { categories, isLoading, isError } = useCategories();
-  const { data, query } = useSearchByTitle();
+  const { query } = useSearchByTitle();
+  const { device } = useApp();
+
   const {
     //   data: dataByCategory,
     query: queryByCategory,
@@ -46,14 +51,25 @@ export const Test = () => {
     }
   }, [dispatch, query, queryByCategory]);
 
+  // useEffect(() => {
+  //   if (data.length > 0) console.log('useeffect data', data);
+  // }, [data]);
+
   useEffect(() => {
-    if (data.length > 0) console.log('useeffect data', data);
-  }, [data]);
+    // if (currentDevice !== device) {
+    const limit = utils.getPageLimit('main', device);
+    recipesServices
+      .getRecipesMain({ limit })
+      .then(recipesMain => console.log(recipesMain));
+    // }
+  }, [dispatch, device]);
 
   return (
     <>
       <input value={inputValue} onChange={handleInput}></input>
       <button onClick={handleClick}>click</button>
+      <p>page limit= {utils.getPageLimit('main', device)}</p>
+      <p>device= {device}</p>
     </>
   );
 };

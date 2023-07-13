@@ -11,12 +11,12 @@ axios.defaults.baseURL = BASE_URL;
 //****************
 export const getRecipesMain = async ({ limit = 1, token }) => {
   try {
-    setAuthHeader(token);
+    setAuthHeader(axios, token);
 
     const { status, data } = await axios.get(
       `/api/recipes/main-page/?limit=${limit}`
     );
-    clearAuthHeader();
+    clearAuthHeader(axios);
     if (status === 200) {
       // console.log(data);
       return data;
@@ -51,7 +51,7 @@ export const getRecipesByCategory = async ({
 
 export const getRecipe = async ({ id, token }) => {
   try {
-    setAuthHeader(token);
+    setAuthHeader(axios, token);
 
     const { status, data } = await axios.get(`/api/recipes/${id}`);
     clearAuthHeader();
