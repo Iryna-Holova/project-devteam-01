@@ -22,8 +22,8 @@ const ShoppingList = () => {
 
   return (
     <div>
-      <Container>
-        <MainTitle>Shopping List</MainTitle>
+       <MainTitle>Shopping List</MainTitle>
+      <Container> 
         <IngredientsShoppingList ingredients={ingredients} onDelete={handleDelete} />
       </Container>
     </div>

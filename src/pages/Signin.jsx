@@ -17,7 +17,7 @@ const Signin = () => {
     password: Yup.string().required('Required'),
   });
 
-  const handleSubmit = (values, { setSubmitting, setFieldTouched }) => {
+  const handleSubmit = (values, { setSubmitting, setFieldTouched, resetForm }) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
@@ -31,6 +31,7 @@ const Signin = () => {
           password: values.password,
         })
       );
+      resetForm();
     }
 
     setSubmitting(false);
