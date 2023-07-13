@@ -1,12 +1,31 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
-  background-color: #FAFAFA;
+  height: 100vh;
+  background-color: #fafafa;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Poppins', sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+div[id='root'] {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex: 0 0 auto;
 }
 
 code {
