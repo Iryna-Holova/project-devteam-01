@@ -4,6 +4,7 @@ import { BASE_URL, clearAuthHeader, setAuthHeader } from './common';
 axios.defaults.baseURL = BASE_URL;
 
 export const getAllCategories = async ({ token }) => {
+  axios.defaults.baseURL = BASE_URL;
   try {
     setAuthHeader(axios, token);
 

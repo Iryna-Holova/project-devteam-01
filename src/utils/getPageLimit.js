@@ -1,8 +1,8 @@
 import { LIMITS } from './constants';
-import getMedia from './index';
 
-export const getPageLimit = page => {
-  const media = getMedia();
+export const getPageLimit = (page, media) => {
   const limit = LIMITS[page][media];
   return limit;
 };
+
+export default getPageLimit;
