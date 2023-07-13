@@ -1,7 +1,6 @@
 import axios from "axios";
 
 // TODO: refactor baseURL code (remove duplicates)
-// TODO: getting 2/4 recipes for tablet and desktop
 
 axios.defaults.baseURL = "https://so-yummi.onrender.com/"
 

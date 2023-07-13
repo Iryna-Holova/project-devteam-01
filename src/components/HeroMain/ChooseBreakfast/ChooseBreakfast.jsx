@@ -1,11 +1,18 @@
-import { Container, Text, TextGreen} from "./ChooseBreakfast.styled";
-import { Link } from "react-router-dom";
+import { Container, Text, TextGreen, StyledLink, TextContainer, StyledSvg } from "./ChooseBreakfast.styled";
+import arrow from "../../../assets/svg/MainPage/arrow-narrow-right.svg";
 
 const ChooseBreakfast = () => {
     return (
         <Container>
-            <Text><TextGreen>Delicious and healthy</TextGreen> way to enjoy a variety of fresh ingredients in one satisfying meal</Text>
-            <Link to="/categories/breakfast">See recipes</Link>
+            <TextContainer>
+                <Text><TextGreen>Delicious and healthy</TextGreen> way to enjoy a variety of fresh ingredients in one satisfying meal</Text>
+                <StyledLink to="/categories/breakfast">
+                    See recipes
+                    <StyledSvg>
+                        <use xlinkHref={`${arrow}`} />
+                    </StyledSvg>
+                </StyledLink>
+            </TextContainer>
         </Container>
     )
 }
