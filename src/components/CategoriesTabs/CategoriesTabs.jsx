@@ -9,7 +9,7 @@ const CategoriesTabs = ({
   return (
     <TabsList>
       {categories.map(category => (
-        <Tab className={selectedCategory === category.name.toLowerCase() && 'active'}
+        <Tab className={selectedCategory === category.name && 'active'}
           key={category.name}
           onClick={() => handleCategoryChange(category.name)}
         >

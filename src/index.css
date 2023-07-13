@@ -110,19 +110,19 @@ img {
   margin-right: auto;
 }
 
-@media screen and (min-width: var(--screen-mobile)) {
+@media screen and (min-width: 343px) {
   .container {
     width: 343px;
   }
 }
 
-@media screen and (min-width: var(--screen-tablet)) {
+@media screen and (min-width: 768px) {
   .container {
     width: 704px;
   }
 }
 
-@media screen and (min-width: var(--screen-desctop)) {
+@media screen and (min-width: 1440px) {
   .container {
     width: 1240px;
   }
