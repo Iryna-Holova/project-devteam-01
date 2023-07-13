@@ -93,6 +93,7 @@ export const SubButton = styled.button`
 
   @media screen and (min-width: 768px){
     padding: 21px 138px;
+    
   }
 
 `;
