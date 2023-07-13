@@ -32,7 +32,7 @@ export const InstructionTitle = styled.title`
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: #3E4462;
+  color: var(--color-text-secondary);
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
     letter-spacing: -0.24px;
@@ -73,8 +73,8 @@ export const InstructionText = styled.li`
     font-weight: 600;
     font-size: 12px;
     line-height: 18px;
-    color: #FFFFFF;
-    background: #8BAA36;
+    color: var(--color-secondary);
+    background: var(--color-accent);
     border-radius: 100px;
     flex: none;
 
