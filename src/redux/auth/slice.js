@@ -29,17 +29,25 @@ const authSlice = createSlice({
         state.status = RESOLVED;
         console.log(payload);
       })
-      .addCase(refreshUser.rejected, (state, { payload }) => {
+      .addCase(refreshUser.rejected, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.status = IDLE;
       })
-      .addCase(register.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.token;
-        state.isLoggedIn = true;
+      .addCase(register.pending, state => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+        state.status = PENDING;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        // console.log('register fulfilled', action);
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
         state.isRefreshing = false;
         state.status = RESOLVED;
       })
@@ -58,7 +66,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.status = RESOLVED;
       })
-      .addCase(logOut.fulfilled, (state, { payload }) => {
+      .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
@@ -80,13 +88,16 @@ const authSlice = createSlice({
           state.status = REJECTED;
         }
       })
-      .addMatcher(isAnyOf(logIn.rejected, logOut.rejected), state => {
-        state.user = { name: null, email: null };
-        state.token = null;
-        state.isLoggedIn = false;
-        state.isRefreshing = false;
-        state.status = REJECTED;
-      });
+      .addMatcher(
+        isAnyOf(logIn.rejected, logOut.rejected, register.rejected),
+        state => {
+          state.user = { name: null, email: null };
+          state.token = null;
+          state.isLoggedIn = false;
+          state.isRefreshing = false;
+          state.status = REJECTED;
+        }
+      );
   },
 });
 
