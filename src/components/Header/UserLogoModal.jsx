@@ -18,7 +18,7 @@ function UserLogoModal() {
 
   const handleLogout = () => {
     dispatch(logOut()); // Вызов экшена logOut при клике на кнопку "Logout"
-    navigate('/login'); // Навигация на страницу регистрации
+    navigate('/register'); // Навигация на страницу регистрации
   };
 
   return (
