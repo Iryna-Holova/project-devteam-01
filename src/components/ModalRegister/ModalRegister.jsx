@@ -5,6 +5,7 @@ import { SubButton } from 'components/SharedForm/SharedForm.styled';
 import { Link } from 'react-router-dom';
 
 const ModalRegister = ({ closeModal }) => {
+  // console.log('open Modal');
   return (
     <>
       <ModalOverplay>
