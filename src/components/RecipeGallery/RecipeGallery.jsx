@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom';
-import { RecipeContainer, RecipeImg } from './RecipeGallery.styled';
-import { List, Recipe, Description } from './RecipeGallery.styled';
+
+import {
+  RecipeContainer,
+  RecipeImg,
+  List,
+  Recipe,
+  Description,
+} from './RecipeGallery.styled';
+
 import IngredientsPlaceholder from '../../assets/food-default.svg';
 
 const RecipeGallery = ({ recipes = null }) => {
-  // console.log(recipes);
+
   return (
     recipes && (
       <List className="container">
-        {recipes.map(({ id, title, thumb }, index) => (
-          <Recipe key={index}>
-            <Link to={`/recipe/${id}`}>
+        {recipes.map(({ _id, title, thumb }) => (
+          <Recipe key={_id}>
+            <Link to={`/recipe/${_id}`}>
               <RecipeContainer>
                 <Description>
                   <p>{title}</p>

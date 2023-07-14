@@ -8,12 +8,12 @@ const CategoriesTabs = ({
   // Відображення меню зі списком категорій
   return (
     <TabsList>
-      {categories.map(category => (
-        <Tab className={selectedCategory === category.name && 'active'}
-          key={category.name}
-          onClick={() => handleCategoryChange(category.name)}
+      {categories.map(({_id, name}) => (
+        <Tab className={selectedCategory === name && 'active'}
+          key={_id}
+          onClick={() => handleCategoryChange(name)}
         >
-          {category.name}
+          {name}
         </Tab>
       ))}
     </TabsList>
