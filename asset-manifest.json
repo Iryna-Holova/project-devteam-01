@@ -1,13 +1,18 @@
 {
   "files": {
     "main.css": "/project-devteam-01/static/css/main.c1c6e642.css",
-    "main.js": "/project-devteam-01/static/js/main.8085983d.js",
-    "static/media/authNavBackgroundDesk.jpg": "/project-devteam-01/static/media/authNavBackgroundDesk.02ea8653e48084566980.jpg",
+    "main.js": "/project-devteam-01/static/js/main.fa1e6ea5.js",
+    "static/media/desctop2x.webp": "/project-devteam-01/static/media/desctop2x.f85a75de0d595b4f9834.webp",
+    "static/media/tablet2x.webp": "/project-devteam-01/static/media/tablet2x.d9b20816a614e8d9466b.webp",
+    "static/media/mobile2x.webp": "/project-devteam-01/static/media/mobile2x.635958623ab632ae6ec9.webp",
+    "static/media/desctop.webp": "/project-devteam-01/static/media/desctop.9b6adcecacdb01cdcb91.webp",
+    "static/media/tablet.webp": "/project-devteam-01/static/media/tablet.f3e3b303606a12fdbf32.webp",
     "static/media/Poppins-Regular.ttf": "/project-devteam-01/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/project-devteam-01/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/project-devteam-01/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/Poppins-Bold.ttf": "/project-devteam-01/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
     "static/media/empty-img.png": "/project-devteam-01/static/media/empty-img.dda62daaae2dd65dd071.png",
+    "static/media/mobile.webp": "/project-devteam-01/static/media/mobile.7ffd9ab24b909e561514.webp",
     "static/media/food-default.svg": "/project-devteam-01/static/media/food-default.fbc5287cc49b9e075c403aa3a5bf471e.svg",
     "static/media/instagram.svg": "/project-devteam-01/static/media/instagram.d5691a5a53fd6848fd1a4c9609f1779a.svg",
     "static/media/twiter.svg": "/project-devteam-01/static/media/twiter.e8916618ff2d5fccaf774f6fe73bea10.svg",
@@ -17,10 +22,10 @@
     "static/media/youTube.svg": "/project-devteam-01/static/media/youTube.b10477377c7c68fdf6a07011bba6ed91.svg",
     "static/media/facebook.svg": "/project-devteam-01/static/media/facebook.17027373650834993223c612e5754d2b.svg",
     "main.c1c6e642.css.map": "/project-devteam-01/static/css/main.c1c6e642.css.map",
-    "main.8085983d.js.map": "/project-devteam-01/static/js/main.8085983d.js.map"
+    "main.fa1e6ea5.js.map": "/project-devteam-01/static/js/main.fa1e6ea5.js.map"
   },
   "entrypoints": [
     "static/css/main.c1c6e642.css",
-    "static/js/main.8085983d.js"
+    "static/js/main.fa1e6ea5.js"
   ]
 }
