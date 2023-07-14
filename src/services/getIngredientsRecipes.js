@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://so-yummi.onrender.com/api';
+axios.defaults.baseURL = 'https://so-yummi.onrender.com';
 
 export const getIngredientsRecipes = async query => {
   try {
-    const request = await axios.get(`/ingredients?q=${query}`);
+    const request = await axios.get(`/api/ingredients?q=${query}`);
 
     if (request.data.recipes.length === 0) {
       return Promise.reject(
