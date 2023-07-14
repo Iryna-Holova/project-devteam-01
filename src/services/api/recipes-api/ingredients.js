@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { BASE_URL, clearAuthHeader, setAuthHeader } from './common';
+import { BASE_URL } from './common';
 
 axios.defaults.baseURL = BASE_URL;
 
-export const getIngredients = async ({ token }) => {
+export const getIngredients = async () => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    setAuthHeader(axios, token);
+    //setAuthHeader(axios, token);
 
     const { status, data } = await axios.get(`/api/ingredients/list`);
-    clearAuthHeader(axios);
+    // clearAuthHeader(axios);
     if (status === 200) {
       //  console.log(data);
       return data;

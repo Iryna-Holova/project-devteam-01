@@ -13,6 +13,8 @@ import useApp from 'hooks/useApp';
 import utils from 'utils';
 import recipesServices from 'services/api/recipes-api';
 
+import { getIngredientsThunk } from 'redux/Ingredients/operations';
+
 export const Test = () => {
   const dispatch = useDispatch();
   // const { categories, isLoading, isError } = useCategories();
@@ -42,6 +44,7 @@ export const Test = () => {
     //if (!categories)
     // dispatch(getMainPage(2));
     dispatch(getCategoriesList());
+    dispatch(getIngredientsThunk());
     // console.log('useEffect', query, queryByCategory);
 
     if (query || queryByCategory) {
