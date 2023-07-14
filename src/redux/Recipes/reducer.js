@@ -3,6 +3,7 @@ import { favoriteReducer } from './favorite/favoriteRecipesSlice';
 //import { mainPageReducer } from './main-page/slice';
 import { searchByTitleReducer } from './searchByTitle/slice';
 import { searchByCategoryReducer } from './searchByCategory/slice';
+import { ownRecipesReducer } from './own/slice';
 
 // Код редюсеров tasksReducer и filtersReducer
 export const recipesReducer = combineReducers({
@@ -10,4 +11,5 @@ export const recipesReducer = combineReducers({
   // mainpage: mainPageReducer,
   searchByTitle: searchByTitleReducer,
   searchByCategory: searchByCategoryReducer,
+  ownRecipes: ownRecipesReducer,
 });

@@ -12,3 +12,8 @@ export const LIMITS = {
   own: [4, 4, 4],
   search: [6, 6, 12],
 };
+
+export const IDLE = 0;
+export const PENDING = 1;
+export const RESOLVED = 2;
+export const REJECTED = 3;
