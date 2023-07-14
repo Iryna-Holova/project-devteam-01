@@ -15,10 +15,6 @@
 
   --transition-time: 250ms;
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
-
-  --screen-mobile: 343px;
-  --screen-tablet: 768px;
-  --screen-desctop: 1440px;
 }
 
 [data-theme='dark'] {
