@@ -3,7 +3,7 @@ import MainTitle from "components/MainTitle/MainTitle";
 
 import {getIngredientsRecipes} from '../services/getIngredientsRecipes';
 import {getTitleRecipes} from '../services/getTitleRecipes';
-import { Searchbar } from "components/Searchbar/Searchbar";
+import { Searchbar } from "../components/Searchbar/Searchbar";
 import { useState, useEffect } from 'react';
 import img from '../assets/images/empty-img.png'
 
