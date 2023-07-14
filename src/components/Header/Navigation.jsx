@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavContainer, NavItem, NavLinkStyled } from './HeaderStyles';
+import { NavContainer, NavItem, NavLinkStyled } from './Header.styled';
 
 function Navigation() {
   return (

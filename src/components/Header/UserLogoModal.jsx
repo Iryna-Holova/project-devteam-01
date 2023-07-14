@@ -1,17 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   UserLogoModalContainer,
   EditProfileButton,
   LogoutButton,
-} from './HeaderStyles';
+} from './Header.styled';
+import { logOut } from '../../redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 function UserLogoModal() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleEditProfile = () => {
     // Обработчик клика по кнопке "Edit Profile"
   };
 
   const handleLogout = () => {
-    // Обработчик клика по кнопке "Logout"
+    dispatch(logOut()); // Вызов экшена logOut при клике на кнопку "Logout"
+    navigate('/login'); // Навигация на страницу регистрации
   };
 
   return (

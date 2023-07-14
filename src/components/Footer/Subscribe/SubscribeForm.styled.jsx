@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-  /* align-items: center;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 110px;
-  margin-top: 64px; */
 
-  @media (max-width: 768px) {
-    /* margin: 0; */
-  }
+  @media (max-width: 1440px) {
+    display: flex;
 
-  @media (max-width: 480px) {
-    /* Стили для мобильных устройств */
   }
 `;
 
@@ -19,15 +14,14 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  /* max-width: 339px;
-  margin-right: 100px; */
 
-  @media (mix-width: 768px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     gap: 12px;
   }
 
   @media (min-width: 1440px) {
+    flex-direction: column;
     width: 338px;
     gap: 0;
   }
@@ -40,10 +34,6 @@ box-sizing: border-box;
   border-color: #fafafa;
   border-radius: 6px;
   padding: 10px 14px;
-  /* margin-bottom: 16px; */
-  /* width: 100%; */
-  /* height: 58px; */
-  /* cursor: pointer; */
 
   @media (min-width: 768px) {
     width: 259px;
@@ -51,8 +41,6 @@ box-sizing: border-box;
     font-size: 14px;
     letter-spacing: -0.28px;
     padding: 15px;
-    /* margin-right: 12px;
-    margin-bottom: 0; */
   }
 
   @media (min-width: 1440px) {

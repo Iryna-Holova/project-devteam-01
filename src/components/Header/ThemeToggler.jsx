@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeTogglerContainer, ThemeTogglerButton } from './HeaderStyles';
+import { ThemeTogglerContainer, ThemeTogglerButton } from './Header.styled';
 
 function ThemeToggler() {
   const handleThemeToggle = () => {
