@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-//import categories from '../data/categories.json';
-//import recipesData from '../data/recipes.json';
-import CategoriesTabs from '../components/CategoriesTabs/CategoriesTabs';
-import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
-import MainTitle from 'components/MainTitle/MainTitle';
-import useApp from 'hooks/useApp';
 import { useDispatch } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import useApp from 'hooks/useApp';
 import useCategories from 'hooks/useCategories';
+import useSearchByCategory from 'hooks/useSearchByCategory';
+
 import { getCategoriesList } from 'redux/Categories/operations';
 import { setLimit, setQuery } from 'redux/Recipes/searchByCategory/slice';
 import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
-import useSearchByCategory from 'hooks/useSearchByCategory';
+
 import utils from 'utils';
+
+import CategoriesTabs from 'components/CategoriesTabs/CategoriesTabs';
+import RecipeGallery from 'components/RecipeGallery/RecipeGallery';
+import MainTitle from 'components/MainTitle/MainTitle';
 
 const Categories = () => {
   const { categoryName } = useParams();
@@ -62,10 +64,6 @@ const Categories = () => {
     navigate(`/categories/${category}`);
   };
 
-  const handleOpenRecipe = id => {
-    navigate(`/recipes/${id}`);
-  };
-
   return (
     <>
       <MainTitle>Categories</MainTitle>
@@ -75,7 +73,7 @@ const Categories = () => {
         handleCategoryChange={handleCategoryChange}
       />
 
-      <RecipeGallery recipes={recipes} handleOpenRecipe={handleOpenRecipe} />
+      <RecipeGallery recipes={recipes} />
     </>
   );
 };
