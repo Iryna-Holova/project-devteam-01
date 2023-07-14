@@ -71,7 +71,7 @@ const Recipe = () => {
             id={recipeId}
                   />
                   
-          <Container>
+          <Container className="container">
             <TableRecipe>
               <p>Ingredients</p>
               <p>
@@ -83,14 +83,20 @@ const Recipe = () => {
                 
                 return (
                   <RecipeItem
-                    
+                    key={i}
+                    id={_id}
+                    thb={thb}
+                    ttl={ttl}
+                    desc={desc}
                   />
                 );
               })}
             </InngredientsList>
 
             <RecipePreparation
-              
+               title={recipe.title}
+               image={recipe.thumb}
+               instructions={recipe.instructions}
             />
           </Container>
         </>

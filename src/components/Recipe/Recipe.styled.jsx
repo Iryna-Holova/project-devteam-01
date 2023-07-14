@@ -47,19 +47,4 @@ export const Container = styled.div`
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
-  min-width: 320px;
-
-  @media screen and (max-width: 767px) {
-    max-width: 767px;
-  }
-
-
-  @media screen and (min-width: 768px) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media screen and (min-width: 1440px) {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
 `;

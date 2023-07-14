@@ -15,7 +15,7 @@ export const InngredientsList = styled.ul`
 `;
 export const RecipeItem = styled.li`
   border-radius: 8px;
-  background-color: #EBF3D4;
+  background-color: var(--color-accent-secondary);
   display: flex;
   align-items: center;
   padding: 14px 29px 14px 14px;
@@ -34,8 +34,8 @@ export const TableRecipe = styled.div`
   height: 42px;
   padding: 0 14px;
   margin-bottom: 24px;
-  color: #FAFAFA;
-  background-color: #8BAA36;
+  color: var(--color-main);
+  background-color: var(--color-accent);
   @media screen and (min-width: 768px) {
     height: 58px;
     margin-bottom: 32px;
