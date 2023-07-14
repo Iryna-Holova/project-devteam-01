@@ -1,9 +1,9 @@
 import React from 'react';
-import Logo from './Logo';
+import Logo from '../Logo/LogoHeader';
 import Navigation from './Navigation';
 import UserLogo from './UserLogo';
 import ThemeToggler from './ThemeToggler';
-import { HeaderContainer } from './HeaderStyles';
+import { HeaderContainer } from './Header.styled';
 
 function Header() {
   return (

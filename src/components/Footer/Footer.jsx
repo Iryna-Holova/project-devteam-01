@@ -3,11 +3,9 @@ import {
   FooterContainer,
   FooterContent,
   FooterText,
-  // LogoText,
-  // LogoImage,
   FooterLogoText,
   Text,
-  // FooterNav,
+  LogoStyles,
   FooterBarText,
   LeftText,
   RightText,
@@ -16,22 +14,27 @@ import {
 import SubscribeForm from './Subscribe/SubscribeForm';
 import Nav from './Nav/Nav';
 import SocialLinks from '../SocialLinks/SocialLinks';
-import Logo from 'components/Header/Logo';
+import Logo from '../Logo/LogoFooter';
 
 function Footer() {
   return (
     <FooterContainer>
       <FooterContent>
         <FooterTextContainer className="container">
-          <FooterLogoText>
-            <Logo>So Yummy</Logo>
+          <div>
+            <LogoStyles>
+              <a href="/">
+                <Logo>So Yummy</Logo>
+              </a>
+              <FooterLogoText>So Yummy</FooterLogoText>
+            </LogoStyles>
             <FooterText>
               <Text>Database of recipes that can be replenished</Text>
               <Text>Flexible search for desired and unwanted ingredients</Text>
               <Text>Ability to add your own recipes with photos</Text>
               <Text>Convenient and easy to use</Text>
             </FooterText>
-          </FooterLogoText>
+          </div>
           <Nav />
           <SubscribeForm />
         </FooterTextContainer>

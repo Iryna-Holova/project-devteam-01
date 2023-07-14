@@ -18,17 +18,19 @@ export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  
+  /* line-height: 18px; */
+  gap: 18px;
+  /* margin-top: 64px; */
   list-style: none;
+  /* width: 151px; */
 
   @media (min-width: 768px) {
-    width: 151px;
     align-items: flex-start;
     /* margin-top: 50px;
     margin-right: 94px; */
+    
   }
-/* 
+  /* 
   @media (max-width: 620px) {
     margin-top: 50px;
     margin-right: 40px;
@@ -45,7 +47,7 @@ margin: 0;
 `;
 
 export const NavItem = styled.li`
-  /* margin-right: 1rem;
+  /* /* margin-right: 1rem;
   margin-bottom: 24px;
   font-size: 14px;
   line-height: 18px;
