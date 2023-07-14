@@ -17,7 +17,10 @@ const Signin = () => {
     password: Yup.string().required('Required'),
   });
 
-  const handleSubmit = (values, { setSubmitting, setFieldTouched, resetForm }) => {
+  const handleSubmit = (
+    values,
+    { setSubmitting, setFieldTouched, resetForm }
+  ) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
@@ -25,13 +28,18 @@ const Signin = () => {
       console.log('Порожні поля');
     } else {
       console.log('Всі поля заповнені');
-      dispatch(
-        logIn({
-          email: values.email,
-          password: values.password,
-        })
-      );
-      resetForm();
+
+      try {
+        dispatch(
+          logIn({
+            email: values.email,
+            password: values.password,
+          })
+        );
+        resetForm();
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     setSubmitting(false);

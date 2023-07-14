@@ -41,15 +41,20 @@ const Register = () => {
       console.log('Порожні поля');
     } else {
       console.log('Всі поля заповнені');
-      dispatch(
-        register({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-        })
-      );
-      resetForm();
-      openModal();
+
+      try {
+        dispatch(
+          register({
+            name: values.name,
+            email: values.email,
+            password: values.password,
+          })
+        );
+        resetForm();
+        openModal();
+      } catch (error) {
+        console.log(error.message);
+      }
     }
 
     setSubmitting(false);
@@ -68,7 +73,7 @@ const Register = () => {
         isRegisterForm
       />
 
-      {isModalOpen && <ModalRegister closeModal={closeModal}/>}
+      {isModalOpen && <ModalRegister closeModal={closeModal} />}
     </div>
   );
 };

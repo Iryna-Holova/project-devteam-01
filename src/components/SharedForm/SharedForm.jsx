@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Formik,ErrorMessage  } from 'formik';
 import {
   StyledForm,
   WordForm,
@@ -10,6 +10,38 @@ import {
   Router,
   Wrapper,
 } from './SharedForm.styled';
+
+
+const isValidEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = 'Введіть електронну адресу';
+  } else if (!isValidEmail(values.email)) {
+    errors.email = 'Введіть правильну електронну адресу';
+  }
+
+  if (!values.name) {
+    errors.name = 'Введіть ім\'я';
+  }
+
+  if (!values.password) {
+    errors.password = 'Введіть пароль';
+  } else if (values.password.length < 6) {
+    errors.password = 'Пароль повинен містити щонайменше 6 символів';
+  }
+
+  return errors;
+};
+
+
+
+
 
 const SharedForm = ({
   initialValues,
@@ -28,7 +60,10 @@ const SharedForm = ({
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <StyledForm>
+
+{({ isSubmitting }) => (
+
+  <StyledForm>
           <WordForm>{nameForm}</WordForm>
           <List>
             <li>
@@ -39,8 +74,8 @@ const SharedForm = ({
                     id="name"
                     name="name"
                     placeholder="Name"
-                  />
-                  {/* <ErrorMessage name="name" component="div"   style={{ visibility: dirty ? 'visible' : 'hidden' }}/> */}
+                    />
+                  <ErrorMessage name="name" component="div"  />
                 </div>
               )}
             </li>
@@ -51,8 +86,8 @@ const SharedForm = ({
                   id="email"
                   name="email"
                   placeholder="Email"
-                />
-                {/* <ErrorMessage name="email" component="div"  style={{ visibility: dirty ? 'visible' : 'hidden' }}/> */}
+                  />
+                <ErrorMessage name="email" component="div"/>
               </div>
             </li>
             <li>
@@ -62,14 +97,15 @@ const SharedForm = ({
                   id="password"
                   name="password"
                   placeholder="Password"
-                />
-                {/* <ErrorMessage name="password" component="div"  style={{ visibility: dirty ? 'visible' : 'hidden' }}/> */}
+                  />
+                <ErrorMessage name="password" component="div" />
               </div>
             </li>
           </List>
 
           <SubButton type="submit">{nameBut}</SubButton>
         </StyledForm>
+                  )}
       </Formik>
 
       <Link to={`/${urlRouter}`}>
