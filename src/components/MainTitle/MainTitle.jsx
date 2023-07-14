@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Title from './Title.styled';
 
 const MainTitle = ({ children }) => {
-  return <Title>{children}</Title>;
+  return <div className='container'><Title>{children}</Title></div>;
 };
 
 MainTitle.propTypes = {
