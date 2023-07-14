@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project-devteam-01/static/css/main.567b5fdd.css",
-    "main.js": "/project-devteam-01/static/js/main.ed97797c.js",
+    "main.css": "/project-devteam-01/static/css/main.2f4021e0.css",
+    "main.js": "/project-devteam-01/static/js/main.55543751.js",
     "static/media/authNavBackgroundDesk.jpg": "/project-devteam-01/static/media/authNavBackgroundDesk.02ea8653e48084566980.jpg",
     "static/media/Poppins-Regular.ttf": "/project-devteam-01/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/project-devteam-01/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
@@ -16,11 +16,11 @@
     "index.html": "/project-devteam-01/index.html",
     "static/media/youTube.svg": "/project-devteam-01/static/media/youTube.b10477377c7c68fdf6a07011bba6ed91.svg",
     "static/media/facebook.svg": "/project-devteam-01/static/media/facebook.17027373650834993223c612e5754d2b.svg",
-    "main.567b5fdd.css.map": "/project-devteam-01/static/css/main.567b5fdd.css.map",
-    "main.ed97797c.js.map": "/project-devteam-01/static/js/main.ed97797c.js.map"
+    "main.2f4021e0.css.map": "/project-devteam-01/static/css/main.2f4021e0.css.map",
+    "main.55543751.js.map": "/project-devteam-01/static/js/main.55543751.js.map"
   },
   "entrypoints": [
-    "static/css/main.567b5fdd.css",
-    "static/js/main.ed97797c.js"
+    "static/css/main.2f4021e0.css",
+    "static/js/main.55543751.js"
   ]
 }
