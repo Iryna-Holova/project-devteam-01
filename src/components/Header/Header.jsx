@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className="container">
       <LogoStyled>
         <LogoHeader href="/">
           <Logo>So Yummy</Logo>
@@ -53,7 +53,7 @@ const Header = () => {
         <BurgerIcon />
         <BurgerIcon />
       </BurgerMenu>
-      <BurgerMenuContent isOpen={isBurgerMenuOpen}>
+      <BurgerMenuContent data-is-menu-open={isBurgerMenuOpen}>
         <Navigation />
         <ThemeToggler />
         <LogoutButton onClick={handleLogoutClick}>Logout</LogoutButton>

@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  margin-top: 18px;
   background-color: #f8f8f8;
 `;
 
@@ -54,8 +54,11 @@ export const BurgerMenuContent = styled.div`
   width: 100%;
   background-color: #f8f8f8;
   padding: 20px;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({ 'data-is-menu-open': isMenuOpen }) =>
+    isMenuOpen ? 'block' : 'none'};
 `;
+
+
 
 export const LogoStyled = styled.div`
   display: flex;
