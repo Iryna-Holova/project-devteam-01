@@ -1,19 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSearchByNameThunk } from './operations';
+import { getOwnRecipesThunk } from './operations';
+import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
 const initialState = {
   items: [],
   query: '',
   page: 1,
-  limit: 6,
+  limit: 4,
   isLoading: false,
   error: null,
   total: 0,
   pages: 0,
+  status: IDLE,
 };
 
-export const searchByNameSlice = createSlice({
-  name: 'searchByName',
+export const ownRecipesSlice = createSlice({
+  name: 'ownRecipes',
   initialState,
   reducers: {
     setLimit(state, { payload }) {
@@ -28,28 +30,31 @@ export const searchByNameSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(getSearchByNameThunk.pending, state => {
+      .addCase(getOwnRecipesThunk.pending, state => {
         state.isLoading = true;
+        state.status = PENDING;
       })
-      .addCase(getSearchByNameThunk.fulfilled, (state, { payload }) => {
-        // console.log('SearchByName', payload);
+      .addCase(getOwnRecipesThunk.fulfilled, (state, { payload }) => {
+        // console.log('SearchByTitle', payload);
         state.error = null;
         state.items = [...payload.items.recipes];
         state.pages = payload.items.pages;
         state.total = payload.items.total;
         state.isLoading = false;
+        state.status = RESOLVED;
       })
-      .addCase(getSearchByNameThunk.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(getOwnRecipesThunk.rejected, (state, action) => {
+        console.log(action);
         state.isLoading = false;
         state.error = true;
         state.items = [];
         state.query = '';
         state.page = 1;
-        state.limit = 6;
+        state.limit = 4;
+        state.status = REJECTED;
       });
   },
 });
 
-export const { setLimit, setPage, setQuery } = searchByNameSlice.actions;
-export const searchByNameReducer = searchByNameSlice.reducer;
+export const { setLimit, setPage, setQuery } = ownRecipesSlice.actions;
+export const ownRecipesReducer = ownRecipesSlice.reducer;

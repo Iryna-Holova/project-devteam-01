@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
@@ -21,10 +21,33 @@ import ShoppingList from 'pages/ShoppingList';
 import NotFound from 'pages/NotFound';
 import Verify from 'pages/Verify';
 import Test from 'pages/Test';
+import { getMedia } from 'utils/getMedia';
+import { setDevice } from 'redux/App/slice';
 
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth;
+
+  useEffect(() => {
+    const device = getMedia();
+    dispatch(setDevice(device));
+
+    const handlerOnWindowResize = () => {
+      const device = getMedia();
+      dispatch(setDevice(device));
+    };
+    const addHandler = () => {
+      window.addEventListener('resize', handlerOnWindowResize);
+    };
+
+    addHandler();
+    return () => {
+      const removeHandler = () => {
+        window.removeEventListener('resize', handlerOnWindowResize);
+      };
+      removeHandler();
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isLoggedIn || token !== null) {
@@ -61,6 +84,15 @@ export const App = () => {
         <Route
           index
           element={<PrivateRoute redirectTo="/start" component={<Main />} />}
+        />
+        <Route
+          path="categories/"
+          element={
+            <PrivateRoute
+              redirectTo="/start"
+              component={<Navigate to="/categories/beef" />}
+            />
+          }
         />
         <Route
           path="categories/:categoryName"
