@@ -1,19 +1,25 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-
 export const HeaderContainer = styled.header`
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  @media screen and (min-width: 1440px) {
+    top: 14px;
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 18px;
   background-color: #f8f8f8;
 `;
 
 export const BurgerMenu = styled.div`
   display: none;
 
-  @media (max-width: 1399px) {
+  @media (max-width: 1439px) {
     display: block;
     position: relative;
     z-index: 999;
@@ -58,20 +64,16 @@ export const BurgerMenuContent = styled.div`
     isMenuOpen ? 'block' : 'none'};
 `;
 
-
-
 export const LogoStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
 
 export const LogoHeader = styled.a`
   width: 40px;
   height: 40px;
 `;
-
 
 export const LogoutButton = styled.button`
   // Стили кнопки "Logout"
@@ -120,4 +122,3 @@ export const LogoContainer = styled.div`
 export const LogoImage = styled.img`
   // стили для LogoImage
 `;
-

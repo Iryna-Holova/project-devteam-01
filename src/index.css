@@ -66,10 +66,6 @@ div[id='root'] {
   height: 100%;
 }
 
-header {
-  flex: 0 0 auto;
-}
-
 main {
   flex: 1 0 auto;
 }
