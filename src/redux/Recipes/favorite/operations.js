@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { toast } from 'react-toastify';
 //import recips from 'data/recipes.json';
-import axios from 'axios';
+//import axios from 'axios';
 import recipesServices from 'services/api/recipes-api';
 
 export const getFavoriteRecipesThunk = createAsyncThunk(
@@ -22,7 +22,7 @@ export const getFavoriteRecipesThunk = createAsyncThunk(
 );
 
 export const addToFavoriteRecipesThunk = createAsyncThunk(
-  'favoriteRecipes/addFavorite',
+  'favorite/addFavorite',
   async (recipe, thunkAPI) => {
     try {
       //  console.log(recipe._id.$oid.toString());
@@ -45,15 +45,16 @@ export const addToFavoriteRecipesThunk = createAsyncThunk(
   }
 );
 
-export const removeFromFavorite = createAsyncThunk(
-  'favoriteRecipes/removeFavorite',
+export const removeFromFavoriteRecipesThunk = createAsyncThunk(
+  'favorite/removeFavorite',
   async (recipeId, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/recipes/${recipeId}/favorite`);
-      //   toast.success('Removed from Favorites');
-      return data;
+      const response = await recipesServices.deleteFromFavorite({
+        id: recipeId.$oid.toString(),
+      });
+      if (response.status === 200) return { response, recipeId };
+      else thunkAPI.rejectWithValue(response.message);
     } catch (error) {
-      //   toast.error('Something went wrong, please try again later');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

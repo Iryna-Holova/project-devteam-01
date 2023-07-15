@@ -1,9 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addToFavoriteRecipesThunk,
-  // addFavoriteRecipes,
   getFavoriteRecipesThunk,
-  //  removeFromFavorite,
+  removeFromFavoriteRecipesThunk,
 } from './operations';
 // import { toast } from 'react-toastify';
 
@@ -51,11 +50,29 @@ export const favoriteRecipesSlice = createSlice({
         state.pages = Math.ceil(state.total / state.limit);
         state.status = RESOLVED;
       })
+      .addCase(
+        removeFromFavoriteRecipesThunk.fulfilled,
+        (state, { payload }) => {
+          state.error = null;
+          console.log(payload);
+
+          const result = state.items.filter(
+            item =>
+              item._id.$oid.toString() !== payload.recipeId.$oid.toString()
+          );
+          console.log(result);
+          state.items = [...result];
+          state.total = state.total - 1;
+          state.isLoading = false;
+          state.pages = Math.ceil(state.total / state.limit);
+          state.status = RESOLVED;
+        }
+      )
       .addMatcher(
         isAnyOf(
           getFavoriteRecipesThunk.pending,
-          addToFavoriteRecipesThunk.pending
-          // removeFromFavorite.pending
+          addToFavoriteRecipesThunk.pending,
+          removeFromFavoriteRecipesThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -65,29 +82,16 @@ export const favoriteRecipesSlice = createSlice({
       .addMatcher(
         isAnyOf(
           getFavoriteRecipesThunk.rejected,
-          addToFavoriteRecipesThunk.rejected
-          // removeFromFavorite.rejected
+          addToFavoriteRecipesThunk.rejected,
+          removeFromFavoriteRecipesThunk.rejected
         ),
         (state, action) => {
+          console.log(action);
           state.isLoading = false;
           state.error = action.payload;
           state.status = REJECTED;
         }
       );
-    // .addCase(addFavoriteRecipesThunk.fulfilled, (state, action) => {
-    //   console.log(action.payload);
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   state.items.data.push(action.payload.data);
-    // })
-    // .addCase(removeFromFavorite.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   const index = state.items.data.findIndex(
-    //     item => item._id === action.payload.data._id
-    //   );
-    //   state.items.data.splice(index, 1);
-    // })
   },
 });
 

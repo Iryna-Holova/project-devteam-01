@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BASE_URL, setAuthHeader } from './common';
 
-export const getFavorite = async ({ limit = 4, page = 1 }) => {
+export const getFavorite = async ({ limit = 99999, page = 1 }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
     setAuthHeader(
@@ -20,7 +20,7 @@ export const getFavorite = async ({ limit = 4, page = 1 }) => {
     } else return null;
   } catch (error) {
     // console.log(error);
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -32,7 +32,7 @@ export const addToFavorite = async ({ id }) => {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
     );
 
-    const { status } = await axios.post(
+    const { status, data } = await axios.post(
       `/api/favorite/`,
       { recipeId: id },
       {
@@ -42,7 +42,7 @@ export const addToFavorite = async ({ id }) => {
       }
     );
     // clearAuthHeader(axios);
-    return { status };
+    return { status, message: data.message };
     //if (status === 200) {
 
     //     console.log(data);
@@ -50,7 +50,7 @@ export const addToFavorite = async ({ id }) => {
     //   } else return null;
   } catch (error) {
     // console.log(error);
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -62,14 +62,16 @@ export const deleteFromFavorite = async ({ id }) => {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
     );
 
-    const { status } = await axios.get(`/api/favorite/`);
+    const { status, data } = await axios.delete(`/api/favorite/${id}`);
     // clearAuthHeader(axios);
-    if (status === 200) {
-      console.log(data);
-      return data;
-    } else return null;
+    console.log(data);
+    return { status, message: data.message };
+    // if (status === 200) {
+    //   console.log(data);
+    //   return data;
+    // } else return null;
   } catch (error) {
-    // console.log(error);
-    return Promise.reject(new Error(error.message));
+    //  console.log(error);
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
