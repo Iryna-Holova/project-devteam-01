@@ -11,7 +11,7 @@ import Register from 'pages/Register';
 import SharedLayout from 'pages/SharedLayout';
 import Signin from 'pages/Signin';
 import Start from 'pages/Start';
-import Categories from 'pages/Categories';
+import Categories from 'pages/Categories/Categories';
 import AddRecipe from 'pages/AddRecipe';
 import Favorite from 'pages/Favorite';
 import Recipe from 'pages/Recipe';
