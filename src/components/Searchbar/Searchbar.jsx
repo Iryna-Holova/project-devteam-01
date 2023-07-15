@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {getIngredientsRecipes} from '../../services/getIngredientsRecipes';
 import {getTitleRecipes} from '../../services/getTitleRecipes';
 import {Input, Btn, Select, Div, Form} from './Searchbar.styled'
 
   
   
-export function Searchbar ({onSubmit, setTitles, setIngredient, addStatus, addError}) {
+export function Searchbar ({onSubmit, setTitles, addStatus, addError}) {
     const [value, setValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('title')
     const [isTyping, setIsTyping] = useState(false)
+    const location = useLocation()
     
+
 
 
 // Функция записывает значение инпута в состояние
@@ -38,19 +41,21 @@ export function Searchbar ({onSubmit, setTitles, setIngredient, addStatus, addEr
         return;
       }
       addStatus('pending')
-      addError(null)
+      // addError(null)
       const delayDebounceRequest = setTimeout(() => {
         if (selectedValue === "ingredients" && value !== "") {
             getIngredientsRecipes(value).then(ingr => {
-                setIngredient(ingr); 
+              setTitles(ingr);
+                 
                 addStatus('resolved')})
                 .catch(err => {
                     addError(err.message); 
                     addStatus('rejected')})
            }
         if (selectedValue === "title" && value !== "") {
-            getTitleRecipes(value).then(ingr => {
-                setTitles(ingr); 
+            getTitleRecipes(value).then(title => {
+                setTitles(title); 
+               
                 addStatus('resolved')})
                 .catch(err => {
                     addError(err.message); 
@@ -59,7 +64,7 @@ export function Searchbar ({onSubmit, setTitles, setIngredient, addStatus, addEr
       }, 2000)
 
     return () => clearTimeout(delayDebounceRequest);
-  }, [value, selectedValue,setIngredient, setTitles, addError, addStatus, isTyping ])
+  }, [value, selectedValue, setTitles, addError, addStatus, isTyping ])
 
 
 // Отправка введенных значений по клику  
@@ -91,15 +96,16 @@ export function Searchbar ({onSubmit, setTitles, setIngredient, addStatus, addEr
            <Btn onClick={handleSubmit} type="submit">Search</Btn>
             </Div>
            
-           <label>
-            Search by:
-           <Select onChange={handleSelectChange}>
+           
+            {location.pathname === '/search' && <label>
+            Search by: <Select onChange={handleSelectChange}>
                 
                 <option name="title" value="title">Title</option>
                 <option name="ingredients" value="ingredients">Ingredients</option>
                 
-            </Select>
-           </label>
+            </Select></label>}
+           
+           
           </Form>
         </>
       );

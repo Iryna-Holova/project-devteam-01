@@ -1,18 +1,23 @@
 import MainTitle from 'components/MainTitle/MainTitle';
+import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
 
 import { getIngredientsRecipes } from '../services/getIngredientsRecipes';
 import { getTitleRecipes } from '../services/getTitleRecipes';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
+
+
 import img from '../assets/images/empty-img.png';
+
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('title');
   const [title, setTitle] = useState([]);
-  const [ingredients, setIngredients] = useState([]);
   const [status, setStatus] = useState('idl');
   const [error, setError] = useState(null);
+
+  
 
   useEffect(() => {
     if (searchValue === '') {
@@ -22,9 +27,11 @@ const Search = () => {
     setError(null);
 
     if (selectedValue === 'ingredients' && searchValue !== '') {
+        
       getIngredientsRecipes(searchValue)
         .then(ingr => {
-          setIngredients(ingr);
+          setTitle(ingr);
+          
           setStatus('resolved');
         })
         .catch(err => {
@@ -34,8 +41,9 @@ const Search = () => {
     }
     if (selectedValue === 'title' && searchValue !== '') {
       getTitleRecipes(searchValue)
-        .then(ingr => {
-          setTitle(ingr);
+        .then(title => {
+          setTitle(title);
+          
           setStatus('resolved');
         })
         .catch(err => {
@@ -44,6 +52,8 @@ const Search = () => {
         });
     }
   }, [searchValue, selectedValue]);
+
+ 
 
   // Функция записывает полученные значения из SearchBar в стейт
   const formOnsubmitHandler = (value, selectValue) => {
@@ -56,34 +66,38 @@ const Search = () => {
     }
   };
   console.log(title);
-  console.log(ingredients);
+
   console.log(error); // Just for build
 
   return (
+    <>
     <MainTitle>
-      <Searchbar
-        setTitles={setTitle}
-        setIngredient={setIngredients}
-        addStatus={setStatus}
-        addError={setError}
-        onSubmit={formOnsubmitHandler}
-      />
-      {status === 'resolved' && <p>Completed</p>}
-      {status === 'pending' && <p>...</p>}
-      {status === 'rejected' && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          <img src={img} alt="Корзина с фруктами" width="350" />
-          <p>Try looking for something else..</p>
-        </div>
-      )}
+      Search
     </MainTitle>
+    <Searchbar
+    setTitles={setTitle}
+   
+    addStatus={setStatus}
+    addError={setError}
+    onSubmit={formOnsubmitHandler}
+  />
+  {status === 'resolved' && <RecipeGallery recipes={title} />}
+  {status === 'pending' && <p>...</p>}
+  {status === 'rejected' && (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <img src={img} alt="Корзина с фруктами" width="350" />
+      <p>Try looking for something else..</p>
+    </div>
+  )}
+  
+    </>
   );
 };
 

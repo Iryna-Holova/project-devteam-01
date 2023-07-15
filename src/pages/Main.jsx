@@ -8,6 +8,7 @@ import utils from 'utils';
 
 // import SearchForm from "components/SeachForm/SeachForm";
 
+
 const Main = () => {
   const [recipes, setRecipes] = useState([]);
   const { device } = useApp();
