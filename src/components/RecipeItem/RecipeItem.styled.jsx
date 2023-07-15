@@ -82,9 +82,9 @@ export const RecipeItemTitle = styled.div`
       width: 44px;
       height: 44px;
     }
-    :hover {
-      background-color: #8baa36;
-    }
+    // :hover {
+    //   background-color: #f50c0c;
+    // }
 
     > svg {
       padding: 5px;
@@ -146,12 +146,11 @@ export const RecipeItemBtn = styled.div`
     height: 27px;
     border-radius: 24px 44px;
     background-color: #22252a;
-
     font-weight: 400;
     font-size: 10px;
     line-height: 1.5;
     line-height: 1.5;
-    color: var(--background-color);
+    color: #FAFAFA;
     @media (min-width: 768px) {
       font-size: 14px;
       width: 138px;
@@ -163,6 +162,7 @@ export const RecipeItemBtn = styled.div`
       height: 59px;
       :hover {
         background-color: #ebf3d4;
+        
       }
     }
     :hover {
@@ -170,3 +170,7 @@ export const RecipeItemBtn = styled.div`
     }
   }
 `;
+// export const FavoriteDeleteBtn = styled.div`
+//   position: absolute;
+//   background-color: none;
+// `;
