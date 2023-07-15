@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const PreparationWrapper = styled.div`
-  padding-bottom: 100px;
+  margin-bottom: 100px;
 
   @media screen and (min-width: 768px) {
-    padding-bottom: 200px;
+    margin-bottom: 200px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -20,18 +20,17 @@ export const InstructionWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 469px;
+    width: 757px;
     margin-bottom: 0;
   }
 `;
 
-export const InstructionTitle = styled.title`
-  display: block;
-  margin-bottom: 30px;
-  font-weight: 600;
+export const InstructionTitle = styled.h3`
+  margin-bottom: 28px;
   font-size: 24px;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.48px;
   color: var(--color-text-secondary);
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
@@ -42,53 +41,54 @@ export const InstructionTitle = styled.title`
 export const InstructionList = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: -0.02em;
+  line-height: 14px;
+  letter-spacing: -0.24px;
   gap: 14px;
 
   @media screen and (min-width: 768px) {
     gap: 18px;
     font-size: 14px;
-    line-height: 1.29;
+    line-height: 18px;
+    letter-spacing: -0.28px;
   }
 `;
 
-export const InstructionText = styled.li`
+export const InstructionItem = styled.li`
   display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  align-items: flex-start;
   gap: 14px;
 
   & span {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
     width: 21px;
     height: 21px;
-    padding: 2px 7px 1px;
     font-weight: 600;
     font-size: 12px;
     line-height: 18px;
-    color: var(--color-secondary);
+    color: var(--color-start-text);
     background: var(--color-accent);
     border-radius: 100px;
     flex: none;
 
     @media screen and (min-width: 768px) {
-      padding: 0.5px 7px 2.5px;
       font-size: 14px;
       line-height: 21px;
     }
   }
 
   & p {
-    padding-top: 2px;
     color: rgba(0, 0, 0, 0.8);
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.24px;
+
     @media screen and (min-width: 768px) {
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: -0.28px;
     }
 
     @media screen and (min-width: 1440px) {
@@ -98,15 +98,13 @@ export const InstructionText = styled.li`
 
 export const ImageWrapper = styled.div`
   & img {
+    object-fit: cover;
     border-radius: 8px;
     width: 100%;
     height: 250px;
     @media screen and (min-width: 768px) {
       width: 433px;
       height: 332px;
-    }
-
-    @media screen and (min-width: 1440px) {
     }
   }
 `;
