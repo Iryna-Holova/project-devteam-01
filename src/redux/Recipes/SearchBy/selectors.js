@@ -1,0 +1,10 @@
+export const selectSearchByResult = state => state.recipes.searchBy.items;
+export const selectSearchByQuery = state => state.recipes.searchBy.query;
+export const selectSearchByError = state => state.recipes.searchBy.error;
+export const selectSearchByPage = state => state.recipes.searchBy.page;
+export const selectSearchByTotal = state => state.recipes.searchBy.total;
+export const selectSearchByPages = state => state.recipes.searchBy.pages;
+export const selectSearchByLimit = state => state.recipes.searchBy.limit;
+export const selectSearchByLoading = state => state.recipes.searchBy.isLoading;
+export const selectSearchByStatus = state => state.recipes.searchBy.status;
+export const selectSearchByMethod = state => state.recipes.searchBy.method;

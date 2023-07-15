@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import utils from 'utils';
 
 axios.defaults.baseURL = 'https://so-yummi.onrender.com';
 
@@ -16,12 +17,16 @@ const clearAuthHeader = () => {
  * body: { name, email, password }
  */
 export const register = createAsyncThunk(
-  '/users/register',
+  '/auth/register',
   async (credentials, thunkAPI) => {
     try {
       console.log('rere');
+      const currentUrl = utils.getBaseUrl();
+      credentials.baseURL = currentUrl;
+      // console.log(credentials);
       const res = await axios.post('/users/register', credentials);
-      setAuthHeader(res.data.token);
+      //setAuthHeader(res.data.token); Registration doesn't return token
+      //console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
