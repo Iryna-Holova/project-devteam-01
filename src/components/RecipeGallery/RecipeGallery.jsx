@@ -11,7 +11,6 @@ import {
 import IngredientsPlaceholder from '../../assets/food-default.svg';
 
 const RecipeGallery = ({ recipes = null }) => {
-
   return (
     recipes && (
       <List className="container">

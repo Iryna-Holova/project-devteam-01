@@ -31,6 +31,6 @@ const Title = styled.div`
       letter-spacing: -0.88px;
     }
   }
-`;
+`
 
-export default Title;
+export default Title
