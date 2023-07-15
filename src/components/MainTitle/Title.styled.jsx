@@ -8,6 +8,10 @@ const Title = styled.div`
     font-size: 28px;
     line-height: 28px;
     letter-spacing: -0.56px;
+    
+    &.invisible {
+      color: transparent;
+    }
   }
 
   @media screen and (min-width: 768px) {
