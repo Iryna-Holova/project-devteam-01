@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import SharedForm from 'components/SharedForm/SharedForm';
 import ModalRegister from 'components/ModalRegister/ModalRegister';
+import { REJECTED, RESOLVED } from 'utils/constants';
+import useAuth from 'hooks/use-auth';
 
 const Register = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const { status } = useAuth();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -32,7 +36,7 @@ const Register = () => {
 
   const handleSubmit = (
     values,
-    { setSubmitting, setFieldTouched, resetForm }
+    { setSubmitting, setFieldTouched } //, resetForm
   ) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
@@ -41,19 +45,35 @@ const Register = () => {
       console.log('Порожні поля');
     } else {
       console.log('Всі поля заповнені');
+
+      //  try {
       dispatch(
         register({
-          name: values.name,
-          email: values.email,
-          password: values.password,
+          user: {
+            name: values.name,
+            email: values.email,
+            password: values.password,
+          },
         })
       );
-      resetForm();
-      openModal();
+      //resetForm();
+      //   openModal();
+      // } catch (error) {
+      //   console.log(error.message);
+      // }
     }
 
     setSubmitting(false);
   };
+
+  useEffect(() => {
+    //console.log('status', status);
+    if (status === RESOLVED) {
+      // console.log('open  Modal');
+      openModal();
+    }
+    if (status === REJECTED) alert('Registration Error');
+  }, [status]);
 
   return (
     <div>
@@ -68,7 +88,7 @@ const Register = () => {
         isRegisterForm
       />
 
-      {isModalOpen && <ModalRegister closeModal={closeModal}/>}
+      {isModalOpen && <ModalRegister closeModal={closeModal} />}
     </div>
   );
 };

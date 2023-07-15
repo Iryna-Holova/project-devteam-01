@@ -6,6 +6,7 @@ import {
 } from './recipes';
 import { getAllCategories } from './categories';
 import { getOwnRecipes, addOwnRecipe, deleteOwnRecipe } from './own';
+import { getIngredients, getRecipesByIngredient } from './ingredients';
 
 const recipesServices = {
   getRecipesMain,
@@ -16,6 +17,8 @@ const recipesServices = {
   getOwnRecipes,
   addOwnRecipe,
   deleteOwnRecipe,
+  getIngredients,
+  getRecipesByIngredient,
 };
 
 export default recipesServices;
