@@ -9,7 +9,7 @@ import {
   RecipeItemText,
   
 } from './RecipeItem.styled';
-import trash from '../../assets/svg/trashIcon/trash-01.svg'
+import trash from '../../assets/svg/trashIcon/trash.svg'
 
 export const RecipeItem = ({ img, id, title, description, time }) => {
   const navigate = useNavigate();
