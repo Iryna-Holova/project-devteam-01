@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-devteam-01/static/css/main.c1c6e642.css",
-    "main.js": "/project-devteam-01/static/js/main.5238ced6.js",
+    "main.js": "/project-devteam-01/static/js/main.b2020ba8.js",
     "static/media/desctop2x.webp": "/project-devteam-01/static/media/desctop2x.f85a75de0d595b4f9834.webp",
     "static/media/tablet2x.webp": "/project-devteam-01/static/media/tablet2x.d9b20816a614e8d9466b.webp",
     "static/media/mobile2x.webp": "/project-devteam-01/static/media/mobile2x.635958623ab632ae6ec9.webp",
@@ -12,9 +12,20 @@
     "static/media/Poppins-SemiBold.ttf": "/project-devteam-01/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/Poppins-Bold.ttf": "/project-devteam-01/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
     "static/media/empty-img.png": "/project-devteam-01/static/media/empty-img.dda62daaae2dd65dd071.png",
+    "static/media/bg-spinach-right-mobile-2x.webp": "/project-devteam-01/static/media/bg-spinach-right-mobile-2x.b893d3b5ae38b98b4cdc.webp",
+    "static/media/bg-spinach-right-desktop.webp": "/project-devteam-01/static/media/bg-spinach-right-desktop.5d0137f838b3d8fcceb2.webp",
     "static/media/mobile.webp": "/project-devteam-01/static/media/mobile.7ffd9ab24b909e561514.webp",
+    "static/media/bg-spinach-right-tablet.webp": "/project-devteam-01/static/media/bg-spinach-right-tablet.3914d3deb0ca2aacddca.webp",
+    "static/media/bg-salad-bowl-desktop.webp": "/project-devteam-01/static/media/bg-salad-bowl-desktop.f2e4e47f6c2e8216aadb.webp",
+    "static/media/bg-spinach-right-mobile.webp": "/project-devteam-01/static/media/bg-spinach-right-mobile.1ac1fb1af3602fe570b3.webp",
     "static/media/symbol-defs.svg": "/project-devteam-01/static/media/symbol-defs.dec4253e1fb164ff646ac2b2d5db32c8.svg",
+    "static/media/bg-salad-bowl-tablet.webp": "/project-devteam-01/static/media/bg-salad-bowl-tablet.a00ad4551e24bd5665ee.webp",
     "static/media/food-default.svg": "/project-devteam-01/static/media/food-default.fbc5287cc49b9e075c403aa3a5bf471e.svg",
+    "static/media/bg-salad-bowl-mobile.webp": "/project-devteam-01/static/media/bg-salad-bowl-mobile.bdebe4c06bab3929c357.webp",
+    "static/media/bg-spinach-left-desktop.webp": "/project-devteam-01/static/media/bg-spinach-left-desktop.750d6fbd43bef7a5f76f.webp",
+    "static/media/bg-spinach-left-mob-2x.webp": "/project-devteam-01/static/media/bg-spinach-left-mob-2x.7f8dfeb1333669e68257.webp",
+    "static/media/bg-spinach-left-tablet.webp": "/project-devteam-01/static/media/bg-spinach-left-tablet.fb3bdfdd7c37d93c97e3.webp",
+    "static/media/bg-spinach-left-mob.webp": "/project-devteam-01/static/media/bg-spinach-left-mob.c95f06367a250f938e34.webp",
     "static/media/instagram.svg": "/project-devteam-01/static/media/instagram.d5691a5a53fd6848fd1a4c9609f1779a.svg",
     "static/media/twiter.svg": "/project-devteam-01/static/media/twiter.e8916618ff2d5fccaf774f6fe73bea10.svg",
     "static/media/logo.svg": "/project-devteam-01/static/media/logo.9cf0a033edbc80dd8fb4f3c1f37975f4.svg",
@@ -22,11 +33,15 @@
     "index.html": "/project-devteam-01/index.html",
     "static/media/youTube.svg": "/project-devteam-01/static/media/youTube.b10477377c7c68fdf6a07011bba6ed91.svg",
     "static/media/facebook.svg": "/project-devteam-01/static/media/facebook.17027373650834993223c612e5754d2b.svg",
+    "static/media/bg-triangle.svg": "/project-devteam-01/static/media/bg-triangle.a81c80989fe92206e790523b94b6836d.svg",
+    "static/media/bg-triangle-tablet.svg": "/project-devteam-01/static/media/bg-triangle-tablet.a442e5380c12be5d3232186005f9d8f0.svg",
+    "static/media/bg-triangle-desktop.svg": "/project-devteam-01/static/media/bg-triangle-desktop.091fd12b87a953a3cfdcc7c0e246296b.svg",
+    "static/media/arrow-narrow-right.svg": "/project-devteam-01/static/media/arrow-narrow-right.9f6702858046c499798ef09e76700a45.svg",
     "main.c1c6e642.css.map": "/project-devteam-01/static/css/main.c1c6e642.css.map",
-    "main.5238ced6.js.map": "/project-devteam-01/static/js/main.5238ced6.js.map"
+    "main.b2020ba8.js.map": "/project-devteam-01/static/js/main.b2020ba8.js.map"
   },
   "entrypoints": [
     "static/css/main.c1c6e642.css",
-    "static/js/main.5238ced6.js"
+    "static/js/main.b2020ba8.js"
   ]
 }
