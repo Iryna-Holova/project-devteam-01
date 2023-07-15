@@ -1,13 +1,8 @@
-import { useState } from 'react';
-
 import { Table, TableBody, TableHead } from './IngredientsTable.styled';
 
 export const IngredientsTable = ({ ingredients, recipeId }) => {
-  const [isInShopping, setIsInShopping] = useState(false);
-
   const handleShoppingList = async (recipeId, id) => {
     console.log(`recipe id: ${recipeId}, ingrediend id: ${id}`);
-    setIsInShopping(!isInShopping);
   };
 
   return (
@@ -31,7 +26,7 @@ export const IngredientsTable = ({ ingredients, recipeId }) => {
               </div>
               <div>
                 <button onClick={() => handleShoppingList(recipeId, id)}>
-                  {isInShopping ? '1' : '0'}
+                  '0'
                 </button>
               </div>
             </li>
