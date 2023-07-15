@@ -36,7 +36,7 @@ export const TextContainer = styled.div`
     left: 88px;
     width: 225px;
     height: 92px;
-    background-color: #FAFAFA;
+    background-color: var(--color-main);
     border-radius: 8px;
     
 
@@ -57,7 +57,7 @@ export const TextContainer = styled.div`
 `
 
 export const TextGreen = styled.span`
-    color: #8BAA36;
+    color: var(--color-accent);
 `;
 
 export const Text = styled.p`
@@ -87,7 +87,7 @@ export const Text = styled.p`
 export const StyledLink = styled(Link)`
     margin-left: 135.5px;
     margin-right: 7.5px;
-    color: #3E4462;
+    color: var(--color-text-secondary);
     text-decoration: none;
     font-size: 10px;
     line-height: 1.2;

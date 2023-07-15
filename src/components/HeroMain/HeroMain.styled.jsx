@@ -76,7 +76,7 @@ export const HeroTitle = styled.h1`
 `;
 
 export const HeroTitleGreen = styled.span`
-    color: #8BAA36;
+    color: var(--color-accent);
 
     @media screen and (min-width: 768px) {
         text-align: left;

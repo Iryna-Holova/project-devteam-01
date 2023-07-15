@@ -11,9 +11,7 @@ import HeroMain from 'components/HeroMain/HeroMain';
 const Main = () => {
   const [recipes, setRecipes] = useState([]);
   const { device } = useApp();
-  // useEffect(() => {
-  //     getRecipesMainAPI().then(recipesMain => setRecipes(recipesMain))
-  // }, [])
+
   useEffect(() => {
     const limit = utils.getPageLimit('main', device);
     recipesServices

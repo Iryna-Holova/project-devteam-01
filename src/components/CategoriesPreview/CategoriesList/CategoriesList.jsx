@@ -14,9 +14,9 @@ const CategoriesList = ({ recipes }) => {
                         {category}
                     </CategoryTitle>
                     <List>
-                        {recipes[category].map(({ id, title, thumb }, index) => (
+                        {recipes[category].map(({ _id, title, thumb }, index) => (
                         <Recipe key={index}>
-                                <Link to={`/recipe/${id}`}>
+                                <Link to={`/recipe/${_id}`}>
                             <RecipeContainer>
                                 <Description>
                                 <p>{title}</p>
