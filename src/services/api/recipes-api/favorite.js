@@ -43,7 +43,8 @@ export const addToFavorite = async ({ id }) => {
     );
     // clearAuthHeader(axios);
     return { status };
-    //   if (status === 200) {
+    //if (status === 200) {
+
     //     console.log(data);
     //     return data;
     //   } else return null;
