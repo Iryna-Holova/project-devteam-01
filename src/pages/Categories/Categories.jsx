@@ -15,7 +15,7 @@ import utils from 'utils';
 import CategoriesTabs from 'components/CategoriesTabs/CategoriesTabs';
 import RecipeGallery from 'components/RecipeGallery/RecipeGallery';
 import MainTitle from 'components/MainTitle/MainTitle';
-
+import {StyledDiv} from './Categories.styled';
 const Categories = () => {
   const { categoryName } = useParams();
   // const [recipes, setRecipes] = useState([]);
@@ -65,7 +65,7 @@ const Categories = () => {
   };
 
   return (
-    <>
+    <StyledDiv>
       <MainTitle>Categories</MainTitle>
       <CategoriesTabs
         categories={categories}
@@ -74,7 +74,7 @@ const Categories = () => {
       />
 
       <RecipeGallery recipes={recipes} />
-    </>
+    </StyledDiv>
   );
 };
 
