@@ -6,7 +6,7 @@ import CategoriesList from './CategoriesList/CategoriesList';
 const CategoriesPreview = ({recipes}) => {
     return (
         <>
-            <Container>
+            <Container className="container">
                 <CategoriesList recipes={recipes} />
                 <Link to="/categories/beef">Other categories</Link>
             </Container>

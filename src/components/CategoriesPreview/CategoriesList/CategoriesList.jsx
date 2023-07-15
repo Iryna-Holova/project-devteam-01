@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import Title from "../../MainTitle/Title.styled";
-import { ListItem } from "./CategoriesList.styled";
+import { ListItem, CategoryTitle } from "./CategoriesList.styled";
 // TODO: uncomment when merged with main, because deleted buttons folder 
 // import { SeeAllButton } from "components/Buttons/Buttons.styled";
 import { Recipe, RecipeImg, Description, RecipeContainer, List} from "components/RecipeGallery/RecipeGallery.styled";
@@ -11,22 +10,22 @@ const CategoriesList = ({ recipes }) => {
         <List>
             {recipes && Object.keys(recipes).map(category => (
                 <ListItem key={category}>
-                    <Title>
+                    <CategoryTitle>
                         {category}
-                    </Title>
+                    </CategoryTitle>
                     <List>
-                        {recipes[category].map((recipe => (
-                        <Recipe key={recipe._id}>
-                            <Link to={recipe._id}>
+                        {recipes[category].map(({ id, title, thumb }, index) => (
+                        <Recipe key={index}>
+                                <Link to={`/recipe/${id}`}>
                             <RecipeContainer>
                                 <Description>
-                                <p>{recipe.title}</p>
+                                <p>{title}</p>
                                 </Description>
-                                <RecipeImg src={recipe.preview ? recipe.preview : IngredientsPlaceholder} loading="lazy" alt={recipe.title} />
+                                <RecipeImg src={thumb ? thumb: IngredientsPlaceholder} loading="lazy" alt={title} />
                             </RecipeContainer>
                             </Link>
                         </Recipe>
-                        )))}
+                        ))}
                     </List>
                     <Link to={`/categories/${category}`}>See all</Link>
                 </ListItem>

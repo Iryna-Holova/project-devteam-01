@@ -6,8 +6,7 @@ import useApp from 'hooks/useApp';
 import recipesServices from 'services/api/recipes-api';
 import utils from 'utils';
 import HeroMain from 'components/HeroMain/HeroMain';
-// TODO: insert component of SearchForm
-// import SearchForm from "components/SeachForm/SeachForm";
+// import { Searchbar } from 'components/Searchbar/Searchbar';
 
 const Main = () => {
   const [recipes, setRecipes] = useState([]);
@@ -24,7 +23,7 @@ const Main = () => {
   return (
     <MainContainer>
       <HeroMain/>
-      {/* <SearchForm /> */}
+      {/* <Searchbar /> */}
       <CategoriesPreview recipes={recipes} />
     </MainContainer>
   );

@@ -31,6 +31,20 @@ const Title = styled.div`
       letter-spacing: -0.88px;
     }
   }
+
+//TODO: compare and normalize styles for h2
+//const Title = styled.h2`
+//padding-top: 50px;
+//color: #001833;
+//font-size: 28px;
+//font-weight: 600;
+//line-height: 1.0;
+//letter-spacing: -0.56px;
+
+//@media screen and (min-width: 768px) {
+    //font-size: 44px;
+    //letter-spacing: -0.88px;
+//}
 `;
 
 export default Title;
