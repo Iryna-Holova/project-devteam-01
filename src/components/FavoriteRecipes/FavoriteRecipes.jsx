@@ -11,11 +11,9 @@ import {
   selectFavIsLoading,
   selectFavRecipesCount,
 } from '../../redux/favoriteRecipes/favoriteRecipesSelectors';
-import { FavoriteRecipesContainer } from './FavoriteRecipes.styled';
-
-//import 'react-responsive-pagination/themes/minimal.css';
-
+import 'react-responsive-pagination/themes/minimal.css';
 import { scrollToTop } from '../utils/scrollToTop';
+import { FavoriteRecipesContainer } from './FavoriteRecipes.styled';
 
 export const FavoriteRecipes = () => {
   const [paginationPage, setPaginationPage] = useState(1);

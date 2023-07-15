@@ -7,7 +7,9 @@ import {
   RecipeItemBox,
   RecipeItemTitle,
   RecipeItemText,
+  
 } from './RecipeItem.styled';
+import trash from '../../assets/svg/trashIcon/trash-01.svg'
 
 export const RecipeItem = ({ img, id, title, description, time }) => {
   const navigate = useNavigate();
@@ -25,7 +27,8 @@ export const RecipeItem = ({ img, id, title, description, time }) => {
                   navigate(`/recipe/${id}`);
                 }}
               >
-                {/* <Trash /> */}
+                <img src={trash} loading="lazy" alt={trash} />
+                
               </Button>
             </RecipeItemTitle>
             <p>{description}</p>
