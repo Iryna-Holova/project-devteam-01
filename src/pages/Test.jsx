@@ -2,23 +2,27 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 //import { getMainPage } from 'redux/Recipes/main-page/operations';
-import { getCategoriesList } from 'redux/Categories/operations';
-import { getSearchByTitleThunk } from 'redux/Recipes/searchByTitle/operations';
-import useSearchByTitle from 'hooks/useSearchByTitle';
+//import { getCategoriesList } from 'redux/Categories/operations';
+//import { getSearchByTitleThunk } from 'redux/Recipes/searchByTitle/operations';
+//import useSearchByTitle from 'hooks/useSearchByTitle';
 //import { setQuery } from 'redux/Recipes/searchByTitle/slice';
-import { setQuery } from 'redux/Recipes/searchByCategory/slice';
-import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
+import { setMethod, setQuery } from 'redux/Recipes/SearchBy/slice';
+//import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
 import useSearchByCategory from 'hooks/useSearchByCategory';
 import useApp from 'hooks/useApp';
 import utils from 'utils';
 import recipesServices from 'services/api/recipes-api';
 
 import { getIngredientsThunk } from 'redux/Ingredients/operations';
+import { SEARCH_BY_INGREDIENT } from 'utils/constants';
+import { getSearchByThunk } from 'redux/Recipes/SearchBy/operations';
+//import useSearchByTitle from 'hooks/useSearchByTitle';
+import useSearchBy from 'hooks/useSearchBy';
 
 export const Test = () => {
   const dispatch = useDispatch();
   // const { categories, isLoading, isError } = useCategories();
-  const { query } = useSearchByTitle();
+  const { query } = useSearchBy();
   const { device } = useApp();
 
   const {
@@ -37,20 +41,22 @@ export const Test = () => {
 
   const handleClick = () => {
     //  console.log('click', inputValue);
+    dispatch(setMethod(SEARCH_BY_INGREDIENT));
     dispatch(setQuery(inputValue));
   };
 
   useEffect(() => {
     //if (!categories)
     // dispatch(getMainPage(2));
-    dispatch(getCategoriesList());
+    //dispatch(getCategoriesList());
     dispatch(getIngredientsThunk());
     // console.log('useEffect', query, queryByCategory);
 
     if (query || queryByCategory) {
       //   console.log('useEffect', query, queryByCategory);
-      dispatch(getSearchByTitleThunk({ query: queryByCategory }));
-      dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
+      // dispatch(getSearchByTitleThunk({ query: queryByCategory }));
+      //dispatch(getSearchByCategoryThunk({ query: queryByCategory }));
+      dispatch(getSearchByThunk({ query, method: SEARCH_BY_INGREDIENT }));
     }
   }, [dispatch, query, queryByCategory]);
 

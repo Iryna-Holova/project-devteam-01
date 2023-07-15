@@ -17,3 +17,6 @@ export const IDLE = 0;
 export const PENDING = 1;
 export const RESOLVED = 2;
 export const REJECTED = 3;
+
+export const SEARCH_BY_TITLE = 0;
+export const SEARCH_BY_INGREDIENT = 1;
