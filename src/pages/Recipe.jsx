@@ -2,11 +2,6 @@ import { RecipePageHero } from 'components/Recipe/RecipeHero/RecipeHero';
 import { RecipePreparation } from 'components/Recipe/RecipePreparation/RecipePreparation';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import {
-//   InngredientsList,
-//   RecipeItem,
-//   TableRecipe,
-// } from 'components/Recipe/RecipeInngredientsList/RecipeInngredientsList.styled';
 import { getRecipeById } from 'services/api/getRecipe';
 import { IngredientsTable } from 'components/Recipe/RecipeIngredientsTable/IngredientsTable';
 
@@ -20,7 +15,6 @@ const Recipe = () => {
   useEffect(() => {
     async function fetchData() {
       const recipe = await getRecipeById(recipeId);
-      console.log(recipe);
       setRecipe(recipe);
     }
     fetchData();
