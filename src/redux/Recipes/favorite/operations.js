@@ -9,7 +9,7 @@ export const getFavoriteRecipesThunk = createAsyncThunk(
   async ({ page = 1, limit = 4 }, thunkAPI) => {
     try {
       const response = await recipesServices.getFavorite({ page, limit });
-      console.log(response);
+      // console.log(response);
       return {
         ...response,
         //  totalCount: recips.length,
@@ -29,7 +29,7 @@ export const addToFavoriteRecipesThunk = createAsyncThunk(
       const response = await recipesServices.addToFavorite({
         id: recipe._id.$oid.toString(),
       });
-      console.log(response);
+      //console.log(response);
       if (response.status === 200) return recipe;
       else return thunkAPI.rejectWithValue('Error then try to add to favorite');
       // const response = await axios.patch(
@@ -50,7 +50,7 @@ export const removeFromFavoriteRecipesThunk = createAsyncThunk(
   async (recipeId, thunkAPI) => {
     try {
       const response = await recipesServices.deleteFromFavorite({
-        id: recipeId.$oid.toString(),
+        id: recipeId,
       });
       if (response.status === 200) return { response, recipeId };
       else thunkAPI.rejectWithValue(response.message);

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RecipesListContainer = styled.div`
+export const RecipesListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 18px;

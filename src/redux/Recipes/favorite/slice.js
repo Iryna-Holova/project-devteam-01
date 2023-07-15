@@ -19,8 +19,9 @@ const initialState = {
 
   status: IDLE,
 };
+
 export const favoriteRecipesSlice = createSlice({
-  name: 'favorite',
+  name: 'favorites',
   initialState,
   reducers: {
     setLimit(state, { payload }) {
@@ -33,7 +34,7 @@ export const favoriteRecipesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getFavoriteRecipesThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
+        // console.log(payload);
         state.error = null;
         state.items = [...payload.recipes];
         state.total = payload.total;
@@ -43,7 +44,7 @@ export const favoriteRecipesSlice = createSlice({
       })
       .addCase(addToFavoriteRecipesThunk.fulfilled, (state, { payload }) => {
         state.error = null;
-        console.log(payload);
+        //console.log(payload);
         state.items = [...state.items, payload];
         state.total = state.total + 1;
         state.isLoading = false;
@@ -54,12 +55,12 @@ export const favoriteRecipesSlice = createSlice({
         removeFromFavoriteRecipesThunk.fulfilled,
         (state, { payload }) => {
           state.error = null;
-          console.log(payload);
+          //  console.log(payload);
 
-          const result = state.items.filter(
-            item =>
-              item._id.$oid.toString() !== payload.recipeId.$oid.toString()
-          );
+          const result = state.items.filter(item => {
+            // console.log(item, payload.recipeId);
+            return item._id !== payload.recipeId;
+          });
           console.log(result);
           state.items = [...result];
           state.total = state.total - 1;
@@ -95,4 +96,5 @@ export const favoriteRecipesSlice = createSlice({
   },
 });
 
+export const { setLimit, setPage } = favoriteRecipesSlice.actions;
 export const favoriteReducer = favoriteRecipesSlice.reducer;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const RecipeItemContainer = styled.div`
+export const RecipeItemContainer = styled.li`
   width: 100%;
   background-color: #ffffff;
 
@@ -72,7 +72,7 @@ export const RecipeItemTitle = styled.div`
     height: 24px;
     border: none;
     border-radius: 4px;
-    background-color: #EBF3D4;
+    background-color: #ebf3d4;
 
     @media (min-width: 768px) {
       width: 38px;

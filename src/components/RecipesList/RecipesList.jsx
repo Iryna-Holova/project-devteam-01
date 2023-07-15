@@ -1,6 +1,6 @@
 import { Loader } from 'components/loader/loader';
 import { RecipeItem } from 'components/RecipeItem/RecipeItem';
-import { RecipesListContainer } from './RecipesList.styled'
+import { RecipesListContainer } from './RecipesList.styled';
 
 export const RecipesList = ({
   data,
@@ -20,9 +20,9 @@ export const RecipesList = ({
               return (
                 <RecipeItem
                   paginationPage={paginationPage}
-                  remove={removeRecipe}
-                  key={itemProps._id.$oid}
-                  id={itemProps._id.$oid}
+                  remove={() => removeRecipe(itemProps._id)}
+                  key={itemProps._id}
+                  id={itemProps._id}
                   img={itemProps.thumb}
                   title={itemProps.title}
                   description={itemProps.description}

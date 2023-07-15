@@ -9,7 +9,7 @@ import {
   RecipeItemText,
 } from './RecipeItem.styled';
 
-export const RecipeItem = ({ img, id, title, description, time }) => {
+export const RecipeItem = ({ img, id, title, description, time, remove }) => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +22,8 @@ export const RecipeItem = ({ img, id, title, description, time }) => {
               <h2>{title}</h2>
               <Button
                 onClick={() => {
-                  navigate(`/recipe/${id}`);
+                  remove();
+                  //navigate(`/recipe/${id}`);
                 }}
               >
                 {/* <Trash /> */}
