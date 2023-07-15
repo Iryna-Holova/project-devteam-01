@@ -61,86 +61,26 @@ export const App = () => {
   //   return <b> Refreshing user...</b>;
   // }
 
-  return (
+  return isRefreshing ? (<b>Refreshing user...</b>)
+    : (
     <Routes>
-      <Route
-        path="/start"
-        element={<RestrictedRoute redirectTo="/" component={<Start />} />}
-      />
-      <Route
-        path="/register"
-        element={<RestrictedRoute redirectTo="/" component={<Register />} />}
-      />
-      <Route
-        path="/signin"
-        element={<RestrictedRoute redirectTo="/" component={<Signin />} />}
-      />
-      <Route
-        path="/verify/:verificationToken"
-        element={<RestrictedRoute redirectTo="/" component={<Verify />} />}
-      />
-      {!isRefreshing} && (
+      <Route path="/start" element={<RestrictedRoute redirectTo="/" component={<Start />} />} />
+      <Route path="/register" element={<RestrictedRoute redirectTo="/" component={<Register />} />} />
+      <Route path="/signin" element={<RestrictedRoute redirectTo="/" component={<Signin />} />} />
+      <Route path="/verify/:verificationToken" element={<RestrictedRoute redirectTo="/" component={<Verify />} />} />
       <Route path="/" element={<SharedLayout />}>
-        <Route
-          index
-          element={<PrivateRoute redirectTo="/start" component={<Main />} />}
-        />
-        <Route
-          path="categories/"
-          element={
-            <PrivateRoute
-              redirectTo="/start"
-              component={<Navigate to="/categories/beef" />}
-            />
-          }
-        />
-        <Route
-          path="categories/:categoryName"
-          element={
-            <PrivateRoute redirectTo="/start" component={<Categories />} />
-          }
-        />
-        <Route
-          path="/add"
-          element={
-            <PrivateRoute redirectTo="/start" component={<AddRecipe />} />
-          }
-        />
-        <Route
-          path="favorite"
-          element={
-            <PrivateRoute redirectTo="/start" component={<Favorite />}>
-              <Favorite />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="recipe/:recipeId"
-          element={<PrivateRoute redirectTo="/start" component={<Recipe />} />}
-        />
-        <Route
-          path="my"
-          element={
-            <PrivateRoute redirectTo="/start" component={<MyRecipes />} />
-          }
-        />
-        <Route
-          path="search"
-          element={<PrivateRoute redirectTo="/start" component={<Search />} />}
-        />
-        <Route
-          path="shopping-list"
-          element={
-            <PrivateRoute redirectTo="/start" component={<ShoppingList />} />
-          }
-        />
-        <Route path="*" element={<NotFound />} />
+        <Route index element={<PrivateRoute redirectTo="/start" component={<Main />} />} />
+        <Route path="categories/" element={<PrivateRoute redirectTo="/start" component={<Navigate to="/categories/beef" />} />} />
+        <Route path="categories/:categoryName" element={ <PrivateRoute redirectTo="/start" component={<Categories />} />} />
+        <Route path="/add" element={ <PrivateRoute redirectTo="/start" component={<AddRecipe />} />} />
+        <Route path="favorite" element={ <PrivateRoute redirectTo="/start" component={<Favorite />} />} />
+        <Route path="recipe/:recipeId" element={<PrivateRoute redirectTo="/start" component={<Recipe />} />} />
+        <Route path="my" element={ <PrivateRoute redirectTo="/start" component={<MyRecipes />} />} />
+        <Route path="search" element={<PrivateRoute redirectTo="/start" component={<Search />} />} />
+        <Route path="shopping-list" element={ <PrivateRoute redirectTo="/start" component={<ShoppingList />} />} />
+        <Route path="*" element={ <PrivateRoute redirectTo="/start" component={<NotFound />} />} />
       </Route>
-      )
-      <Route
-        path="/test"
-        element={<RestrictedRoute redirectTo="/" component={<Test />} />}
-      />
+      <Route path="/test" element={<RestrictedRoute redirectTo="/" component={<Test />} />} />
     </Routes>
   );
 };
