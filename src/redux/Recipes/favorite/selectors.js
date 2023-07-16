@@ -11,13 +11,9 @@ export const selectIsFavorite = (state, recipeId) => {
   // console.log(state);
   //console.log(recipeId, state.recipes.favorites.items.length);
   if (state.recipes.favorites.items.length === 0) return false;
-  const index = state.recipes.favorites.items.findIndex(
-    //      ({ _id }) => _id.$oid.toString() === recipeId.$oid.toString()
-    ({ _id }) => {
-      //console.log(_id, recipeId);
-      return _id === recipeId;
-    }
-  );
+  const index = state.recipes.favorites.items.findIndex(({ _id }) => {
+    return _id === recipeId;
+  });
   if (index >= 0) return true;
   else return false;
 };
