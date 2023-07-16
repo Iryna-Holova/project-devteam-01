@@ -28,7 +28,7 @@ const Verify = lazy(() => import('pages/Verify'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn, token } = useAuth;
+  const { isRefreshing, isLoggedIn, token } = useAuth();
 
   useEffect(() => {
     const device = getMedia();
@@ -52,10 +52,10 @@ export const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (!isLoggedIn || token !== null) {
-      //console.log('dispatch refreshing');
+    if (isLoggedIn || token === null) return;
+    
       dispatch(refreshUser());
-    }
+    
   }, [dispatch, isLoggedIn, token]);
 
   // if (isRefreshing) {
