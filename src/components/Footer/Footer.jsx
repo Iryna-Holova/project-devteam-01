@@ -23,7 +23,7 @@ function Footer() {
         <FooterTextContainer className="container">
           <div>
             <LogoStyles>
-              <a href="/">
+              <a href="http://localhost:3000/project-devteam-01/">
                 <Logo>So Yummy</Logo>
               </a>
               <FooterLogoText>So Yummy</FooterLogoText>
