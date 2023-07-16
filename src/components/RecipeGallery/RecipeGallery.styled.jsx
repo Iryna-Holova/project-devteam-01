@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
@@ -22,12 +21,12 @@ export const Recipe = styled.li`
   z-index: 2;
   overflow: hidden;
   border-radius: 8px;
-  transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition-time) var(--cubic);
 
   :hover,
   :focus {
     transform: scale(1.03);
-    transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition-time) var(--cubic);
     box-shadow: 5px 5px 8px 5px rgba(0, 0, 0, 0.5),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
@@ -44,8 +43,8 @@ export const Description = styled.div`
   bottom: 24px;
   padding: 16px;
   width: 275px;
-  background: #FFFFFF;
-  color: #3E4462;
+  background: var(--color-secondary);
+  color: var(--color-text-secondary);
   border-radius: 8px;
   overflow: hidden;
 
@@ -58,7 +57,6 @@ export const Description = styled.div`
    padding-right:0px;
   }
 
-/* Не давать стили на теги */
 
   p {
     font-weight: 500;
@@ -76,7 +74,7 @@ export const RecipeImg = styled.img`
   height: 323px;
   object-fit: cover;
   :hover {
-    transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition-time) var(--cubic);
   }
 
   @media screen and (min-width: 768px) {
