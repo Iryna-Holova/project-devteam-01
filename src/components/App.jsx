@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
@@ -6,23 +6,25 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import useAuth from 'hooks/use-auth';
 
-import Main from 'pages/Main';
-import Register from 'pages/Register';
-import SharedLayout from 'pages/SharedLayout';
-import Signin from 'pages/Signin';
-import Start from 'pages/Start';
-import Categories from 'pages/Categories/Categories';
-import AddRecipe from 'pages/AddRecipe';
-import Favorite from 'pages/Favorite';
-import Recipe from 'pages/Recipe';
-import MyRecipes from 'pages/MyRecipes';
-import Search from 'pages/Search';
-import ShoppingList from 'pages/ShoppingList';
-import NotFound from 'pages/NotFound';
-import Verify from 'pages/Verify';
+
 import Test from 'pages/Test';
 import { getMedia } from 'utils/getMedia';
 import { setDevice } from 'redux/App/slice';
+const Start = lazy(() => import('pages/Start'));
+const Register = lazy(() => import('pages/Register'));
+const Signin = lazy(() => import('pages/Signin'));
+const SharedLayout = lazy(() => import('pages/SharedLayout'));
+const Main = lazy(() => import('pages/Main'));
+const Categories = lazy(() => import('pages/Categories/Categories'));
+const AddRecipe = lazy(() => import('pages/AddRecipe'));
+const Favorite = lazy(() => import('pages/Favorite'));
+const Recipe = lazy(() => import('pages/Recipe'));
+const MyRecipes = lazy(() => import('pages/MyRecipes'));
+const Search = lazy(() => import('pages/Search'));
+const ShoppingList = lazy(() => import('pages/ShoppingList'));
+const NotFound = lazy(() => import('pages/NotFound'));
+const Verify = lazy(() => import('pages/Verify'));
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -63,6 +65,7 @@ export const App = () => {
 
   return isRefreshing ? (<b>Refreshing user...</b>)
     : (
+      <Suspense fallback={<p>Suspense...</p>}>
     <Routes>
       <Route path="/start" element={<RestrictedRoute redirectTo="/" component={<Start />} />} />
       <Route path="/register" element={<RestrictedRoute redirectTo="/" component={<Register />} />} />
@@ -81,6 +84,7 @@ export const App = () => {
         <Route path="*" element={ <PrivateRoute redirectTo="/start" component={<NotFound />} />} />
       </Route>
       <Route path="/test" element={<RestrictedRoute redirectTo="/" component={<Test />} />} />
-    </Routes>
+        </Routes>
+        </Suspense>
   );
 };
