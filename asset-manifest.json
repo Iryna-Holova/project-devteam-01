@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/project-devteam-01/static/css/main.c1c6e642.css",
+    "main.css": "/project-devteam-01/static/css/main.3d73bdde.css",
     "main.js": "/project-devteam-01/static/js/main.228d53d5.js",
     "static/js/557.d463ed72.chunk.js": "/project-devteam-01/static/js/557.d463ed72.chunk.js",
     "static/js/37.ac209d36.chunk.js": "/project-devteam-01/static/js/37.ac209d36.chunk.js",
@@ -54,7 +54,7 @@
     "static/media/bg-triangle-tablet.svg": "/project-devteam-01/static/media/bg-triangle-tablet.a442e5380c12be5d3232186005f9d8f0.svg",
     "static/media/bg-triangle-desktop.svg": "/project-devteam-01/static/media/bg-triangle-desktop.091fd12b87a953a3cfdcc7c0e246296b.svg",
     "static/media/arrow-narrow-right.svg": "/project-devteam-01/static/media/arrow-narrow-right.9f6702858046c499798ef09e76700a45.svg",
-    "main.c1c6e642.css.map": "/project-devteam-01/static/css/main.c1c6e642.css.map",
+    "main.3d73bdde.css.map": "/project-devteam-01/static/css/main.3d73bdde.css.map",
     "main.228d53d5.js.map": "/project-devteam-01/static/js/main.228d53d5.js.map",
     "557.d463ed72.chunk.js.map": "/project-devteam-01/static/js/557.d463ed72.chunk.js.map",
     "37.ac209d36.chunk.js.map": "/project-devteam-01/static/js/37.ac209d36.chunk.js.map",
@@ -75,7 +75,7 @@
     "780.309982a2.chunk.js.map": "/project-devteam-01/static/js/780.309982a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1c6e642.css",
+    "static/css/main.3d73bdde.css",
     "static/js/main.228d53d5.js"
   ]
 }
