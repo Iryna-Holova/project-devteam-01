@@ -3,7 +3,7 @@ import { register, logIn, logOut, refreshUser, verifyUser } from './operations';
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, avatarURL:null, createdAt:null },
   token:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWFiZWZiNTZjMDgwNmFjMWI1N2JkMiIsImlhdCI6MTY4ODkxODQyOSwiZXhwIjoxNjg5MDAxMjI5fQ.ZFANn7RtafoDYYZ2mRex5Qf_JFU7PJdbQp_9uqLZDnk',
   isLoggedIn: false,
@@ -34,7 +34,7 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
-        state.status = IDLE;
+        state.status = REJECTED;
       })
       .addCase(register.pending, state => {
         state.user = { name: null, email: null };
@@ -73,20 +73,15 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.status = RESOLVED;
       })
-      .addCase(verifyUser.fulfilled, (state, { payload }) => {
-        if (payload.status === 200) {
-          state.user = { name: payload?.user, email: payload?.email };
-          state.token = payload?.token;
+      .addCase(verifyUser.fulfilled, (state, {payload}) => {
+      //  console.log(action);
+        //const {status,payload} = action;
+         
+          state.user = { name: payload.user.name, email: payload.user.email, createdAt:payload.user.createAt,avatarURL:payload.user.avatarURL };
+          state.token = payload.token;
           state.isLoggedIn = true;
           state.isRefreshing = false;
           state.status = RESOLVED;
-        } else {
-          state.user = { name: null, email: null };
-          state.token = null;
-          state.isLoggedIn = false;
-          state.isRefreshing = false;
-          state.status = REJECTED;
-        }
       })
       .addMatcher(
         isAnyOf(logIn.rejected, logOut.rejected, register.rejected),
