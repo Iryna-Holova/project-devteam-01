@@ -1,4 +1,4 @@
-import Error from "components/NotFound/NotFound";
+import Error from "components/notFound/NotFound";
 const NotFound = () => {
     return <Error/>
 }
