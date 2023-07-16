@@ -3,9 +3,9 @@ import { register, logIn, logOut, refreshUser, verifyUser } from './operations';
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
 const initialState = {
-  user: { name: null, email: null, avatarURL:null, createdAt:null },
-  token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWFiZWZiNTZjMDgwNmFjMWI1N2JkMiIsImlhdCI6MTY4ODkxODQyOSwiZXhwIjoxNjg5MDAxMjI5fQ.ZFANn7RtafoDYYZ2mRex5Qf_JFU7PJdbQp_9uqLZDnk',
+  user: { name: null, email: null, avatarURL: null, createdAt: '' },
+  token: '',
+  //    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWFiZWZiNTZjMDgwNmFjMWI1N2JkMiIsImlhdCI6MTY4ODkxODQyOSwiZXhwIjoxNjg5MDAxMjI5fQ.ZFANn7RtafoDYYZ2mRex5Qf_JFU7PJdbQp_9uqLZDnk',
   isLoggedIn: false,
   isRefreshing: false,
   isError: false,
@@ -27,7 +27,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.status = RESOLVED;
-        console.log(payload);
+        //console.log(payload);
       })
       .addCase(refreshUser.rejected, state => {
         state.user = { name: null, email: null };
@@ -73,15 +73,20 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.status = RESOLVED;
       })
-      .addCase(verifyUser.fulfilled, (state, {payload}) => {
-      //  console.log(action);
+      .addCase(verifyUser.fulfilled, (state, { payload }) => {
+        //  console.log(action);
         //const {status,payload} = action;
-         
-          state.user = { name: payload.user.name, email: payload.user.email, createdAt:payload.user.createAt,avatarURL:payload.user.avatarURL };
-          state.token = payload.token;
-          state.isLoggedIn = true;
-          state.isRefreshing = false;
-          state.status = RESOLVED;
+
+        state.user = {
+          name: payload.user.name,
+          email: payload.user.email,
+          createdAt: payload.user.createAt,
+          avatarURL: payload.user.avatarURL,
+        };
+        state.token = payload.token;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.status = RESOLVED;
       })
       .addMatcher(
         isAnyOf(logIn.rejected, logOut.rejected, register.rejected),
