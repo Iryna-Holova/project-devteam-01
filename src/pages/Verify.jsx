@@ -9,9 +9,12 @@ const Verify = () => {
   const { isLoggedIn } = useAuth();
 
   const dispatch = useDispatch();
+
   useEffect(() => {
+    console.log('start verification', verificationToken,isLoggedIn);
+    if (isLoggedIn) return;
     dispatch(verifyUser(verificationToken));
-  }, [dispatch, verificationToken]);
+  }, [dispatch, verificationToken,isLoggedIn]);
 
   return isLoggedIn ? <Navigate to="/" /> : <Navigate to="/start" />;
 };
