@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Logo from '../Logo/LogoHeader';
-import Navigation from './Navigation';
+import Navigation from './Navigation/Navigation';
 import UserLogo from './UserLogo';
-import ThemeToggler from './ThemeToggler';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 import {
   HeaderContainer,
   LogoStyled,
@@ -15,7 +15,8 @@ import {
   BurgerMenuContent,
   BurgerMenuCloseButton,
   HeaderContainerStyle,
-  NavContainer, NavStyle,
+  NavStyle,
+  ThemeTogglerStyle,
 } from './Header.styled';
 
 const Header = () => {
@@ -30,24 +31,30 @@ const Header = () => {
     setProfileOpen(!isProfileOpen);
   };
 
+  const handleNavLinkClick = () => {
+    setBurgerMenuOpen(false); // Закрываем бургер-меню при нажатии на пункт навигации
+  };
+
   return (
     <HeaderContainer className="container">
       <LogoStyled>
-        <LogoHeader href="/">
+        <LogoHeader href="http://localhost:3000/project-devteam-01/">
           <Logo>So Yummy</Logo>
         </LogoHeader>
       </LogoStyled>
       <NavStyle>
-        <Navigation />
+        <Navigation handleNavLinkClick={handleNavLinkClick} />
       </NavStyle>
       <HeaderContainerStyle>
         <UserInfo>
           <UserPhoto src="path_to_user_photo" alt="User Photo" />
           <UserName onClick={handleProfileClick}>Тестовое имя</UserName>
+          <ThemeTogglerStyle>
+            <ThemeToggler />
+          </ThemeTogglerStyle>
           {isProfileOpen && <UserLogo />}
         </UserInfo>
         <BurgerMenu onClick={handleBurgerMenuClick}>
-          {/* Условный рендеринг значков бургер меню и закрытия */}
           {isBurgerMenuOpen ? (
             <BurgerMenuCloseButton
               data-is-menu-open={isBurgerMenuOpen}
@@ -63,9 +70,7 @@ const Header = () => {
         </BurgerMenu>
       </HeaderContainerStyle>
       <BurgerMenuContent data-is-menu-open={isBurgerMenuOpen}>
-        <NavContainer>
-          <Navigation />
-        </NavContainer>
+        <Navigation handleNavLinkClick={handleNavLinkClick} />
         <ThemeToggler />
       </BurgerMenuContent>
     </HeaderContainer>

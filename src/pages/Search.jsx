@@ -61,7 +61,8 @@ const Search = () => {
     </MainTitle>
     <Searchbar
     onSubmit={formOnsubmitHandler}
-  />
+      />
+      {isLoading && <p>Loading...</p>}
   {status === 2 && <RecipeGallery recipes={recipes} />}
   {status === 1 && <p>...</p>}
   {status === 3 && (
