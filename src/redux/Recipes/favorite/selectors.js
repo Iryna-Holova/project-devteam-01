@@ -1,15 +1,16 @@
-export const selectFavRecipes = state => state.favorite.items;
-export const selectFavRecipesTotal = state => state.favorite.total;
-export const selectFavIsLoading = state => state.favorite.isLoading;
-export const selectFavError = state => state.favorite.error;
-export const selectFavStatus = state => state.favorite.status;
-export const selectFavPage = state => state.favorite.page;
-export const selectFavPages = state => state.favorite.pages;
-export const selectFavLimit = state => state.favorite.limit;
+export const selectFavRecipes = state => state.recipes.favorites.items;
+export const selectFavRecipesTotal = state => state.recipes.favorites.total;
+export const selectFavIsLoading = state => state.recipes.favorites.isLoading;
+export const selectFavError = state => state.recipes.favorites.error;
+export const selectFavStatus = state => state.recipes.favorites.status;
+export const selectFavPage = state => state.recipes.favorites.page;
+export const selectFavPages = state => state.recipes.favorites.pages;
+export const selectFavLimit = state => state.recipes.favorites.limit;
 
 export const selectIsFavorite = (state, recipeId) => {
+  if (state.recipes.favorites.items.length === 0) return false;
   if (
-    state.favorite.items.indexOf(
+    state.recipes.favorites.items.indexOf(
       ({ _id }) => _id.$oid.toString() === recipeId.$oid.toString()
     ) >= 0
   )

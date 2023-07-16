@@ -15,7 +15,7 @@ export const getFavorite = async ({ limit = 99999, page = 1 }) => {
     // clearAuthHeader(axios);
 
     if (status === 200) {
-      console.log(data);
+      // console.log(data);
       return data;
     } else return null;
   } catch (error) {

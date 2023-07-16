@@ -42,7 +42,7 @@ export const Test = () => {
 
   // const rec = {
   //   _id: {
-  //     $oid: '6462a8f74c3d0ddd28897fb8',
+  //     $oid: '6462a8f74c3d0ddd28897fbc',
   //   },
   //   title: 'Mediterranean Pasta Salad',
   //   category: 'Seafood',
@@ -113,9 +113,9 @@ export const Test = () => {
     //dispatch(setMethod(SEARCH_BY_INGREDIENT));
     //dispatch(setQuery(inputValue));
     //dispatch(addToFavoriteRecipesThunk(rec));
-    //dispatch(addToFavoriteRecipesThunk(rec));
+    // dispatch(addToFavoriteRecipesThunk(rec));
     // dispatch(getFavoriteRecipesThunk({}));
-    // dispatch(removeFromFavoriteRecipesThunk(rec._id));
+    //dispatch(removeFromFavoriteRecipesThunk(rec._id));
   };
 
   // useEffect(() => {
