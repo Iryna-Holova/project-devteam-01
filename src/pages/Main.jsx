@@ -8,6 +8,7 @@ import utils from 'utils';
 import HeroMain from 'components/HeroMain/HeroMain';
 // import { Searchbar } from 'components/Searchbar/Searchbar';
 
+
 const Main = () => {
   const [recipes, setRecipes] = useState([]);
   const { device } = useApp();
