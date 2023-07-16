@@ -1,14 +1,13 @@
-import { Container } from './CategoriesPreview.styled';
-import { Link } from 'react-router-dom';
+import { Container, ButtonContainer, OtherCategoriesButton } from './CategoriesPreview.styled';
 import CategoriesList from './CategoriesList/CategoriesList';
-// TODO: uncomment when merged with main, because deleted buttons folder;
-// import { OtherCategoriesButton } from "components/Buttons/Buttons.styled";
 const CategoriesPreview = ({recipes}) => {
     return (
         <>
             <Container className="container">
                 <CategoriesList recipes={recipes} />
-                <Link to="/categories/beef">Other categories</Link>
+                <ButtonContainer>
+                    <OtherCategoriesButton to="/categories/beef">Other categories</OtherCategoriesButton>
+                </ButtonContainer>
             </Container>
         </>
     )

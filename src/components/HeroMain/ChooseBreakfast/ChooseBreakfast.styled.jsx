@@ -1,13 +1,21 @@
 import styled from 'styled-components';
-import background from '../../../assets/images/Main/mobile/bg-salad-bowl-mobile.webp';
-import saladTablet from '../../../assets/images/Main/tablet/bg-salad-bowl-tablet.webp';
-import saladDesk from '../../../assets/images/Main/desktop/bg-salad-bowl-desktop.webp';
+import background from '../../../assets/images/Main/bg-salad/bg-salad-bowl-mobile-1x.webp';
+import background2x from '../../../assets/images/Main/bg-salad/bg-salad-bowl-mobile-2x.webp';
+import saladTablet from '../../../assets/images/Main/bg-salad/bg-salad-bowl-tablet-1x.webp';
+import saladTablet2x from '../../../assets/images/Main/bg-salad/bg-salad-bowl-tablet-2x.webp';
+import saladDesk from '../../../assets/images/Main/bg-salad/bg-salad-bowl-desktop-1x.webp';
+import saladDesk2x from '../../../assets/images/Main/bg-salad/bg-salad-bowl-desktop-2x.webp';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     position: sticky;
     margin: 0 auto;
+    margin-bottom: 220px;
     background-image: url(${background});
+    background-image: -webkit-image-set(
+    url(${background}) 1x,
+    url(${background2x}) 2x
+    );
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -15,18 +23,27 @@ export const Container = styled.div`
     height: 296px;
 
     @media screen and (min-width: 768px) {
-        position: absolute;
-        right: 10px;
-        top: 150px;
+        position: relative;
+        right: -160px;
+        top: -220px;
+        margin-bottom: 0px;
         background-image: url(${saladTablet});
+        background-image: -webkit-image-set(
+        url(${saladTablet}) 1x,
+        url(${saladTablet2x}) 2x
+        );
     }
 
     @media screen and (min-width: 1440px) {
         background-image: url(${saladDesk});
+        background-image: -webkit-image-set(
+        url(${saladDesk}) 1x,
+        url(${saladDesk2x}) 2x
+        );
         width: 578px;
         height: 539px;
-        right: 150px;
-        top: 100px;
+        right: -300px;
+        top: -270px;
     }
 `;
 
