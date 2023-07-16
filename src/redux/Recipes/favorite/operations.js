@@ -25,9 +25,9 @@ export const addToFavoriteRecipesThunk = createAsyncThunk(
   'favorite/addFavorite',
   async (recipe, thunkAPI) => {
     try {
-      //  console.log(recipe._id.$oid.toString());
+      console.log(recipe);
       const response = await recipesServices.addToFavorite({
-        id: recipe._id.$oid.toString(),
+        id: recipe._id,
       });
       //console.log(response);
       if (response.status === 200) return recipe;

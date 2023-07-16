@@ -1,13 +1,14 @@
 import axios from 'axios';
-import { BASE_URL, setAuthHeader } from './common';
+import { BASE_URL } from './common';
 
 export const getFavorite = async ({ limit = 99999, page = 1 }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    setAuthHeader(
-      axios,
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
-    );
+    //console.log(axios.defaults);
+    // setAuthHeader(
+    //   axios,
+    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
+    // );
 
     const { status, data } = await axios.get(
       `/api/favorite/?page=${page}&limit=${limit}`
@@ -27,10 +28,10 @@ export const getFavorite = async ({ limit = 99999, page = 1 }) => {
 export const addToFavorite = async ({ id }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    setAuthHeader(
-      axios,
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
-    );
+    // setAuthHeader(
+    //   axios,
+    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
+    // );
 
     const { status, data } = await axios.post(
       `/api/favorite/`,
@@ -57,10 +58,10 @@ export const addToFavorite = async ({ id }) => {
 export const deleteFromFavorite = async ({ id }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    setAuthHeader(
-      axios,
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
-    );
+    // setAuthHeader(
+    //   axios,
+    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
+    // );
 
     const { status, data } = await axios.delete(`/api/favorite/${id}`);
     // clearAuthHeader(axios);
