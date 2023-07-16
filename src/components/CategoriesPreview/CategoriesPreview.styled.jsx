@@ -5,4 +5,8 @@ export const Container = styled.div`
     margin-bottom: 100px;
     padding-left: 16px;
     padding-right: 16px;
+
+    @media screen and (min-width: 1440px) {
+        margin-top: 368px;
+    }
 `

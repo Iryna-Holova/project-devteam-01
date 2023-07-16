@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Logo from '../Logo/LogoHeader';
 import Navigation from './Navigation';
 import UserLogo from './UserLogo';
@@ -8,19 +7,20 @@ import {
   HeaderContainer,
   LogoStyled,
   LogoHeader,
-  LogoutButton,
   BurgerMenu,
   UserInfo,
   UserPhoto,
   UserName,
   BurgerIcon,
   BurgerMenuContent,
+  BurgerMenuCloseButton,
+  HeaderContainerStyle,
+  NavContainer, NavStyle,
 } from './Header.styled';
 
 const Header = () => {
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [isProfileOpen, setProfileOpen] = useState(false);
-  const navigate = useNavigate();
 
   const handleBurgerMenuClick = () => {
     setBurgerMenuOpen(!isBurgerMenuOpen);
@@ -30,12 +30,6 @@ const Header = () => {
     setProfileOpen(!isProfileOpen);
   };
 
-  const handleLogoutClick = () => {
-    // Здесь выполняется выход из аккаунта
-    // Например, сбросить токен аутентификации, очистить локальное хранилище и т.д.
-    navigate('/login'); // Навигация на страницу регистрации
-  };
-
   return (
     <HeaderContainer className="container">
       <LogoStyled>
@@ -43,20 +37,36 @@ const Header = () => {
           <Logo>So Yummy</Logo>
         </LogoHeader>
       </LogoStyled>
-      <UserInfo>
-        <UserPhoto src="path_to_user_photo" alt="User Photo" />
-        <UserName onClick={handleProfileClick}>Тестовое имя</UserName>
-        {isProfileOpen && <UserLogo />}
-      </UserInfo>
-      <BurgerMenu onClick={handleBurgerMenuClick}>
-        <BurgerIcon />
-        <BurgerIcon />
-        <BurgerIcon />
-      </BurgerMenu>
-      <BurgerMenuContent data-is-menu-open={isBurgerMenuOpen}>
+      <NavStyle>
         <Navigation />
+      </NavStyle>
+      <HeaderContainerStyle>
+        <UserInfo>
+          <UserPhoto src="path_to_user_photo" alt="User Photo" />
+          <UserName onClick={handleProfileClick}>Тестовое имя</UserName>
+          {isProfileOpen && <UserLogo />}
+        </UserInfo>
+        <BurgerMenu onClick={handleBurgerMenuClick}>
+          {/* Условный рендеринг значков бургер меню и закрытия */}
+          {isBurgerMenuOpen ? (
+            <BurgerMenuCloseButton
+              data-is-menu-open={isBurgerMenuOpen}
+              onClick={handleBurgerMenuClick}
+            />
+          ) : (
+            <>
+              <BurgerIcon />
+              <BurgerIcon />
+              <BurgerIcon />
+            </>
+          )}
+        </BurgerMenu>
+      </HeaderContainerStyle>
+      <BurgerMenuContent data-is-menu-open={isBurgerMenuOpen}>
+        <NavContainer>
+          <Navigation />
+        </NavContainer>
         <ThemeToggler />
-        <LogoutButton onClick={handleLogoutClick}>Logout</LogoutButton>
       </BurgerMenuContent>
     </HeaderContainer>
   );

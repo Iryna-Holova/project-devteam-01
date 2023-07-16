@@ -30,5 +30,6 @@ export const Select = styled.select`
 `
 
 export const Div = styled.div`
+    margin-top: 115px;
     margin-bottom: 27px;
 `
