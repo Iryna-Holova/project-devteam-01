@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
-  /* width: 100%; */
-  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 20px;
-  /* position: fixed; */
-  /* top: 0;
-  left: 0;
-  z-index: 1000; */
-  margin-bottom: 40px;
+
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  @media screen and (min-width: 1440px) {
+    top: 14px;
+  }
 `;
 
 export const HeaderContainerStyle = styled.div`
@@ -45,8 +45,8 @@ export const BurgerMenuCloseButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-top: -6px; /* Добавим отрицательный margin, чтобы выровнять кнопку закрытия по вертикали */
-  margin-left: 16px; /* Добавим margin слева, чтобы создать расстояние между иконкой бургер меню и кнопкой закрытия */
+  margin-top: -6px; /* Добавил отрицательный margin, чтобы выровнять кнопку закрытия по вертикали */
+  margin-left: 16px; /* Добавил margin слева, чтобы создать расстояние между иконкой бургер меню и кнопкой закрытия */
 
   &:before,
   &:after {
@@ -104,17 +104,17 @@ export const BurgerIcon = styled.div`
 export const BurgerMenuContent = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: #f8f8f8;
+  background-color: #ebf3d4;
+  /* background-image: url('../../assets/images/authNavPage/authNavBackgroundMobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
   display: ${({ 'data-is-menu-open': isMenuOpen }) =>
-    isMenuOpen ? 'flex' : 'none'};
-  justify-content: center; /* Центрируем по горизонтали */
+    isMenuOpen ? 'block' : 'none'};
   align-items: center;
-  flex-direction: column; /* Центрируем по вертикали */
+  flex-direction: column;
   z-index: 998;
-  /* Дополнительные стили, если необходимо */
+
 
   @media (min-width: 1440px) {
     display: none;
@@ -163,20 +163,6 @@ export const LogoutButton = styled.button`
   }
 `;
 
-export const NavContainer = styled.nav`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 1440px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
 export const NavStyle = styled.nav`
   display: none;
   flex-direction: column;
@@ -190,41 +176,6 @@ export const NavStyle = styled.nav`
     align-items: center;
     justify-content: center;
   }
-`;
-
-export const NavItem = styled.li`
-  list-style: none;
-  margin-bottom: 32px;
-
-  @media (min-width: 1440px) {
-    margin-bottom: 0px;
-    margin-right: 30px;
-  }
-`;
-
-export const NavLinkStyled = styled(NavLink)`
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-  margin-bottom: 20px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Подсветка при наведении на ссылку */
-  &:hover {
-    color: #8baa36;
-  }
-`;
-
-export const ThemeTogglerContainer = styled.div`
-  margin-top: 30px;
-`;
-
-export const ThemeTogglerButton = styled.button`
-  // Стили кнопки переключателя темы
 `;
 
 export const UserLogoContainer = styled.div`
@@ -252,4 +203,11 @@ export const LogoContainer = styled.div`
 
 export const LogoImage = styled.img`
   // стили для LogoImage
+`;
+
+export const ThemeTogglerStyle = styled.div`
+display: none;
+  @media (min-width: 1440px) {
+display: block;
+  }
 `;

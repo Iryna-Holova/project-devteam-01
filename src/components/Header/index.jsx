@@ -1,8 +1,8 @@
 import React from 'react';
 import Logo from '../Logo/LogoHeader';
-import Navigation from './Navigation';
+import Navigation from './Navigation/Navigation';
 import UserLogo from './UserLogo';
-import ThemeToggler from './ThemeToggler';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 import { HeaderContainer } from './Header.styled';
 
 function Header() {
