@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import {getIngredientsRecipes} from '../../services/getIngredientsRecipes';
-import {getTitleRecipes} from '../../services/getTitleRecipes';
+
 import {Input, Btn, Select, Div, Form} from './Searchbar.styled'
+
+
+import { useDispatch } from 'react-redux';
+import {getSearchByThunk} from '../../redux/Recipes/SearchBy/operations'
+import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../../utils/constants'
 
   
   
-export function Searchbar ({onSubmit, setTitles, addStatus, addError}) {
+export function Searchbar ({onSubmit}) {
     const [value, setValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('title')
     const [isTyping, setIsTyping] = useState(false)
     const location = useLocation()
+
+    const dispatch = useDispatch()
     
 
 
@@ -40,32 +46,22 @@ export function Searchbar ({onSubmit, setTitles, addStatus, addError}) {
     if (!isTyping || value.trim() === '') {
         return;
       }
-      addStatus('pending')
-      // addError(null)
+      
       const delayDebounceRequest = setTimeout(() => {
         if (selectedValue === "ingredients" && value !== "") {
-            getIngredientsRecipes(value).then(ingr => {
-              setTitles(ingr);
-                 
-                addStatus('resolved')})
-                .catch(err => {
-                    addError(err.message); 
-                    addStatus('rejected')})
+          dispatch(getSearchByThunk({query:value, method:SEARCH_BY_INGREDIENT}))
+           
            }
         if (selectedValue === "title" && value !== "") {
-            getTitleRecipes(value).then(title => {
-                setTitles(title); 
-               
-                addStatus('resolved')})
-                .catch(err => {
-                    addError(err.message); 
-                    addStatus('rejected')})
+          dispatch(getSearchByThunk({query:value, method:SEARCH_BY_TITLE}))
+           
          }
-      }, 2000)
+      }, 1500)
 
     return () => clearTimeout(delayDebounceRequest);
-  }, [value, selectedValue, setTitles, addError, addStatus, isTyping ])
+  }, [value, selectedValue,isTyping, dispatch ])
 
+  
 
 // Отправка введенных значений по клику  
   const handleSubmit = e => {

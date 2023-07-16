@@ -1,21 +1,25 @@
 import MainTitle from 'components/MainTitle/MainTitle';
 import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
 
-import { getIngredientsRecipes } from '../services/getIngredientsRecipes';
-import { getTitleRecipes } from '../services/getTitleRecipes';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 
+import useSearchBy from '../hooks/useSearchBy'
+
 
 import img from '../assets/images/empty-img.png';
+import { useDispatch } from 'react-redux';
+import {getSearchByThunk} from '../redux/Recipes/SearchBy/operations'
+import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../utils/constants'
 
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('title');
-  const [title, setTitle] = useState([]);
-  const [status, setStatus] = useState('idl');
-  const [error, setError] = useState(null);
+
+  const dispatch = useDispatch()
+  const {recipes, status, isLoading, error} = useSearchBy()
+  
 
   
 
@@ -23,35 +27,15 @@ const Search = () => {
     if (searchValue === '') {
       return;
     }
-    setStatus('pending');
-    setError(null);
+   
 
     if (selectedValue === 'ingredients' && searchValue !== '') {
-        
-      getIngredientsRecipes(searchValue)
-        .then(ingr => {
-          setTitle(ingr);
-          
-          setStatus('resolved');
-        })
-        .catch(err => {
-          setError(err.message);
-          setStatus('rejected');
-        });
+        dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_INGREDIENT}))
     }
     if (selectedValue === 'title' && searchValue !== '') {
-      getTitleRecipes(searchValue)
-        .then(title => {
-          setTitle(title);
-          
-          setStatus('resolved');
-        })
-        .catch(err => {
-          setError(err.message);
-          setStatus('rejected');
-        });
+        dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_TITLE}))
     }
-  }, [searchValue, selectedValue]);
+  }, [searchValue, selectedValue, dispatch]);
 
  
 
@@ -65,7 +49,8 @@ const Search = () => {
       setSelectedValue(selectValue);
     }
   };
-  console.log(title);
+  console.log(recipes);
+  console.log(status);
 
   console.log(error); // Just for build
 
@@ -75,15 +60,24 @@ const Search = () => {
       Search
     </MainTitle>
     <Searchbar
-    setTitles={setTitle}
-   
-    addStatus={setStatus}
-    addError={setError}
     onSubmit={formOnsubmitHandler}
   />
-  {status === 'resolved' && <RecipeGallery recipes={title} />}
-  {status === 'pending' && <p>...</p>}
-  {status === 'rejected' && (
+  {status === 2 && <RecipeGallery recipes={recipes} />}
+  {status === 1 && <p>...</p>}
+  {status === 3 && (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <img src={img} alt="Корзина с фруктами" width="350" />
+      <p>Try looking for something else..</p>
+    </div>
+  )}
+  {(status === 2 && recipes) && (
     <div
       style={{
         display: 'flex',
