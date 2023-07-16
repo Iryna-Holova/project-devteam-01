@@ -16,7 +16,7 @@ export const NavContainer = styled.nav`
     margin-top: 0;
 
     .active {
-      color: #8baa36;
+      color: var(--color-accent);
     }
   }
 `;
@@ -34,7 +34,9 @@ export const NavItem = styled.li`
 export const NavLinkStyled = styled(NavLink)`
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: var(
+    --color-text
+  );
   text-decoration: none;
   margin-bottom: 20px;
 
@@ -43,6 +45,8 @@ export const NavLinkStyled = styled(NavLink)`
   }
 
   &:hover {
-    color: #8baa36;
+    color: var(
+      --color-accent
+    );
   }
 `;

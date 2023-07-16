@@ -1,6 +1,6 @@
 import React from 'react';
 import UserLogoModal from './UserLogoModal';
-import { UserLogoContainer, UserLogoContent } from './Header.styled';
+import { UserLogoContainer, UserLogoContent } from '../Header.styled';
 
 function UserLogo() {
   const handleUserLogoClick = () => {

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 200;
 
   position: absolute;
   top: 18px;
@@ -45,8 +45,6 @@ export const BurgerMenuCloseButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-top: -6px; /* Добавил отрицательный margin, чтобы выровнять кнопку закрытия по вертикали */
-  margin-left: 16px; /* Добавил margin слева, чтобы создать расстояние между иконкой бургер меню и кнопкой закрытия */
 
   &:before,
   &:after {
@@ -54,7 +52,7 @@ export const BurgerMenuCloseButton = styled.button`
     position: fixed;
     width: 24px;
     height: 2px;
-    background-color: #333;
+    background-color: var(--color-footer);
   }
 
   &:before {
@@ -93,10 +91,9 @@ export const UserName = styled.span`
 export const BurgerIcon = styled.div`
   width: 30px;
   height: 2px;
-  background-color: #333;
+  background-color: var(--color-footer);
   margin-bottom: 6px;
 
-  /* Скрыть иконку при открытом меню */
   display: ${({ 'data-is-menu-open': isMenuOpen }) =>
     isMenuOpen ? 'none' : 'block'};
 `;
@@ -105,7 +102,7 @@ export const BurgerMenuContent = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #ebf3d4;
+  background-color: var(--color-accent-secondary);
   /* background-image: url('../../assets/images/authNavPage/authNavBackgroundMobile.jpg');
   background-repeat: no-repeat;
   background-size: cover; */
@@ -114,7 +111,6 @@ export const BurgerMenuContent = styled.div`
   align-items: center;
   flex-direction: column;
   z-index: 998;
-
 
   @media (min-width: 1440px) {
     display: none;
@@ -138,29 +134,8 @@ export const CloseButton = styled.div`
   right: 20px;
   width: 30px;
   height: 30px;
-  background-color: #333;
+  background-color: var(--color-text);
   cursor: pointer;
-`;
-
-export const LogoutButton = styled.button`
-  background-color: #8baa36;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    background-color: #648c26;
-  }
-
-  svg {
-    margin-right: 8px;
-  }
 `;
 
 export const NavStyle = styled.nav`
@@ -179,19 +154,11 @@ export const NavStyle = styled.nav`
 `;
 
 export const UserLogoContainer = styled.div`
-  // Стили контейнера логотипа пользователя
+  // Styles for the user logo container
 `;
 
 export const UserLogoContent = styled.div`
-  // Стили содержимого логотипа пользователя
-`;
-
-export const UserLogoModalContainer = styled.div`
-  // Стили контейнера модального окна логотипа пользователя
-`;
-
-export const EditProfileButton = styled.button`
-  // Стили кнопки "Edit Profile"
+  // Styles for the user logo content
 `;
 
 export const LogoContainer = styled.div`
@@ -202,12 +169,12 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  // стили для LogoImage
+  // Styles for LogoImage
 `;
 
 export const ThemeTogglerStyle = styled.div`
-display: none;
+  display: none;
   @media (min-width: 1440px) {
-display: block;
+    display: block;
   }
 `;

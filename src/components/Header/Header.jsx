@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../Logo/LogoHeader';
 import Navigation from './Navigation/Navigation';
-import UserLogo from './UserLogo';
+import UserLogo from './UserLogo/UserLogo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import {
   HeaderContainer,
@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <HeaderContainer className="container">
       <LogoStyled>
-        <LogoHeader href="http://localhost:3000/project-devteam-01/">
+        <LogoHeader href="https://iryna-holova.github.io/project-devteam-01/">
           <Logo>So Yummy</Logo>
         </LogoHeader>
       </LogoStyled>
@@ -49,11 +49,12 @@ const Header = () => {
         <UserInfo>
           <UserPhoto src="path_to_user_photo" alt="User Photo" />
           <UserName onClick={handleProfileClick}>Тестовое имя</UserName>
-          <ThemeTogglerStyle>
-            <ThemeToggler />
-          </ThemeTogglerStyle>
+
           {isProfileOpen && <UserLogo />}
         </UserInfo>
+        <ThemeTogglerStyle>
+          <ThemeToggler />
+        </ThemeTogglerStyle>
         <BurgerMenu onClick={handleBurgerMenuClick}>
           {isBurgerMenuOpen ? (
             <BurgerMenuCloseButton

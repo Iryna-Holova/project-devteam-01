@@ -4,8 +4,8 @@ import {
   UserLogoModalContainer,
   EditProfileButton,
   LogoutButton,
-} from './Header.styled';
-import { logOut } from '../../redux/auth/operations';
+} from './UserLogo.styled';
+import { logOut } from '../../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 
 function UserLogoModal() {
