@@ -29,7 +29,6 @@ const useFavorite = () => {
     total,
     pages,
     limit,
-    recipes,
     status,
   };
 };

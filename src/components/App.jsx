@@ -1,15 +1,16 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
+import { useDispatch } from 'react-redux';
+
+import { setDevice } from 'redux/App/slice';
 import { refreshUser } from 'redux/auth/operations';
 import useAuth from 'hooks/use-auth';
-
+import { getMedia } from 'utils/getMedia';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
 import Test from 'pages/Test';
-import { getMedia } from 'utils/getMedia';
-import { setDevice } from 'redux/App/slice';
+
 const Start = lazy(() => import('pages/Start'));
 const Register = lazy(() => import('pages/Register'));
 const Signin = lazy(() => import('pages/Signin'));
@@ -24,7 +25,6 @@ const Search = lazy(() => import('pages/Search'));
 const ShoppingList = lazy(() => import('pages/ShoppingList'));
 const NotFound = lazy(() => import('pages/NotFound'));
 const Verify = lazy(() => import('pages/Verify'));
-
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -53,38 +53,99 @@ export const App = () => {
 
   useEffect(() => {
     if (isLoggedIn || token === null) return;
-    
-      dispatch(refreshUser());
-    
+
+    dispatch(refreshUser());
   }, [dispatch, isLoggedIn, token]);
 
-  // if (isRefreshing) {
-  //   console.log('refreshing');
-  //   return <b> Refreshing user...</b>;
-  // }
-
-  return isRefreshing ? (<b>Refreshing user...</b>)
-    : (
-      <Suspense fallback={<p>Suspense...</p>}>
-    <Routes>
-      <Route path="/start" element={<RestrictedRoute redirectTo="/" component={<Start />} />} />
-      <Route path="/register" element={<RestrictedRoute redirectTo="/" component={<Register />} />} />
-      <Route path="/signin" element={<RestrictedRoute redirectTo="/" component={<Signin />} />} />
-      <Route path="/verify/:verificationToken" element={<RestrictedRoute redirectTo="/" component={<Verify />} />} />
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<PrivateRoute redirectTo="/start" component={<Main />} />} />
-        <Route path="categories/" element={<PrivateRoute redirectTo="/start" component={<Navigate to="/categories/beef" />} />} />
-        <Route path="categories/:categoryName" element={ <PrivateRoute redirectTo="/start" component={<Categories />} />} />
-        <Route path="/add" element={ <PrivateRoute redirectTo="/start" component={<AddRecipe />} />} />
-        <Route path="favorite" element={ <PrivateRoute redirectTo="/start" component={<Favorite />} />} />
-        <Route path="recipe/:recipeId" element={<PrivateRoute redirectTo="/start" component={<Recipe />} />} />
-        <Route path="my" element={ <PrivateRoute redirectTo="/start" component={<MyRecipes />} />} />
-        <Route path="search" element={<PrivateRoute redirectTo="/start" component={<Search />} />} />
-        <Route path="shopping-list" element={ <PrivateRoute redirectTo="/start" component={<ShoppingList />} />} />
-        <Route path="*" element={ <PrivateRoute redirectTo="/start" component={<NotFound />} />} />
-      </Route>
-      <Route path="/test" element={<RestrictedRoute redirectTo="/" component={<Test />} />} />
-        </Routes>
-        </Suspense>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Suspense fallback={<p>Suspense...</p>}>
+      <Routes>
+        <Route
+          path="/start"
+          element={<RestrictedRoute redirectTo="/" component={<Start />} />}
+        />
+        <Route
+          path="/register"
+          element={<RestrictedRoute redirectTo="/" component={<Register />} />}
+        />
+        <Route
+          path="/signin"
+          element={<RestrictedRoute redirectTo="/" component={<Signin />} />}
+        />
+        <Route
+          path="/verify/:verificationToken"
+          element={<RestrictedRoute redirectTo="/" component={<Verify />} />}
+        />
+        <Route path="/" element={<SharedLayout />}>
+          <Route
+            index
+            element={<PrivateRoute redirectTo="/start" component={<Main />} />}
+          />
+          <Route
+            path="categories/"
+            element={
+              <PrivateRoute
+                redirectTo="/start"
+                component={<Navigate to="/categories/beef" />}
+              />
+            }
+          />
+          <Route
+            path="categories/:categoryName"
+            element={
+              <PrivateRoute redirectTo="/start" component={<Categories />} />
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <PrivateRoute redirectTo="/start" component={<AddRecipe />} />
+            }
+          />
+          <Route
+            path="favorite"
+            element={
+              <PrivateRoute redirectTo="/start" component={<Favorite />} />
+            }
+          />
+          <Route
+            path="recipe/:recipeId"
+            element={
+              <PrivateRoute redirectTo="/start" component={<Recipe />} />
+            }
+          />
+          <Route
+            path="my"
+            element={
+              <PrivateRoute redirectTo="/start" component={<MyRecipes />} />
+            }
+          />
+          <Route
+            path="search"
+            element={
+              <PrivateRoute redirectTo="/start" component={<Search />} />
+            }
+          />
+          <Route
+            path="shopping-list"
+            element={
+              <PrivateRoute redirectTo="/start" component={<ShoppingList />} />
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PrivateRoute redirectTo="/start" component={<NotFound />} />
+            }
+          />
+        </Route>
+        <Route
+          path="/test"
+          element={<RestrictedRoute redirectTo="/" component={<Test />} />}
+        />
+      </Routes>
+    </Suspense>
   );
 };
