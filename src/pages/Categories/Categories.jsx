@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -10,72 +10,84 @@ import { getCategoriesList } from 'redux/Categories/operations';
 import { setLimit, setQuery } from 'redux/Recipes/searchByCategory/slice';
 import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
 
-import utils from 'utils';
+//import utils from 'utils';
 
 import CategoriesTabs from 'components/CategoriesTabs/CategoriesTabs';
 import RecipeGallery from 'components/RecipeGallery/RecipeGallery';
 import MainTitle from 'components/MainTitle/MainTitle';
-import {StyledDiv} from './Categories.styled';
+import { StyledDiv } from './Categories.styled';
+import Pagination from '../../components/Pagination/Pagination';
+
 const Categories = () => {
   const { categoryName } = useParams();
-  // const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
   const { device } = useApp();
   const dispatch = useDispatch();
   const { categories } = useCategories();
   const { query, data: recipes, isError } = useSearchByCategory();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
   useEffect(() => {
-    // console.log(categories);
     if (categories.length === 0) {
       dispatch(getCategoriesList());
     }
   }, [dispatch, categories]);
 
-  // переписать на бек
   useEffect(() => {
-    const curLimit = utils.getPageLimit('category', device);
+   // const curLimit = utils.getPageLimit('category', device);
 
     if (query === categoryName) return;
     dispatch(setQuery(categoryName));
-    dispatch(setLimit(curLimit));
+    dispatch(setLimit(50));
 
-    dispatch(
-      getSearchByCategoryThunk({ query: categoryName, limit: curLimit })
-    );
-
-    //console.log(recipes);
+    dispatch(getSearchByCategoryThunk({ query: categoryName, limit: 50 }));
   }, [dispatch, categoryName, device, query]);
 
   useEffect(() => {
-    //console.log('error', isError); //
     if (isError) navigate(`/categories/Beef`);
   }, [isError, navigate]);
 
-  // useEffect(() => {
-  //   const categoryRecipes = recipesData.filter(
-  //     recipe => recipe.category.toLowerCase() === categoryName
-  //   );
-  //   setRecipes(categoryRecipes);
-  // }, [categoryName]);
-
-  const handleCategoryChange = category => {
-    //dispatch(setQuery(category));
+  const handleCategoryChange = (category) => {
     navigate(`/categories/${category}`);
   };
 
-  return (
-    <StyledDiv>
-      <MainTitle>Categories</MainTitle>
-      <CategoriesTabs
-        categories={categories}
-        selectedCategory={categoryName}
-        handleCategoryChange={handleCategoryChange}
-      />
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
-      <RecipeGallery recipes={recipes} />
-    </StyledDiv>
-  );
+  // Вычисление totalPages
+  const totalPages = recipes?.length
+    ? Math.ceil(recipes.length / itemsPerPage)
+    : 0;
+
+  // ...
+
+return (
+  <StyledDiv>
+    <MainTitle>Categories</MainTitle>
+    <CategoriesTabs
+      categories={categories}
+      selectedCategory={categoryName}
+      handleCategoryChange={handleCategoryChange}
+    />
+
+    {recipes && recipes.length && (
+      <>
+        <RecipeGallery
+          recipes={recipes.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)}
+        />
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onClick={handlePageChange}
+        />
+      </>
+    )}
+  </StyledDiv>
+);
+
 };
 
 export default Categories;
