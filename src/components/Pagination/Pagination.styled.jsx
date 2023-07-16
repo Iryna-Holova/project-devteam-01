@@ -8,10 +8,13 @@ export const Container = styled.ul`
   justify-content: center;
   align-items: center;
   padding: 12px 60px;
-  background: green;
+  background: var(--color-main);
   box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
   border-radius: 26px;
-
+  margin-top:50px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   @media screen and (min-width: 768px) {
     padding: 14px 72px;
   }
@@ -21,14 +24,14 @@ export const Page = styled.li`
   font-family: PoppinsSemiBold;
   font-size: 12px;
   line-height: calc(18 / 12);
-  color: black;
+  color: ${props => props.active === 'true' ? 'var(--color-main)' : 'var(--color-footer)'};
 
   display: flex;
   justify-content: center;
   align-items: center;
   width: 27px;
   height: 27px;
-  background-color: var(--color-accent-secondary);
+  background-color: ${props => props.active === 'true' ? 'var(--color-accent)' : 'var(--color-accent-secondary)'};
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
@@ -37,6 +40,7 @@ export const Page = styled.li`
   }
 `;
 
+
 export const StyledChevronLeft = styled(BiChevronLeft)`
   position: absolute;
   top: 50%;
@@ -44,6 +48,7 @@ export const StyledChevronLeft = styled(BiChevronLeft)`
   transform: translate(0, -50%);
   margin-right: 13px;
   cursor: pointer;
+  fill:var(--color-start-bg);
 `;
 
 export const StyledChevronRight = styled(BiChevronRight)`
@@ -53,4 +58,5 @@ export const StyledChevronRight = styled(BiChevronRight)`
   transform: translate(0, -50%);
   margin-left: -5px;
   cursor: pointer;
+  fill:var(--color-start-bg);
 `;
