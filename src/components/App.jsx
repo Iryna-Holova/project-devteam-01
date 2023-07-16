@@ -53,21 +53,14 @@ export const App = () => {
 
   useEffect(() => {
     const currDevice = getMedia();
-    //dispatch(setDevice(currDevice));
-
+    
     Promise.all(dispatch(setDevice(currDevice)),
     dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
     dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
     dispatch(setOwnLimit(getPageLimit('own',currDevice))),
     dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
     );
-
-    // const handlerOnWindowResize = () => {
-    //   const currDevice = getMedia();
-    //   if (device !== currDevice)
-    //   dispatch(setDevice(currDevice));
-    // };
-  
+    
     const addHandler = () => {
       window.addEventListener('resize', handlerOnWindowResize);
     };
