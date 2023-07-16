@@ -35,7 +35,7 @@ export const Tab = styled.a`
   font-weight: 500;
   line-height: 1;
   color: #bdbdbd;
-  transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-time) var(--cubic);
   cursor: pointer;
 
   &::after {
@@ -48,13 +48,13 @@ export const Tab = styled.a`
     background-color: transparent;
   }
   &.active {
-    color: #8baa36;
+    color: var(--color-accent);
     &::after {
-      background-color: #8baa36;
+      background-color: var(--color-accent);
     }
   }
   &:hover {
-    color: #8baa36;
+    color: var(--color-accent);
   }
 
   @media screen and (min-width: 768px) {

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { favoriteReducer } from './favorite/favoriteRecipesSlice';
+import { favoriteReducer } from './favorite/slice';
 //import { mainPageReducer } from './main-page/slice';
 import { searchByTitleReducer } from './searchByTitle/slice';
 import { searchByCategoryReducer } from './searchByCategory/slice';

@@ -103,10 +103,10 @@ export const verifyUser = createAsyncThunk(
       const res = await axios.get(`users/verify/${verificationToken}`);
       console.log(res);
 
-      return res;
+      return res.data;
       //return result;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(new Error(error.message));
     }
   }
 );
