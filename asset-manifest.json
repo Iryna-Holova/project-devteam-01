@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/project-devteam-01/static/css/main.3d73bdde.css",
-    "main.js": "/project-devteam-01/static/js/main.228d53d5.js",
+    "main.js": "/project-devteam-01/static/js/main.22a2538e.js",
     "static/js/557.d463ed72.chunk.js": "/project-devteam-01/static/js/557.d463ed72.chunk.js",
     "static/js/37.ac209d36.chunk.js": "/project-devteam-01/static/js/37.ac209d36.chunk.js",
     "static/js/526.aa28fdd4.chunk.js": "/project-devteam-01/static/js/526.aa28fdd4.chunk.js",
-    "static/js/721.d19bd4a5.chunk.js": "/project-devteam-01/static/js/721.d19bd4a5.chunk.js",
+    "static/js/721.32446cfc.chunk.js": "/project-devteam-01/static/js/721.32446cfc.chunk.js",
     "static/js/944.ad3fecbd.chunk.js": "/project-devteam-01/static/js/944.ad3fecbd.chunk.js",
     "static/js/441.3b3dbe85.chunk.js": "/project-devteam-01/static/js/441.3b3dbe85.chunk.js",
     "static/js/271.bb1298ad.chunk.js": "/project-devteam-01/static/js/271.bb1298ad.chunk.js",
@@ -55,11 +55,11 @@
     "static/media/bg-triangle-desktop.svg": "/project-devteam-01/static/media/bg-triangle-desktop.091fd12b87a953a3cfdcc7c0e246296b.svg",
     "static/media/arrow-narrow-right.svg": "/project-devteam-01/static/media/arrow-narrow-right.9f6702858046c499798ef09e76700a45.svg",
     "main.3d73bdde.css.map": "/project-devteam-01/static/css/main.3d73bdde.css.map",
-    "main.228d53d5.js.map": "/project-devteam-01/static/js/main.228d53d5.js.map",
+    "main.22a2538e.js.map": "/project-devteam-01/static/js/main.22a2538e.js.map",
     "557.d463ed72.chunk.js.map": "/project-devteam-01/static/js/557.d463ed72.chunk.js.map",
     "37.ac209d36.chunk.js.map": "/project-devteam-01/static/js/37.ac209d36.chunk.js.map",
     "526.aa28fdd4.chunk.js.map": "/project-devteam-01/static/js/526.aa28fdd4.chunk.js.map",
-    "721.d19bd4a5.chunk.js.map": "/project-devteam-01/static/js/721.d19bd4a5.chunk.js.map",
+    "721.32446cfc.chunk.js.map": "/project-devteam-01/static/js/721.32446cfc.chunk.js.map",
     "944.ad3fecbd.chunk.js.map": "/project-devteam-01/static/js/944.ad3fecbd.chunk.js.map",
     "441.3b3dbe85.chunk.js.map": "/project-devteam-01/static/js/441.3b3dbe85.chunk.js.map",
     "271.bb1298ad.chunk.js.map": "/project-devteam-01/static/js/271.bb1298ad.chunk.js.map",
@@ -76,6 +76,6 @@
   },
   "entrypoints": [
     "static/css/main.3d73bdde.css",
-    "static/js/main.228d53d5.js"
+    "static/js/main.22a2538e.js"
   ]
 }
