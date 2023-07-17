@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useCallback, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -10,6 +10,12 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
 import Test from 'pages/Test';
+import useApp from 'hooks/useApp';
+import { setLimit as setFavoriteLimit} from 'redux/Recipes/favorite/slice';
+import getPageLimit from 'utils/getPageLimit';
+import { setLimit as setSearchByCategoryLimit } from 'redux/Recipes/searchByCategory/slice';
+import { setLimit as setOwnLimit } from 'redux/Recipes/own/slice';
+import { setLimit as setSearchByLimit  } from 'redux/Recipes/SearchBy/slice';
 
 const Start = lazy(() => import('pages/Start'));
 const Register = lazy(() => import('pages/Register'));
@@ -26,18 +32,35 @@ const ShoppingList = lazy(() => import('pages/ShoppingList'));
 const NotFound = lazy(() => import('pages/NotFound'));
 const Verify = lazy(() => import('pages/Verify'));
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth();
+  const {device} = useApp();
+
+
+  const handlerOnWindowResize = useCallback(() => {
+    const currDevice = getMedia();
+    if (device !== currDevice)
+    Promise.all(dispatch(setDevice(currDevice)),
+    dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
+    dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
+    dispatch(setOwnLimit(getPageLimit('own',currDevice))),
+    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
+    );
+    
+  },[device,dispatch]);
 
   useEffect(() => {
-    const device = getMedia();
-    dispatch(setDevice(device));
-
-    const handlerOnWindowResize = () => {
-      const device = getMedia();
-      dispatch(setDevice(device));
-    };
+    const currDevice = getMedia();
+    
+    Promise.all(dispatch(setDevice(currDevice)),
+    dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
+    dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
+    dispatch(setOwnLimit(getPageLimit('own',currDevice))),
+    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
+    );
+    
     const addHandler = () => {
       window.addEventListener('resize', handlerOnWindowResize);
     };
@@ -49,7 +72,7 @@ export const App = () => {
       };
       removeHandler();
     };
-  }, [dispatch]);
+  }, [dispatch,handlerOnWindowResize]);
 
   useEffect(() => {
     if (isLoggedIn || token === null) return;
