@@ -34,5 +34,7 @@ export const OtherCategoriesButton = styled(Link)`
     &:focus {
         background-color: var(--color-accent);
         color: var(--color-main);
+        transition: background-color var(--transition-time) var(--cubic);
+
     }
 `

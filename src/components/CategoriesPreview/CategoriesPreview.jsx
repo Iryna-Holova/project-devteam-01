@@ -1,5 +1,6 @@
-import { Container, ButtonContainer, OtherCategoriesButton } from './CategoriesPreview.styled';
 import CategoriesList from './CategoriesList/CategoriesList';
+import { Container, ButtonContainer, OtherCategoriesButton } from './CategoriesPreview.styled';
+
 const CategoriesPreview = ({recipes}) => {
     return (
         <>
