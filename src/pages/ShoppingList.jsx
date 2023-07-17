@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Container } from '../components/ShoppingList/IngredientsShoppinglist.styled';
 import MainTitle from '../components/MainTitle/MainTitle';
 import IngredientsShoppingList from '../components/ShoppingList/IngredientsShoppingList';
-import ingredientsData from '../data/ingredients';
+import { fetchIngredients, deleteIngredient } from '../redux/ShoppingList/operations';
 
-const ShoppingList = () => {
-  const [ingredients, setIngredients] = useState([]);
-
+const ShoppingList = ({ ingredients, fetchIngredients, deleteIngredient }) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIngredients(ingredientsData.slice(0, 5));
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
+    fetchIngredients();
+  }, [fetchIngredients]);
 
   const handleDelete = (id) => {
-    const updatedIngredients = ingredients.filter((ingredient) => ingredient._id.$oid !== id);
-    setIngredients(updatedIngredients);
+    deleteIngredient(id);
   };
 
   return (
@@ -30,4 +24,13 @@ const ShoppingList = () => {
   );
 };
 
-export default ShoppingList;
+const mapStateToProps = (state) => ({
+  ingredients: state.shoppingList.ingredients,
+});
+
+const mapDispatchToProps = {
+  fetchIngredients,
+  deleteIngredient,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
   HeaderContainer,
@@ -18,8 +19,12 @@ import {
 
 import removeIcon from '../../assets/images/X.png';
 import emptyListImage from '../../assets/images/empty-img.png';
+import { deleteIngredient } from '../../redux/ShoppingList/operations';
 
-const IngredientsShoppingList = ({ ingredients, onDelete }) => {
+const IngredientsShoppingList = ({ onDelete }) => {
+  const dispatch = useDispatch();
+  const ingredients = useSelector((state) => state.shoppingList.ingredients);
+
   if (ingredients.length === 0) {
     return (
       <Container>
@@ -43,9 +48,9 @@ const IngredientsShoppingList = ({ ingredients, onDelete }) => {
             <IngredientName>{ingredient.name}</IngredientName>
             <IngredientDetails>
               <IngredientQuantity>
-                <QuantityIndicator>10</QuantityIndicator>
+                <QuantityIndicator>{ingredient.quantity}</QuantityIndicator>
               </IngredientQuantity>
-              <RemoveButton onClick={() => onDelete(ingredient._id.$oid)}>
+              <RemoveButton onClick={() => dispatch(deleteIngredient(ingredient._id.$oid))}>
                 <img src={removeIcon} alt="Remove" className="remove-icon" />
               </RemoveButton>
             </IngredientDetails>
