@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { ListItem, CategoryTitle } from "./CategoriesList.styled";
-// TODO: uncomment when merged with main, because deleted buttons folder 
-// import { SeeAllButton } from "components/Buttons/Buttons.styled";
+import { ListItem, CategoryTitle, ButtonContainer, SeeAllButton } from "./CategoriesList.styled";
 import { Recipe, RecipeImg, Description, RecipeContainer, List} from "components/RecipeGallery/RecipeGallery.styled";
 import IngredientsPlaceholder from '../../../assets/food-default.svg';
 
@@ -27,7 +25,9 @@ const CategoriesList = ({ recipes }) => {
                         </Recipe>
                         ))}
                     </List>
-                    <Link to={`/categories/${category}`}>See all</Link>
+                    <ButtonContainer>
+                        <SeeAllButton to={`/categories/${category}`}>See all</SeeAllButton>
+                    </ButtonContainer>
                 </ListItem>
             ))}
         </List>
