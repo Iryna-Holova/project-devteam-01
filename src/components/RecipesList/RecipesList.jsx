@@ -1,39 +1,66 @@
-import { Loader } from 'components/loader/loader';
-import { RecipeItem } from 'components/RecipeItem/RecipeItem';
-import { RecipesListContainer } from './RecipesList.styled';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export const RecipesList = ({
-  data,
-  cssClass,
-  removeRecipe,
-  isLoading,
-  paginationPage,
-}) => {
+import { FiTrash2 } from 'react-icons/fi';
+import { BsFullscreen } from 'react-icons/bs';
+import { PiCameraFill } from 'react-icons/pi';
+
+import {
+  RecipeItemBtn,
+  RecipeItemContainer,
+  RecipeItemBox,
+  RecipeItemTitle,
+  RecipeItemText,
+  RecipesListContainer,
+  ImagePlaceholder,
+} from './RecipesList.styled';
+
+export const RecipesList = ({ data, removeRecipe }) => {
+  const navigate = useNavigate();
+
   return (
-    <>
-      <RecipesListContainer>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            {data.map(itemProps => {
-              return (
-                <RecipeItem
-                  paginationPage={paginationPage}
-                  remove={() => removeRecipe(itemProps._id)}
-                  key={itemProps._id}
-                  id={itemProps._id}
-                  img={itemProps.thumb}
-                  title={itemProps.title}
-                  description={itemProps.description}
-                  time={itemProps.time}
-                  cssClass={cssClass}
-                ></RecipeItem>
-              );
-            })}
-          </>
-        )}
-      </RecipesListContainer>
-    </>
+    <RecipesListContainer className="container">
+      <>
+        {data.map(({ thumb, _id, title, description, time }) => {
+          return (
+            <RecipeItemContainer key={_id}>
+              <ImagePlaceholder>
+                <BsFullscreen style={{ width: '40px', height: '40px' }} />
+                <PiCameraFill />
+                <img src={thumb} loading="lazy" alt={title} />
+              </ImagePlaceholder>
+              <RecipeItemBox>
+                <RecipeItemText>
+                  <RecipeItemTitle>
+                    <h3>{title}</h3>
+                    <button
+                      onClick={() => {
+                        removeRecipe(_id);
+                      }}
+                    >
+                      <FiTrash2 />
+                    </button>
+                  </RecipeItemTitle>
+                  <p>{description}</p>
+                </RecipeItemText>
+
+                <RecipeItemBtn>
+                  <p>
+                    {time} {time.includes('min') ? '' : 'min'}
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigate(`/recipe/${_id}`);
+                    }}
+                  >
+                    See recipe
+                  </button>
+                </RecipeItemBtn>
+              </RecipeItemBox>
+            </RecipeItemContainer>
+          );
+        })}
+      </>
+    </RecipesListContainer>
   );
 };
