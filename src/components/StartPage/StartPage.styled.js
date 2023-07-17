@@ -37,7 +37,7 @@ export const Wrapper = styled.div`
   position: absolute;
   left: 50%;
   gap: 14px;
-  background-color: #ffffff; /* Додайте колір фону, який ви бажаєте використовувати */
+  background-color: var(--color-accent-secondary); /* Додайте колір фону, який ви бажаєте використовувати */
   
   background-repeat: no-repeat;
   background-image: 
