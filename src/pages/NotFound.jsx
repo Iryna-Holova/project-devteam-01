@@ -5,13 +5,13 @@ import MainTitle from 'components/MainTitle/MainTitle';
 const NotFound = () => {
   return (
     <>
-      <MainTitle>Not Found</MainTitle>
+      <MainTitle className="transparent">Not Found</MainTitle>
       <div style={{ textAlign: 'center' }}>
         <Icon>
           <use href={sprite + '#not-found-page'}></use>
         </Icon>
         <Title>We are sorry,</Title>
-        <Text>but the page you were looking for can’t be found..</Text>
+        <Text>but the page you were looking for can’t be found...</Text>
       </div>
     </>
   );
