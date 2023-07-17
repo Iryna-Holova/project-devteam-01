@@ -5,6 +5,8 @@ import { FiTrash2 } from 'react-icons/fi';
 import { BsFullscreen } from 'react-icons/bs';
 import { PiCameraFill } from 'react-icons/pi';
 
+import scrollToTop from 'utils/scroll-to-top';
+
 import {
   RecipeItemBtn,
   RecipeItemContainer,
@@ -51,6 +53,7 @@ export const RecipesList = ({ data, removeRecipe }) => {
                   <button
                     onClick={() => {
                       navigate(`/recipe/${_id}`);
+                      scrollToTop();
                     }}
                   >
                     See recipe
