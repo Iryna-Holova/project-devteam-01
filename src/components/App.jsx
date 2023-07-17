@@ -11,11 +11,11 @@ import { RestrictedRoute } from './RestrictedRoute';
 
 import Test from 'pages/Test';
 import useApp from 'hooks/useApp';
-import { setLimit as setFavoriteLimit} from 'redux/Recipes/favorite/slice';
+import { setLimit as setFavoriteLimit } from 'redux/Recipes/favorite/slice';
 import getPageLimit from 'utils/getPageLimit';
 import { setLimit as setSearchByCategoryLimit } from 'redux/Recipes/searchByCategory/slice';
 import { setLimit as setOwnLimit } from 'redux/Recipes/own/slice';
-import { setLimit as setSearchByLimit  } from 'redux/Recipes/SearchBy/slice';
+import { setLimit as setSearchByLimit } from 'redux/Recipes/SearchBy/slice';
 import { Loader } from './loader/loader';
 
 const Start = lazy(() => import('pages/Start'));
@@ -33,35 +33,30 @@ const ShoppingList = lazy(() => import('pages/ShoppingList'));
 const NotFound = lazy(() => import('pages/NotFound'));
 const Verify = lazy(() => import('pages/Verify'));
 
-
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth();
-  const {device} = useApp();
-
+  const { device } = useApp();
 
   const handlerOnWindowResize = useCallback(() => {
     const currDevice = getMedia();
     if (device !== currDevice)
-    Promise.all(dispatch(setDevice(currDevice)),
-    dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
-    dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
-    dispatch(setOwnLimit(getPageLimit('own',currDevice))),
-    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
-    );
-    
-  },[device,dispatch]);
+      Promise.all([dispatch(setDevice(currDevice)),
+        dispatch(setFavoriteLimit(getPageLimit('favorite', currDevice))),
+        dispatch(setSearchByCategoryLimit(getPageLimit('search', currDevice))),
+        dispatch(setOwnLimit(getPageLimit('own', currDevice))),
+        dispatch(setSearchByLimit(getPageLimit('search', currDevice)))]);
+  }, [device, dispatch]);
 
   useEffect(() => {
     const currDevice = getMedia();
-    
-    Promise.all(dispatch(setDevice(currDevice)),
-    dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
-    dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
-    dispatch(setOwnLimit(getPageLimit('own',currDevice))),
-    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
-    );
-    
+
+    Promise.all([dispatch(setDevice(currDevice)),
+      dispatch(setFavoriteLimit(getPageLimit('favorite', currDevice))),
+      dispatch(setSearchByCategoryLimit(getPageLimit('search', currDevice))),
+      dispatch(setOwnLimit(getPageLimit('own', currDevice))),
+      dispatch(setSearchByLimit(getPageLimit('search', currDevice)))]);
+
     const addHandler = () => {
       window.addEventListener('resize', handlerOnWindowResize);
     };
@@ -73,7 +68,7 @@ export const App = () => {
       };
       removeHandler();
     };
-  }, [dispatch,handlerOnWindowResize]);
+  }, [dispatch, handlerOnWindowResize]);
 
   useEffect(() => {
     if (isLoggedIn || token === null) return;
@@ -82,9 +77,9 @@ export const App = () => {
   }, [dispatch, isLoggedIn, token]);
 
   return isRefreshing ? (
-    <Loader className={'page'}/>
+    <Loader className={'page'} />
   ) : (
-    <Suspense fallback={<Loader className={'page'}/>}>
+    <Suspense fallback={<Loader className={'page'} />}>
       <Routes>
         <Route
           path="/start"

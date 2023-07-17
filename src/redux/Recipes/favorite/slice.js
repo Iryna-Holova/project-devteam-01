@@ -57,12 +57,16 @@ export const favoriteRecipesSlice = createSlice({
           state.error = null;
           //  console.log(payload);
 
-          const result = state.items.filter(item => {
-            // console.log(item, payload.recipeId);
-            return item._id !== payload.recipeId;
-          });
-          console.log(result);
-          state.items = [...result];
+        
+         
+          const index = state.items.findIndex(item => item._id === payload.recipeId);
+    
+          state.items.splice(index, 1);
+    
+
+
+
+          //state.items = [...result];
           state.total = state.total - 1;
           state.isLoading = false;
           state.pages = Math.ceil(state.total / state.limit);
