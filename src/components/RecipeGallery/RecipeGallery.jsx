@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import {
   RecipeContainer,
   RecipeImg,
@@ -7,12 +6,11 @@ import {
   Recipe,
   Description,
 } from './RecipeGallery.styled';
-
 import IngredientsPlaceholder from '../../assets/food-default.svg';
-
 const RecipeGallery = ({ recipes = null }) => {
   return (
     recipes && (
+      <>
       <List className="container">
         {recipes.map(({ _id, title, thumb }) => (
           <Recipe key={_id}>
@@ -31,6 +29,7 @@ const RecipeGallery = ({ recipes = null }) => {
           </Recipe>
         ))}
       </List>
+      </>
     )
   );
 };
