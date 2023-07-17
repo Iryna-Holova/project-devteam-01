@@ -16,7 +16,7 @@ import {
   EmptyListText,
 } from './IngredientsShoppinglist.styled';
 
-import removeIcon from '../../assets/X.png';
+import removeIcon from '../../assets/images/X.png';
 import emptyListImage from '../../assets/images/empty-img.png';
 
 const IngredientsShoppingList = ({ ingredients, onDelete }) => {

@@ -13,8 +13,8 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(139, 170, 54, 1);
-  color: #fff;
+  background-color: var(--color-accent);
+  color: var(--color-text);
   margin-left: 8px;
   margin-right: 8px;
   border-radius: 8px;
@@ -40,7 +40,7 @@ const HeaderContainer = styled.div`
 
 
 const Title = styled.div`
-color: #FAFAFA;
+color: var(--color-main);
 font-family: Poppins;
 font-size: 12px;
 font-weight: 600;
@@ -63,7 +63,7 @@ const TitleN = styled.div`
 display: block;
 margin-left: 148px;
 margin-right: 0;
-color: #FAFAFA;
+color: var(--color-main);
 font-family: Poppins;
 font-size: 12px;
 font-weight: 600;
@@ -133,7 +133,7 @@ const IngredientImage = styled.img`
   height: 60px;
   padding: 6px;
   border-radius: 8px;
-  background: #ebf3d4;
+  background: var(--color-accent-secondary);
   margin-right: 10px;
 
   
@@ -162,7 +162,7 @@ const IngredientName = styled.span`
   font-weight: bold;
   
   margin-top: 0;
-  color: #3E4462;
+  color: var(--color-text-secondary);
   font-family: Poppins;
   font-size: 10px;
   font-weight: 500;
@@ -179,8 +179,8 @@ const IngredientName = styled.span`
 const QuantityIndicator = styled.div`
   width: 37px;
   height: 23px;
-  background-color: #8baa36;
-  color: #fff;
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,7 +202,7 @@ const QuantityIndicator = styled.div`
 
 
 const IngredientQuantity = styled.span`
-color: #FAFAFA;
+color: var(--color-main);
 text-align: center;
 font-family: Poppins;
 font-size: 10px;
@@ -260,7 +260,7 @@ export const EmptyListImage = styled.img`
 `;
 
 export const EmptyListText = styled.p`
-  color: #000;
+  color: var(--color-text-primary);
   font-family: Poppins;
   font-size: 24px;
   margin-left: 55px;

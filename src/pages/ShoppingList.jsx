@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import ingredientsData from '../data/ingredients';
-import IngredientsShoppingList from '../components/ShoppingList/IngredientsShoppingList';
 import { Container } from '../components/ShoppingList/IngredientsShoppinglist.styled';
 import MainTitle from '../components/MainTitle/MainTitle';
+import IngredientsShoppingList from '../components/ShoppingList/IngredientsShoppingList';
+import ingredientsData from '../data/ingredients';
 
 const ShoppingList = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -22,7 +22,7 @@ const ShoppingList = () => {
 
   return (
     <div>
-       <MainTitle>Shopping List</MainTitle>
+      <MainTitle>Shopping List</MainTitle>
       <Container> 
         <IngredientsShoppingList ingredients={ingredients} onDelete={handleDelete} />
       </Container>
