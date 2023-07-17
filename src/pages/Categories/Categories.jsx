@@ -17,6 +17,7 @@ import RecipeGallery from 'components/RecipeGallery/RecipeGallery';
 import MainTitle from 'components/MainTitle/MainTitle';
 import { StyledDiv } from './Categories.styled';
 import Pagination from '../../components/Pagination/Pagination';
+import { Loader } from 'components/loader/loader';
 
 const Categories = () => {
   const { categoryName } = useParams();
@@ -28,15 +29,18 @@ const Categories = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     if (categories.length === 0) {
-      dispatch(getCategoriesList());
+      dispatch(getCategoriesList()).then(() => {
+        setIsLoading(false);
+      });
     }
   }, [dispatch, categories]);
 
   useEffect(() => {
-   // const curLimit = utils.getPageLimit('category', device);
 
     if (query === categoryName) return;
     dispatch(setQuery(categoryName));
@@ -73,10 +77,15 @@ return (
       handleCategoryChange={handleCategoryChange}
     />
 
-    {recipes && recipes.length && (
+    {isLoading ? (
+      <Loader />
+    ) : (
       <>
         <RecipeGallery
-          recipes={recipes.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)}
+          recipes={recipes.slice(
+            (currentPage - 1) * itemsPerPage,
+            currentPage * itemsPerPage
+          )}
         />
         <Pagination
           totalPages={totalPages}
