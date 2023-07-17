@@ -14,8 +14,6 @@ const Pagination = ({
   onClick,
   scrollId = null,
 }) => {
-
-
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -51,20 +49,26 @@ const Pagination = ({
   };
 
   const handlePageNumberClick = (pageNumber) => {
-    onClick(pageNumber);
+    if (currentPage !== pageNumber) {
+      onClick(pageNumber);
+    }
   };
 
+  const isPrevDisabled = currentPage === 1;
+  const isNextDisabled = currentPage === totalPages;
 
   return (
     <Container>
       <StyledChevronLeft
         size={30}
         onClick={handlePreviousPageClick}
+        disabled={isPrevDisabled}
+        style={{ opacity: isPrevDisabled ? 0.5 : 1 }}
       />
       {displayedPageNumbers.map((page) => (
         <Page
           key={page}
-          active={currentPage === page ? 'true' : 'false'}
+          $active={currentPage === page ? 'true' : 'false'}
           onClick={() => {
             handlePageNumberClick(page);
           }}
@@ -75,6 +79,8 @@ const Pagination = ({
       <StyledChevronRight
         size={30}
         onClick={handleNextPageClick}
+        disabled={isNextDisabled}
+        style={{ opacity: isNextDisabled ? 0.5 : 1 }}
       />
     </Container>
   );
