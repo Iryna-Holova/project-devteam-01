@@ -27,7 +27,7 @@ const ThemeToggler = () => {
       checked={isDarkMode}
       onChange={handleThemeToggle}
       onColor="#8BAA36"
-      offColor="#EFEFEF"
+      offColor="#251d1d"
       onHandleColor="#E8EAEA"
       offHandleColor="#8BAA36"
       activeBoxShadow="0 0 2px 3px #8BAA36"
