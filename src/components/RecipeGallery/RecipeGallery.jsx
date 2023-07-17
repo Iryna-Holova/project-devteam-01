@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import scrollToTop from 'utils/scroll-to-top';
+
 import {
   RecipeContainer,
   RecipeImg,
@@ -6,16 +9,23 @@ import {
   Recipe,
   Description,
 } from './RecipeGallery.styled';
+
 import IngredientsPlaceholder from '../../assets/food-default.svg';
+
 const RecipeGallery = ({ recipes = null }) => {
+  const navigate = useNavigate();
   return (
     recipes && (
       <>
-      <List className="container">
-        {recipes.map(({ _id, title, thumb }) => (
-          <Recipe key={_id}>
-            <Link to={`/recipe/${_id}`}>
-              <RecipeContainer>
+        <List className="container">
+          {recipes.map(({ _id, title, thumb }) => (
+            <Recipe key={_id}>
+              <RecipeContainer
+                onClick={() => {
+                  navigate(`/recipe/${_id}`);
+                  scrollToTop();
+                }}
+              >
                 <Description>
                   <p>{title}</p>
                 </Description>
@@ -25,10 +35,9 @@ const RecipeGallery = ({ recipes = null }) => {
                   alt={title}
                 />
               </RecipeContainer>
-            </Link>
-          </Recipe>
-        ))}
-      </List>
+            </Recipe>
+          ))}
+        </List>
       </>
     )
   );
