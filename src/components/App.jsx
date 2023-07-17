@@ -42,11 +42,11 @@ export const App = () => {
   const handlerOnWindowResize = useCallback(() => {
     const currDevice = getMedia();
     if (device !== currDevice)
-    Promise.all(dispatch(setDevice(currDevice)),
+    Promise.all([dispatch(setDevice(currDevice)),
     dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
     dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
     dispatch(setOwnLimit(getPageLimit('own',currDevice))),
-    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
+    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))]
     );
     
   },[device,dispatch]);
@@ -54,11 +54,11 @@ export const App = () => {
   useEffect(() => {
     const currDevice = getMedia();
     
-    Promise.all(dispatch(setDevice(currDevice)),
+    Promise.all([dispatch(setDevice(currDevice)),
     dispatch(setFavoriteLimit(getPageLimit('favorite',currDevice))),
     dispatch(setSearchByCategoryLimit(getPageLimit('search',currDevice))),
     dispatch(setOwnLimit(getPageLimit('own',currDevice))),
-    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))
+    dispatch(setSearchByLimit(getPageLimit('search',currDevice)))]
     );
     
     const addHandler = () => {

@@ -1,3 +1,4 @@
+import { Ingredient } from './Ingredient';
 import { Table, TableBody, TableHead } from './IngredientsTable.styled';
 
 export const IngredientsTable = ({ ingredients, recipeId }) => {
@@ -16,6 +17,17 @@ export const IngredientsTable = ({ ingredients, recipeId }) => {
       <TableBody>
         {ingredients.map(({ id, img, name, mesure }) => {
           return (
+            <Ingredient
+              key={id}
+              id={id}
+              img={img}
+              name={name}
+              mesure={mesure}
+              recipeId={recipeId}
+            />
+          );
+          {
+            /* (
             <li key={id}>
               <div>
                 <img src={img} loading="lazy" alt={name} />
@@ -30,7 +42,8 @@ export const IngredientsTable = ({ ingredients, recipeId }) => {
                 </button>
               </div>
             </li>
-          );
+          ); */
+          }
         })}
       </TableBody>
     </Table>
