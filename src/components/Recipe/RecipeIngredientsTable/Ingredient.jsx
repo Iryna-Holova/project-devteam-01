@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addToShoppingListV2Thunk,
@@ -13,7 +13,7 @@ export const Ingredient = ({ id, img, name, mesure, recipeId }) => {
   );
   //const [isInSPL, setInSPL] = useState(isInShoppingList);
 
-  console.log(id, img, name, mesure, recipeId);
+  //console.log(id, img, name, mesure, recipeId);
 
   const handleShoppingListButton = () => {
     console.log(isInShoppingList);

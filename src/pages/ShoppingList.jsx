@@ -19,7 +19,7 @@ const ShoppingList = () => {
 
   useEffect(() => {
     console.log(shoppingList);
-  }, [ShoppingList]);
+  }, [shoppingList]);
 
   const handleDelete = id => {
     const updatedIngredients = ingredients.filter(
