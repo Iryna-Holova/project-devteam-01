@@ -1,11 +1,11 @@
 import CategoriesList from './CategoriesList/CategoriesList';
 import { Container, ButtonContainer, OtherCategoriesButton } from './CategoriesPreview.styled';
 
-const CategoriesPreview = ({recipes}) => {
+const CategoriesPreview = ({recipesByCategory}) => {
     return (
         <>
             <Container className="container">
-                <CategoriesList recipes={recipes} />
+                <CategoriesList recipesByCategory={recipesByCategory} />
                 <ButtonContainer>
                     <OtherCategoriesButton to="/categories/beef">Other categories</OtherCategoriesButton>
                 </ButtonContainer>
