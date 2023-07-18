@@ -145,9 +145,9 @@ export const App = () => {
             element={
               <PrivateRoute redirectTo="/start" component={<MyRecipes />} />
             }
-          />
+            />
           <Route
-            path="search"
+            path="search/:searchQuery?"
             element={
               <PrivateRoute redirectTo="/start" component={<Search />} />
             }
