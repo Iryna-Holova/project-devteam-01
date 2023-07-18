@@ -1,30 +1,16 @@
-import { Link } from "react-router-dom";
+import RecipeGallery from "components/RecipeGallery/RecipeGallery";
 import { ListItem, CategoryTitle, ButtonContainer, SeeAllButton } from "./CategoriesList.styled";
-import { Recipe, RecipeImg, Description, RecipeContainer, List} from "components/RecipeGallery/RecipeGallery.styled";
-import IngredientsPlaceholder from '../../../assets/food-default.svg';
+import { List} from "components/RecipeGallery/RecipeGallery.styled";
 
-const CategoriesList = ({ recipes }) => {
+const CategoriesList = ({ recipesByCategory }) => {
     return (
         <List>
-            {recipes && Object.keys(recipes).map(category => (
+            {recipesByCategory && Object.keys(recipesByCategory).map(category => (
                 <ListItem key={category}>
                     <CategoryTitle>
                         {category}
                     </CategoryTitle>
-                    <List>
-                        {recipes[category].map(({ _id, title, thumb }, index) => (
-                        <Recipe key={index}>
-                                <Link to={`/recipe/${_id}`}>
-                            <RecipeContainer>
-                                <Description>
-                                <p>{title}</p>
-                                </Description>
-                                <RecipeImg src={thumb ? thumb: IngredientsPlaceholder} loading="lazy" alt={title} />
-                            </RecipeContainer>
-                            </Link>
-                        </Recipe>
-                        ))}
-                    </List>
+                    <RecipeGallery recipes={recipesByCategory[category]} />
                     <ButtonContainer>
                         <SeeAllButton to={`/categories/${category}`}>See all</SeeAllButton>
                     </ButtonContainer>
