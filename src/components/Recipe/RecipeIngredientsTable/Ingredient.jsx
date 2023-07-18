@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addToShoppingListV2Thunk,
-  removeFromShoppingListV2Thunk,
+  delFromShoppingListV2Thunk,
 } from 'redux/ShoppingListV2/operations';
 import { selectIsInShoppingList } from 'redux/ShoppingListV2/selectors';
 
@@ -18,7 +18,7 @@ export const Ingredient = ({ id, img, name, mesure, recipeId }) => {
   const handleShoppingListButton = () => {
     console.log(isInShoppingList);
     if (isInShoppingList)
-      dispatch(removeFromShoppingListV2Thunk({ recipeId, id }));
+      dispatch(delFromShoppingListV2Thunk({ recipeId, id }));
     else dispatch(addToShoppingListV2Thunk({ recipeId, id, mesure }));
     //setInSPL(!isInSPL);
   };
