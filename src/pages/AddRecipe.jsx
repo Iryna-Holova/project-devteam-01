@@ -11,7 +11,7 @@ const AddRecipe = () => {
       <MainTitle>Add recipe page</MainTitle>
       <AddRecipeForm />
 
-      {/* <PopularRecipe />  */}
+     <PopularRecipe />  
 
     </>
   )
