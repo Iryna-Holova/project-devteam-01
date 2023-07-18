@@ -11,6 +11,7 @@ import {
 } from 'redux/Recipes/favorite/operations';
 import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/use-auth';
+import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
 
 const Recipe = () => {
   const { recipeId } = useParams();
@@ -22,6 +23,7 @@ const Recipe = () => {
 
   useEffect(() => {
     dispatch(getFavoriteRecipesThunk({ limit: 999999 }));
+    dispatch(getShoppingListV2Thunk());
   }, [dispatch]);
 
   useEffect(() => {

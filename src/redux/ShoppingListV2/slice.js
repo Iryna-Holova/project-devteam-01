@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, current, isAnyOf } from '@reduxjs/toolkit';
 
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 import {
@@ -7,7 +7,7 @@ import {
   getShoppingListV2Thunk,
 } from './operations';
 
-//const itemObj = {_id:'',name:'',img:'',mesures:[{recipeID:'',title:'',description:'',img:'',measure:''}]};
+//const itemObj = {_id:'',name:'',img:'',measures:[{recipeID:'',title:'',description:'',img:'',measure:''}]};
 
 const initialState = {
   items: [],
@@ -25,7 +25,7 @@ export const shoppingListV2Slice = createSlice({
       .addCase(getShoppingListV2Thunk.fulfilled, (state, { payload }) => {
         // console.log(payload);
         state.error = null;
-        // state.items = [...payload.recipes];
+        state.items = [...payload];
 
         state.isLoading = false;
 
@@ -35,10 +35,11 @@ export const shoppingListV2Slice = createSlice({
         console.log('del');
         state.error = null;
         //console.log(payload);
+
         const { recipeId, id } = payload;
         const indexInSL = state.items.findIndex(({ _id }) => _id === id);
-        const tmp = [...state.items];
-        console.log(tmp);
+        const tmp = state.items[indexInSL];
+        console.log('tmp', tmp);
         // before adding check measure
         if (indexInSL >= 0) {
           console.log(state.items[indexInSL], indexInSL);
@@ -58,7 +59,7 @@ export const shoppingListV2Slice = createSlice({
         state.status = RESOLVED;
       })
       .addCase(addToShoppingListV2Thunk.fulfilled, (state, { payload }) => {
-        console.log('add');
+        console.log('add', state);
         state.error = null;
         //console.log(payload);
         const { recipeId, id, mesure } = payload;
