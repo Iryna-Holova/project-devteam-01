@@ -27,14 +27,11 @@ export const EditProfileButton = styled.button`
 export const LogoutButton = styled.button`
   background-color: var(--color-accent);
   color: var(--color-secondary);
-  border: none;
   padding: 12px 27px;
   border-radius: 24px 44px;
-  cursor: pointer;
   display: flex;
   gap: 4px;
   align-items: center;
-  font-family: inherit;
   font-size: 14px;
   font-weight: 400;
   transition: background-color var(--transition-time) var(--cubic);

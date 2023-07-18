@@ -18,7 +18,7 @@ import { setLimit as setOwnLimit } from 'redux/Recipes/own/slice';
 import { setLimit as setSearchByLimit  } from 'redux/Recipes/SearchBy/slice';
 import { Loader } from './loader/loader';
 
-const Start = lazy(() => import('pages/Start'));
+const Start = lazy(() => import('pages/Start/Start'));
 const Register = lazy(() => import('pages/Register'));
 const Signin = lazy(() => import('pages/Signin'));
 const SharedLayout = lazy(() => import('pages/SharedLayout'));
