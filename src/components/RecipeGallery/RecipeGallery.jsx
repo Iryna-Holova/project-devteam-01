@@ -13,7 +13,6 @@ import IngredientsPlaceholder from '../../assets/images/defaultDish.png';
 
 const RecipeGallery = ({ recipes = null }) => {
   const navigate = useNavigate();
-
   return (
     recipes && (
       <>

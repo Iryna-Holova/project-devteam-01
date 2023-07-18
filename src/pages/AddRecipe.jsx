@@ -2,7 +2,7 @@ import MainTitle from "components/MainTitle/MainTitle";
 // import RecipeDescription from 'components/AddRecipePage/AddRecipeForm/RecipeDescription/RecipeDescription';
 import AddRecipeForm from "../components/AddRecipePage/AddRecipeForm";
 
-import PopularRecipe from "../components/AddRecipePage/PopularRecipe/PopularRecipe";
+// import PopularRecipe from "../components/AddRecipePage/PopularRecipe/PopularRecipe";
 
 
 const AddRecipe = () => {
