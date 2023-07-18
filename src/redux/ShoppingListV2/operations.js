@@ -46,13 +46,14 @@ export const addToShoppingListV2Thunk = createAsyncThunk(
 
 export const removeFromShoppingListV2Thunk = createAsyncThunk(
   'shoppinglistv2/removeFromShoppingList',
-  async (ingredient, thunkAPI) => {
+  async ({recipeId,id}, thunkAPI) => {
     try {
     //   const response = await recipesServices.deleteFromFavorite({
     //     id: recipeId,
     //   });
     //   if (response.status === 200) return { response, recipeId };
     //   else thunkAPI.rejectWithValue(response.message);
+    return {recipeId,id}
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -8,7 +8,7 @@ import { selectIsInShoppingList } from 'redux/ShoppingListV2/selectors';
 
 export const Ingredient = ({ id, img, name, mesure, recipeId }) => {
   const dispatch = useDispatch();
-  const { isInShoppingList } = useSelector(state =>
+  const isInShoppingList = useSelector(state =>
     selectIsInShoppingList(state, id, recipeId)
   );
   //const [isInSPL, setInSPL] = useState(isInShoppingList);
