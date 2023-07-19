@@ -1,4 +1,7 @@
 import React from 'react';
+
+import scrollToTop from 'utils/scroll-to-top';
+
 import {
   Container,
   StyledChevronLeft,
@@ -39,18 +42,21 @@ const Pagination = ({
   const handlePreviousPageClick = () => {
     if (currentPage > 1) {
       onClick(currentPage - 1);
+      scrollToTop();
     }
   };
 
   const handleNextPageClick = () => {
     if (currentPage < totalPages) {
       onClick(currentPage + 1);
+      scrollToTop();
     }
   };
 
   const handlePageNumberClick = (pageNumber) => {
     if (currentPage !== pageNumber) {
       onClick(pageNumber);
+      scrollToTop();
     }
   };
 
