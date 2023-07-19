@@ -43,7 +43,7 @@ export const HeroContainer = styled.div`
 
   & a {
     position: absolute;
-    top: 50px;
+    top: 90px;
     left: 50%;
     color: var(--color-icons);
     transform: translate(-50%, 0);
