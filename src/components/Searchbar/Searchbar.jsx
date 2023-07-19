@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import {Input, Btn, Select, Div, Form} from './Searchbar.styled'
-
+import {Input, Btn,  Label, Select, Option, Div, Form} from './Searchbar.styled'
 
 import { useDispatch } from 'react-redux';
 import {getSearchByThunk} from '../../redux/Recipes/SearchBy/operations'
@@ -10,7 +9,7 @@ import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../../utils/constants'
 
   
   
-export function Searchbar ({onSubmit}) {
+export function Searchbar ({onSubmit, className}) {
     const [value, setValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('title')
     const [isTyping, setIsTyping] = useState(false)
@@ -40,7 +39,6 @@ export function Searchbar ({onSubmit}) {
     
    }
 
-
 // Ефект для отправки запроса если пользователь сделает паузу при вводе запроса   
   useEffect(()=> {
     if (!isTyping || value.trim() === '') {
@@ -61,8 +59,6 @@ export function Searchbar ({onSubmit}) {
     return () => clearTimeout(delayDebounceRequest);
   }, [value, selectedValue,isTyping, dispatch ])
 
-  
-
 // Отправка введенных значений по клику  
   const handleSubmit = e => {
     e.preventDefault();
@@ -81,25 +77,26 @@ export function Searchbar ({onSubmit}) {
           <Form>
             <Div>
             <Input
-                type="text"
-                name="value"
-                autoComplete="off"
-                autoFocus
-                placeholder="Search recipes"
-                onChange={handleInputChange}
-                value={value}
+              className={className}
+              type="text"
+              name="value"
+              autoComplete="off"
+              autoFocus
+              placeholder="Search recipes"
+              onChange={handleInputChange}
+              value={value}
               />
-           <Btn onClick={handleSubmit} type="submit">Search</Btn>
+           <Btn className={className} onClick={handleSubmit} type="submit">Search</Btn>
             </Div>
            
            
-            {location.pathname === '/search' && <label>
+            {location.pathname === '/search' && < Label>
             Search by: <Select onChange={handleSelectChange}>
                 
-                <option name="title" value="title">Title</option>
-                <option name="ingredients" value="ingredients">Ingredients</option>
+                <Option name="title" value="title">Title</Option>
+                <Option name="ingredients" value="ingredients">Ingredients</Option>
                 
-            </Select></label>}
+            </Select></Label>}
            
            
           </Form>

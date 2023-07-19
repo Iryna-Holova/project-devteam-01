@@ -17,25 +17,26 @@ import {
   ImagePlaceholder,
 } from './RecipesList.styled';
 
-export const RecipesList = ({ data, removeRecipe }) => {
+export const RecipesList = ({ data, removeRecipe, className }) => {
   const navigate = useNavigate();
 
   return (
     <RecipesListContainer className="container">
       <>
-        {data.map(({ thumb, _id, title, description, time }) => {
+        {data.map(({ preview, _id, title, description, time }) => {
           return (
             <RecipeItemContainer key={_id}>
               <ImagePlaceholder>
                 <BsFullscreen style={{ width: '40px', height: '40px' }} />
                 <PiCameraFill />
-                <img src={thumb} loading="lazy" alt={title} />
+                <img src={preview} loading="lazy" alt={title} />
               </ImagePlaceholder>
               <RecipeItemBox>
                 <RecipeItemText>
                   <RecipeItemTitle>
                     <h3>{title}</h3>
                     <button
+                      className={className}
                       onClick={() => {
                         removeRecipe(_id);
                       }}
@@ -51,6 +52,7 @@ export const RecipesList = ({ data, removeRecipe }) => {
                     {time} {time.includes('min') ? '' : 'min'}
                   </p>
                   <button
+                    className={className}
                     onClick={() => {
                       navigate(`/recipe/${_id}`);
                       scrollToTop();

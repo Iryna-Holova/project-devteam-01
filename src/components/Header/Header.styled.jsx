@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
+  z-index: 100;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 200;
 
   position: absolute;
   top: 18px;
@@ -18,162 +19,78 @@ export const HeaderContainer = styled.header`
 export const HeaderContainerStyle = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-`;
+  gap: 24px;
 
-export const BurgerMenu = styled.div`
-  display: none;
-
-  @media (min-width: 320px) {
-    display: block;
-    position: relative;
-    z-index: 999;
-    cursor: pointer;
-  }
-  @media (min-width: 1440px) {
-    display: none;
-  }
-`;
-
-export const BurgerMenuCloseButton = styled.button`
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-
-  &:before,
-  &:after {
-    content: '';
-    position: fixed;
-    width: 24px;
-    height: 2px;
-    background-color: var(--color-footer);
-  }
-
-  &:before {
-    transform: rotate(45deg);
-  }
-
-  &:after {
-    transform: rotate(-45deg);
-  }
-
-  @media (min-width: 1440px) {
-    display: none;
+  @media screen and (min-width: 768px) {
+    gap: 50px;
   }
 `;
 
 export const UserInfo = styled.div`
+  cursor: pointer;
   display: flex;
+  gap: 14px;
   align-items: center;
   position: relative;
-  margin-right: 50px;
 `;
 
 export const UserPhoto = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
 `;
 
 export const UserName = styled.span`
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 600;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const BurgerButton = styled.div`
   cursor: pointer;
-`;
+  width: 28px;
+  height: 28px;
+  color: var(--color-icons);
+  transition: color var(--transition-time) var(--cubic);
+  :hover {
+    color: var(--color-accent);
+  }
+  > svg {
+    color: inherit;
+    width: 28px;
+    height: 28px;
+  }
 
-export const BurgerIcon = styled.div`
-  width: 30px;
-  height: 2px;
-  background-color: var(--color-footer);
-  margin-bottom: 6px;
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+    > svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
 
-  display: ${({ 'data-is-menu-open': isMenuOpen }) =>
-    isMenuOpen ? 'none' : 'block'};
-`;
-
-export const BurgerMenuContent = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: var(--color-accent-secondary);
-  /* background-image: url('../../assets/images/authNavPage/authNavBackgroundMobile.jpg');
-  background-repeat: no-repeat;
-  background-size: cover; */
-  display: ${({ 'data-is-menu-open': isMenuOpen }) =>
-    isMenuOpen ? 'block' : 'none'};
-  align-items: center;
-  flex-direction: column;
-  z-index: 998;
-
-  @media (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     display: none;
   }
 `;
 
-export const LogoStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LogoHeader = styled.a`
-  width: 40px;
-  height: 40px;
-`;
-
-export const CloseButton = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  background-color: var(--color-text);
-  cursor: pointer;
+export const ThemeTogglerStyle = styled.div`
+  display: none;
+  @media (min-width: 1440px) {
+    display: block;
+  }
 `;
 
 export const NavStyle = styled.nav`
   display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 
-  @media (min-width: 1440px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
-export const UserLogoContainer = styled.div`
-  // Styles for the user logo container
-`;
-
-export const UserLogoContent = styled.div`
-  // Styles for the user logo content
-`;
-
-export const LogoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-`;
-
-export const LogoImage = styled.img`
-  // Styles for LogoImage
-`;
-
-export const ThemeTogglerStyle = styled.div`
-  display: none;
   @media (min-width: 1440px) {
     display: block;
   }

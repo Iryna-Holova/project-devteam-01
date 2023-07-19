@@ -18,13 +18,13 @@ import { setLimit as setOwnLimit } from 'redux/Recipes/own/slice';
 import { setLimit as setSearchByLimit } from 'redux/Recipes/SearchBy/slice';
 import { Loader } from './loader/loader';
 
-const Start = lazy(() => import('pages/Start'));
+const Start = lazy(() => import('pages/Start/Start'));
 const Register = lazy(() => import('pages/Register'));
 const Signin = lazy(() => import('pages/Signin'));
 const SharedLayout = lazy(() => import('pages/SharedLayout'));
 const Main = lazy(() => import('pages/Main'));
 const Categories = lazy(() => import('pages/Categories/Categories'));
-const AddRecipe = lazy(() => import('pages/AddRecipe'));
+const AddRecipe = lazy(() => import('pages/AddRecipe/AddRecipe'));
 const Favorite = lazy(() => import('pages/Favorite'));
 const Recipe = lazy(() => import('pages/Recipe'));
 const MyRecipes = lazy(() => import('pages/MyRecipes'));
@@ -41,21 +41,25 @@ export const App = () => {
   const handlerOnWindowResize = useCallback(() => {
     const currDevice = getMedia();
     if (device !== currDevice)
-      Promise.all([dispatch(setDevice(currDevice)),
+      Promise.all([
+        dispatch(setDevice(currDevice)),
         dispatch(setFavoriteLimit(getPageLimit('favorite', currDevice))),
         dispatch(setSearchByCategoryLimit(getPageLimit('search', currDevice))),
         dispatch(setOwnLimit(getPageLimit('own', currDevice))),
-        dispatch(setSearchByLimit(getPageLimit('search', currDevice)))]);
+        dispatch(setSearchByLimit(getPageLimit('search', currDevice))),
+      ]);
   }, [device, dispatch]);
 
   useEffect(() => {
     const currDevice = getMedia();
 
-    Promise.all([dispatch(setDevice(currDevice)),
+    Promise.all([
+      dispatch(setDevice(currDevice)),
       dispatch(setFavoriteLimit(getPageLimit('favorite', currDevice))),
       dispatch(setSearchByCategoryLimit(getPageLimit('search', currDevice))),
       dispatch(setOwnLimit(getPageLimit('own', currDevice))),
-      dispatch(setSearchByLimit(getPageLimit('search', currDevice)))]);
+      dispatch(setSearchByLimit(getPageLimit('search', currDevice))),
+    ]);
 
     const addHandler = () => {
       window.addEventListener('resize', handlerOnWindowResize);
@@ -142,7 +146,7 @@ export const App = () => {
             }
           />
           <Route
-            path="search"
+            path="search/:searchQuery?"
             element={
               <PrivateRoute redirectTo="/start" component={<Search />} />
             }

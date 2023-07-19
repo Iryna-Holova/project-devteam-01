@@ -8,6 +8,7 @@ import {
   selectFavPage,
   selectFavPages,
   selectFavLimit,
+  selectisDeleting,
 } from 'redux/Recipes/favorite/selectors';
 
 const useFavorite = () => {
@@ -20,6 +21,7 @@ const useFavorite = () => {
   const pages = useSelector(selectFavPages);
   const limit = useSelector(selectFavLimit);
   const status = useSelector(selectFavStatus);
+  const isDeleting = useSelector(selectisDeleting);
 
   return {
     isLoading,
@@ -30,6 +32,7 @@ const useFavorite = () => {
     pages,
     limit,
     status,
+    isDeleting,
   };
 };
 

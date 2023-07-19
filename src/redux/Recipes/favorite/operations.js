@@ -25,21 +25,14 @@ export const addToFavoriteRecipesThunk = createAsyncThunk(
   'favorite/addFavorite',
   async (recipe, thunkAPI) => {
     try {
-      console.log(recipe);
+      //console.log(recipe);
       const response = await recipesServices.addToFavorite({
         id: recipe._id,
       });
-      //console.log(response);
+
       if (response.status === 200) return recipe;
       else return thunkAPI.rejectWithValue('Error then try to add to favorite');
-      // const response = await axios.patch(
-      //   `/recipes/${recipeId}/favorite`,
-      //   recipeId
-      // );
-      //  toast.success('Add to Favorites');
-      //return response.data;
     } catch (error) {
-      //  toast.error('Something went wrong, please try again later');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

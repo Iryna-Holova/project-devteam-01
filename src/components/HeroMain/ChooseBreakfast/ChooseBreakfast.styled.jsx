@@ -6,16 +6,17 @@ import saladTablet2x from '../../../assets/images/Main/bg-salad/bg-salad-bowl-ta
 import saladDesk from '../../../assets/images/Main/bg-salad/bg-salad-bowl-desktop-1x.webp';
 import saladDesk2x from '../../../assets/images/Main/bg-salad/bg-salad-bowl-desktop-2x.webp';
 import { Link } from 'react-router-dom';
+import { HiArrowNarrowRight } from 'react-icons/hi';
+
 
 export const Container = styled.div`
     position: sticky;
     margin: 0 auto;
-    margin-bottom: 220px;
+    margin-bottom: 147px;
     background-image: url(${background});
     background-image: -webkit-image-set(
     url(${background}) 1x,
-    url(${background2x}) 2x
-    );
+    url(${background2x}) 2x);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -24,22 +25,22 @@ export const Container = styled.div`
 
     @media screen and (min-width: 768px) {
         position: relative;
-        right: -160px;
+        right: -200px;
         top: -220px;
         margin-bottom: 0px;
         background-image: url(${saladTablet});
         background-image: -webkit-image-set(
         url(${saladTablet}) 1x,
-        url(${saladTablet2x}) 2x
-        );
+        url(${saladTablet2x}) 2x);
+        width: 378px;
+        height: 351px;
     }
 
     @media screen and (min-width: 1440px) {
         background-image: url(${saladDesk});
         background-image: -webkit-image-set(
         url(${saladDesk}) 1x,
-        url(${saladDesk2x}) 2x
-        );
+        url(${saladDesk2x}) 2x);
         width: 578px;
         height: 539px;
         right: -300px;
@@ -58,8 +59,8 @@ export const TextContainer = styled.div`
     
 
      @media screen and (min-width: 768px) {
-        top: 170px;
-        left: 40px;
+        top: 220px;
+        left: 70px;
         width: 260px;
         height: 100px;
      }
@@ -104,11 +105,17 @@ export const Text = styled.p`
 export const StyledLink = styled(Link)`
     margin-left: 135.5px;
     margin-right: 7.5px;
+    width: 18px;
     color: var(--color-text-secondary);
     text-decoration: none;
     font-size: 10px;
     line-height: 1.2;
     letter-spacing: 0.2px;
+
+    &:hover,
+    &:focus {
+        color: var(--color-accent);
+    }
 
     @media screen and (min-width: 768px) {
         margin-left: 164px;
@@ -120,9 +127,7 @@ export const StyledLink = styled(Link)`
     }
 `
 
-export const StyledSvg = styled.svg`
-    width: 19px;
-    height: 18px;
-    cursor: pointer;
-    fill: #3E4462;
+export const Svg = styled(HiArrowNarrowRight)`
+    width: 18px;
+    text-align: center;
 `

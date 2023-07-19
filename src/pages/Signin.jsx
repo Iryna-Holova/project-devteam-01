@@ -18,8 +18,8 @@ const Signin = () => {
   const { status } = useAuth();
 
   const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string().required('Required'),
+    email: Yup.string().email('Please enter a valid email').required('Please enter your email'),
+    password: Yup.string().required('Please enter your password'),
   });
 
   const handleSubmit = (

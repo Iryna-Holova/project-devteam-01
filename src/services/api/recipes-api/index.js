@@ -8,6 +8,11 @@ import { getAllCategories } from './categories';
 import { getOwnRecipes, addOwnRecipe, deleteOwnRecipe } from './own';
 import { getIngredients, getRecipesByIngredient } from './ingredients';
 import { getFavorite, addToFavorite, deleteFromFavorite } from './favorite';
+import {
+  getShoppingList,
+  addToShoppingList,
+  deleteFromShoppingList,
+} from './shopping-list';
 
 const recipesServices = {
   getRecipesMain,
@@ -23,6 +28,9 @@ const recipesServices = {
   getFavorite,
   addToFavorite,
   deleteFromFavorite,
+  getShoppingList,
+  addToShoppingList,
+  deleteFromShoppingList,
 };
 
 export default recipesServices;
