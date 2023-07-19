@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 
 export const CategoryTitle = styled.h3`
-    padding-top: 64px;
     color: var(--color-text-primary);
     font-size: 28px;
     font-weight: 600;

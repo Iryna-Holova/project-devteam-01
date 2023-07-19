@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import {Input, Btn, Select, Div, Form} from './Searchbar.styled'
+import {Input, Btn,  Label, Select, Option, Div, Form} from './Searchbar.styled'
 
 
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../../utils/constants'
 
   
   
-export function Searchbar ({onSubmit}) {
+export function Searchbar ({onSubmit, className}) {
     const [value, setValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('title')
     const [isTyping, setIsTyping] = useState(false)
@@ -81,6 +81,7 @@ export function Searchbar ({onSubmit}) {
           <Form>
             <Div>
             <Input
+              className={className}
                 type="text"
                 name="value"
                 autoComplete="off"
@@ -89,17 +90,17 @@ export function Searchbar ({onSubmit}) {
                 onChange={handleInputChange}
                 value={value}
               />
-           <Btn onClick={handleSubmit} type="submit">Search</Btn>
+           <Btn className={className} onClick={handleSubmit} type="submit">Search</Btn>
             </Div>
            
            
-            {location.pathname === '/search' && <label>
+            {location.pathname === '/search' && < Label>
             Search by: <Select onChange={handleSelectChange}>
                 
-                <option name="title" value="title">Title</option>
-                <option name="ingredients" value="ingredients">Ingredients</option>
+                <Option name="title" value="title">Title</Option>
+                <Option name="ingredients" value="ingredients">Ingredients</Option>
                 
-            </Select></label>}
+            </Select></Label>}
            
            
           </Form>

@@ -12,7 +12,7 @@ import { HiArrowNarrowRight } from 'react-icons/hi';
 export const Container = styled.div`
     position: sticky;
     margin: 0 auto;
-    margin-bottom: 220px;
+    margin-bottom: 147px;
     background-image: url(${background});
     background-image: -webkit-image-set(
     url(${background}) 1x,
@@ -25,7 +25,7 @@ export const Container = styled.div`
 
     @media screen and (min-width: 768px) {
         position: relative;
-        right: -180px;
+        right: -200px;
         top: -220px;
         margin-bottom: 0px;
         background-image: url(${saladTablet});
