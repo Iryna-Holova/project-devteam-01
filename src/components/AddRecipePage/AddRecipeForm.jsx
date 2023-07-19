@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-// import useAuth from 'hooks/use-auth';
 import RecipeDescription from './AddRecipeForm/RecipeDescription/RecipeDescription';
 import RecipeIngredients from './AddRecipeForm/RecipeIngredients/RecipeIngredients';
 import RecipePreparation from './AddRecipeForm/RecipePreparation/RecipePreparation';
@@ -39,7 +38,6 @@ const AddRecipeForm = () => {
       ingredients: values.ingredients.map((ingredient) => ({
         id: ingredient.name._id,
         measure: ingredient.measure,
-        // console.log(ingredient)
       })),
     };
 
@@ -48,10 +46,6 @@ const AddRecipeForm = () => {
     formData.append('recipe', JSON.stringify(recipeData));
 
     try {
-      // console.log('Token:', token);
-      console.log('Check data:', recipeData);
-      console.log('Check file:', selectedFile);
-      console.log('Check formData:', formData);
       const response = await addOwnRecipe({ data: formData});
       if (response) {
         console.log('Recipe added successfully:', response);
