@@ -1,4 +1,4 @@
-import { createSlice, current, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 import {
@@ -32,53 +32,63 @@ export const shoppingListV2Slice = createSlice({
         state.status = RESOLVED;
       })
       .addCase(delFromShoppingListV2Thunk.fulfilled, (state, { payload }) => {
-        console.log('del');
         state.error = null;
-        //console.log(payload);
 
         const { recipeId, id } = payload;
         const indexInSL = state.items.findIndex(({ _id }) => _id === id);
         const tmp = state.items[indexInSL];
-        console.log('tmp', tmp);
-        // before adding check measure
-        if (indexInSL >= 0) {
-          console.log(state.items[indexInSL], indexInSL);
-          // state.items = [
-          //   ...state.items,
-          //   { _id: id, mesures: [{ recipeId, mesure }] },
-          // ];
+
+        const measures = tmp.measures.filter(
+          measure => measure.recipeId !== recipeId
+        );
+
+        if (measures.length > 0) {
+          tmp.measures = [...measures];
+
+          if (indexInSL >= 0) {
+            state.items.splice(indexInSL, 1, tmp);
+            //state.items = [...state.items, { ...tmp }];
+          }
           console.log(state.items);
-        } else {
-          // console.log(state.items[indexInSL]);
-          // state.items[indexInSL].mesures.push({ recipeId, mesure });
-          // console.log(state.items[indexInSL]);
-        }
+        } else state.items.splice(indexInSL, 1);
 
         state.isLoading = false;
 
         state.status = RESOLVED;
       })
       .addCase(addToShoppingListV2Thunk.fulfilled, (state, { payload }) => {
-        console.log('add', state);
+        // console.log('add', state);
         state.error = null;
         //console.log(payload);
-        const { recipeId, id, mesure } = payload;
+        const {
+          recipeId,
+          id,
+          measure,
+          title,
+          description,
+          thumb,
+          name,
+          img,
+          desc,
+        } = payload;
         const indexInSL = state.items.findIndex(({ _id }) => _id === id);
-        // before adding check measure
+        // before adding check measure !!!!!!!
         if (indexInSL < 0) {
           state.items = [
             ...state.items,
-            { _id: id, mesures: [{ recipeId, mesure }] },
+            {
+              _id: id,
+              name,
+              img,
+              desc,
+              measures: [{ recipeId, measure, title, description, thumb }],
+            },
           ];
-          console.log(state.items);
         } else {
-          console.log(state.items[indexInSL]);
           const item = { ...state.items[indexInSL] };
-          console.log(item);
-          item.mesures.push({ recipeId, mesure });
-          state.items = [...state.items, item];
-          //state.items[indexInSL].mesures.push({ recipeId, mesure });
-          console.log(state.items[indexInSL]);
+
+          item.measures.push({ recipeId, measure, title, description, thumb });
+          state.items.splice(indexInSL, 1, item);
         }
 
         state.isLoading = false;

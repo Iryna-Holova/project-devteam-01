@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from './common';
+//import { BASE_URL } from './common';
 
 export const getShoppingList = async () => {
   try {
@@ -22,10 +22,10 @@ export const addToShoppingList = async ({
       recipeId,
       measure,
     });
-    console.log(response);
+    //  console.log(response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return Promise.reject(error.response.data.message);
   }
 };
@@ -43,10 +43,10 @@ export const deleteFromShoppingList = async ({
         measure,
       },
     });
-    console.log(response);
+    //console.log(response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return Promise.reject(error.response.data.message);
   }
 };

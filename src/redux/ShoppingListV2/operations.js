@@ -26,7 +26,7 @@ export const getShoppingListV2Thunk = createAsyncThunk(
         }),
       ];
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -34,17 +34,30 @@ export const getShoppingListV2Thunk = createAsyncThunk(
 
 export const addToShoppingListV2Thunk = createAsyncThunk(
   'shoppinglistv2/addToShoppingList',
-  async ({ recipeId, id, measure }, thunkAPI) => {
+  async (
+    { recipeId, id, measure, title, description, thumb, name, img, desc },
+    thunkAPI
+  ) => {
     try {
-      const response = await recipesServices.addToShoppingList({
+      await recipesServices.addToShoppingList({
         recipeId,
         ingredientId: id,
         measure,
       });
-      console.log(response);
-      return { recipeId, id, measure };
+      // console.log(response);
+      return {
+        recipeId,
+        id,
+        measure,
+        title,
+        description,
+        thumb,
+        name,
+        img,
+        desc,
+      };
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -54,12 +67,12 @@ export const delFromShoppingListV2Thunk = createAsyncThunk(
   'shoppinglistv2/delFromShoppingList',
   async ({ recipeId, id, measure }, thunkAPI) => {
     try {
-      const response = await recipesServices.deleteFromShoppingList({
+      await recipesServices.deleteFromShoppingList({
         recipeId,
         ingredientId: id,
         measure,
       });
-      console.log(response);
+      //console.log(response);
       return { recipeId, id, measure };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

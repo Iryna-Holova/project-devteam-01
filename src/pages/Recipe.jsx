@@ -22,8 +22,10 @@ const Recipe = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    dispatch(getFavoriteRecipesThunk({ limit: 999999 }));
-    dispatch(getShoppingListV2Thunk());
+    Promise.all([
+      dispatch(getFavoriteRecipesThunk({ limit: 999999 })),
+      dispatch(getShoppingListV2Thunk()),
+    ]);
   }, [dispatch]);
 
   useEffect(() => {
@@ -68,6 +70,7 @@ const Recipe = () => {
         <IngredientsTable
           ingredients={recipe.ingredients}
           recipeId={recipe._id}
+          recipe={recipe}
         ></IngredientsTable>
         <RecipePreparation
           image={recipe.thumb}
