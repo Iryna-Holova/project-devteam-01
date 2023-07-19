@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Form, Field } from 'formik';
-import bgMobile from '../../assets/svg/authFormOrder/bg-registration-mobile.svg';
-import bgTablet from '../../assets/svg/authFormOrder/bg-registration-tablet.svg';
-import bgDesktop from '../../assets/svg/authFormOrder/bg-registration-desktop.svg';
+import bgMobile from '../../assets/svg/auth-form-bg/bg-registration-mobile.svg';
+import bgTablet from '../../assets/svg/auth-form-bg/bg-registration-tablet.svg';
+import bgDesktop from '../../assets/svg/auth-form-bg/bg-registration-desktop.svg';
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Image = styled.svg`
+export const Image = styled.img`
   width: 285px;
   height: 250px;
 
@@ -102,6 +102,7 @@ export const FieldWrapper = styled.div`
     height: 18px;
     left: 14px;
     top: 14px;
+    stroke: #fafafa;
 
     @media screen and (min-width: 768px) {
       width: 24px;
@@ -166,6 +167,10 @@ export const Router = styled(Link)`
   &:hover {
     color: var(--color-accent);
   }
+
+    @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const Error = styled.div`
@@ -174,6 +179,11 @@ export const Error = styled.div`
   position: absolute;
   bottom: -16px;
   & ~ input {
-    border-color: #e74a3b;
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+  }
+
+  & ~ svg {
+    stroke: var(--color-warning);
   }
 `;

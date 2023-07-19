@@ -1,5 +1,6 @@
-import { Icon, Text, Title } from 'components/NotFoundPage/NotFound.styled';
-import sprite from '../assets/images.svg';
+import { Image, Text, Title } from 'components/NotFoundPage/NotFound.styled';
+
+import image from '../assets/svg/not-found-page.svg'
 import MainTitle from 'components/MainTitle/MainTitle';
 
 const NotFound = () => {
@@ -7,9 +8,7 @@ const NotFound = () => {
     <>
       <MainTitle className="transparent">Not Found</MainTitle>
       <div style={{ textAlign: 'center' }}>
-        <Icon>
-          <use href={sprite + '#not-found-page'}></use>
-        </Icon>
+        <Image src = {image} alt="not found page"/>
         <Title>We are sorry,</Title>
         <Text>but the page you were looking for can’t be found...</Text>
       </div>
