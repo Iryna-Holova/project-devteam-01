@@ -2,11 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import scrollToTop from 'utils/scroll-to-top';
 import { LogoContainer, LogoImage } from './Logo.styled';
 
-const Logo = ({ className }) => {
+const Logo = ({ className, func }) => {
   const navigate = useNavigate();
   return (
     <LogoContainer
       onClick={() => {
+        if (func) func();
         navigate(`/`);
         scrollToTop();
       }}
