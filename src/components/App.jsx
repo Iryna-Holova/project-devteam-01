@@ -24,7 +24,7 @@ const Signin = lazy(() => import('pages/Signin'));
 const SharedLayout = lazy(() => import('pages/SharedLayout'));
 const Main = lazy(() => import('pages/Main'));
 const Categories = lazy(() => import('pages/Categories/Categories'));
-const AddRecipe = lazy(() => import('pages/AddRecipe'));
+const AddRecipe = lazy(() => import('pages/AddRecipe/AddRecipe'));
 const Favorite = lazy(() => import('pages/Favorite'));
 const Recipe = lazy(() => import('pages/Recipe'));
 const MyRecipes = lazy(() => import('pages/MyRecipes'));

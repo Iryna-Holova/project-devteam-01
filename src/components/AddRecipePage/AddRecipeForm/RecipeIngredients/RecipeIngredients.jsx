@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIngredientsThunk } from '../../../../redux/Ingredients/operations';
 import { selectIngredients } from '../../../../redux/Ingredients/selectors';
 import AsyncSelect from 'react-select/async';
-
+import { SubTitleStyled } from '../RecipePreparation/RecipePreparation.styled';
+import{FlexWrapper, StyledListWrapper} from './RecipeIngredients.styled';
 const RecipeIngredients = () => {
   const { values, setFieldValue } = useFormikContext();
 
@@ -34,8 +35,9 @@ const RecipeIngredients = () => {
   };
 
   return (
-    <div>
-      <h2>Ingredients</h2>
+    <FlexWrapper>
+      <SubTitleStyled>Ingredients</SubTitleStyled>
+      <StyledListWrapper>
       <FieldArray
         name="ingredients"
         render={({ push, remove }) => (
@@ -76,7 +78,8 @@ const RecipeIngredients = () => {
           </>
         )}
       />
-    </div>
+      </StyledListWrapper>
+    </FlexWrapper>
   );
 };
 
