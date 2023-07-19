@@ -3,12 +3,12 @@ import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
 import { useParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
-import useSearchBy from '../hooks/useSearchBy'
-import img from '../assets/images/empty-img.png';
+import useSearchBy from '../hooks/useSearchBy';
+import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 import { useDispatch } from 'react-redux';
-import {getSearchByThunk} from '../redux/Recipes/SearchBy/operations'
-import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants'
-import { TextUnderImage } from 'components/Searchbar/Searchbar.styled';
+import { getSearchByThunk } from '../redux/Recipes/SearchBy/operations';
+import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
+import { Loader } from 'components/loader/loader';
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -56,7 +56,7 @@ const Search = () => {
     <Searchbar
     onSubmit={formOnsubmitHandler}
     />
-    {isLoading && <p>Loading...</p>}
+    {isLoading && <Loader/>}
     {status === 2 && <RecipeGallery recipes={recipes} />}
     {status === 1 && <p>...</p>}
     {status === 3 && (
@@ -67,9 +67,10 @@ const Search = () => {
         justifyContent: 'center',
         flexDirection: 'column',
       }}
-    >
-      <img src={img} alt="Fruit Basket" width="350" />
-      <TextUnderImage>Try looking for something else...</TextUnderImage>
+      >
+      <NoDataMessage>
+        Try looking for something else...
+      </NoDataMessage>
     </div>
   )}
     </>
