@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import {Input, Btn, Select, Div, Form} from './Searchbar.styled'
+import {Input, Btn,  Label, Select, Option, Div, Form} from './Searchbar.styled'
 
 
 import { useDispatch } from 'react-redux';
@@ -93,13 +93,13 @@ export function Searchbar ({onSubmit}) {
             </Div>
            
            
-            {location.pathname === '/search' && <label>
+            {location.pathname === '/search' && < Label>
             Search by: <Select onChange={handleSelectChange}>
                 
-                <option name="title" value="title">Title</option>
-                <option name="ingredients" value="ingredients">Ingredients</option>
+                <Option name="title" value="title">Title</Option>
+                <Option name="ingredients" value="ingredients">Ingredients</Option>
                 
-            </Select></label>}
+            </Select></Label>}
            
            
           </Form>

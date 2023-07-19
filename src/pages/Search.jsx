@@ -7,7 +7,8 @@ import useSearchBy from '../hooks/useSearchBy'
 import img from '../assets/images/empty-img.png';
 import { useDispatch } from 'react-redux';
 import {getSearchByThunk} from '../redux/Recipes/SearchBy/operations'
-import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../utils/constants'
+import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants'
+import { TextUnderImage } from 'components/Searchbar/Searchbar.styled';
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -19,7 +20,6 @@ const Search = () => {
 
   useEffect(() => {
     if (searchQuery !== '' && searchQuery !== undefined) {
-      debugger
       setSearchValue(searchQuery);
     }
 
@@ -69,23 +69,9 @@ const Search = () => {
       }}
     >
       <img src={img} alt="Fruit Basket" width="350" />
-      <p>Try looking for something else..</p>
+      <TextUnderImage>Try looking for something else...</TextUnderImage>
     </div>
   )}
-  {(status === 2 && recipes) && (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <img src={img} alt="Fruit Basket" width="350" />
-      <p>Try looking for something else..</p>
-    </div>
-  )}
-  
     </>
   );
 };
