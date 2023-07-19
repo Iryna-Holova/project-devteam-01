@@ -14,6 +14,8 @@ import {
   StyledLink,
 } from './PopularRecipe.styled';
 
+import IngredientsPlaceholder from '../../../assets/images/defaultDish.png';
+
 const PopularRecipe = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,8 +37,9 @@ const PopularRecipe = () => {
   }, []);
 
   return (
-    <StyledSectionWrapper>
-    <StyledTitle>Popular recipe</StyledTitle>
+<StyledSectionWrapper>
+  <div className='container'>
+  <StyledTitle>Popular recipe</StyledTitle>
     {isError ? (
       <Error />
     ) : (
@@ -48,7 +51,7 @@ const PopularRecipe = () => {
                 <StyledLink to={`/recipe/${_id}`}>
                   <StyledCard>
                     <StyledPicture
-                      src={preview}
+                       src={preview ? preview : IngredientsPlaceholder}
                       alt="recipe"
                       loading="lazy"
                     />
@@ -65,7 +68,9 @@ const PopularRecipe = () => {
     )}
 
     {isLoading && <Loader />}
+    </div>
   </StyledSectionWrapper>
+    
 );
         };
 

@@ -4,7 +4,7 @@ export const StyledSectionWrapper = styled.div`
   @media screen and (max-width: 767px) {
     margin-bottom: 100px;
   }
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     margin-bottom: 200px;
   }
   @media screen and (min-width: 1440px) {
@@ -37,7 +37,7 @@ export const StyledCardList = styled.ul`
     flex-wrap: nowrap;
     overflow: hidden;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     flex-direction: column;
   }
 `;
