@@ -66,6 +66,7 @@ const Recipe = () => {
           time={recipe.time}
           isFavorite={isFavorite}
           handleFavorites={handleFavorites}
+          youtube={recipe.youtube}
         />
         <IngredientsTable
           ingredients={recipe.ingredients}

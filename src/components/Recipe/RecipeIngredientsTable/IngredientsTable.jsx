@@ -6,7 +6,6 @@ export const IngredientsTable = ({ ingredients, recipeId, recipe }) => {
   //   console.log(`recipe id: ${recipeId}, ingrediend id: ${id}`);
   // };
   //console.log(ingredients);
-
   return (
     <Table className="container">
       <TableHead>

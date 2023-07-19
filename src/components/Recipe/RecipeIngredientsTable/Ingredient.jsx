@@ -44,7 +44,6 @@ export const Ingredient = ({
       );
     //setInSPL(!isInSPL);
   };
-
   return (
     <li>
       <div>
@@ -52,7 +51,7 @@ export const Ingredient = ({
       </div>
       <div>{name}</div>
       <div>
-        <span>{measure}</span>
+        {(measure && (measure !== ' ')) && (<span>{measure}</span>)}
       </div>
       <div>
         <button onClick={handleShoppingListButton}>
