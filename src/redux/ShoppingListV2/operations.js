@@ -14,12 +14,13 @@ export const getShoppingListV2Thunk = createAsyncThunk(
           const result = {
             ...item.ingredientId,
           };
-          result.measures = item.measures.map(({ recipeId }) => {
+          result.measures = item.measures.map(({ recipeId, measure }) => {
             return {
               recipeId: recipeId._id,
               description: recipeId.description,
               title: recipeId.title,
               thumb: recipeId.thumb,
+              measure,
             };
           });
           return result;

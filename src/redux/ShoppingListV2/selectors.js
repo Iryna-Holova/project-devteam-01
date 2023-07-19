@@ -1,4 +1,7 @@
 export const selectShoppingList = state => state.shoppingListV2.items;
+export const selectStatus = state => state.shoppingListV2.status;
+export const selectError = state => state.shoppingListV2.error;
+export const selectIsDeleting = state => state.shoppingListV2.isDeleting;
 
 export const selectIsInShoppingList = (state, ingredientId, recipeId) => {
   const indexInSL = state.shoppingListV2.items.findIndex(
