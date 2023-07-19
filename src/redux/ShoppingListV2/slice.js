@@ -7,7 +7,7 @@ import {
   getShoppingListV2Thunk,
 } from './operations';
 
-//const itemObj = {_id:'',name:'',img:'',measures:[{recipeID:'',title:'',description:'',img:'',measure:''}]};
+//const itemObj = {_id:'',name:'',img:'',desc:'',measures:[{recipeID:'',title:'',description:'',img:'',measure:''}]};
 
 const initialState = {
   items: [],
