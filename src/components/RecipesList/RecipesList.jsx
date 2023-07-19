@@ -23,13 +23,13 @@ export const RecipesList = ({ data, removeRecipe, className }) => {
   return (
     <RecipesListContainer className="container">
       <>
-        {data.map(({ thumb, _id, title, description, time }) => {
+        {data.map(({ preview, _id, title, description, time }) => {
           return (
             <RecipeItemContainer key={_id}>
               <ImagePlaceholder>
                 <BsFullscreen style={{ width: '40px', height: '40px' }} />
                 <PiCameraFill />
-                <img src={thumb} loading="lazy" alt={title} />
+                <img src={preview} loading="lazy" alt={title} />
               </ImagePlaceholder>
               <RecipeItemBox>
                 <RecipeItemText>

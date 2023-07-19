@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Icon = styled.svg`
+export const Image = styled.img`
+display: inline-block;
   margin-top: 50px;
   width: 259px;
   height: 170px;

@@ -6,7 +6,7 @@ import spinachTablet1x from '../../../assets/images/burger/burger-spinach-tablet
 import spinachTablet2x from '../../../assets/images/burger/burger-spinach-tablet-x2.webp';
 
 export const BurgerBox = styled.div`
-  height: 100%;
+  min-height: 100%;
   background-color: var(--color-accent-secondary);
   background-image: -webkit-image-set(
     url(${spinachMobile1x}) 1x,
@@ -27,7 +27,7 @@ export const BurgerBox = styled.div`
 
 export const BurgerContainer = styled.div`
   box-sizing: border-box;
-  min-height: 100%;
+  height: 100%;
   padding: 18px 16px;
   display: flex;
   flex-direction: column;

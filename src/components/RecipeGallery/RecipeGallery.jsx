@@ -18,7 +18,6 @@ const RecipeGallery = ({ recipes = null }) => {
       <>
         <List className="container">
           {recipes.map(({ _id, title, thumb }) => {
-            console.log('Recipe:', title, thumb);
             return (
               <Recipe key={_id}>
                 <RecipeContainer
