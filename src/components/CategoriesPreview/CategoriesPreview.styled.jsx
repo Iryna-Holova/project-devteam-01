@@ -38,12 +38,3 @@ export const OtherCategoriesButton = styled(Link)`
 
     }
 `
-
-export const SearchContainer = styled.div`
-    position: absolute;
-    top: 350px;
-    left: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 510px;
-`

@@ -10,7 +10,7 @@ import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../../utils/constants'
 
   
   
-export function Searchbar ({onSubmit}) {
+export function Searchbar ({onSubmit, className}) {
     const [value, setValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('title')
     const [isTyping, setIsTyping] = useState(false)
@@ -81,6 +81,7 @@ export function Searchbar ({onSubmit}) {
           <Form>
             <Div>
             <Input
+              className={className}
                 type="text"
                 name="value"
                 autoComplete="off"
@@ -89,7 +90,7 @@ export function Searchbar ({onSubmit}) {
                 onChange={handleInputChange}
                 value={value}
               />
-           <Btn onClick={handleSubmit} type="submit">Search</Btn>
+           <Btn className={className} onClick={handleSubmit} type="submit">Search</Btn>
             </Div>
            
            

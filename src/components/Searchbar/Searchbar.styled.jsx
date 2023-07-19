@@ -39,13 +39,13 @@ export const Btn = styled.button`
     top: 0;
     right: 0;
     font-size: 14px;
-    background-color: var(--color-icons);
+    background-color: var(--color-accent);
     color: var(--color-main);
     border-radius: 24px 44px;
 
     &:hover,
     &:focus {
-        background-color: var(--color-accent);
+        background-color: var(--color-icons);
     }
 
     @media screen and (min-width: 768px) {
@@ -59,6 +59,15 @@ export const Btn = styled.button`
         height: 70px;
         padding: 23px 52px;
         font-size: 16px;
+    }
+
+    &.styles-for-main {
+        background-color: var(--color-icons);
+
+        &:hover,
+        &:focus {
+            var(--color-accent);
+        }
     }
 `
 
@@ -130,6 +139,27 @@ export const Div = styled.div`
     @media screen and (min-width: 1440px) {
         margin-top: 50px;
         margin-bottom: 27px;
+    }
+`
+
+export const MainSearchContainer = styled.div`
+    position: relative;
+    top: -180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+    @media screen and (min-width: 768px) {
+        width: 362px;
+        height: 59px;
+        top: -390px;
+        left: 50px;
+    }
+
+    @media screen and (min-width: 1440px) {
+        width: 510px;
+        height: 70px;
+        top: -540px;
+        left: 120px;
     }
 `
 

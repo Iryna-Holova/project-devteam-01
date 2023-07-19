@@ -8,8 +8,7 @@ import recipesServices from 'services/api/recipes-api';
 import utils from 'utils';
 import HeroMain from 'components/HeroMain/HeroMain';
 import { Searchbar } from 'components/Searchbar/Searchbar';
-import { SearchContainer } from 'components/CategoriesPreview/CategoriesPreview.styled';
-
+import { MainSearchContainer } from 'components/Searchbar/Searchbar.styled';
 
 const Main = () => {
   const [recipesByCategory, setRecipesByCategory] = useState([]);
@@ -38,9 +37,9 @@ const Main = () => {
   return (
     <MainContainer>
       <HeroMain />
-      <SearchContainer>
-        <Searchbar onSubmit={handleSubmit}/>
-      </SearchContainer>
+      <MainSearchContainer className="styles-for-main">
+        <Searchbar className="styles-for-main" onSubmit={handleSubmit}/>
+      </MainSearchContainer>
       <CategoriesPreview recipesByCategory={recipesByCategory} />
     </MainContainer>
   );
