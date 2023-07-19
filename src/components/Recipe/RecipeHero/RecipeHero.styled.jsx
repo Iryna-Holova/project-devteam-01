@@ -1,40 +1,62 @@
 import styled from 'styled-components';
 
+import desktop1x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-desktop-1x.webp';
+import desktop2x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-desktop-2x.webp';
+import tablet1x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-tablet-1x.webp';
+import tablet2x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-tablet-2x.webp';
+import mobile1x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-mobile-1x.webp';
+import mobile2x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-mobile-2x.webp';
+
 export const HeroContainer = styled.div`
+  position: relative;
   text-align: center;
   margin-bottom: 32px;
   padding-top: 144px;
   padding-bottom: 90px;
-  background-color: #d8cfbd;
   color: var(--color-footer);
-
-  /* @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
- 
-  } */
+  background-color: #e6e6e4;
+  background-size: 767px 509px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: -webkit-image-set(url(${mobile1x}) 1x, url(${mobile2x}) 2x);
 
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;
     padding-top: 136px;
     padding-bottom: 32px;
-
-    /* @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-    } */
+    background-size: 1108px 697px;
+    background-image: -webkit-image-set(
+      url(${tablet1x}) 1x,
+      url(${tablet2x}) 2x
+    );
   }
 
   @media screen and (min-width: 1440px) {
     padding-top: 164px;
+    background-size: 1562px 731px;
+    background-position: top center;
+    background-image: -webkit-image-set(
+      url(${desktop1x}) 1x,
+      url(${desktop2x}) 2x
+    );
+  }
 
-    /* @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-    } */
+  & a {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    color: var(--color-icons);
+    transform: translate(-50%, 0);
+    transition: color var(--transition-time) var(--cubic);
+
+    :hover {
+      color: var(--color-accent)
+    }
+
+    & svg {
+      height: 30px;
+      width: 30px;
+    }
   }
 `;
 
@@ -53,7 +75,6 @@ export const HeroTitle = styled.h2`
   @media screen and (min-width: 768px) {
     width: 506px;
     margin-bottom: 24px;
-
     font-size: 44px;
     line-height: 44px;
     letter-spacing: -0.88px;
@@ -129,11 +150,19 @@ export const HeroBtn = styled.button`
   }
 `;
 
-export const Time = styled.div`
+export const Time = styled.p`
+  display: flex;
+  gap: 4px;
+  justify-content: center;
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
   letter-spacing: -0.24px;
+
+  > svg {
+    width: 14px;
+    height: 14px;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

@@ -24,7 +24,7 @@ export const register = createAsyncThunk(
       const currentUrl = utils.getBaseUrl();
       credentials.baseURL = currentUrl;
       // console.log(credentials);
-      const res = await axios.post('/users/register', credentials);
+      const res = await axios.post('/api/users/register', credentials);
       //setAuthHeader(res.data.token); Registration doesn't return token
       //console.log(res);
       return res.data;
@@ -42,7 +42,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/login', credentials);
+      const res = await axios.post('api/users/login', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -57,7 +57,7 @@ export const logIn = createAsyncThunk(
  */
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('api/users/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -82,7 +82,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/current');
+      const res = await axios.get('api/users/current');
       // const result = { ...res.data, token: persistedToken };
       return res.data;
       //return result;
@@ -100,7 +100,7 @@ export const verifyUser = createAsyncThunk(
   'auth/verify',
   async (verificationToken, thunkAPI) => {
     try {
-      const res = await axios.get(`users/verify/${verificationToken}`);
+      const res = await axios.get(`api/users/verify/${verificationToken}`);
       setAuthHeader(res.data.token);
       console.log(res);
 

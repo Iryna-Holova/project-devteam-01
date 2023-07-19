@@ -140,13 +140,13 @@ export const TableBody = styled.ul`
       }
       & div:nth-child(3) {
         width: 108px;
+        text-align: center;
         & span {
-          display: flex;
-          margin: 0 auto;
-          width: 68px;
-          height: 35px;
-          align-items: center;
-          justify-content: center;
+          box-sizing: border-box;
+          display: inline-block;
+          min-width: 68px;
+          min-height: 35px;
+          vertical-align: middle;
           font-size: 18px;
           line-height: 27px;
         }

@@ -30,28 +30,26 @@ export const MainContainer = styled.div`
 
     @media screen and (min-width: 768px) {
         background-image: url(${backgroundLeftTablet}), url(${backgroundRightTablet}), url(${triangleTablet});
-        background-image: -webkit-image-set(
-            url(${backgroundLeftTablet}) 1x,
-            url(${backgroundLeftTabletRetina}) 2x,
-        );
-        background-image: -webkit-image-set(
-            url(${backgroundRightTablet}) 1x,
-            url(${backgroundRightTabletRetina}) 2x,
-        );
-        background-position: top 0px left, top -40px right -60px, top -40px right -60px;
+        background-position: top 0px left, top -40px right -60px, top -40px right -210px;
+        background-size: 90px 320px, 650px 670px, 753px 730px;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px) {
+        background-image: url(${backgroundLeftTabletRetina}), 
+        url(${backgroundRightTabletRetina}),
+        url(${triangleTablet});
     }
 
     @media screen and (min-width: 1440px) {
         background-image: url(${backgroundLeftDesk}), url(${backgroundRightDesk}),url(${triangleDesk});
-        background-image: -webkit-image-set(
-            url(${backgroundLeftDesk}) 1x,
-            url(${backgroundLeftDeskRetina}) 2x,
-        );
-        background-image: -webkit-image-set(
-            url(${backgroundRightDesk}) 1x,
-            url(${backgroundRightDeskRetina}) 2x,
-        );
-        background-position:  
+        background-size: 110px 370px, 950px 850px, 941px 912px;
+        background-position: top 0px left, top -40px right -60px, top -210px right -300px;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1440px) {
+        background-image: url(${backgroundLeftDeskRetina}), 
+        url(${backgroundRightDeskRetina}),
+        url(${triangleDesk});
     }
 `
 

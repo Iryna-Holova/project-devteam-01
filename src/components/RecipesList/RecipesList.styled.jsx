@@ -129,6 +129,13 @@ export const RecipeItemTitle = styled.div`
     border-radius: 4px;
     background-color: var(--color-accent-secondary);
 
+    &.own-recipes {
+      background-color: var(--color-accent);
+      >svg {
+        color: var(--color-secondary);
+      }
+    }
+
     @media (min-width: 768px) {
       width: 38px;
       height: 38px;
@@ -188,7 +195,6 @@ export const RecipeItemBtn = styled.div`
     @media (min-width: 768px) {
       font-size: 14px;
       line-height: 1.43;
-      line-height: 1.43;
     }
   }
   > button {
@@ -202,6 +208,14 @@ export const RecipeItemBtn = styled.div`
     font-size: 10px;
     line-height: 1.5;
     transition: background-color var(--transition-time) var(--cubic);
+
+    &.own-recipes {
+      background-color: var(--color-accent);
+      &:hover {
+        background-color: var(--color-footer);
+      }
+    }
+
     @media (min-width: 768px) {
       font-size: 14px;
       padding: 12px 32px;

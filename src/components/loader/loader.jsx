@@ -1,14 +1,17 @@
 import React from 'react';
-//import { Circles } from 'react-loader-spinner';
+import { Bars } from 'react-loader-spinner';
 import { LoaderContainer } from './loader.styled';
 
 export const Loader = ({ className }) => (
   <LoaderContainer className={className}>
-    <h3>Loading......</h3>
-    {/* <Circles
-      ariaLabel="circles-loading"
+    <Bars
+      height="80"
+      width="80"
+      color="#ebf3d4"
+      ariaLabel="bars-loading"
       wrapperStyle={{}}
-      wrapperClass="Loader"
-    /> */}
+      wrapperClass=""
+      visible={true}
+    />
   </LoaderContainer>
 );

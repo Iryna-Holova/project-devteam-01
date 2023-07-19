@@ -10,6 +10,7 @@ import { PENDING } from 'utils/constants';
 
 import MainTitle from 'components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
+import { Loader } from 'components/loader/loader';
 
 const Favorite = () => {
   const { status, favorite, page, limit } = useFavorite();
@@ -22,12 +23,11 @@ const Favorite = () => {
   const handleRemoveClick = receptId => {
     dispatch(removeFromFavoriteRecipesThunk(receptId));
   };
-
   return (
     <>
       <MainTitle>Favorites</MainTitle>
       {status === PENDING ? (
-        <p>Loading recipes...</p>
+        <Loader/>
       ) : (
         <>
           {!favorite.length ? (

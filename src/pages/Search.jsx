@@ -1,33 +1,31 @@
 import MainTitle from 'components/MainTitle/MainTitle';
 import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
-
+import { useParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
-
 import useSearchBy from '../hooks/useSearchBy'
-
-
 import img from '../assets/images/empty-img.png';
 import { useDispatch } from 'react-redux';
 import {getSearchByThunk} from '../redux/Recipes/SearchBy/operations'
-import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../utils/constants'
-
+import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants'
+import { TextUnderImage } from 'components/Searchbar/Searchbar.styled';
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('title');
 
   const dispatch = useDispatch()
-  const {recipes, status, isLoading, error} = useSearchBy()
-  
-
-  
+  const { recipes, status, isLoading, error } = useSearchBy();
+  const {searchQuery} = useParams();
 
   useEffect(() => {
+    if (searchQuery !== '' && searchQuery !== undefined) {
+      setSearchValue(searchQuery);
+    }
+
     if (searchValue === '') {
       return;
-    }
-   
+    } 
 
     if (selectedValue === 'ingredients' && searchValue !== '') {
         dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_INGREDIENT}))
@@ -35,9 +33,7 @@ const Search = () => {
     if (selectedValue === 'title' && searchValue !== '') {
         dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_TITLE}))
     }
-  }, [searchValue, selectedValue, dispatch]);
-
- 
+  }, [searchValue, searchQuery, selectedValue, dispatch]);
 
   // Функция записывает полученные значения из SearchBar в стейт
   const formOnsubmitHandler = (value, selectValue) => {
@@ -49,8 +45,6 @@ const Search = () => {
       setSelectedValue(selectValue);
     }
   };
-  console.log(recipes);
-  console.log(status);
 
   console.log(error); // Just for build
 
@@ -61,37 +55,23 @@ const Search = () => {
     </MainTitle>
     <Searchbar
     onSubmit={formOnsubmitHandler}
-      />
-      {isLoading && <p>Loading...</p>}
-  {status === 2 && <RecipeGallery recipes={recipes} />}
-  {status === 1 && <p>...</p>}
-  {status === 3 && (
-    <div
-      style={{
+    />
+    {isLoading && <p>Loading...</p>}
+    {status === 2 && <RecipeGallery recipes={recipes} />}
+    {status === 1 && <p>...</p>}
+    {status === 3 && (
+      <div
+        style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
       }}
     >
-      <img src={img} alt="Корзина с фруктами" width="350" />
-      <p>Try looking for something else..</p>
+      <img src={img} alt="Fruit Basket" width="350" />
+      <TextUnderImage>Try looking for something else...</TextUnderImage>
     </div>
   )}
-  {(status === 2 && recipes) && (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <img src={img} alt="Корзина с фруктами" width="350" />
-      <p>Try looking for something else..</p>
-    </div>
-  )}
-  
     </>
   );
 };

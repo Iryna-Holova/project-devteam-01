@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
+import sprite from '../../assets/sprite.svg';
+import image from '../../assets/svg/order-food-pana.svg';
 import {
+  Image,
   StyledForm,
   WordForm,
   StyledField,
@@ -9,6 +11,8 @@ import {
   SubButton,
   Router,
   Wrapper,
+  Error,
+  FieldWrapper,
 } from './SharedForm.styled';
 
 // const isValidEmail = email => {
@@ -50,60 +54,76 @@ const SharedForm = ({
 }) => {
   return (
     <Wrapper>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        {({ isSubmitting }) => (
-          <StyledForm>
-            <WordForm>{nameForm}</WordForm>
-            <List>
-              <li>
-                {isRegisterForm && (
-                  <div>
+      <div style={{ textAlign: 'center' }}>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          {({ isSubmitting }) => (
+            <StyledForm>
+              <WordForm>{nameForm}</WordForm>
+              <List>
+                <li>
+                  {isRegisterForm && (
+                    <FieldWrapper>
+                      <ErrorMessage name="name">
+                        {msg => <Error>{msg}</Error>}
+                      </ErrorMessage>
+                      <svg>
+                        <use href={sprite + '#user'}></use>
+                      </svg>
+                      <StyledField
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Name"
+                      />
+                    </FieldWrapper>
+                  )}
+                </li>
+                <li>
+                  <FieldWrapper>
+                    <ErrorMessage name="email">
+                      {msg => <Error>{msg}</Error>}
+                    </ErrorMessage>
+                    <svg>
+                      <use href={sprite + '#email'}></use>
+                    </svg>
                     <StyledField
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Name"
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Email"
                     />
-                    <ErrorMessage name="name" component="div" />
-                  </div>
-                )}
-              </li>
-              <li>
-                <div>
-                  <StyledField
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                  />
-                  <ErrorMessage name="email" component="div" />
-                </div>
-              </li>
-              <li>
-                <div>
-                  <StyledField
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Password"
-                  />
-                  <ErrorMessage name="password" component="div" />
-                </div>
-              </li>
-            </List>
+                  </FieldWrapper>
+                </li>
+                <li>
+                  <FieldWrapper>
+                    <ErrorMessage name="password">
+                      {msg => <Error>{msg}</Error>}
+                    </ErrorMessage>
+                    <svg>
+                      <use href={sprite + '#lock'}></use>
+                    </svg>
+                    <StyledField
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="Password"
+                    />
+                  </FieldWrapper>
+                </li>
+              </List>
 
-            <SubButton type="submit">{nameBut}</SubButton>
-          </StyledForm>
-        )}
-      </Formik>
+              <SubButton type="submit">{nameBut}</SubButton>
+            </StyledForm>
+          )}
+        </Formik>
 
-      <Link to={`/${urlRouter}`}>
-        <Router>{router}</Router>
-      </Link>
+        <Router to={`/${urlRouter}`}>{router}</Router>
+      </div>
+      <Image src={image} alt="order food pana" />
     </Wrapper>
   );
 };

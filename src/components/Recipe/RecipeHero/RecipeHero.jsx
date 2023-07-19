@@ -1,3 +1,4 @@
+import { BsYoutube } from 'react-icons/bs';
 import {
   HeroContainer,
   HeroTitle,
@@ -5,6 +6,7 @@ import {
   HeroBtn,
   Time,
 } from './RecipeHero.styled';
+import { FiClock } from 'react-icons/fi';
 
 export const RecipePageHero = ({
   title,
@@ -12,6 +14,7 @@ export const RecipePageHero = ({
   time,
   isFavorite,
   handleFavorites,
+  youtube
 }) => {
   return (
     <HeroContainer>
@@ -22,7 +25,8 @@ export const RecipePageHero = ({
           ? 'Remove from favorite recipes'
           : 'Add to favorite recipes'}
       </HeroBtn>
-      <Time>{time} min</Time>
+      <Time><FiClock/><span>{time} min</span></Time>
+      {youtube && <a target='blanc' href={youtube}><BsYoutube/></a> }
     </HeroContainer>
   );
 };

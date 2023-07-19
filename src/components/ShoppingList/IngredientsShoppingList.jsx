@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { MdClear } from 'react-icons/md';
+import { Loader } from '../loader/loader';
 import {
   Container,
   HeaderContainer,
@@ -17,22 +19,29 @@ import {
   EmptyListText,
 } from './IngredientsShoppinglist.styled';
 
-import removeIcon from '../../assets/images/X.png';
 import emptyListImage from '../../assets/images/empty-img.png';
-import { deleteIngredient } from '../../redux/ShoppingList/operations';
+import {
+  deleteIngredient,
+  fetchIngredients,
+} from '../../redux/ShoppingList/operations';
 
-const IngredientsShoppingList = ({ onDelete }) => {
+const IngredientsShoppingList = () => {
   const dispatch = useDispatch();
-  const ingredients = useSelector((state) => state.shoppingList.ingredients);
+  const ingredients = useSelector(state => state.shoppingList.ingredients);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (ingredients.length === 0) {
-    return (
-      <Container>
-        <EmptyListImage src={emptyListImage} alt="Empty List" />
-        <EmptyListText>Shopping list is empty</EmptyListText>
-      </Container>
-    );
-  }
+  useEffect(() => {
+    dispatch(fetchIngredients())
+      .then(() => setIsLoading(false))
+      .catch(error => {
+        setIsLoading(false);
+        console.error('Error loading ingredients:', error);
+      });
+  }, [dispatch]);
+
+  const onDelete = id => {
+    dispatch(deleteIngredient(id));
+  };
 
   return (
     <Container>
@@ -41,22 +50,31 @@ const IngredientsShoppingList = ({ onDelete }) => {
         <TitleN>Number</TitleN>
         <Title>Remove</Title>
       </HeaderContainer>
-      <IngredientsListContainer>
-        {ingredients.map((ingredient) => (
-          <IngredientItem key={ingredient._id.$oid}>
-            <IngredientImage src={ingredient.img} alt={ingredient.name} />
-            <IngredientName>{ingredient.name}</IngredientName>
-            <IngredientDetails>
-              <IngredientQuantity>
-                <QuantityIndicator>{ingredient.quantity}</QuantityIndicator>
-              </IngredientQuantity>
-              <RemoveButton onClick={() => dispatch(deleteIngredient(ingredient._id.$oid))}>
-                <img src={removeIcon} alt="Remove" className="remove-icon" />
-              </RemoveButton>
-            </IngredientDetails>
-          </IngredientItem>
-        ))}
-      </IngredientsListContainer>
+      {isLoading ? (
+        <Loader className="loader" />
+      ) : ingredients.length === 0 ? (
+        <div>
+          <EmptyListImage src={emptyListImage} alt="Empty List" />
+          <EmptyListText>Shopping list is empty</EmptyListText>
+        </div>
+      ) : (
+        <IngredientsListContainer>
+          {ingredients.map(ingredient => (
+            <IngredientItem key={ingredient._id.$oid}>
+              <IngredientImage src={ingredient.img} alt={ingredient.name} />
+              <IngredientName>{ingredient.name}</IngredientName>
+              <IngredientDetails>
+                <IngredientQuantity>
+                  <QuantityIndicator>{ingredient.quantity}</QuantityIndicator>
+                </IngredientQuantity>
+                <RemoveButton onClick={() => onDelete(ingredient._id.$oid)}>
+                  <MdClear className="remove-icon" />
+                </RemoveButton>
+              </IngredientDetails>
+            </IngredientItem>
+          ))}
+        </IngredientsListContainer>
+      )}
     </Container>
   );
 };
