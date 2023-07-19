@@ -15,6 +15,7 @@ import { recipesReducer } from './Recipes/reducer';
 import { categoriesReducer } from './Categories/slice';
 import { appReducer } from './App/slice';
 import { IngredientsReducer } from './Ingredients/slice';
+import { shoppingListV2Reducer } from './ShoppingListV2/slice';
 //import { searchByNameReducer } from './Recipes/searchByName/slice';
 
 const middleware = [
@@ -38,6 +39,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     app: appReducer,
     ingredients: IngredientsReducer,
+    shoppingListV2: shoppingListV2Reducer
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

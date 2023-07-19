@@ -11,6 +11,7 @@ import {
 } from 'redux/Recipes/favorite/operations';
 import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/use-auth';
+import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
 
 const Recipe = () => {
   const { recipeId } = useParams();
@@ -21,7 +22,10 @@ const Recipe = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    dispatch(getFavoriteRecipesThunk({ limit: 999999 }));
+    Promise.all([
+      dispatch(getFavoriteRecipesThunk({ limit: 999999 })),
+      dispatch(getShoppingListV2Thunk()),
+    ]);
   }, [dispatch]);
 
   useEffect(() => {
@@ -66,6 +70,7 @@ const Recipe = () => {
         <IngredientsTable
           ingredients={recipe.ingredients}
           recipeId={recipe._id}
+          recipe={recipe}
         ></IngredientsTable>
         <RecipePreparation
           image={recipe.thumb}

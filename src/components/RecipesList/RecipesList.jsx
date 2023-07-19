@@ -17,7 +17,7 @@ import {
   ImagePlaceholder,
 } from './RecipesList.styled';
 
-export const RecipesList = ({ data, removeRecipe }) => {
+export const RecipesList = ({ data, removeRecipe, className }) => {
   const navigate = useNavigate();
 
   return (
@@ -36,6 +36,7 @@ export const RecipesList = ({ data, removeRecipe }) => {
                   <RecipeItemTitle>
                     <h3>{title}</h3>
                     <button
+                      className={className}
                       onClick={() => {
                         removeRecipe(_id);
                       }}
@@ -51,6 +52,7 @@ export const RecipesList = ({ data, removeRecipe }) => {
                     {time} {time.includes('min') ? '' : 'min'}
                   </p>
                   <button
+                    className={className}
                     onClick={() => {
                       navigate(`/recipe/${_id}`);
                       scrollToTop();

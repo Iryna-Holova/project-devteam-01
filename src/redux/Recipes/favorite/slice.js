@@ -61,7 +61,7 @@ export const favoriteRecipesSlice = createSlice({
             // console.log(item, payload.recipeId);
             return item._id !== payload.recipeId;
           });
-          console.log(result);
+          //console.log(result);
           state.items = [...result];
           state.total = state.total - 1;
           state.isLoading = false;
