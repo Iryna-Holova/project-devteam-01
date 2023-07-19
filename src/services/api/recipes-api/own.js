@@ -41,7 +41,7 @@ export const addOwnRecipe = async ({ data, token }) => {
   try {
     // setAuthHeader(axios, token);
 
-    const { status, data: responseData } = await axios.post('/api/own-recipes', data);
+    const { status, data: responseData } = await axios.post('/api/recipes/own', data);
     // clearAuthHeader(axios);
     if (status === 201) {
       return responseData;

@@ -25,32 +25,31 @@ const AddRecipeForm = () => {
   }, [dispatch]);
 
   const handleFormSubmit = async (values) => {
+    const recipeData = {
+      title: values.title,
+      category: values.category,
+      area: 'none',
+      instructions: values.preparation,
+      description: values.description,
+      thumb: 'none',
+      preview: 'none',
+      time: values.time,
+      tags: [],
+      ingredients: values.ingredients.map((ingredient) => ({
+        id: ingredient.name._id,
+        measure: ingredient.measure,
+      })),
+    };
+
     const formData = new FormData();
-    formData.append('title', values.title);
-    formData.append('category', values.category);
-    formData.append('instructions', JSON.stringify(values.preparation));
-    formData.append('description', values.description);
-    formData.append('thumb', selectedFile); // Add thumb file here
-    formData.append('preview', ''); // Add preview file here if available
-    formData.append('time', values.time);
-    formData.append('tags', JSON.stringify([]));
-    values.ingredients.forEach((ingredient, index) => {
-      formData.append(`ingredients[${index}].id`, ingredient.name);
-      formData.append(`ingredients[${index}].measure`, ingredient.measure);
-    });
-
-    // Це для того щоб відобразити в консолі що передається в форм дата
-    for (const [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
-    // Це для того щоб відобразити в консолі що передається в форм дата
-
+    formData.append('photo', selectedFile);
+    formData.append('recipe', JSON.stringify(recipeData));
 
     try {
-      const response = await addOwnRecipe({ formData });
+      const response = await addOwnRecipe({ data: formData});
       if (response) {
         console.log('Recipe added successfully:', response);
-        navigate('/my'); // Redirect to MyRecipes page
+        navigate('/my');
       } else {
         console.log('Failed to add recipe');
       }
