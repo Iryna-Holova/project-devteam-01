@@ -13,6 +13,7 @@ export const Input = styled.input`
     padding-left: 32px;
     font-size: 12px;
     border: none;
+    outline: none;
     border-radius: 22px 44px;
     background-color: var(--color-secondary);
 
@@ -152,31 +153,15 @@ export const MainSearchContainer = styled.div`
         width: 362px;
         height: 59px;
         top: -390px;
-        left: 50px;
+        left: -150px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     @media screen and (min-width: 1440px) {
         width: 510px;
         height: 70px;
         top: -540px;
-        left: 120px;
-    }
-`
-
-export const TextUnderImage = styled.p`
-    margin-top: 24px;
-    margin-bottom: 100px;
-    font-size: 14px;
-    line-height: 1.0;
-    letter-spacing: -0.28px;
-    font-weight: 500;
-    color: var(--color-option);
-    opacity: 0.5;
-
-    @media screen and (min-width: 768px) {
-        margin-top: 32px;
-        margin-bottom: 200px;
-        font-size: 24px;
-        letter-spacing: -0.48px;
+        left: -350px;
     }
 `

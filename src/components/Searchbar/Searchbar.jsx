@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 import {Input, Btn,  Label, Select, Option, Div, Form} from './Searchbar.styled'
 
-
 import { useDispatch } from 'react-redux';
 import {getSearchByThunk} from '../../redux/Recipes/SearchBy/operations'
 import {SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT} from '../../utils/constants'
@@ -40,7 +39,6 @@ export function Searchbar ({onSubmit, className}) {
     
    }
 
-
 // Ефект для отправки запроса если пользователь сделает паузу при вводе запроса   
   useEffect(()=> {
     if (!isTyping || value.trim() === '') {
@@ -61,8 +59,6 @@ export function Searchbar ({onSubmit, className}) {
     return () => clearTimeout(delayDebounceRequest);
   }, [value, selectedValue,isTyping, dispatch ])
 
-  
-
 // Отправка введенных значений по клику  
   const handleSubmit = e => {
     e.preventDefault();
@@ -82,13 +78,13 @@ export function Searchbar ({onSubmit, className}) {
             <Div>
             <Input
               className={className}
-                type="text"
-                name="value"
-                autoComplete="off"
-                autoFocus
-                placeholder="Search recipes"
-                onChange={handleInputChange}
-                value={value}
+              type="text"
+              name="value"
+              autoComplete="off"
+              autoFocus
+              placeholder="Search recipes"
+              onChange={handleInputChange}
+              value={value}
               />
            <Btn className={className} onClick={handleSubmit} type="submit">Search</Btn>
             </Div>
