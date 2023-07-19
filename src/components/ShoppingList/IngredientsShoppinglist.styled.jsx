@@ -260,7 +260,7 @@ export const EmptyListImage = styled.img`
 `;
 
 export const EmptyListText = styled.p`
-  color: var(--color-text-primary);
+  color: var(--color-icons-light);
   font-family: Poppins;
   font-size: 24px;
   margin-left: 55px;
