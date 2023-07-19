@@ -15,7 +15,7 @@ import Pagination from 'components/Pagination/Pagination';
 import { setPage } from 'redux/Recipes/favorite/slice';
 
 const Favorite = () => {
-  const { status, favorite, page, limit } = useFavorite();
+  const { status, favorite, page, limit, isDeleting } = useFavorite();
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -37,7 +37,7 @@ const Favorite = () => {
   return (
     <>
       <MainTitle>Favorites</MainTitle>
-      {status === PENDING ? (
+      {status === PENDING && !isDeleting ? (
         <Loader />
       ) : (
         <>
