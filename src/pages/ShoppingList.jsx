@@ -19,7 +19,7 @@ import { clearError } from 'redux/ShoppingListV2/slice';
 const ShoppingList = () => {
   const dispatch = useDispatch();
   //const ingredients = useSelector(state => state.shoppingList.ingredients);
-  const { shoppingList, status, isDeleting } = useShoppingListV2();
+  const { shoppingList, status, isDeleting, isLoading } = useShoppingListV2();
 
   useEffect(() => {
     dispatch(clearError());
@@ -42,13 +42,12 @@ const ShoppingList = () => {
         {(status === IDLE ||
           status === RESOLVED ||
           (status === PENDING && isDeleting)) && <IngredientsShoppingList />}
-        {status !== PENDING ||
-          ((status === REJECTED || shoppingList.length === 0) && (
-            <div>
-              <EmptyListImage src={emptyListImage} alt="Empty List" />
-              <EmptyListText>Shopping list is empty</EmptyListText>
-            </div>
-          ))}
+        {(status === REJECTED || shoppingList.length === 0) && (
+          <div>
+            <EmptyListImage src={emptyListImage} alt="Empty List" />
+            <EmptyListText>Shopping list is empty</EmptyListText>
+          </div>
+        )}
       </Container>
     </div>
   );

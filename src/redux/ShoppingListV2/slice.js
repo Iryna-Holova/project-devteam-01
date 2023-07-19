@@ -106,17 +106,15 @@ export const shoppingListV2Slice = createSlice({
       .addCase(delFromShoppingListV2Thunk.pending, state => {
         state.isDeleting = true;
       })
-
-      .addMatcher(
-        isAnyOf(
-          getShoppingListV2Thunk.pending,
-          addToShoppingListV2Thunk.pending
-        ),
-        state => {
-          state.isLoading = true;
-          state.status = PENDING;
-        }
-      )
+      .addCase(getShoppingListV2Thunk.pending, state => {
+        state.isLoading = true;
+        state.isDeleting = false;
+        state.status = PENDING;
+      })
+      .addMatcher(isAnyOf(addToShoppingListV2Thunk.pending), state => {
+        state.isLoading = false;
+        state.status = PENDING;
+      })
       .addMatcher(
         isAnyOf(
           getShoppingListV2Thunk.rejected,

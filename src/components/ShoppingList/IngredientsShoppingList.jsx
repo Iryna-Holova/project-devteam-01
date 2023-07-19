@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdClear } from 'react-icons/md';
 import { Loader } from '../loader/loader';
+
 import {
   Container,
   HeaderContainer,
@@ -21,6 +22,7 @@ import {
 } from './IngredientsShoppinglist.styled';
 
 import emptyListImage from '../../assets/images/empty-img.png';
+
 import useShoppingListV2 from 'hooks/useShoppingListV2';
 import { PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
