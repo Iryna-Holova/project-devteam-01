@@ -26,7 +26,7 @@ const BurgerMenu = ({ openState, handleBurgerMenuClose }) => {
       <BurgerBox>
         <BurgerContainer>
           <BurgerHeader>
-            <Logo func={handleBurgerMenuClose}/>
+            <Logo func={handleBurgerMenuClose} />
             <CloseButton onClick={() => handleBurgerMenuClose()}>
               <CgClose />
             </CloseButton>

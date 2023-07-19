@@ -34,5 +34,16 @@ export const OtherCategoriesButton = styled(Link)`
     &:focus {
         background-color: var(--color-accent);
         color: var(--color-main);
+        transition: background-color var(--transition-time) var(--cubic);
+
     }
+`
+
+export const SearchContainer = styled.div`
+    position: absolute;
+    top: 350px;
+    left: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 510px;
 `

@@ -11,7 +11,7 @@ export const getFavorite = async ({ limit = 99999, page = 1 }) => {
     // );
 
     const { status, data } = await axios.get(
-      `/api/favorite/?page=${page}&limit=${limit}`
+      `/api/recipes/favorites/?page=${page}&limit=${limit}`
     );
     // clearAuthHeader(axios);
 
@@ -33,8 +33,8 @@ export const addToFavorite = async ({ id }) => {
     //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
     // );
 
-    const { status, data } = await axios.post(
-      `/api/favorite/`,
+    const { status, data } = await axios.patch(
+      `/api/recipes/favorites/`,
       { recipeId: id },
       {
         headers: {
@@ -63,7 +63,7 @@ export const deleteFromFavorite = async ({ id }) => {
     //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTQzMzU1MiwiZXhwIjoxNjg5NTE2MzUyfQ.4cKZG1aHnDuVwc6WPn59Yyj-chgLcK5OkGhhN8dLVXo'
     // );
 
-    const { status, data } = await axios.delete(`/api/favorite/${id}`);
+    const { status, data } = await axios.delete(`/api/recipes/favorites/${id}`);
     // clearAuthHeader(axios);
     console.log(data);
     return { status, message: data.message };

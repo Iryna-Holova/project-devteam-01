@@ -1,5 +1,4 @@
-import { Container, Text, TextGreen, StyledLink, TextContainer, StyledSvg } from "./ChooseBreakfast.styled";
-import arrow from "../../../assets/svg/MainPage/arrow-narrow-right.svg";
+import { Container, Text, TextGreen, StyledLink, TextContainer, Svg } from "./ChooseBreakfast.styled";
 
 const ChooseBreakfast = () => {
     return (
@@ -8,9 +7,7 @@ const ChooseBreakfast = () => {
                 <Text><TextGreen>Delicious and healthy</TextGreen> way to enjoy a variety of fresh ingredients in one satisfying meal</Text>
                 <StyledLink to="/categories/breakfast">
                     See recipes
-                    <StyledSvg>
-                        <use xlinkHref={`${arrow}`} />
-                    </StyledSvg>
+                    <Svg/>
                 </StyledLink>
             </TextContainer>
         </Container>

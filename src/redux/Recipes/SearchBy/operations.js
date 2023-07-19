@@ -10,13 +10,11 @@ export const getSearchByThunk = createAsyncThunk(
   ) => {
     try {
       if (method === SEARCH_BY_TITLE) {
-        //console.log('Search by Title');
         const response = await recipesServices.getSearchByTitle({
           limit,
           query,
           page,
         });
-        //console.log(response);
         return {
           items: response,
         };

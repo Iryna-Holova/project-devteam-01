@@ -1,14 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logOut } from '../../../redux/auth/operations';
 import {
   UserLogoModalContainer,
   EditProfileButton,
   LogoutButton,
-} from './UserLogo.styled';
-import { logOut } from '../../../redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
+} from './UserLogout.styled';
 
-function UserLogoModal() {
+import { FiArrowRight } from 'react-icons/fi';
+import { HiOutlinePencil } from 'react-icons/hi';
+
+const UserLogoutModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,10 +28,14 @@ function UserLogoModal() {
     <UserLogoModalContainer>
       <EditProfileButton onClick={handleEditProfile}>
         Edit Profile
+        <HiOutlinePencil />
       </EditProfileButton>
-      <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+      <LogoutButton onClick={handleLogout}>
+        Log out
+        <FiArrowRight />
+      </LogoutButton>
     </UserLogoModalContainer>
   );
-}
+};
 
-export default UserLogoModal;
+export default UserLogoutModal;

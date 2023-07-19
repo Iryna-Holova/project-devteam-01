@@ -1,80 +1,70 @@
 import React, { useState } from 'react';
-import Logo from '../Logo/LogoHeader';
+
+import { HiMenuAlt2 } from 'react-icons/hi';
+
+import useAuth from 'hooks/use-auth';
+
+import Logo from 'components/Logo/Logo';
+import BurgerMenu from './Burger/Burger';
 import Navigation from './Navigation/Navigation';
-import UserLogo from './UserLogo/UserLogo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
+import UserLogoutModal from './UserModals/UserLogout';
+
 import {
   HeaderContainer,
-  LogoStyled,
-  LogoHeader,
-  BurgerMenu,
   UserInfo,
   UserPhoto,
   UserName,
-  BurgerIcon,
-  BurgerMenuContent,
-  BurgerMenuCloseButton,
   HeaderContainerStyle,
   NavStyle,
   ThemeTogglerStyle,
+  BurgerButton,
 } from './Header.styled';
 
 const Header = () => {
-  const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
-  const [isProfileOpen, setProfileOpen] = useState(false);
+  const [menuOpenState, setMenuOpenState] = useState(false);
+  const [profileOpenState, setProfileOpenState] = useState(false);
 
-  const handleBurgerMenuClick = () => {
-    setBurgerMenuOpen(!isBurgerMenuOpen);
+  const { user } = useAuth();
+
+  const handleBurgerMenuOpen = () => {
+    setMenuOpenState(true);
+  };
+
+  const handleBurgerMenuClose = () => {
+    setMenuOpenState(false);
   };
 
   const handleProfileClick = () => {
-    setProfileOpen(!isProfileOpen);
-  };
-
-  const handleNavLinkClick = () => {
-    setBurgerMenuOpen(false); // Закрываем бургер-меню при нажатии на пункт навигации
+    setProfileOpenState(!profileOpenState);
   };
 
   return (
-    <HeaderContainer className="container">
-      <LogoStyled>
-        <LogoHeader href="https://iryna-holova.github.io/project-devteam-01/">
-          <Logo>So Yummy</Logo>
-        </LogoHeader>
-      </LogoStyled>
-      <NavStyle>
-        <Navigation handleNavLinkClick={handleNavLinkClick} />
-      </NavStyle>
-      <HeaderContainerStyle>
-        <UserInfo>
-          <UserPhoto src="path_to_user_photo" alt="User Photo" />
-          <UserName onClick={handleProfileClick}>Тестовое имя</UserName>
-
-          {isProfileOpen && <UserLogo />}
-        </UserInfo>
-        <ThemeTogglerStyle>
-          <ThemeToggler />
-        </ThemeTogglerStyle>
-        <BurgerMenu onClick={handleBurgerMenuClick}>
-          {isBurgerMenuOpen ? (
-            <BurgerMenuCloseButton
-              data-is-menu-open={isBurgerMenuOpen}
-              onClick={handleBurgerMenuClick}
-            />
-          ) : (
-            <>
-              <BurgerIcon />
-              <BurgerIcon />
-              <BurgerIcon />
-            </>
-          )}
-        </BurgerMenu>
-      </HeaderContainerStyle>
-      <BurgerMenuContent data-is-menu-open={isBurgerMenuOpen}>
-        <Navigation handleNavLinkClick={handleNavLinkClick} />
-        <ThemeToggler />
-      </BurgerMenuContent>
-    </HeaderContainer>
+    <>
+      <HeaderContainer className="container">
+        <Logo />
+        <NavStyle>
+          <Navigation />
+        </NavStyle>
+        <HeaderContainerStyle>
+          <UserInfo onClick={handleProfileClick}>
+            <UserPhoto src={user.avatarURL} alt="User Photo" />
+            <UserName>{user.name}</UserName>
+            {profileOpenState && <UserLogoutModal />}
+          </UserInfo>
+          <BurgerButton onClick={() => handleBurgerMenuOpen()}>
+            <HiMenuAlt2 />
+          </BurgerButton>
+          <ThemeTogglerStyle>
+            <ThemeToggler />
+          </ThemeTogglerStyle>
+        </HeaderContainerStyle>
+      </HeaderContainer>
+      <BurgerMenu
+        openState={menuOpenState}
+        handleBurgerMenuClose={handleBurgerMenuClose}
+      />
+    </>
   );
 };
 
