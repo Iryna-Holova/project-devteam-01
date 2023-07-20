@@ -15,33 +15,6 @@ import {
   FieldWrapper,
 } from './SharedForm.styled';
 
-// const isValidEmail = email => {
-//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   return emailRegex.test(email);
-// };
-
-// const validate = (values) => {
-//   const errors = {};
-
-//   if (!values.email) {
-//     errors.email = 'Введіть електронну адресу';
-//   } else if (!isValidEmail(values.email)) {
-//     errors.email = 'Введіть правильну електронну адресу';
-//   }
-
-//   if (!values.name) {
-//     errors.name = 'Введіть ім\'я';
-//   }
-
-//   if (!values.password) {
-//     errors.password = 'Введіть пароль';
-//   } else if (values.password.length < 6) {
-//     errors.password = 'Пароль повинен містити щонайменше 6 символів';
-//   }
-
-//   return errors;
-// };
-
 const SharedForm = ({
   initialValues,
   validationSchema,

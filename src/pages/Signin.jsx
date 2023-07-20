@@ -5,7 +5,10 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import useAuth from 'hooks/use-auth';
-import { REJECTED, RESOLVED } from 'utils/constants';
+import {
+  // REJECTED,
+  RESOLVED
+} from 'utils/constants';
 
 const Signin = () => {
   const initialValues = {
@@ -18,36 +21,31 @@ const Signin = () => {
   const { status } = useAuth();
 
   const validationSchema = Yup.object({
-    email: Yup.string().email('Please enter a valid email').required('Please enter your email'),
+    email: Yup.string()
+      .email('Please enter a valid email')
+      .required('Please enter your email'),
     password: Yup.string().required('Please enter your password'),
   });
 
   const handleSubmit = (
     values,
-    { setSubmitting, setFieldTouched } //, resetForm
+    { setSubmitting, setFieldTouched }
   ) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
-    if (values.email === '') {
-      console.log('Порожні поля');
-    } else {
-      console.log('Всі поля заповнені');
-      dispatch(
-        logIn({
-          email: values.email,
-          password: values.password,
-        })
-      );
-      //resetForm();
-    }
-
+    dispatch(
+      logIn({
+        email: values.email,
+        password: values.password,
+      })
+    );
     setSubmitting(false);
   };
 
   useEffect(() => {
     if (status === RESOLVED) return navigate('/');
-    if (status === REJECTED) alert('Invalid email or password');
+    // if (status === REJECTED) alert('Invalid email or password');
   }, [status, navigate]);
 
   return (

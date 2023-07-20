@@ -5,7 +5,10 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import SharedForm from 'components/SharedForm/SharedForm';
 import ModalRegister from 'components/ModalRegister/ModalRegister';
-import { REJECTED, RESOLVED } from 'utils/constants';
+import {
+  // REJECTED,
+  RESOLVED,
+} from 'utils/constants';
 import useAuth from 'hooks/use-auth';
 
 const Register = () => {
@@ -29,50 +32,38 @@ const Register = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email('Please enter a valid email').required('Please enter your email'),
+    email: Yup.string()
+      .email('Please enter a valid email')
+      .required('Please enter your email'),
     name: Yup.string().required('Please enter your name'),
     password: Yup.string().required('Please enter your password'),
   });
 
   const handleSubmit = (
     values,
-    { setSubmitting, setFieldTouched } //, resetForm
+    { setSubmitting, setFieldTouched }
   ) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
-    if (values.email === '' || values.name === '') {
-      console.log('Порожні поля');
-    } else {
-      console.log('Всі поля заповнені');
-
-      //  try {
-      dispatch(
-        register({
-          user: {
-            name: values.name,
-            email: values.email,
-            password: values.password,
-          },
-        })
-      );
-      //resetForm();
-      //   openModal();
-      // } catch (error) {
-      //   console.log(error.message);
-      // }
-    }
+    dispatch(
+      register({
+        user: {
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        },
+      })
+    );
 
     setSubmitting(false);
   };
 
   useEffect(() => {
-    //console.log('status', status);
     if (status === RESOLVED) {
-      // console.log('open  Modal');
       openModal();
     }
-    if (status === REJECTED) alert('Registration Error');
+        // if (status === REJECTED) alert('Registration failed');
   }, [status]);
 
   return (
@@ -87,7 +78,6 @@ const Register = () => {
         nameBut={'Sign up'}
         isRegisterForm
       />
-
       {isModalOpen && <ModalRegister closeModal={closeModal} />}
     </div>
   );
