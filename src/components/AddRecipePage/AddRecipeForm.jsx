@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import RecipeDescription from './AddRecipeForm/RecipeDescription/RecipeDescription';
 import RecipeIngredients from './AddRecipeForm/RecipeIngredients/RecipeIngredients';
 import RecipePreparation from './AddRecipeForm/RecipePreparation/RecipePreparation';
-import {
-  // Container,
-  AddRecipeButton, FormStyled
-} from './AddRecipeForm.styled';
+import { Container, AddRecipeButton } from './AddRecipeForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'redux/Categories/selectors';
 import { selectIngredients } from 'redux/Ingredients/selectors';
@@ -49,7 +46,7 @@ const AddRecipeForm = () => {
     formData.append('recipe', JSON.stringify(recipeData));
 
     try {
-      const response = await addOwnRecipe({ data: formData});
+      const response = await addOwnRecipe({ data: formData });
       if (response) {
         console.log('Recipe added successfully:', response);
         navigate('/my');
@@ -78,18 +75,21 @@ const AddRecipeForm = () => {
       }}
       onSubmit={handleFormSubmit}
     >
-      
-        <FormStyled>
-          <RecipeDescription
-            categories={categories}
-            handleFileChange={handleFileChange}
-            selectedFile={selectedFile}
-          />
-          <RecipeIngredients ingredients={ingredients} />
-          <RecipePreparation />
-          <AddRecipeButton type="submit">Add</AddRecipeButton>
-        </FormStyled>
-      
+      {formikProps => (
+        <Container>
+          <Form>
+            <RecipeDescription
+              categories={categories}
+              handleFileChange={handleFileChange}
+              selectedFile={selectedFile}
+              formikProps={formikProps}
+            />
+            <RecipeIngredients ingredients={ingredients} />
+            <RecipePreparation />
+            <AddRecipeButton type="submit">Add</AddRecipeButton>
+          </Form>
+        </Container>
+      )}
     </Formik>
   );
 };
