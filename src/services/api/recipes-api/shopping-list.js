@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getShoppingList = async () => {
   try {
     const response = await axios.get('api/shopping-list');
-    //console.log(response);
+    //  console.log(response.data);
     return response.data;
   } catch (error) {
     return Promise.reject(`Error no retrive shoppimg list`);
