@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  Container,
-} from '../components/ShoppingList/IngredientsShoppinglist.styled';
+import { Container } from '../components/ShoppingList/IngredientsShoppinglist.styled';
 import MainTitle from '../components/MainTitle/MainTitle';
 import IngredientsShoppingList from '../components/ShoppingList/IngredientsShoppingList';
 import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
@@ -20,12 +18,13 @@ const ShoppingList = () => {
   const { shoppingList, status, isDeleting, isLoading } = useShoppingListV2();
 
   useEffect(() => {
-    dispatch(clearError());
+    Promise.all([dispatch(clearError()), dispatch(getShoppingListV2Thunk())]);
   }, [dispatch]);
 
-  useEffect(() => {
-    if (shoppingList.length === 0) dispatch(getShoppingListV2Thunk());
-  }, [dispatch, shoppingList]);
+  // useEffect(() => {
+
+  //   if (shoppingList.length === 0) dispatch(getShoppingListV2Thunk());
+  // }, [dispatch, shoppingList]);
 
   // useEffect(() => {
   //   dispatch(fetchIngredients());
