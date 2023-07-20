@@ -65,7 +65,7 @@ export const deleteFromFavorite = async ({ id }) => {
 
     const { status, data } = await axios.delete(`/api/recipes/favorites/${id}`);
     // clearAuthHeader(axios);
-    console.log(data);
+    // console.log(data);
     return { status, message: data.message };
     // if (status === 200) {
     //   console.log(data);

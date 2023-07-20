@@ -9,7 +9,7 @@ import {
   Description,
 } from './RecipeGallery.styled';
 
-import IngredientsPlaceholder from '../../assets/images/defaultDish.png';
+import noImage from '../../assets/images/no-image-recipe.webp';
 
 const RecipeGallery = ({ recipes = null }) => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const RecipeGallery = ({ recipes = null }) => {
                     <p>{title}</p>
                   </Description>
                   <RecipeImg
-                    src={thumb ? thumb : IngredientsPlaceholder}
+                    src={thumb ? thumb : noImage}
                     loading="lazy"
                     alt={title}
                   />

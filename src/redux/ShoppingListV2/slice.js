@@ -57,7 +57,7 @@ export const shoppingListV2Slice = createSlice({
             state.items.splice(indexInSL, 1, tmp);
             //state.items = [...state.items, { ...tmp }];
           }
-          console.log(state.items);
+          // console.log(state.items);
         } else state.items.splice(indexInSL, 1);
 
         state.isLoading = false;

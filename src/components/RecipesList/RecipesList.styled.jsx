@@ -2,13 +2,11 @@ import styled from 'styled-components';
 
 export const RecipesListContainer = styled.ul`
   margin-top: 50px;
-  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   gap: 18px;
   @media (min-width: 768px) {
     margin-top: 100px;
-    margin-bottom: 50px;
     gap: 40px;
   }
   @media (min-width: 1440px) {

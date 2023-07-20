@@ -21,7 +21,7 @@ import {
   MeasureContainer,
 } from './IngredientsShoppinglist.styled';
 
-//import emptyListImage from '../../assets/images/empty-img.png';
+import noImage from '../../assets/images/no-image-ingredient.webp'
 
 import useShoppingListV2 from 'hooks/useShoppingListV2';
 import { PENDING } from 'utils/constants';
@@ -68,7 +68,7 @@ const IngredientsShoppingList = () => {
         <IngredientsListContainer>
           {ingredients.map(ingredient => (
             <IngredientItem key={ingredient._id}>
-              <IngredientImage src={ingredient.img} alt={ingredient.name} />
+              <IngredientImage src={ingredient.img || noImage} alt={ingredient.name} />
               <IngredientName>{ingredient.name}</IngredientName>
 
               <MeasureContainer>

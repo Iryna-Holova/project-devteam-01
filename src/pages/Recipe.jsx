@@ -31,7 +31,6 @@ const Recipe = () => {
   useEffect(() => {
     async function fetchData() {
       const recipe = await getRecipeById(recipeId);
-      //  console.log(recipe.favorite, user);
       if (
         recipe?.favorite.findIndex(({ _userId }) => _userId === user._id) >= 0
       )

@@ -11,16 +11,17 @@ export const Container = styled.ul`
   background: var(--color-main);
   box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
   border-radius: 26px;
-  margin-top:40px;
-  position: absolute;
+  margin-top: 40px;
+  margin-bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
   @media screen and (min-width: 768px) {
     padding: 14px 72px;
-    margin-top:50px;
+    margin-top: 50px;
+    margin-bottom: 200px;
   }
   @media screen and (min-width: 1440px) {
-    margin-top:50px;
+    margin-top: 50px;
   }
 `;
 
@@ -28,14 +29,18 @@ export const Page = styled.li`
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   line-height: calc(18 / 12);
-  color: ${props => props.$active === 'true' ? 'var(--color-icons)' : '#656565'};
+  color: ${props =>
+    props.$active === 'true' ? 'var(--color-icons)' : '#656565'};
 
   display: flex;
   justify-content: center;
   align-items: center;
   width: 27px;
   height: 27px;
-  background-color: ${props => props.$active === 'true' ? 'var(--color-accent-secondary)' : 'var(--color-main)'};
+  background-color: ${props =>
+    props.$active === 'true'
+      ? 'var(--color-accent-secondary)'
+      : 'var(--color-main)'};
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
@@ -50,7 +55,7 @@ export const Page = styled.li`
     &:not(:last-of-type) {
       margin-right: 24px;
     }
-  
+
     &:last-of-type {
       margin-right: 0;
     }
@@ -59,13 +64,12 @@ export const Page = styled.li`
     &:not(:last-of-type) {
       margin-right: 24px;
     }
-  
+
     &:last-of-type {
       margin-right: 0;
     }
   }
 `;
-
 
 export const StyledChevronLeft = styled(BiChevronLeft)`
   position: absolute;
@@ -74,7 +78,7 @@ export const StyledChevronLeft = styled(BiChevronLeft)`
   transform: translate(0, -50%);
   margin-right: 13px;
   cursor: pointer;
-  fill:var(--color-start-bg);
+  fill: var(--color-start-bg);
 `;
 
 export const StyledChevronRight = styled(BiChevronRight)`
@@ -84,5 +88,5 @@ export const StyledChevronRight = styled(BiChevronRight)`
   transform: translate(0, -50%);
   margin-left: -5px;
   cursor: pointer;
-  fill:var(--color-start-bg);
+  fill: var(--color-start-bg);
 `;
