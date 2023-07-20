@@ -24,7 +24,7 @@ export const getSearchByThunk = createAsyncThunk(
           query,
           page,
         });
-        console.log(response);
+        //console.log(response);
         return {
           items: response,
         };

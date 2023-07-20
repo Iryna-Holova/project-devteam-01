@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Container } from '../components/ShoppingList/IngredientsShoppinglist.styled';
 import MainTitle from '../components/MainTitle/MainTitle';
@@ -16,15 +16,17 @@ const ShoppingList = () => {
   const dispatch = useDispatch();
   //const ingredients = useSelector(state => state.shoppingList.ingredients);
   const { shoppingList, status, isDeleting, isLoading } = useShoppingListV2();
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    Promise.all([dispatch(clearError()), dispatch(getShoppingListV2Thunk())]);
+    dispatch(clearError());
   }, [dispatch]);
 
-  // useEffect(() => {
-
-  //   if (shoppingList.length === 0) dispatch(getShoppingListV2Thunk());
-  // }, [dispatch, shoppingList]);
+  useEffect(() => {
+    if (isChecked) return;
+    if (shoppingList.length === 0)
+      Promise.all([dispatch(getShoppingListV2Thunk()), setIsChecked(true)]);
+  }, [dispatch, shoppingList, isChecked]);
 
   // useEffect(() => {
   //   dispatch(fetchIngredients());

@@ -1,5 +1,5 @@
 import MainTitle from 'components/MainTitle/MainTitle';
-import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
+import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
 import { useParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
@@ -14,9 +14,9 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('title');
 
-  const dispatch = useDispatch()
-  const { recipes, status, isLoading, error } = useSearchBy();
-  const {searchQuery} = useParams();
+  const dispatch = useDispatch();
+  const { recipes, status, isLoading } = useSearchBy();
+  const { searchQuery } = useParams();
 
   useEffect(() => {
     if (searchQuery !== '' && searchQuery !== undefined) {
@@ -25,13 +25,17 @@ const Search = () => {
 
     if (searchValue === '') {
       return;
-    } 
+    }
 
     if (selectedValue === 'ingredients' && searchValue !== '') {
-        dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_INGREDIENT}))
+      dispatch(
+        getSearchByThunk({ query: searchValue, method: SEARCH_BY_INGREDIENT })
+      );
     }
     if (selectedValue === 'title' && searchValue !== '') {
-        dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_TITLE}))
+      dispatch(
+        getSearchByThunk({ query: searchValue, method: SEARCH_BY_TITLE })
+      );
     }
   }, [searchValue, searchQuery, selectedValue, dispatch]);
 
@@ -46,33 +50,25 @@ const Search = () => {
     }
   };
 
-  console.log(error); // Just for build
-
   return (
     <>
-    <MainTitle>
-      Search
-    </MainTitle>
-    <Searchbar
-    onSubmit={formOnsubmitHandler}
-    />
-    {isLoading && <Loader/>}
-    {status === 2 && <RecipeGallery recipes={recipes} />}
-    {status === 1 && <p>...</p>}
-    {status === 3 && (
-      <div
-        style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-      >
-      <NoDataMessage>
-        Try looking for something else...
-      </NoDataMessage>
-    </div>
-  )}
+      <MainTitle>Search</MainTitle>
+      <Searchbar onSubmit={formOnsubmitHandler} />
+      {isLoading && <Loader />}
+      {status === 2 && <RecipeGallery recipes={recipes} />}
+      {status === 1 && <p>...</p>}
+      {status === 3 && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <NoDataMessage>Try looking for something else...</NoDataMessage>
+        </div>
+      )}
     </>
   );
 };
