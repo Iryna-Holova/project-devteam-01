@@ -1,224 +1,219 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  margin-left: 8px;
-  margin-right: 8px;
-  border-radius: 8px;
-  width: 359px;
-  height: 38px;
+export const Container = styled.div`
   margin-top: 50px;
+  margin-bottom: 100px;
 
   @media screen and (min-width: 768px) {
-    width: 664px;
+    margin-top: 72px;
+    margin-bottom: 200px;
+  }
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 38px;
+  background-color: var(--color-accent);
+  border-radius: 8px;
+  color: var(--color-text);
+
+  & div:nth-child(1) {
+    width: 78px;
+  }
+  & div:nth-child(2) {
+    flex: 1 auto;
+  }
+  & div:nth-child(3) {
+    width: 78px;
+  }
+  & div:nth-child(4) {
+    width: 70px;
+  }
+
+  @media screen and (min-width: 768px) {
     height: 58px;
     margin-top: 72px;
-    margin-left: 32px;
-    margin-right: 32px;
+    & div:nth-child(1) {
+      width: 109px;
+    }
+    & div:nth-child(3) {
+      width: 191px;
+    }
+    & div:nth-child(4) {
+      width: 118px;
+    }
   }
 
-  @media screen and (min-width: 1280px) {
-    width: 1160px;
+  @media screen and (min-width: 1440px) {
     height: 60px;
+    & div:nth-child(1) {
+      width: 149px;
+    }
+    & div:nth-child(3) {
+      width: 279px;
+    }
+    & div:nth-child(4) {
+      width: 158px;
+    }
   }
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   color: var(--color-main);
-  font-family: Poppins;
   font-size: 12px;
+  line-height: 18px;
   font-weight: 600;
-  padding-left: 10px;
-  padding-right: 10px;
+  text-align: center;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
-
-  @media screen and (min-width: 1280px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-`;
-
-const TitleN = styled.div`
-  display: block;
-  margin-left: 148px;
-  margin-right: 0;
-  color: var(--color-main);
-  font-family: Poppins;
-  font-size: 12px;
-  font-weight: 600;
-
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     font-size: 18px;
-    margin-left: 260px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin-left: 750px;
   }
 `;
 
-const IngredientsListContainer = styled.div`
-  width: 375px;
-  height: 1379px;
+export const IngredientItem = styled.li`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 8px;
-  margin-left: 16px;
-
-  @media screen and (min-width: 768px) {
-    width: 704px;
-    margin-top: 7px;
-    margin-left: 32px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 1160px;
-  }
-`;
-
-const IngredientItem = styled.div`
-  display: flex;
-
+  min-height: 70px;
+  margin-top: 24px;
   border-bottom: 1px solid rgba(224, 224, 224, 1);
-  padding: 0;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  margin-left: 16px;
-  margin-right: 16px;
-  width: 343px;
+  padding-bottom: 14px;
+  text-align: center;
 
-  @media screen and (min-width: 768px) {
-    padding-top: 43px;
-    padding-bottom: 43px;
-    width: 644px;
-    margin-left: 32px;
-    margin-right: 32px;
+  & div:nth-child(1) {
+    width: 78px;
+  }
+  & div:nth-child(2) {
+    text-align: start;
+    flex: 1 auto;
+  }
+  & div:nth-child(3) {
+    width: 148px;
   }
 
-  @media screen and (min-width: 1280px) {
-    width: 1160px;
+  @media screen and (min-width: 768px) {
+    min-height: 97px;
+    margin-top: 44px;
+    padding-bottom: 43px;
+
+    & div:nth-child(1) {
+      width: 109px;
+    }
+    & div:nth-child(3) {
+      width: 309px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    & div:nth-child(1) {
+      width: 149px;
+    }
+    & div:nth-child(3) {
+      width: 437px;
+    }
   }
 `;
 
-const IngredientImage = styled.img`
+export const IngredientImage = styled.img`
+  box-sizing: border-box;
+  display: inline-block;
   width: 60px;
   height: 60px;
   padding: 6px;
   border-radius: 8px;
   background: var(--color-accent-secondary);
-  margin-right: 10px;
 
   @media screen and (min-width: 768px) {
     width: 93px;
     height: 97px;
     padding: 8px 6px;
-    margin-right: 16px;
-  }
-
-  @media screen and (min-width: 1280px) {
   }
 `;
 
-const IngredientDetails = styled.li`
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-  justify-content: space-between;
-`;
-
-const IngredientName = styled.span`
-  font-weight: bold;
-
-  margin-top: 0;
+export const IngredientName = styled.div`
   color: var(--color-text-secondary);
-  font-family: Poppins;
   font-size: 10px;
   font-weight: 500;
   line-height: 12px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    font-weight: 500;
     line-height: 24px;
   }
 `;
 
-const QuantityIndicator = styled.div`
-  width: 37px;
-  height: 23px;
+export const MeasureContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+    @media screen and (min-width: 768px) {
+    gap: 8px;
+  }
+`;
+
+export const IngredientDetails = styled.li`
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  & div:nth-child(1) {
+    width: 78px;
+  }
+  & div:nth-child(2) {
+    width: 70px;
+  }
+
+  @media screen and (min-width: 768px) {
+    & div:nth-child(1) {
+      width: 191px;
+    }
+    & div:nth-child(2) {
+      width: 118px;
+    }
+  }
+
+    @media screen and (min-width: 1440px) {
+    & div:nth-child(1) {
+      width: 279px;
+    }
+    & div:nth-child(2) {
+      width: 158px;
+    }
+  }
+`;
+
+export const QuantityIndicator = styled.span`
+  display: inline-block;
+  min-width: 29px;
+  padding: 4px;
   background-color: var(--color-accent);
   color: var(--color-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  margin-right: 26px;
-
-  @media screen and (min-width: 768px) {
-    width: 68px;
-    height: 35px;
-    margin-right: 80px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin-right: 65px;
-  }
-`;
-
-const IngredientQuantity = styled.span`
-  color: var(--color-main);
-  text-align: center;
-  font-family: Poppins;
   font-size: 10px;
-  font-style: normal;
+  line-height: 15px;
   font-weight: 600;
-  line-height: normal;
+  border-radius: 4px;
 
   @media screen and (min-width: 768px) {
+    min-width: 60px;
     font-size: 18px;
+    line-height: 27px;
   }
 `;
 
-const RemoveButton = styled.button`
-  height: 14px;
-
-  margin-right: 8px;
+export const RemoveButton = styled.button`
+  display: block;
+  margin: 0 auto;
+  padding: 4px;
   border: none;
-  /* color: transparent; */
   color: #333333;
   background-color: transparent;
-  border-color: transparent;
+  border: none;
 
-  @media screen and (min-width: 768px) {
-    margin-right: 26px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin-right: 57px;
-    margin-left: 13px;
-  }
-
-  .remove-icon {
-    max-width: none;
+  > svg {
     width: 14px;
     height: 14px;
 
@@ -228,25 +223,3 @@ const RemoveButton = styled.button`
     }
   }
 `;
-
-export const MeasureContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  gap: 3px;
-`;
-
-export {
-  Container,
-  HeaderContainer,
-  Title,
-  TitleN,
-  IngredientsListContainer,
-  IngredientItem,
-  IngredientImage,
-  IngredientDetails,
-  IngredientName,
-  IngredientQuantity,
-  RemoveButton,
-  QuantityIndicator,
-};
