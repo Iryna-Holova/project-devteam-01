@@ -34,10 +34,10 @@ const SubscribeForm = () => {
     onSubmit: async values => {
       const response = await subscribe(values);
 
-      if (response.status === 200) {
-        setSubscribed(true);
-      } else {
+      if (response.status !== 200) {
         setSubscribed(false);
+      } else {
+        setSubscribed(true);
       }
 
       // Сброс формы и состояний
