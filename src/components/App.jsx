@@ -23,7 +23,7 @@ const Register = lazy(() => import('pages/Register'));
 const Signin = lazy(() => import('pages/Signin'));
 const SharedLayout = lazy(() => import('pages/SharedLayout'));
 const Main = lazy(() => import('pages/Main'));
-const Categories = lazy(() => import('pages/Categories/Categories'));
+const Categories = lazy(() => import('pages/Categories'));
 const AddRecipe = lazy(() => import('pages/AddRecipe/AddRecipe'));
 const Favorite = lazy(() => import('pages/Favorite'));
 const Recipe = lazy(() => import('pages/Recipe'));

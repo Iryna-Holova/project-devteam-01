@@ -107,6 +107,7 @@ export const TableBody = styled.ul`
       width: 70px;
       text-align: end;
       & span {
+        display: inline-block;
         border-radius: 4px;
         padding: 4px;
         background-color: var(--color-accent);
@@ -118,6 +119,31 @@ export const TableBody = styled.ul`
     }
     & div:nth-child(4) {
       width: 75px;
+
+      & button {
+        display: flex;
+        margin: 0 auto;
+        position: relative;
+        width: 18px;
+        height: 18px;
+        background-color: transparent;
+        border: 2px solid rgba(126, 126, 126, 0.5);
+        border-radius: 4px;
+        transition: border-color var(--transition-time) var(--cubic);
+
+        &:hover {
+          border-color: var(--color-accent);
+        }
+
+        > svg {
+          color: var(--color-accent);
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: 18px;
+          height: 18px;
+        }
+      }
     }
   }
 
@@ -143,7 +169,6 @@ export const TableBody = styled.ul`
         text-align: center;
         & span {
           box-sizing: border-box;
-          display: inline-block;
           min-width: 68px;
           min-height: 35px;
           vertical-align: middle;
@@ -153,6 +178,18 @@ export const TableBody = styled.ul`
       }
       & div:nth-child(4) {
         width: 151px;
+
+        & button {
+          width: 35px;
+          height: 35px;
+          border: 4px solid rgba(126, 126, 126, 0.5);
+          & svg {
+            width: 35px;
+            height: 35px;
+            top: -4px;
+            left: -4px;
+          }
+        }
       }
     }
   }

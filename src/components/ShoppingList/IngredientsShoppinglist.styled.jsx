@@ -229,22 +229,6 @@ const RemoveButton = styled.button`
   }
 `;
 
-export const EmptyListImage = styled.img`
-  width: 350px;
-  height: 225px;
-  margin-left: 10px;
-  margin-top: 32px;
-`;
-
-export const EmptyListText = styled.p`
-  color: var(--color-icons-light);
-  font-family: Poppins;
-  font-size: 24px;
-  margin-left: 55px;
-  margin-top: 32px;
-  margin-bottom: 32px;
-`;
-
 export const MeasureContainer = styled.ul`
   display: flex;
   flex-direction: column;

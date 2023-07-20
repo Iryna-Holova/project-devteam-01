@@ -13,6 +13,7 @@ import { RecipesList } from 'components/RecipesList/RecipesList';
 import { Loader } from 'components/loader/loader';
 import Pagination from 'components/Pagination/Pagination';
 import { setPage } from 'redux/Recipes/favorite/slice';
+import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 
 const Favorite = () => {
   const { status, favorite, page, limit, isDeleting } = useFavorite();
@@ -28,12 +29,14 @@ const Favorite = () => {
 
   const handleRemoveClick = receptId => {
     dispatch(removeFromFavoriteRecipesThunk(receptId));
+    if (favorite.length === (page - 1) * 4 + 1) {
+      dispatch(setPage(page - 1));
+    }
   };
 
   const handlePageChange = pageNumber => {
     dispatch(setPage(pageNumber));
   };
-
   return (
     <>
       <MainTitle>Favorites</MainTitle>
@@ -42,7 +45,9 @@ const Favorite = () => {
       ) : (
         <>
           {!favorite.length ? (
-            <p>No recipes...</p>
+            <NoDataMessage>
+              You haven't added your favorite recipes yet...
+            </NoDataMessage>
           ) : (
             <>
               <RecipesList

@@ -13,8 +13,7 @@ import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operati
 import CategoriesTabs from 'components/CategoriesTabs/CategoriesTabs';
 import RecipeGallery from 'components/RecipeGallery/RecipeGallery';
 import MainTitle from 'components/MainTitle/MainTitle';
-import { StyledDiv } from './Categories.styled';
-import Pagination from '../../components/Pagination/Pagination';
+import Pagination from '../components/Pagination/Pagination';
 import { Loader } from 'components/loader/loader';
 
 const Categories = () => {
@@ -64,7 +63,7 @@ const Categories = () => {
     : 0;
 
   return (
-    <StyledDiv>
+    <>
       <MainTitle>Categories</MainTitle>
       <CategoriesTabs
         categories={categories}
@@ -89,7 +88,7 @@ const Categories = () => {
           />
         </>
       )}
-    </StyledDiv>
+    </>
   );
 };
 

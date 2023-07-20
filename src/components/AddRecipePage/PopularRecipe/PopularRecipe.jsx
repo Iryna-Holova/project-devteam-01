@@ -14,7 +14,7 @@ import {
   StyledLink,
 } from './PopularRecipe.styled';
 
-import IngredientsPlaceholder from '../../../assets/images/defaultDish.png';
+import noImage from '../../../assets/images/no-image-recipe.webp';
 
 const PopularRecipe = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -51,7 +51,7 @@ const PopularRecipe = () => {
                 <StyledLink to={`/recipe/${_id}`}>
                   <StyledCard>
                     <StyledPicture
-                       src={preview ? preview : IngredientsPlaceholder}
+                       src={preview ? preview : noImage}
                       alt="recipe"
                       loading="lazy"
                     />

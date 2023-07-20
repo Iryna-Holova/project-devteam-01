@@ -1,10 +1,14 @@
 // import { useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addToShoppingListV2Thunk,
   delFromShoppingListV2Thunk,
 } from 'redux/ShoppingListV2/operations';
 import { selectIsInShoppingList } from 'redux/ShoppingListV2/selectors';
+
+import { BsCheck } from 'react-icons/bs';
+import noImage from '../../../assets/images/no-image-ingredient.webp'
 
 export const Ingredient = ({
   id,
@@ -25,7 +29,6 @@ export const Ingredient = ({
   //console.log(id, img, name, mesure, recipeId);
 
   const handleShoppingListButton = () => {
-    console.log(isInShoppingList);
     if (isInShoppingList)
       dispatch(delFromShoppingListV2Thunk({ recipeId, id, measure }));
     else
@@ -47,15 +50,15 @@ export const Ingredient = ({
   return (
     <li>
       <div>
-        <img src={img} loading="lazy" alt={name} />
+        <img src={img || noImage} loading="lazy" alt={name} />
       </div>
       <div>{name}</div>
+      <div>{measure && measure !== ' ' && <span>{measure}</span>}</div>
       <div>
-        {(measure && (measure !== ' ')) && (<span>{measure}</span>)}
-      </div>
-      <div>
-        <button onClick={handleShoppingListButton}>
-          {isInShoppingList ? '1' : '0'}
+        <button
+          onClick={handleShoppingListButton}
+        >
+          {isInShoppingList ? <BsCheck/> : ' '}
         </button>
       </div>
     </li>
