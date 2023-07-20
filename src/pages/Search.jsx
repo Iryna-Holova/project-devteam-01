@@ -1,6 +1,6 @@
 import MainTitle from 'components/MainTitle/MainTitle';
 import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import useSearchBy from '../hooks/useSearchBy';
@@ -11,19 +11,21 @@ import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
 import { Loader } from 'components/loader/loader';
 
 const Search = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchQuery, setSearchQuery] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(searchQuery.get('title') || searchQuery.get('ingredients'));
   const [selectedValue, setSelectedValue] = useState('title');
 
   const dispatch = useDispatch()
   const { recipes, status, isLoading, error } = useSearchBy();
-  const {searchQuery} = useParams();
+  
 
   useEffect(() => {
-    if (searchQuery !== '' && searchQuery !== undefined) {
-      setSearchValue(searchQuery);
+    const searchWord = searchQuery.get('title') || searchQuery.get('ingredients');
+    if (searchWord !== '' && searchWord !== undefined) {
+      setSearchValue(searchWord);
     }
 
-    if (searchValue === '') {
+    if (searchValue === '' || searchValue === undefined) {
       return;
     } 
 
@@ -53,7 +55,7 @@ const Search = () => {
     <MainTitle>
       Search
     </MainTitle>
-    <Searchbar
+    <Searchbar searchQuery={searchValue}
     onSubmit={formOnsubmitHandler}
     />
     {isLoading && <Loader/>}
