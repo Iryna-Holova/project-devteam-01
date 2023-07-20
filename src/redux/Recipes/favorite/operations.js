@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { toast } from 'react-toastify';
-//import recips from 'data/recipes.json';
-//import axios from 'axios';
+
 import recipesServices from 'services/api/recipes-api';
 
 export const getFavoriteRecipesThunk = createAsyncThunk(
@@ -9,13 +7,11 @@ export const getFavoriteRecipesThunk = createAsyncThunk(
   async ({ page = 1, limit = 4 }, thunkAPI) => {
     try {
       const response = await recipesServices.getFavorite({ page, limit });
-      // console.log(response);
+
       return {
         ...response,
-        //  totalCount: recips.length,
       };
     } catch (error) {
-      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -25,7 +21,6 @@ export const addToFavoriteRecipesThunk = createAsyncThunk(
   'favorite/addFavorite',
   async (recipe, thunkAPI) => {
     try {
-      //console.log(recipe);
       const response = await recipesServices.addToFavorite({
         id: recipe._id,
       });
