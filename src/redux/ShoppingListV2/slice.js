@@ -15,11 +15,19 @@ const initialState = {
   isLoading: false,
   error: null,
   status: IDLE,
+  isDeleting: false,
 };
 
 export const shoppingListV2Slice = createSlice({
   name: 'shoppingListV2',
   initialState,
+  reducers: {
+    clearError(state, { payload }) {
+      state.error = null;
+      state.status = IDLE;
+    },
+  },
+
   extraReducers: builder => {
     builder
       .addCase(getShoppingListV2Thunk.fulfilled, (state, { payload }) => {
@@ -33,7 +41,7 @@ export const shoppingListV2Slice = createSlice({
       })
       .addCase(delFromShoppingListV2Thunk.fulfilled, (state, { payload }) => {
         state.error = null;
-
+        state.isDeleting = false;
         const { recipeId, id } = payload;
         const indexInSL = state.items.findIndex(({ _id }) => _id === id);
         const tmp = state.items[indexInSL];
@@ -95,18 +103,18 @@ export const shoppingListV2Slice = createSlice({
 
         state.status = RESOLVED;
       })
-
-      .addMatcher(
-        isAnyOf(
-          getShoppingListV2Thunk.pending,
-          addToShoppingListV2Thunk.pending,
-          delFromShoppingListV2Thunk.pending
-        ),
-        state => {
-          state.isLoading = true;
-          state.status = PENDING;
-        }
-      )
+      .addCase(delFromShoppingListV2Thunk.pending, state => {
+        state.isDeleting = true;
+      })
+      .addCase(getShoppingListV2Thunk.pending, state => {
+        state.isLoading = true;
+        state.isDeleting = false;
+        state.status = PENDING;
+      })
+      .addMatcher(isAnyOf(addToShoppingListV2Thunk.pending), state => {
+        state.isLoading = false;
+        state.status = PENDING;
+      })
       .addMatcher(
         isAnyOf(
           getShoppingListV2Thunk.rejected,
@@ -114,13 +122,15 @@ export const shoppingListV2Slice = createSlice({
           delFromShoppingListV2Thunk.rejected
         ),
         (state, action) => {
-          console.log(action);
+          // console.log(action);
           state.isLoading = false;
           state.error = action.payload;
           state.status = REJECTED;
+          state.isDeleting = false;
         }
       );
   },
 });
 
+export const { clearError } = shoppingListV2Slice.actions;
 export const shoppingListV2Reducer = shoppingListV2Slice.reducer;
