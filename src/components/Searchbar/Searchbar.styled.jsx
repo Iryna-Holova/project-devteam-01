@@ -94,7 +94,6 @@ export const Label = styled.label`
 export const Select = styled.select`
     width: 146px;
     height: 34px;
-    padding: 8px 80px 8px 14px;
     margin-left: 15px;
     border: none;
     background-color: var(--color-input);
@@ -104,14 +103,12 @@ export const Select = styled.select`
     @media screen and (min-width: 768px) {
         width: 175px;
         height: 41px;
-        padding: 10px 99px 10px 14px;
         margin-left: 18px;
     }
 
     @media screen and (min-width: 1440px) {
         width: 198px;
         height: 49px;
-        padding: 14px 122px 14px 14px;
     }
 `
 

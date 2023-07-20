@@ -24,11 +24,10 @@ const Main = () => {
   const navigate = useNavigate();
   const handleSubmit = (value) => {
     if (value !== '') {
-      navigate(`/search/${value}`);
+      navigate(`/search?title=${value}`);
       scrollToTop();
     }
-
-    // TODO: create push message for user
+   
     if (value === '') {
       return 
     }
@@ -37,7 +36,7 @@ const Main = () => {
   return (
     <MainContainer>
       <HeroMain />
-      <MainSearchContainer className="styles-for-main">
+      <MainSearchContainer className="styles-for-main container">
         <Searchbar className="styles-for-main" onSubmit={handleSubmit}/>
       </MainSearchContainer>
       <CategoriesPreview recipesByCategory={recipesByCategory} />
