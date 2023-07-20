@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Container,
   EmptyListImage,
@@ -10,7 +10,7 @@ import IngredientsShoppingList from '../components/ShoppingList/IngredientsShopp
 import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
 import useShoppingListV2 from 'hooks/useShoppingListV2';
 import { Loader } from 'components/loader/loader';
-import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
+import { IDLE, PENDING, RESOLVED } from 'utils/constants';
 import emptyListImage from '../assets/images/empty-img.png';
 
 import { clearError } from 'redux/ShoppingListV2/slice';
@@ -37,12 +37,14 @@ const ShoppingList = () => {
     <div>
       <MainTitle>Shopping List</MainTitle>
       <Container>
-        {status === PENDING && !isDeleting && <Loader />}
+        {/* {status === PENDING && !isDeleting && <Loader />} */}
+        {isLoading && <Loader />}
+
         {/* <IngredientsShoppingList ingredients={ingredients} /> */}
         {(status === IDLE ||
           status === RESOLVED ||
           (status === PENDING && isDeleting)) && <IngredientsShoppingList />}
-        {(status === REJECTED || shoppingList.length === 0) && (
+        {shoppingList.length === 0 && status !== PENDING && (
           <div>
             <EmptyListImage src={emptyListImage} alt="Empty List" />
             <EmptyListText>Shopping list is empty</EmptyListText>
