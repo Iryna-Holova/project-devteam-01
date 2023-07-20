@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { MdClear } from 'react-icons/md';
 import { Loader } from '../loader/loader';
 
@@ -16,15 +16,15 @@ import {
   IngredientQuantity,
   RemoveButton,
   QuantityIndicator,
-  EmptyListImage,
-  EmptyListText,
+  //  EmptyListImage,
+  // EmptyListText,
   MeasureContainer,
 } from './IngredientsShoppinglist.styled';
 
-import emptyListImage from '../../assets/images/empty-img.png';
+//import emptyListImage from '../../assets/images/empty-img.png';
 
 import useShoppingListV2 from 'hooks/useShoppingListV2';
-import { PENDING, REJECTED, RESOLVED } from 'utils/constants';
+import { PENDING } from 'utils/constants';
 
 import { delFromShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
 
