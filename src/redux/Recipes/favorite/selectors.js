@@ -6,6 +6,7 @@ export const selectFavStatus = state => state.recipes.favorites.status;
 export const selectFavPage = state => state.recipes.favorites.page;
 export const selectFavPages = state => state.recipes.favorites.pages;
 export const selectFavLimit = state => state.recipes.favorites.limit;
+export const selectisDeleting = state => state.recipes.favorites.isDeleting;
 
 export const selectIsFavorite = (state, recipeId) => {
   // console.log(state);

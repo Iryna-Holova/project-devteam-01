@@ -4,7 +4,6 @@ import {
   getFavoriteRecipesThunk,
   removeFromFavoriteRecipesThunk,
 } from './operations';
-// import { toast } from 'react-toastify';
 
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
@@ -16,6 +15,7 @@ const initialState = {
   error: null,
   total: 0,
   pages: 0,
+  isDeleting: false,
 
   status: IDLE,
 };
@@ -46,6 +46,7 @@ export const favoriteRecipesSlice = createSlice({
         state.error = null;
         //console.log(payload);
         state.items = [...state.items, payload];
+
         state.total = state.total + 1;
         state.isLoading = false;
         state.pages = Math.ceil(state.total / state.limit);
@@ -57,23 +58,25 @@ export const favoriteRecipesSlice = createSlice({
           state.error = null;
           //  console.log(payload);
 
-          const result = state.items.filter(item => {
-            // console.log(item, payload.recipeId);
-            return item._id !== payload.recipeId;
-          });
-          //console.log(result);
-          state.items = [...result];
+          const index = state.items.findIndex(
+            item => item._id === payload.recipeId
+          );
+
+          state.items.splice(index, 1);
+
           state.total = state.total - 1;
           state.isLoading = false;
           state.pages = Math.ceil(state.total / state.limit);
           state.status = RESOLVED;
         }
       )
+      .addCase(removeFromFavoriteRecipesThunk.pending, state => {
+        state.isDeleting = true;
+      })
       .addMatcher(
         isAnyOf(
           getFavoriteRecipesThunk.pending,
-          addToFavoriteRecipesThunk.pending,
-          removeFromFavoriteRecipesThunk.pending
+          addToFavoriteRecipesThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -89,6 +92,7 @@ export const favoriteRecipesSlice = createSlice({
         (state, action) => {
           console.log(action);
           state.isLoading = false;
+          state.isDeleting = false;
           state.error = action.payload;
           state.status = REJECTED;
         }
