@@ -1,4 +1,6 @@
 import React from 'react';
+
+import scrollToTop from 'utils/scroll-to-top';
 import {
   FooterContainer,
   FooterContent,
@@ -17,6 +19,10 @@ import SocialLinks from '../SocialLinks/SocialLinks';
 import Logo from '../Logo/LogoFooter';
 
 function Footer() {
+  const handleNavClick = () => {
+  scrollToTop()
+  }
+  
   return (
     <FooterContainer>
       <FooterContent>
@@ -35,7 +41,7 @@ function Footer() {
               <Text>Convenient and easy to use</Text>
             </FooterText>
           </div>
-          <Nav />
+          <Nav handleNavClick={handleNavClick}/>
           <SubscribeForm />
         </FooterTextContainer>
         <SocialLinks />

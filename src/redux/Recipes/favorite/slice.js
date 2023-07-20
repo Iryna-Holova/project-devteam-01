@@ -16,7 +16,6 @@ const initialState = {
   total: 0,
   pages: 0,
   isDeleting: false,
-
   status: IDLE,
 };
 
@@ -34,7 +33,6 @@ export const favoriteRecipesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getFavoriteRecipesThunk.fulfilled, (state, { payload }) => {
-        // console.log(payload);
         state.error = null;
         state.items = [...payload.recipes];
         state.total = payload.total;
@@ -44,7 +42,7 @@ export const favoriteRecipesSlice = createSlice({
       })
       .addCase(addToFavoriteRecipesThunk.fulfilled, (state, { payload }) => {
         state.error = null;
-        //console.log(payload);
+
         state.items = [...state.items, payload];
 
         state.total = state.total + 1;
@@ -56,8 +54,6 @@ export const favoriteRecipesSlice = createSlice({
         removeFromFavoriteRecipesThunk.fulfilled,
         (state, { payload }) => {
           state.error = null;
-          //  console.log(payload);
-
           const index = state.items.findIndex(
             item => item._id === payload.recipeId
           );

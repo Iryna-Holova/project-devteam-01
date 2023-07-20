@@ -6,7 +6,7 @@ import {
   removeFromFavoriteRecipesThunk,
 } from 'redux/Recipes/favorite/operations';
 import useFavorite from 'hooks/useFavorite';
-import { PENDING } from 'utils/constants';
+import { PENDING, RESOLVED } from 'utils/constants';
 
 import MainTitle from 'components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
@@ -40,29 +40,26 @@ const Favorite = () => {
   return (
     <>
       <MainTitle>Favorites</MainTitle>
-      {status === PENDING && !isDeleting ? (
-        <Loader />
-      ) : (
+      {status === PENDING && !isDeleting && <Loader />}
+      {!favorite.length && (
+        <NoDataMessage>
+          You haven't added your favorite recipes yet...
+        </NoDataMessage>
+      )}
+
+      {status === RESOLVED && favorite.length !== 0 && (
         <>
-          {!favorite.length ? (
-            <NoDataMessage>
-              You haven't added your favorite recipes yet...
-            </NoDataMessage>
-          ) : (
-            <>
-              <RecipesList
-                data={favorite.slice((page - 1) * limit, page * limit)}
-                removeRecipe={handleRemoveClick}
-              />
-              <Pagination
-                totalPages={
-                  favorite?.length ? Math.ceil(favorite.length / limit) : 0
-                }
-                currentPage={page}
-                onClick={handlePageChange}
-              />
-            </>
-          )}
+          <RecipesList
+            data={favorite.slice((page - 1) * limit, page * limit)}
+            removeRecipe={handleRemoveClick}
+          />
+          <Pagination
+            totalPages={
+              favorite?.length ? Math.ceil(favorite.length / limit) : 0
+            }
+            currentPage={page}
+            onClick={handlePageChange}
+          />
         </>
       )}
     </>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  height: 348px;
+  /* height: 348px;
 
   @media (max-width: 768px) {
     height: 357px;
@@ -9,7 +9,7 @@ export const FooterContainer = styled.footer`
 
   @media (max-width: 480px) {
     height: 435px;
-  }
+  } */
 `;
 
 export const FooterContent = styled.div`
