@@ -11,7 +11,9 @@ import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
 import { Loader } from 'components/loader/loader';
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = useSearchParams();
+  const [searchQuery,
+    // setSearchQuery
+  ] = useSearchParams();
   const [searchValue, setSearchValue] = useState(searchQuery.get('title') || searchQuery.get('ingredients') || '');
   const [selectedValue, setSelectedValue] = useState('title');
 
