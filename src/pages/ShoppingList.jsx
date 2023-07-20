@@ -5,7 +5,7 @@ import IngredientsShoppingList from '../components/ShoppingList/IngredientsShopp
 import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
 import useShoppingListV2 from 'hooks/useShoppingListV2';
 import { Loader } from 'components/loader/loader';
-import { IDLE, PENDING, RESOLVED } from 'utils/constants';
+// import { IDLE, PENDING, RESOLVED } from 'utils/constants';
 
 import { clearError } from 'redux/ShoppingListV2/slice';
 import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
@@ -14,7 +14,10 @@ import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 const ShoppingList = () => {
   const dispatch = useDispatch();
   //const ingredients = useSelector(state => state.shoppingList.ingredients);
-  const { shoppingList, status, isDeleting, isLoading } = useShoppingListV2();
+  const { shoppingList,
+    // status,
+    // isDeleting,
+    isLoading } = useShoppingListV2();
 
   useEffect(() => {
     dispatch(clearError());
