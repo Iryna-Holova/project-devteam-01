@@ -12,7 +12,7 @@ import { Loader } from 'components/loader/loader';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useSearchParams();
-  const [searchValue, setSearchValue] = useState(searchQuery.get('title') || searchQuery.get('ingredients'));
+  const [searchValue, setSearchValue] = useState(searchQuery.get('title') || searchQuery.get('ingredients') || '');
   const [selectedValue, setSelectedValue] = useState('title');
 
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const Search = () => {
   
 
   useEffect(() => {
-    const searchWord = searchQuery.get('title') || searchQuery.get('ingredients');
+    const searchWord = searchQuery.get('title') || searchQuery.get('ingredients') || "";
     if (searchWord !== '' && searchWord !== undefined) {
       setSearchValue(searchWord);
     }
