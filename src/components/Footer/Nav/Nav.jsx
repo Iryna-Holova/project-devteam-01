@@ -1,26 +1,36 @@
 import React from 'react';
-import { NavItem, NavList, NavLinkStyled } from './Nav.styled';
+import { NavList, NavLinkStyled } from './Nav.styled';
 
-function Nav() {
+const Nav = ({ handleNavClick }) => {
   return (
     <NavList>
-      <NavItem>
-        <NavLinkStyled to="/search">Ingredients</NavLinkStyled>
-      </NavItem>
-      <NavItem>
-        <NavLinkStyled to="/add">Add Recipe</NavLinkStyled>
-      </NavItem>
-      <NavItem>
-        <NavLinkStyled to="/my">My Recipes</NavLinkStyled>
-      </NavItem>
-      <NavItem>
-        <NavLinkStyled to="/favorite">Favorite</NavLinkStyled>
-      </NavItem>
-      <NavItem>
-        <NavLinkStyled to="/shopping-list">Shopping List</NavLinkStyled>
-      </NavItem>
+      <li>
+        <NavLinkStyled to="/search?ingredient=" onClick={handleNavClick}>
+          Ingredients
+        </NavLinkStyled>
+      </li>
+      <li>
+        <NavLinkStyled to="/add" onClick={handleNavClick}>
+          Add Recipe
+        </NavLinkStyled>
+      </li>
+      <li>
+        <NavLinkStyled to="/my" onClick={handleNavClick}>
+          My Recipes
+        </NavLinkStyled>
+      </li>
+      <li>
+        <NavLinkStyled to="/favorite" onClick={handleNavClick}>
+          Favorite
+        </NavLinkStyled>
+      </li>
+      <li>
+        <NavLinkStyled to="/shopping-list" onClick={handleNavClick}>
+          Shopping List
+        </NavLinkStyled>
+      </li>
     </NavList>
   );
-}
+};
 
 export default Nav;

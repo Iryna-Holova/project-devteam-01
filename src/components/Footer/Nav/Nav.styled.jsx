@@ -1,34 +1,24 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const NavContainer = styled.nav`
-
-
-  @media (max-width: 768px) {
-    /* margin: 40px 0; */
-    /* flex-direction: column; */
-  }
-
-  @media (max-width: 480px) {
-    /* margin-bottom: 8px; */
-  }
-`;
-
 export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  gap: 18px;
+  gap: 14px;
   list-style: none;
 
-
   @media (min-width: 768px) {
+    gap: 20px;
+    width: 151px;
     align-items: flex-start;
   }
-`;
 
-export const NavItem = styled.li`
+    @media (min-width: 1440px) {
+    gap: 24px;
+    width: 151px;
+    align-items: flex-start;
+  }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
@@ -38,8 +28,9 @@ export const NavLinkStyled = styled(NavLink)`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.28px;
+  transition: color var(--transition-time) var(--cubic);
 
   &:hover {
-    color: #8baa36;
+    color: var(--color-accent);
   }
 `;
