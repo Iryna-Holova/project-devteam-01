@@ -3,21 +3,16 @@ import { BASE_URL } from './common';
 
 axios.defaults.baseURL = BASE_URL;
 
-// const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTExMjM4NCwiZXhwIjoxNjg5MTk1MTg0fQ.lk-w0gXTD2OPg6CAjtmxjVBmAd48vJdfDd4a9dzYD6g';
-
 //*****************
 //*
 //****************
 export const getRecipesMain = async ({ limit = 1 }) => {
   try {
-    // setAuthHeader(axios, token);
-    //console.log(axios.defaults);
     axios.defaults.baseURL = BASE_URL;
     const { status, data } = await axios.get(
       `/api/recipes/main-page/?limit=${limit}`
     );
-    // clearAuthHeader(axios);
+
     if (status === 200) {
       // console.log(data);
       return data;
@@ -34,13 +29,10 @@ export const getRecipesByCategory = async ({
 }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    // setAuthHeader(axios, token);
-    //console.log('getRecipesByCategory', query);
-
     const { status, data } = await axios.get(
       `/api/recipes/categories/${query}?limit=${limit}&page=${page}`
     );
-    // clearAuthHeader(axios);
+
     if (status === 200) {
       //console.log(data);
       return data;
@@ -53,10 +45,8 @@ export const getRecipesByCategory = async ({
 export const getRecipe = async ({ id }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    // setAuthHeader(axios, token);
-
     const { status, data } = await axios.get(`/api/recipes/${id}`);
-    //   clearAuthHeader();
+
     if (status === 200) {
       //  console.log(data);
       return data;
@@ -69,13 +59,12 @@ export const getRecipe = async ({ id }) => {
 export const getSearchByTitle = async ({ query = '', limit = 6, page = 1 }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    //  setAuthHeader(axios, token);
     const queryStr = query !== '' ? `q=${query}` : '';
 
     const { status, data } = await axios.get(
       `/api/recipes/search?${queryStr}&limit=${limit}&page=${page}`
     );
-    //  clearAuthHeader(axios);
+
     if (status === 200) {
       //   console.log(data);
       return data;
@@ -84,9 +73,3 @@ export const getSearchByTitle = async ({ query = '', limit = 6, page = 1 }) => {
     return Promise.reject(`Error on search by title ${query}`);
   }
 };
-
-//*****************
-//*
-//****************
-
-//console.log(getAllCategories({}));

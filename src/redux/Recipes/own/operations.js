@@ -5,8 +5,6 @@ export const getOwnRecipesThunk = createAsyncThunk(
   'ownRecipes/getOwnRecipes',
   async ({ limit = 4, page = 1, token }, thunkAPI) => {
     try {
-      const token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWRjZTkwMjc0ZGFmYWIyN2JlOTkyZSIsImlhdCI6MTY4OTMxODk1OCwiZXhwIjoxNjg5NDAxNzU4fQ.DQNQQlaclstgqgV5Vn8pS-WgHZidrwJMLt5L9RDda9M';
       const response = await recipesServices.getOwnRecipes({
         limit,
         page,
