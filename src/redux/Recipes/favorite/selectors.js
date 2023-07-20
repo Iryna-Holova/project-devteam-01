@@ -9,8 +9,6 @@ export const selectFavLimit = state => state.recipes.favorites.limit;
 export const selectisDeleting = state => state.recipes.favorites.isDeleting;
 
 export const selectIsFavorite = (state, recipeId) => {
-  // console.log(state);
-  //console.log(recipeId, state.recipes.favorites.items.length);
   if (state.recipes.favorites.items.length === 0) return false;
   const index = state.recipes.favorites.items.findIndex(({ _id }) => {
     return _id === recipeId;
