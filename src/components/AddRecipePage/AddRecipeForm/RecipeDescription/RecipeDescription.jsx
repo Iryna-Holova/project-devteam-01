@@ -15,11 +15,19 @@ import { PiCameraFill } from 'react-icons/pi';
 const RecipeDescription = ({ categories, handleFileChange, selectedFile, formikProps }) => {
   const { values, handleChange } = formikProps;
 
+  const imageUrl = selectedFile ? URL.createObjectURL(selectedFile) : null;
+
   return (
     <WrapperDescription style={{ margin: 0 }}>
       <ImagePlaceholder>
-        <BsFullscreen style={{ width: '40px', height: '40px' }} />
-        <PiCameraFill />
+      {imageUrl ? (
+          <img src={imageUrl} alt="Uploaded" style={{ width: '100%', height: '100%' }} />
+        ) : (
+          <>
+            <BsFullscreen style={{ width: '40px', height: '40px' }} />
+            <PiCameraFill />
+          </>
+        )}
         <AddFileInput
           type="file"
           accept="image/*,.png,.jpg,.web,.gif,.png"

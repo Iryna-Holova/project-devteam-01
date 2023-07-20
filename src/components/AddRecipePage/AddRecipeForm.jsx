@@ -44,8 +44,6 @@ const AddRecipeForm = () => {
     const formData = new FormData();
     formData.append('photo', selectedFile);
     formData.append('recipe', JSON.stringify(recipeData));
-    console.log(recipeData);
-    console.log(selectedFile);
 
     try {
       const response = await addOwnRecipe({ data: formData });
