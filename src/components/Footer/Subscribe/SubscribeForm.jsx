@@ -31,15 +31,18 @@ const SubscribeForm = () => {
       email: '',
     },
     validationSchema,
-    onSubmit: values => {
-      const response = subscribe(values)
-      console.log(response)
-      setSubscribed(true);
+    onSubmit: async values => {
+      const response = await subscribe(values);
+
+      if (response.status !== 200) {
+        setSubscribed(false);
+      } else {
+        setSubscribed(true);
+      }
 
       // Сброс формы и состояний
       formik.resetForm();
       setInputClicked(false);
-      console.log(values);
     },
   });
 
@@ -87,6 +90,6 @@ const SubscribeForm = () => {
       </Button>
     </Form>
   );
-}
+};
 
 export default SubscribeForm;
