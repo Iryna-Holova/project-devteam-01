@@ -27,8 +27,8 @@ export const Input = styled.input`
     @media screen and (min-width: 1440px) {
         width: 510px;
         height: 70px;
-        padding-left: 
-        font-size: 
+        /* padding-left:  */
+        /* font-size:  */
     }
 `
 
@@ -67,7 +67,7 @@ export const Btn = styled.button`
 
         &:hover,
         &:focus {
-            var(--color-accent);
+            background-color: var(--color-accent);
         }
     }
 `
