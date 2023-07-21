@@ -40,5 +40,6 @@ export const SeeAllButton = styled(Link)`
     &:hover,
     &:focus {
         background-color: var(--color-footer);
+        transition: background-color var(--transition-time) var(--cubic);
     }
 `

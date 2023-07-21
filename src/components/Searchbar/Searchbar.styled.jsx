@@ -46,6 +46,7 @@ export const Btn = styled.button`
 
     &:hover,
     &:focus {
+        transition: background-color var(--transition-time) var(--cubic);
         background-color: var(--color-icons);
     }
 
@@ -67,6 +68,7 @@ export const Btn = styled.button`
 
         &:hover,
         &:focus {
+            transition: background-color var(--transition-time) var(--cubic);
             background-color: var(--color-accent);
         }
     }
