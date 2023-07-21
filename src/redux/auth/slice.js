@@ -51,8 +51,8 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.status = REJECTED;
 
-        state.error = action.payload;
-        state.isError = true;
+        // state.error = action.payload;
+        // state.isError = true;
       })
       .addCase(register.pending, state => {
         state.user = {
