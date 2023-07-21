@@ -9,9 +9,7 @@ export function Searchbar({ onSubmit, className, searchQuery }) {
   const [value, setValue] = useState(searchQuery === undefined ? "" : searchQuery);
   const [selectedValue, setSelectedValue] = useState('title')
   const [isTyping, setIsTyping] = useState(false);
-  const [
-    // searchParams,
-    setSearchParams] = useSearchParams();
+  const [ searchParams, setSearchParams] = useSearchParams();
 
   const dispatch = useDispatch()
     
@@ -27,7 +25,7 @@ export function Searchbar({ onSubmit, className, searchQuery }) {
 
 
 // Функция записывает в состояние значение селекта  
-  const handleSelectChange = ({target}) => {
+  const handleSelectChange = ({ target }) => {
     const selectValue = target.value;
     setSearchParams(`?${selectValue}=${value}`); 
     setSelectedValue(selectValue);
