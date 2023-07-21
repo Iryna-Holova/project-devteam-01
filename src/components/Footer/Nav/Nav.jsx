@@ -5,7 +5,7 @@ const Nav = ({ handleNavClick }) => {
   return (
     <NavList>
       <li>
-        <NavLinkStyled to="/search?ingredient=" onClick={handleNavClick}>
+        <NavLinkStyled to="/search?ingredients=" onClick={handleNavClick}>
           Ingredients
         </NavLinkStyled>
       </li>

@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import Select from 'react-select';
+
 export const WrapperDescription = styled.div`
 display: flex;
 flex-direction: column;
 gap: 32px;
 margin-top:72px;
 flex-wrap:no-wrap;
+align-items: center;
 
 @media screen and (min-width: 768px) {
   flex-direction: row;
@@ -18,7 +21,7 @@ flex-wrap:no-wrap;
 }
 `;
 export const StyledField = styled(Field)`
-//width: 100%;
+  width: 100%;
   padding: 0;
   padding-bottom: 18px;
   outline: none;
@@ -143,8 +146,6 @@ export const FieldWrapper = styled.div`
 export const PositionBox = styled.div`
   position: relative;
 `;
-
-
 export const StyledOption = styled.option`
 font-family: 'Poppins', sans-serif;
 font-size: 14px;
@@ -153,3 +154,25 @@ line-height: 21px;
 letter-spacing: -0.02em;
 text-align: left;
 `;
+export const StyledSelect = styled(Select)`
+  
+`;
+
+////  ||  То я взяв з твого SharedForm але чомусь криво вони працюють,
+////  \/  певно тому що з форміком а в тебе дів звичайний був там        
+
+// export const StyledErrorMessage = styled(ErrorMessage)`
+// font-size: 12px;
+// color: #e74a3b;
+// position: absolute;
+// bottom: -16px;
+// & ~ input {
+// border-color: var(--color-warning);
+// color: var(--color-warning);
+// }
+
+// & ~ svg {
+// stroke: var(--color-warning);
+// }
+// `;
+

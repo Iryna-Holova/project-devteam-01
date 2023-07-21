@@ -7,7 +7,7 @@ import useAuth from 'hooks/use-auth';
 import Logo from 'components/Logo/Logo';
 import BurgerMenu from './Burger/Burger';
 import Navigation from './Navigation/Navigation';
-import ThemeToggler from './ThemeToggler/ThemeToggler';
+// import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserLogoutModal from './UserModals/UserLogout';
 import EditProfile from './EditProfileModal/EditProfileModal';
 
@@ -66,7 +66,7 @@ const Header = () => {
             <HiMenuAlt2 />
           </BurgerButton>
           <ThemeTogglerStyle>
-            <ThemeToggler />
+            {/* <ThemeToggler /> */}
           </ThemeTogglerStyle>
         </HeaderContainerStyle>
       </HeaderContainer>

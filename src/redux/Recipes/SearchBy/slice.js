@@ -54,7 +54,7 @@ export const searchBySlice = createSlice({
         state.status = RESOLVED;
       })
       .addCase(getSearchByThunk.rejected, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.isLoading = false;
         state.error = action?.payload ? action?.payload : 'Error';
         state.items = [];

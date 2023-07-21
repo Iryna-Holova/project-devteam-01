@@ -4,7 +4,7 @@ import { CgClose } from 'react-icons/cg';
 
 import Logo from 'components/Logo/Logo';
 import Navigation from '../Navigation/Navigation';
-import ThemeToggler from '../ThemeToggler/ThemeToggler';
+// import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 import {
   BurgerBox,
@@ -32,7 +32,7 @@ const BurgerMenu = ({ openState, handleBurgerMenuClose }) => {
             </CloseButton>
           </BurgerHeader>
           <Navigation handleNavLinkClick={handleBurgerMenuClose} />
-          <ThemeToggler />
+          {/* <ThemeToggler /> */}
         </BurgerContainer>
       </BurgerBox>
     </Menu>
