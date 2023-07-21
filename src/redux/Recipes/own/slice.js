@@ -66,26 +66,19 @@ export const ownRecipesSlice = createSlice({
         state.isError = true;
       })
       .addCase(delOwnRecipesThunk.pending, state => {
-        state.isLoading = false;
-        state.error = '';
-        state.total = 0;
-        state.pages = 0;
-        state.status = PENDING;
-        state.isError = false;
         state.isDeleting = true;
-        state.isAdding = false;
       })
       .addCase(delOwnRecipesThunk.fulfilled, (state, { payload }) => {
-        console.log('del', payload);
+        // console.log('del', payload);
         state.error = null;
         const index = state.items.findIndex(item => item._id === payload.id);
         if (index >= 0) state.items.splice(index, 1);
         state.total = state.total - 1;
         state.pages = Math.ceil(state.total / state.limit);
         state.isLoading = false;
-        state.status = RESOLVED;
         state.isError = false;
         state.isDeleting = false;
+        state.status = RESOLVED;
       })
       .addCase(delOwnRecipesThunk.rejected, (state, action) => {
         console.log(action);
