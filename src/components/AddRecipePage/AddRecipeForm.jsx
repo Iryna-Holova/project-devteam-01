@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import RecipeDescription from './AddRecipeForm/RecipeDescription/RecipeDescription';
 import RecipeIngredients from './AddRecipeForm/RecipeIngredients/RecipeIngredients';
 import RecipePreparation from './AddRecipeForm/RecipePreparation/RecipePreparation';
-import { Container, AddRecipeButton } from './AddRecipeForm.styled';
+import { Container, AddRecipeButton, FormStyled } from './AddRecipeForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'redux/Categories/selectors';
 import { selectIngredients } from 'redux/Ingredients/selectors';
@@ -24,7 +25,28 @@ const AddRecipeForm = () => {
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required('Title is required'),
+    category: Yup.string().required('Category is required'),
+    description: Yup.string().required('Description is required'),
+    time: Yup.string().required('Cooking time is required'),
+    ingredients: Yup.array().of(
+      Yup.object().shape({
+        name: Yup.string().required('Ingredient name is required'),
+        measure: Yup.string().required('Measure is required'),
+      })
+    ),
+    preparation: Yup.string().required('Preparation is required'),
+  });
+
   const handleFormSubmit = async (values) => {
+
+    const ingredientsData = values.ingredients.map((ingredient) => {
+      console.dir(ingredient);
+      return {id: ingredient._id,
+        measure: ingredient.measure,}
+    });
+
     const recipeData = {
       title: values.title,
       category: values.category,
@@ -33,12 +55,9 @@ const AddRecipeForm = () => {
       description: values.description,
       thumb: 'none',
       preview: 'none',
-      time: values.time,
+      time: values.time.toString(),
       tags: [],
-      ingredients: values.ingredients.map((ingredient) => ({
-        id: ingredient.name._id,
-        measure: ingredient.measure,
-      })),
+      ingredients: ingredientsData,
     };
 
     const formData = new FormData();
@@ -67,27 +86,29 @@ const AddRecipeForm = () => {
     <Formik
       initialValues={{
         title: '',
-        category: '',
+        category: null,
         preparation: [],
         description: '',
         time: '',
         ingredients: [],
       }}
+      validationSchema={validationSchema}
       onSubmit={handleFormSubmit}
     >
       {formikProps => (
         <Container>
-          <Form>
+          <FormStyled>
             <RecipeDescription
               categories={categories}
               handleFileChange={handleFileChange}
               selectedFile={selectedFile}
               formikProps={formikProps}
+              handleSubmit={formikProps.handleSubmit}
             />
             <RecipeIngredients ingredients={ingredients} />
             <RecipePreparation />
-            <AddRecipeButton type="submit">Add</AddRecipeButton>
-          </Form>
+            <AddRecipeButton type="submit" onClick={formikProps.handleSubmit}>Add</AddRecipeButton>
+          </FormStyled>
         </Container>
       )}
     </Formik>

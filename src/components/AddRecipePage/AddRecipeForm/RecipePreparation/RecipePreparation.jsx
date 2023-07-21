@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useFormikContext } from 'formik';
+import { useFormikContext, ErrorMessage } from 'formik';
 import{
   SubTitleStyled, StyledPreparationField,PositionBox, Wrapper
 }from './RecipePreparation.styled';
@@ -13,7 +13,7 @@ const RecipePreparation = () => {
 
   const handleTextareaChange = (event) => {
     const text = event.target.value;
-    const lines = text.split('\n');
+    const lines = text.split('\n').map(line => line.substring(0, 30));
 
     setPreparation(lines);
   };
@@ -31,6 +31,7 @@ const RecipePreparation = () => {
         placeholder="Enter recipe"
       />
       </PositionBox>
+      <ErrorMessage name="preparation" component="div" />
     </Wrapper>
   );
 };

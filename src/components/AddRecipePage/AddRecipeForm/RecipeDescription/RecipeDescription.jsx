@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   WrapperDescription,
-  StyledField,
   ImagePlaceholder,
   AddFileInput,
   FieldWrapper,
   PositionBox,
-  StyledOption,
+  StyledField,
 } from './RecipeDescription.styled';
 import { ErrorMessage } from 'formik';
 import { BsFullscreen } from 'react-icons/bs';
 import { PiCameraFill } from 'react-icons/pi';
+import Select from 'react-select';
+// import AsyncSelect from 'react-select/async';
 
 const RecipeDescription = ({ categories, handleFileChange, selectedFile, formikProps }) => {
-  const { values, handleChange } = formikProps;
+  const { values, handleChange, setFieldValue } = formikProps;
 
   const imageUrl = selectedFile ? URL.createObjectURL(selectedFile) : null;
+
+  const [times] = useState(Array.from({ length: 24 }, (_, index) => (index + 1) * 5).map(
+    time => ({ label: `${time} min`, value: time })
+  ));
+
+  const handleTimeChange = (selectedOption) => {
+    if (selectedOption) {
+      setFieldValue('time', selectedOption.value);
+    } else {
+      setFieldValue('time', '');
+    }
+  };
 
   return (
     <WrapperDescription style={{ margin: 0 }}>
       <ImagePlaceholder>
-      {imageUrl ? (
+        {imageUrl ? (
           <img src={imageUrl} alt="Uploaded" style={{ width: '100%', height: '100%' }} />
         ) : (
           <>
@@ -43,8 +56,8 @@ const RecipeDescription = ({ categories, handleFileChange, selectedFile, formikP
             id="title"
             name="title"
             placeholder="Enter item title"
-            value={values.title} 
-            onChange={handleChange} 
+            value={values.title}
+            onChange={handleChange}
           />
         </PositionBox>
         <ErrorMessage name="title" component="div" />
@@ -54,47 +67,45 @@ const RecipeDescription = ({ categories, handleFileChange, selectedFile, formikP
             id="description"
             name="description"
             placeholder="Enter about recipe"
-            value={values.description} 
-            onChange={handleChange} 
+            value={values.description}
+            onChange={handleChange}
           />
         </PositionBox>
         <ErrorMessage name="description" component="div" />
 
-        <StyledField
-          as="select"
-          id="category"
-          name="category"
-          placeholder="Category"
-          value={values.category} 
-          onChange={handleChange} 
-        >
-          {categories && Array.isArray(categories) ? (
-            categories.map(category => (
-              <StyledOption key={category._id.$oid} value={category._id.$oid}>
-                {category.name}
-              </StyledOption>
-            ))
-          ) : (
-            <StyledOption value="">No categories available</StyledOption>
-          )}
-        </StyledField>
+        {/* <ErrorMessage name="category" component="div" /> */}
+        <Select
+        id="category"
+        name="category"
+        options={categories.map((category) => ({ label: category.name, value: category.name }))}
+        value={categories.find((category) => category._id.$oid === values.category || '')}
+        onChange={(selectedOption) => {
+          if (selectedOption) {
+            setFieldValue('category', selectedOption.value || null);
+          } else {
+            setFieldValue('category', null);
+          }
+        }}
+        menuPlacement="auto"
+        menuPosition="fixed"
+        maxMenuHeight={7 * 28}
+        placeholder="Select Category"
+      />
 
-        <StyledField
-          as="select"
+        {/* <ErrorMessage name="time" component="div" /> */}
+        {/* Не впевнений чи треба робити валідацію цих полів, 
+        бо там за замовчуванням вже стоїть значення*/}
+        <Select
           id="time"
           name="time"
-          placeholder="Cooking time"
-          value={values.time} 
-          onChange={handleChange} 
-        >
-          {Array.from({ length: 24 }, (_, index) => (index + 1) * 5).map(
-            time => (
-              <StyledOption key={time} value={time}>
-                {time} min
-              </StyledOption>
-            )
-          )}
-        </StyledField>
+          options={times}
+          value={times.find(time => time.value === values.time)}
+          onChange={(selectedOption) => handleTimeChange(selectedOption)}
+          menuPlacement="auto"
+          menuPosition="fixed"
+          maxMenuHeight={7 * 28}
+          placeholder="Select Preparation Time"
+        />
       </FieldWrapper>
     </WrapperDescription>
   );
