@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const FlexWrapper = styled.div`
   display: flex;
   width: 343px;
-  height: 28px;
+  height: 100%;
   margin-top: 67px;
-  margin-bottom: 24px;
+  margin-bottom: 44px;
   justify-content: space-between;
   outline: none;
 
