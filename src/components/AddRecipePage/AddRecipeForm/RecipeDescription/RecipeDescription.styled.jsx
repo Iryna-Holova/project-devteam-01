@@ -8,6 +8,7 @@ flex-direction: column;
 gap: 32px;
 margin-top:72px;
 flex-wrap:no-wrap;
+align-items: center;
 
 @media screen and (min-width: 768px) {
   flex-direction: row;
@@ -20,7 +21,7 @@ flex-wrap:no-wrap;
 }
 `;
 export const StyledField = styled(Field)`
-//width: 100%;
+  width: 100%;
   padding: 0;
   padding-bottom: 18px;
   outline: none;
