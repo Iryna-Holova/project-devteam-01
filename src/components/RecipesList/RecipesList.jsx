@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
 import { BsFullscreen } from 'react-icons/bs';
 import { PiCameraFill } from 'react-icons/pi';
-import noImage from '../../assets/images/no-image-recipe.webp'
+import noImage from '../../assets/images/no-image-recipe.webp';
 
 import scrollToTop from 'utils/scroll-to-top';
 
@@ -20,6 +20,7 @@ import {
 
 export const RecipesList = ({ data, removeRecipe, className }) => {
   const navigate = useNavigate();
+  console.log(data);
 
   return (
     <RecipesListContainer className="container">

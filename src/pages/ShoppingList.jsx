@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import MainTitle from '../components/MainTitle/MainTitle';
 import IngredientsShoppingList from '../components/ShoppingList/IngredientsShoppingList';
@@ -13,19 +13,28 @@ import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
+  const [isChecked, setIsChecked] = useState(false);
   //const ingredients = useSelector(state => state.shoppingList.ingredients);
-  const { shoppingList,
+  const {
+    shoppingList,
     // status,
     // isDeleting,
-    isLoading } = useShoppingListV2();
+    isLoading,
+  } = useShoppingListV2();
 
   useEffect(() => {
     dispatch(clearError());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   if (shoppingList.length === 0) dispatch(getShoppingListV2Thunk());
+  // }, [dispatch, shoppingList]);
+
   useEffect(() => {
-    if (shoppingList.length === 0) dispatch(getShoppingListV2Thunk());
-  }, [dispatch, shoppingList]);
+    if (isChecked) return;
+    if (shoppingList.length === 0)
+      Promise.all([dispatch(getShoppingListV2Thunk()), setIsChecked(true)]);
+  }, [dispatch, shoppingList, isChecked]);
 
   // useEffect(() => {
   //   dispatch(fetchIngredients());
@@ -39,9 +48,7 @@ const ShoppingList = () => {
       ) : (
         <>
           {!shoppingList.length ? (
-            <NoDataMessage>
-              Shopping list is empty...
-            </NoDataMessage>
+            <NoDataMessage>Shopping list is empty...</NoDataMessage>
           ) : (
             <IngredientsShoppingList />
           )}
