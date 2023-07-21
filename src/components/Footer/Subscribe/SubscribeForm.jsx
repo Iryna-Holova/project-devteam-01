@@ -34,7 +34,6 @@ const SubscribeForm = () => {
     validationSchema,
     onSubmit: async values => {
       const response = await subscribe(values);
-      console.log(response)
       if (response.status === 200) {
         setSubscribed(true);
         formik.resetForm();

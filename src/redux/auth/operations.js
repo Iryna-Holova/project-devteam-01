@@ -20,7 +20,6 @@ export const register = createAsyncThunk(
   '/auth/register',
   async (credentials, thunkAPI) => {
     try {
-      console.log('rere');
       const currentUrl = utils.getBaseUrl();
       credentials.baseURL = currentUrl;
       // console.log(credentials);

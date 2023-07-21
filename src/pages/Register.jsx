@@ -1,21 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+
 import * as Yup from 'yup';
-import { useState } from 'react';
-import SharedForm from 'components/SharedForm/SharedForm';
-import ModalRegister from 'components/ModalRegister/ModalRegister';
-import {
-  // REJECTED,
-  RESOLVED,
-} from 'utils/constants';
+import toast, { Toaster } from 'react-hot-toast';
+
+import { register } from 'redux/auth/operations';
 import useAuth from 'hooks/use-auth';
 
+import SharedForm from 'components/SharedForm/SharedForm';
+import ModalRegister from 'components/ModalRegister/ModalRegister';
+
 const Register = () => {
+    const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+  };
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const { status } = useAuth();
+  const { status, error } = useAuth();
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -25,24 +31,15 @@ const Register = () => {
     setIsModalOpen(false);
   };
 
-  const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-  };
-
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Please enter a valid email')
       .required('Please enter your email'),
     name: Yup.string().required('Please enter your name'),
-    password: Yup.string().required('Please enter your password'),
+    password: Yup.string().min(6).required('Please enter your password'),
   });
 
-  const handleSubmit = (
-    values,
-    { setSubmitting, setFieldTouched }
-  ) => {
+  const handleSubmit = (values, { setSubmitting, setFieldTouched }) => {
     setFieldTouched('email', true);
     setFieldTouched('name', true);
 
@@ -55,15 +52,19 @@ const Register = () => {
         },
       })
     );
-
     setSubmitting(false);
   };
 
   useEffect(() => {
-    if (status === RESOLVED) {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (status === 2) {
       openModal();
     }
-        // if (status === REJECTED) alert('Registration failed');
   }, [status]);
 
   return (
@@ -79,6 +80,7 @@ const Register = () => {
         isRegisterForm
       />
       {isModalOpen && <ModalRegister closeModal={closeModal} />}
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
