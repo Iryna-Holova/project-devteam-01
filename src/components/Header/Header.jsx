@@ -9,6 +9,7 @@ import BurgerMenu from './Burger/Burger';
 import Navigation from './Navigation/Navigation';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserLogoutModal from './UserModals/UserLogout';
+import EditProfile from './EditProfileModal/EditProfileModal';
 
 import {
   HeaderContainer,
@@ -24,6 +25,7 @@ import {
 const Header = () => {
   const [menuOpenState, setMenuOpenState] = useState(false);
   const [profileOpenState, setProfileOpenState] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { user } = useAuth();
 
@@ -39,6 +41,14 @@ const Header = () => {
     setProfileOpenState(!profileOpenState);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <HeaderContainer className="container">
@@ -50,7 +60,7 @@ const Header = () => {
           <UserInfo onClick={handleProfileClick}>
             <UserPhoto src={user.avatarURL} alt="User Photo" />
             <UserName>{user.name}</UserName>
-            {profileOpenState && <UserLogoutModal />}
+            {profileOpenState && <UserLogoutModal openModal={openModal} />}
           </UserInfo>
           <BurgerButton onClick={() => handleBurgerMenuOpen()}>
             <HiMenuAlt2 />
@@ -64,6 +74,7 @@ const Header = () => {
         openState={menuOpenState}
         handleBurgerMenuClose={handleBurgerMenuClose}
       />
+      {isModalOpen && <EditProfile closeModal={closeModal} avatar={user.avatarURL} name={user.name} />}
     </>
   );
 };

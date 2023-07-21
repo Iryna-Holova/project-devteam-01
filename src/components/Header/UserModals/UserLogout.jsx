@@ -11,13 +11,9 @@ import {
 import { FiArrowRight } from 'react-icons/fi';
 import { HiOutlinePencil } from 'react-icons/hi';
 
-const UserLogoutModal = () => {
+const UserLogoutModal = ({openModal}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleEditProfile = () => {
-    // Обработчик клика по кнопке "Edit Profile"
-  };
 
   const handleLogout = () => {
     dispatch(logOut()); // Вызов экшена logOut при клике на кнопку "Logout"
@@ -26,7 +22,7 @@ const UserLogoutModal = () => {
 
   return (
     <UserLogoModalContainer>
-      <EditProfileButton onClick={handleEditProfile}>
+      <EditProfileButton onClick={openModal}>
         Edit Profile
         <HiOutlinePencil />
       </EditProfileButton>
