@@ -34,7 +34,7 @@ const RecipeDescription = ({ categories, handleFileChange, selectedFile, formikP
     <WrapperDescription style={{ margin: 0 }}>
       <ImagePlaceholder>
         {imageUrl ? (
-          <img src={imageUrl} alt="Uploaded" style={{ width: '100%', height: '100%' }} />
+          <img src={imageUrl} alt="Uploaded" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         ) : (
           <>
             <BsFullscreen style={{ width: '40px', height: '40px' }} />
