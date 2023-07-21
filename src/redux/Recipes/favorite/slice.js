@@ -86,7 +86,7 @@ export const favoriteRecipesSlice = createSlice({
           removeFromFavoriteRecipesThunk.rejected
         ),
         (state, action) => {
-          console.log(action);
+          // console.log(action);
           state.isLoading = false;
           state.isDeleting = false;
           state.error = action.payload;

@@ -4,20 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { logOut } from '../../../redux/auth/operations';
 import {
   UserLogoModalContainer,
-  EditProfileButton,
+  // EditProfileButton,
   LogoutButton,
 } from './UserLogout.styled';
 
 import { FiArrowRight } from 'react-icons/fi';
-import { HiOutlinePencil } from 'react-icons/hi';
+// import { HiOutlinePencil } from 'react-icons/hi';
 
 const UserLogoutModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleEditProfile = () => {
-    // Обработчик клика по кнопке "Edit Profile"
-  };
+  // const handleEditProfile = () => {
+  //   // Обработчик клика по кнопке "Edit Profile"
+  // };
 
   const handleLogout = () => {
     dispatch(logOut()); // Вызов экшена logOut при клике на кнопку "Logout"
@@ -26,10 +26,10 @@ const UserLogoutModal = () => {
 
   return (
     <UserLogoModalContainer>
-      <EditProfileButton onClick={handleEditProfile}>
+      {/* <EditProfileButton onClick={handleEditProfile}>
         Edit Profile
         <HiOutlinePencil />
-      </EditProfileButton>
+      </EditProfileButton> */}
       <LogoutButton onClick={handleLogout}>
         Log out
         <FiArrowRight />

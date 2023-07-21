@@ -56,7 +56,7 @@ export const ownRecipesSlice = createSlice({
         state.isError = false;
       })
       .addCase(getOwnRecipesThunk.rejected, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.isLoading = false;
         state.error = action.payload;
         state.items = [];
@@ -81,7 +81,7 @@ export const ownRecipesSlice = createSlice({
         state.status = RESOLVED;
       })
       .addCase(delOwnRecipesThunk.rejected, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.isLoading = false;
         state.error = action.payload;
         state.items = [];

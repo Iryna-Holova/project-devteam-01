@@ -81,7 +81,7 @@ const IngredientsShoppingList = () => {
                         {status === PENDING && isDeleting ? (
                           <Loader className="loader" />
                         ) : (
-                          <QuantityIndicator onMouseOver={() => console.log(measure.recipeId)}>
+                          <QuantityIndicator>
                             {measure.measure}
                           </QuantityIndicator>
                         )}

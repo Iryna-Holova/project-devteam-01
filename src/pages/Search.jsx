@@ -1,5 +1,5 @@
 import MainTitle from 'components/MainTitle/MainTitle';
-import RecipeGallery from '../components/RecipeGallery/RecipeGallery'
+import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
 import { useSearchParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
@@ -12,28 +12,36 @@ import { Loader } from 'components/loader/loader';
 
 const Search = () => {
   const [searchQuery] = useSearchParams();
-  const [searchValue, setSearchValue] = useState(searchQuery.get('title') || searchQuery.get('ingredients') || '');
+  const [searchValue, setSearchValue] = useState(
+    searchQuery.get('title') || searchQuery.get('ingredients') || ''
+  );
   const [selectedValue, setSelectedValue] = useState('title');
 
-  const dispatch = useDispatch()
-  const { recipes, status, isLoading, error } = useSearchBy();
-  
+  const dispatch = useDispatch();
+  const { recipes, status, isLoading,
+    // error
+  } = useSearchBy();
 
   useEffect(() => {
-    const searchWord = searchQuery.get('title') || searchQuery.get('ingredients') || "";
+    const searchWord =
+      searchQuery.get('title') || searchQuery.get('ingredients') || '';
     if (searchWord !== '' && searchWord !== undefined) {
       setSearchValue(searchWord);
     }
 
     if (searchValue === '' || searchValue === undefined) {
       return;
-    } 
+    }
 
     if (selectedValue === 'ingredients' && searchValue !== '') {
-        dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_INGREDIENT}))
+      dispatch(
+        getSearchByThunk({ query: searchValue, method: SEARCH_BY_INGREDIENT })
+      );
     }
     if (selectedValue === 'title' && searchValue !== '') {
-        dispatch(getSearchByThunk({query:searchValue, method:SEARCH_BY_TITLE}))
+      dispatch(
+        getSearchByThunk({ query: searchValue, method: SEARCH_BY_TITLE })
+      );
     }
   }, [searchValue, searchQuery, selectedValue, dispatch]);
 
@@ -48,34 +56,17 @@ const Search = () => {
     }
   };
 
-  console.log(error); // Just for build
-
   return (
-    <>
-    <MainTitle>
-      Search
-    </MainTitle>
-    <Searchbar searchQuery={searchValue}
-    onSubmit={formOnsubmitHandler}
-    />
-    {isLoading && <Loader/>}
-    {status === 2 && <RecipeGallery recipes={recipes} />}
-    {status === 1 && <p>...</p>}
-    {status === 3 && (
-      <div
-        style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-      >
-      <NoDataMessage>
-        Try looking for something else...
-      </NoDataMessage>
+    <div style={{marginBottom: '50px'}}>
+      <MainTitle>Search</MainTitle>
+      <Searchbar searchQuery={searchValue} onSubmit={formOnsubmitHandler} />
+      {isLoading && <Loader />}
+      {status === 2 && <RecipeGallery recipes={recipes} />}
+      {status === 1 && <p>...</p>}
+      {status === 3 && (
+        <NoDataMessage>Try looking for something else...</NoDataMessage>
+      )}
     </div>
-  )}
-    </>
   );
 };
 

@@ -21,7 +21,7 @@ export const ingredientsSlice = createSlice({
         state.items = [];
       })
       .addCase(getIngredientsThunk.fulfilled, (state, { payload }) => {
-        console.log('Ingredients', payload);
+        // console.log('Ingredients', payload);
         state.error = null;
         state.items = [...payload.items];
 
@@ -29,7 +29,7 @@ export const ingredientsSlice = createSlice({
         state.status = RESOLVED;
       })
       .addCase(getIngredientsThunk.rejected, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.isLoading = false;
         state.error = true;
         state.items = [];
