@@ -33,16 +33,25 @@ const SubscribeForm = () => {
     validationSchema,
     onSubmit: async values => {
       const response = await subscribe(values);
-
-      if (response.status !== 200) {
-        setSubscribed(false);
-      } else {
-        setSubscribed(true);
+      switch (response.status) {
+        case 400:
+          console.log(response.data.error);
+          break;
+        case 401:
+          console.log(response.data.error);
+          break;
+        case 500:
+          console.log(response.data.error);
+          break;
+        case 200:
+          setSubscribed(true);
+          formik.resetForm();
+          setInputClicked(false);
+          break;
+        default:
+          console.log('unknown promlem');
+          return;
       }
-
-      // Сброс формы и состояний
-      formik.resetForm();
-      setInputClicked(false);
     },
   });
 

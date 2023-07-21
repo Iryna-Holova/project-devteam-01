@@ -24,7 +24,6 @@ export const Form = styled.form`
     stroke: #fafafa;
     width: 16px;
     height: 16px;
-    color: red;
 
     @media (min-width: 768px) {
       width: 20px;
@@ -47,7 +46,7 @@ export const Input = styled.input`
   color: var(--color-start-text);
   stroke-width: 1px;
   stroke: #fff;
-  padding: 10px 10px 10px 42px;
+  padding: 9px 9px 9px 42px;
   background: transparent;
   border-radius: 6px;
   border: 1px solid gray;
@@ -128,7 +127,7 @@ export const FormText = styled.p`
 export const ErrorMessage = styled.p`
   position: absolute;
   font-size: 12px;
-  top: -12px;
+  top: -14px;
   left: 4px;
   color: var(--color-warning);
   @media (min-width: 768px) {
@@ -142,7 +141,7 @@ export const ErrorMessage = styled.p`
 export const SuccessMessage = styled.p`
   position: absolute;
   font-size: 12px;
-  top: -12px;
+  top: -14px;
   left: 4px;
   color: var(--color-accent);
   @media (min-width: 768px) {

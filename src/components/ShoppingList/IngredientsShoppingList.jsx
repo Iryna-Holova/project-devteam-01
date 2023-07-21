@@ -57,10 +57,10 @@ const IngredientsShoppingList = () => {
   return (
     <Container className="container">
       <HeaderContainer>
-        <Title className="image">Products</Title>
-        <Title className="title"></Title>
-        <Title className="number">Number</Title>
-        <Title className="remove">Remove</Title>
+        <Title>Products</Title>
+        <Title></Title>
+        <Title>Number</Title>
+        <Title>Remove</Title>
       </HeaderContainer>
       {
         <ul>
