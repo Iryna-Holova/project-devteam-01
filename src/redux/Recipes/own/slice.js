@@ -1,17 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getOwnRecipesThunk } from './operations';
+import { delOwnRecipesThunk, getOwnRecipesThunk } from './operations';
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
 const initialState = {
   items: [],
-  query: '',
   page: 1,
   limit: 4,
   isLoading: false,
-  error: null,
+  error: '',
   total: 0,
   pages: 0,
   status: IDLE,
+  isError: false,
+  isDeleting: false,
+  isAdding: false,
 };
 
 export const ownRecipesSlice = createSlice({
@@ -31,8 +33,17 @@ export const ownRecipesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getOwnRecipesThunk.pending, state => {
+        state.items = [];
+        state.page = 1;
+        state.limit = 4;
         state.isLoading = true;
+        state.error = '';
+        state.total = 0;
+        state.pages = 0;
         state.status = PENDING;
+        state.isError = false;
+        state.isDeleting = false;
+        state.isAdding = false;
       })
       .addCase(getOwnRecipesThunk.fulfilled, (state, { payload }) => {
         // console.log('SearchByTitle', payload);
@@ -42,16 +53,49 @@ export const ownRecipesSlice = createSlice({
         state.total = payload.items.total;
         state.isLoading = false;
         state.status = RESOLVED;
+        state.isError = false;
       })
       .addCase(getOwnRecipesThunk.rejected, (state, action) => {
         console.log(action);
         state.isLoading = false;
-        state.error = true;
+        state.error = action.payload;
         state.items = [];
-        state.query = '';
         state.page = 1;
         state.limit = 4;
         state.status = REJECTED;
+        state.isError = true;
+      })
+      .addCase(delOwnRecipesThunk.pending, state => {
+        state.isLoading = false;
+        state.error = '';
+        state.total = 0;
+        state.pages = 0;
+        state.status = PENDING;
+        state.isError = false;
+        state.isDeleting = true;
+        state.isAdding = false;
+      })
+      .addCase(delOwnRecipesThunk.fulfilled, (state, { payload }) => {
+        console.log('del', payload);
+        state.error = null;
+        const index = state.items.findIndex(item => item._id === payload.id);
+        if (index >= 0) state.items.splice(index, 1);
+        state.total = state.total - 1;
+        state.pages = Math.ceil(state.total / state.limit);
+        state.isLoading = false;
+        state.status = RESOLVED;
+        state.isError = false;
+        state.isDeleting = false;
+      })
+      .addCase(delOwnRecipesThunk.rejected, (state, action) => {
+        console.log(action);
+        state.isLoading = false;
+        state.error = action.payload;
+        state.items = [];
+        state.page = 1;
+        state.limit = 4;
+        state.status = REJECTED;
+        state.isError = true;
       });
   },
 });

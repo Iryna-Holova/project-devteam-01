@@ -1,7 +1,10 @@
 //import useOwnRecipes from 'hooks/useOwnRecipes';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getOwnRecipesThunk } from 'redux/Recipes/own/operations';
+import {
+  delOwnRecipesThunk,
+  getOwnRecipesThunk,
+} from 'redux/Recipes/own/operations';
 import useOwnRecipes from 'hooks/useOwnRecipes';
 
 import MainTitle from 'components/MainTitle/MainTitle';
@@ -16,10 +19,10 @@ const MyRecipes = () => {
 
   useEffect(() => {
     dispatch(getOwnRecipesThunk({ page, limit }));
-  }, [dispatch, page, limit, total, pages,]);
+  }, [dispatch, page, limit]);
 
   const handleRemoveClick = recipeId => {
-    // TODO
+    dispatch(delOwnRecipesThunk({ id: recipeId }));
   };
 
   return (
