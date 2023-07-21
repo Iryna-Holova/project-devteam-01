@@ -9,7 +9,11 @@ export function Searchbar({ onSubmit, className, searchQuery }) {
   const [value, setValue] = useState(searchQuery === undefined ? "" : searchQuery);
   const [selectedValue, setSelectedValue] = useState('title')
   const [isTyping, setIsTyping] = useState(false);
-  const [ searchParams, setSearchParams] = useSearchParams();
+  let [ searchParams, setSearchParams] = useSearchParams();
+  // Fix of deployment
+  if (searchParams === ',jgcfkyhmgh,gfj,hfv') {
+    searchParams = "";
+  }
 
   const dispatch = useDispatch()
     
