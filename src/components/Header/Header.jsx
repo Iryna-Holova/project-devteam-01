@@ -8,7 +8,8 @@ import Logo from 'components/Logo/Logo';
 import BurgerMenu from './Burger/Burger';
 import Navigation from './Navigation/Navigation';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
-import UserLogoutModal from './UserModals/UserLogout';
+import UserModal from './UserModal/UserModal';
+import EditProfile from './EditProfileModal/EditProfileModal';
 
 import {
   HeaderContainer,
@@ -20,23 +21,31 @@ import {
   ThemeTogglerStyle,
   BurgerButton,
 } from './Header.styled';
+import Modal from 'components/Modal/Modal';
 
 const Header = () => {
-  const [menuOpenState, setMenuOpenState] = useState(false);
-  const [profileOpenState, setProfileOpenState] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isUserModalOpen, setUserModalOpen] = useState(false);
+  const [showProfileModal, setShowEditProfileModal] = useState(false);
 
   const { user } = useAuth();
 
-  const handleBurgerMenuOpen = () => {
-    setMenuOpenState(true);
+  const toggleBurgerMenu = () => {
+    setMenuOpen(!isMenuOpen);
   };
 
-  const handleBurgerMenuClose = () => {
-    setMenuOpenState(false);
+  const toggleUserModal = () => {
+    setUserModalOpen(!isUserModalOpen);
   };
 
-  const handleProfileClick = () => {
-    setProfileOpenState(!profileOpenState);
+  const openEditProfileModal = () => {
+    setShowEditProfileModal(true);
+    document.body.classList.add('modal-show');
+  };
+
+  const closeEditProfileModal = () => {
+    setShowEditProfileModal(false);
+    document.body.classList.remove('modal-show');
   };
 
   return (
@@ -47,12 +56,14 @@ const Header = () => {
           <Navigation />
         </NavStyle>
         <HeaderContainerStyle>
-          <UserInfo onClick={handleProfileClick}>
+          <UserInfo onClick={toggleUserModal}>
             <UserPhoto src={user.avatarURL} alt="User Photo" />
             <UserName>{user.name}</UserName>
-            {profileOpenState && <UserLogoutModal />}
+            {isUserModalOpen && (
+              <UserModal handleEditProfileOpen={openEditProfileModal} />
+            )}
           </UserInfo>
-          <BurgerButton onClick={() => handleBurgerMenuOpen()}>
+          <BurgerButton onClick={toggleBurgerMenu}>
             <HiMenuAlt2 />
           </BurgerButton>
           <ThemeTogglerStyle>
@@ -60,10 +71,17 @@ const Header = () => {
           </ThemeTogglerStyle>
         </HeaderContainerStyle>
       </HeaderContainer>
-      <BurgerMenu
-        openState={menuOpenState}
-        handleBurgerMenuClose={handleBurgerMenuClose}
-      />
+      <BurgerMenu openState={isMenuOpen} handleCloseMenu={toggleBurgerMenu} />
+      <Modal
+        openState={showProfileModal}
+        onModalClose={closeEditProfileModal}
+      >
+        <EditProfile
+          closeModal={closeEditProfileModal}
+          avatar={user.avatarURL}
+          name={user.name}
+        />
+      </Modal>
     </>
   );
 };

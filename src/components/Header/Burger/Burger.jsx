@@ -13,11 +13,11 @@ import {
   CloseButton,
 } from './Burger.styled';
 
-const BurgerMenu = ({ openState, handleBurgerMenuClose }) => {
+const BurgerMenu = ({ openState, handleCloseMenu }) => {
   return (
     <Menu
       right
-      htmlClassName={'burger-open'}
+      bodyClassName={'modal-show'}
       width={'100%'}
       itemListElement="div"
       customBurgerIcon={false}
@@ -26,12 +26,12 @@ const BurgerMenu = ({ openState, handleBurgerMenuClose }) => {
       <BurgerBox>
         <BurgerContainer>
           <BurgerHeader>
-            <Logo func={handleBurgerMenuClose} />
-            <CloseButton onClick={() => handleBurgerMenuClose()}>
+            <Logo handleCloseMenu={handleCloseMenu} />
+            <CloseButton onClick={handleCloseMenu}>
               <CgClose />
             </CloseButton>
           </BurgerHeader>
-          <Navigation handleNavLinkClick={handleBurgerMenuClose} />
+          <Navigation handleCloseMenu={handleCloseMenu} />
           <ThemeToggler />
         </BurgerContainer>
       </BurgerBox>

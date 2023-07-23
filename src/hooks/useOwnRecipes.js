@@ -10,6 +10,7 @@ import {
   selectOwnRecipesTotal,
   selectOwnRecipesPage,
   selectOwnRecipesStatus,
+  selectOwnRecipesisDeleting,
 } from 'redux/Recipes/own/selectors';
 
 const useOwnRecipes = () => {
@@ -23,6 +24,7 @@ const useOwnRecipes = () => {
   const pages = useSelector(selectOwnRecipesPages);
   const limit = useSelector(selectOwnRecipesLimit);
   const status = useSelector(selectOwnRecipesStatus);
+  const isDeleting = useSelector(selectOwnRecipesisDeleting);
 
   return {
     isLoading,
@@ -34,6 +36,7 @@ const useOwnRecipes = () => {
     pages,
     limit,
     status,
+    isDeleting,
   };
 };
 

@@ -1,6 +1,6 @@
 import MainTitle from 'components/MainTitle/MainTitle';
 import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import useSearchBy from '../hooks/useSearchBy';
@@ -11,19 +11,28 @@ import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
 import { Loader } from 'components/loader/loader';
 
 const Search = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchQuery] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(
+    searchQuery.get('title') || searchQuery.get('ingredients') || ''
+  );
   const [selectedValue, setSelectedValue] = useState('title');
 
   const dispatch = useDispatch();
-  const { recipes, status, isLoading } = useSearchBy();
-  const { searchQuery } = useParams();
+  const {
+    recipes,
+    status,
+    isLoading,
+    // error
+  } = useSearchBy();
 
   useEffect(() => {
-    if (searchQuery !== '' && searchQuery !== undefined) {
-      setSearchValue(searchQuery);
+    const searchWord =
+      searchQuery.get('title') || searchQuery.get('ingredients') || '';
+    if (searchWord !== '' && searchWord !== undefined) {
+      setSearchValue(searchWord);
     }
 
-    if (searchValue === '') {
+    if (searchValue === '' || searchValue === undefined) {
       return;
     }
 
@@ -51,25 +60,16 @@ const Search = () => {
   };
 
   return (
-    <>
+    <div style={{ marginBottom: '50px' }}>
       <MainTitle>Search</MainTitle>
-      <Searchbar onSubmit={formOnsubmitHandler} />
+      <Searchbar searchQuery={searchValue} onSubmit={formOnsubmitHandler} />
       {isLoading && <Loader />}
       {status === 2 && <RecipeGallery recipes={recipes} />}
       {status === 1 && <p>...</p>}
       {status === 3 && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          <NoDataMessage>Try looking for something else...</NoDataMessage>
-        </div>
+        <NoDataMessage>Try looking for something else...</NoDataMessage>
       )}
-    </>
+    </div>
   );
 };
 

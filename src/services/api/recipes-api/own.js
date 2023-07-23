@@ -4,12 +4,10 @@ import { BASE_URL } from './common';
 export const getOwnRecipes = async ({ page = 1, limit = 4 }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    //   setAuthHeader(axios, token);
-
     const { status, data } = await axios.get(
       `/api/recipes/own/?page=${page}&limit=${limit}`
     );
-    // clearAuthHeader(axios);
+
     if (status === 200) {
       //  console.log(data);
       return data;
@@ -19,13 +17,11 @@ export const getOwnRecipes = async ({ page = 1, limit = 4 }) => {
   }
 };
 
-export const deleteOwnRecipe = async ({ id, token }) => {
+export const deleteOwnRecipe = async ({ id }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    // setAuthHeader(axios, token);
+    const { status, data } = await axios.delete(`/api/recipes/own/${id}`);
 
-    const { status, data } = await axios.delete(`/api/own-recipes/${id}`);
-    // clearAuthHeader(axios);
     if (status === 200) {
       return data;
     } else {
@@ -36,13 +32,14 @@ export const deleteOwnRecipe = async ({ id, token }) => {
   }
 };
 
-export const addOwnRecipe = async ({ data, token }) => {
+export const addOwnRecipe = async ({ data }) => {
   axios.defaults.baseURL = BASE_URL;
   try {
-    // setAuthHeader(axios, token);
+    const { status, data: responseData } = await axios.post(
+      '/api/recipes/own',
+      data
+    );
 
-    const { status, data: responseData } = await axios.post('/api/recipes/own', data);
-    // clearAuthHeader(axios);
     if (status === 201) {
       return responseData;
     } else {

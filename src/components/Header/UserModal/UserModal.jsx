@@ -2,39 +2,36 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../../../redux/auth/operations';
+
 import {
-  UserLogoModalContainer,
+  UserModalContainer,
   EditProfileButton,
   LogoutButton,
-} from './UserLogout.styled';
+} from './UserModal.styled';
 
 import { FiArrowRight } from 'react-icons/fi';
 import { HiOutlinePencil } from 'react-icons/hi';
 
-const UserLogoutModal = () => {
+const UserLogoutModal = ({handleEditProfileOpen}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleEditProfile = () => {
-    // Обработчик клика по кнопке "Edit Profile"
-  };
-
   const handleLogout = () => {
-    dispatch(logOut()); // Вызов экшена logOut при клике на кнопку "Logout"
-    navigate('/start'); // Навигация на страницу регистрации
+    dispatch(logOut());
+    navigate('/start');
   };
 
   return (
-    <UserLogoModalContainer>
-      <EditProfileButton onClick={handleEditProfile}>
-        Edit Profile
+    <UserModalContainer>
+      <EditProfileButton onClick={handleEditProfileOpen}>
+        Edit profile
         <HiOutlinePencil />
       </EditProfileButton>
       <LogoutButton onClick={handleLogout}>
         Log out
         <FiArrowRight />
       </LogoutButton>
-    </UserLogoModalContainer>
+    </UserModalContainer>
   );
 };
 

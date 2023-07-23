@@ -2,56 +2,48 @@ import React from 'react';
 
 import scrollToTop from 'utils/scroll-to-top';
 import {
-  FooterContainer,
   FooterContent,
   FooterText,
-  FooterLogoText,
-  Text,
-  LogoStyles,
   FooterBarText,
-  LeftText,
   RightText,
   FooterTextContainer,
 } from './Footer.styled';
 import SubscribeForm from './Subscribe/SubscribeForm';
 import Nav from './Nav/Nav';
 import SocialLinks from '../SocialLinks/SocialLinks';
-import Logo from '../Logo/LogoFooter';
+import Logo from '../Logo/Logo';
 
 function Footer() {
   const handleNavClick = () => {
-  scrollToTop()
-  }
-  
+    scrollToTop();
+  };
+
   return (
-    <FooterContainer>
+    <>
       <FooterContent>
         <FooterTextContainer className="container">
           <div>
-            <LogoStyles>
-              <a href="https://iryna-holova.github.io/project-devteam-01/">
-                <Logo>So Yummy</Logo>
-              </a>
-              <FooterLogoText>So Yummy</FooterLogoText>
-            </LogoStyles>
+            <Logo className="footer">
+              <span>So Yummy</span>
+            </Logo>
             <FooterText>
-              <Text>Database of recipes that can be replenished</Text>
-              <Text>Flexible search for desired and unwanted ingredients</Text>
-              <Text>Ability to add your own recipes with photos</Text>
-              <Text>Convenient and easy to use</Text>
+              <li>Database of recipes that can be replenished</li>
+              <li>Flexible search for desired and unwanted ingredients</li>
+              <li>Ability to add your own recipes with photos</li>
+              <li>Convenient and easy to use</li>
             </FooterText>
           </div>
-          <Nav handleNavClick={handleNavClick}/>
+          <Nav handleNavClick={handleNavClick} />
           <SubscribeForm />
         </FooterTextContainer>
         <SocialLinks />
       </FooterContent>
 
       <FooterBarText>
-        <LeftText>© 2023 All Rights Reserved.</LeftText>
+        <span>© 2023 All Rights Reserved.</span>
         <RightText>Terms of Service</RightText>
       </FooterBarText>
-    </FooterContainer>
+    </>
   );
 }
 

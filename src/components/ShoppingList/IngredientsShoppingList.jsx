@@ -7,13 +7,10 @@ import {
   Container,
   HeaderContainer,
   Title,
-  TitleN,
-  IngredientsListContainer,
   IngredientItem,
   IngredientImage,
   IngredientDetails,
   IngredientName,
-  IngredientQuantity,
   RemoveButton,
   QuantityIndicator,
   //  EmptyListImage,
@@ -21,7 +18,7 @@ import {
   MeasureContainer,
 } from './IngredientsShoppinglist.styled';
 
-import noImage from '../../assets/images/no-image-ingredient.webp'
+import noImage from '../../assets/images/no-image-ingredient.webp';
 
 import useShoppingListV2 from 'hooks/useShoppingListV2';
 import { PENDING } from 'utils/constants';
@@ -58,56 +55,58 @@ const IngredientsShoppingList = () => {
   };
 
   return (
-    <Container>
+    <Container className="container">
       <HeaderContainer>
         <Title>Products</Title>
-        <TitleN>Number</TitleN>
+        <Title></Title>
+        <Title>Number</Title>
         <Title>Remove</Title>
       </HeaderContainer>
       {
-        <IngredientsListContainer>
+        <ul>
           {ingredients.map(ingredient => (
             <IngredientItem key={ingredient._id}>
-              <IngredientImage src={ingredient.img || noImage} alt={ingredient.name} />
+              <div>
+                <IngredientImage
+                  src={ingredient.img || noImage}
+                  alt={ingredient.name}
+                />
+              </div>
               <IngredientName>{ingredient.name}</IngredientName>
+              <div>
+                <MeasureContainer>
+                  {ingredient.measures.map(measure => (
+                    <IngredientDetails key={measure.recipeId}>
+                      <div>
+                        {status === PENDING && isDeleting ? (
+                          <Loader className="loader" />
+                        ) : (
+                          <QuantityIndicator>
+                            {measure.measure}
+                          </QuantityIndicator>
+                        )}
+                      </div>
 
-              <MeasureContainer>
-                {ingredient.measures.map(measure => (
-                  <IngredientDetails key={measure.recipeId}>
-                    <IngredientQuantity>
-                      {status === PENDING && isDeleting ? (
-                        <Loader className="loader" />
-                      ) : (
-                        <QuantityIndicator>{measure.measure}</QuantityIndicator>
-                      )}
-                    </IngredientQuantity>
-                    <RemoveButton
-                      onClick={() =>
-                        onDelete({
-                          id: ingredient._id,
-                          recipeId: measure.recipeId,
-                          measure: measure.measure,
-                        })
-                      }
-                    >
-                      <MdClear className="remove-icon" />
-                    </RemoveButton>
-                  </IngredientDetails>
-                ))}
-              </MeasureContainer>
-              {/* <IngredientDetails>
-                <IngredientQuantity>
-                  <QuantityIndicator>
-                    {ingredient.measures[0]?.measure}
-                  </QuantityIndicator>
-                </IngredientQuantity>
-                <RemoveButton onClick={() => onDelete(ingredient._id)}>
-                  <MdClear className="remove-icon" />
-                </RemoveButton>
-              </IngredientDetails> */}
+                      <div>
+                        <RemoveButton
+                          onClick={() =>
+                            onDelete({
+                              id: ingredient._id,
+                              recipeId: measure.recipeId,
+                              measure: measure.measure,
+                            })
+                          }
+                        >
+                          <MdClear className="remove-icon" />
+                        </RemoveButton>
+                      </div>
+                    </IngredientDetails>
+                  ))}
+                </MeasureContainer>
+              </div>
             </IngredientItem>
           ))}
-        </IngredientsListContainer>
+        </ul>
       }
     </Container>
   );

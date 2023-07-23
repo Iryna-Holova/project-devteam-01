@@ -39,6 +39,7 @@ export const NavLinkStyled = styled(NavLink)`
   color: var(--color-text);
   text-decoration: none;
   text-align: center;
+  transition: color var(--transition-time) var(--cubic);
 
   &:hover,
   &.active {

@@ -8,3 +8,5 @@ export const selectOwnRecipesLimit = state => state.recipes.ownRecipes.limit;
 export const selectOwnRecipesLoading = state =>
   state.recipes.ownRecipes.isLoading;
 export const selectOwnRecipesStatus = state => state.recipes.ownRecipes.status;
+export const selectOwnRecipesisDeleting = state =>
+  state.recipes.ownRecipes.isDeleting;

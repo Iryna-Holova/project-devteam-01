@@ -114,6 +114,7 @@ export const StyledLink = styled(Link)`
 
     &:hover,
     &:focus {
+        transition: background-color var(--transition-time) var(--cubic);
         color: var(--color-accent);
     }
 

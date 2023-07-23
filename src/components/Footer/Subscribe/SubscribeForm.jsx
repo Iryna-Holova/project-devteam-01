@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import toast, { Toaster } from 'react-hot-toast';
 
 import {
   Form,
@@ -31,15 +32,15 @@ const SubscribeForm = () => {
       email: '',
     },
     validationSchema,
-    onSubmit: values => {
-      const response = subscribe(values)
-      console.log(response)
-      setSubscribed(true);
-
-      // Сброс формы и состояний
-      formik.resetForm();
-      setInputClicked(false);
-      console.log(values);
+    onSubmit: async values => {
+      const response = await subscribe(values);
+      if (response.status === 200) {
+        setSubscribed(true);
+        formik.resetForm();
+        setInputClicked(false);
+      } else {
+        toast.error(response.data.message);
+      }
     },
   });
 
@@ -59,34 +60,37 @@ const SubscribeForm = () => {
   };
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <FormTitle>Subscribe to our Newsletter</FormTitle>
-      <FormText>
-        Subscribe up to our newsletter. Be in touch with latest news and special
-        offers, etc.
-      </FormText>
-      <Input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter your email address"
-        value={formik.values.email}
-        onChange={handleInputChange}
-        onBlur={formik.handleBlur}
-        onClick={handleInputClick} // Обработчик клика для очистки ошибки или подписки
-      />
-      <svg>
-        <use href={sprite + '#email'}></use>
-      </svg>
-      {isSubscribed && <SuccessMessage>You are subscribed!</SuccessMessage>}
-      {inputClicked && formik.touched.email && formik.errors.email && (
-        <ErrorMessage>{formik.errors.email}</ErrorMessage>
-      )}
-      <Button type="submit" disabled={!formik.isValid || formik.isSubmitting}>
-        Subscribe
-      </Button>
-    </Form>
+    <>
+      <Form onSubmit={formik.handleSubmit}>
+        <FormTitle>Subscribe to our Newsletter</FormTitle>
+        <FormText>
+          Subscribe up to our newsletter. Be in touch with latest news and
+          special offers, etc.
+        </FormText>
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email address"
+          value={formik.values.email}
+          onChange={handleInputChange}
+          onBlur={formik.handleBlur}
+          onClick={handleInputClick} // Обработчик клика для очистки ошибки или подписки
+        />
+        <svg>
+          <use href={sprite + '#email'}></use>
+        </svg>
+        {isSubscribed && <SuccessMessage>You are subscribed!</SuccessMessage>}
+        {inputClicked && formik.touched.email && formik.errors.email && (
+          <ErrorMessage>{formik.errors.email}</ErrorMessage>
+        )}
+        <Button type="submit" disabled={!formik.isValid || formik.isSubmitting}>
+          Subscribe
+        </Button>
+      </Form>
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
   );
-}
+};
 
 export default SubscribeForm;
