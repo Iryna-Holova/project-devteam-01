@@ -32,13 +32,18 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
+const appPersistConfig = {
+  key: 'app',
+  storage,
+  whitelist: ['theme'],
+};
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     recipes: recipesReducer,
     categories: categoriesReducer,
-    app: appReducer,
+    app: persistReducer(appPersistConfig, appReducer),
     ingredients: IngredientsReducer,
     shoppingList: shoppingListReducer,
     shoppingListV2: shoppingListV2Reducer,
