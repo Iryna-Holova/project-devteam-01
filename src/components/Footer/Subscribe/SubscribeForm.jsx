@@ -38,9 +38,10 @@ const SubscribeForm = () => {
         setSubscribed(true);
         formik.resetForm();
         setInputClicked(false);
-      } else { toast.error(response.data.message) };
-    
-    }
+      } else {
+        toast.error(response.data.message);
+      }
+    },
   });
 
   const handleInputChange = event => {

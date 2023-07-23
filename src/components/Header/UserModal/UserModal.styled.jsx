@@ -1,17 +1,30 @@
 import styled from 'styled-components';
 
+export const UserModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--color-main);
+  padding: 18px;
+  border-radius: 8px;
+  border: 1px solid var(--color-accent);
+  position: absolute;
+  top: 48px;
+  left: -68px;
+`;
+
 export const EditProfileButton = styled.button`
   color: var(--color-text-main);
   background-color: transparent;
   border: none;
-  padding: 0 0 12px 0;
+  padding: 12px 0;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: inherit;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   transition: color var(--transition-time) var(--cubic);
 
   &:hover {
@@ -44,18 +57,4 @@ export const LogoutButton = styled.button`
     width: 18px;
     height: 18px;
   }
-`;
-
-export const UserLogoModalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background-color: var(--color-main);
-  width: 128px;
-  padding: 18px;
-  border-radius: 8px;
-  border: 1px solid var(--color-accent);
-  position: absolute;
-  top: 48px;
-  left: -68px;
 `;

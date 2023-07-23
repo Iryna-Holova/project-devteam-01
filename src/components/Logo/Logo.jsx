@@ -3,12 +3,12 @@ import scrollToTop from 'utils/scroll-to-top';
 import { LogoContainer, LogoImage } from './Logo.styled';
 import sprite from '../../assets/sprite.svg';
 
-const Logo = ({ className, func, children }) => {
+const Logo = ({ className, handleCloseMenu, children }) => {
   const navigate = useNavigate();
   return (
     <LogoContainer
       onClick={() => {
-        if (func) func();
+        if (handleCloseMenu) handleCloseMenu();
         navigate(`/`);
         scrollToTop();
       }}

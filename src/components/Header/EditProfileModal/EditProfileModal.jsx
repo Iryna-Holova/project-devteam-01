@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
-import { ModalOverplay, Modal } from './EditProfileModal.styled';
-import { CgClose } from 'react-icons/cg';
-import { Formik, Field } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { updateProfile } from 'services/api/update-user';
+import { toast } from 'react-hot-toast';
 
 const EditProfile = ({ closeModal, name, avatar }) => {
   const [selectedFile, setSelectedFile] = useState(avatar);
   const [formName, setFormName] = useState(name);
+  const [
+    isLoading,
+    setIsLoading] = useState(false);
 
   const handleFormSubmit = async () => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append('avatar', selectedFile);
-    formData.append('name', JSON.stringify(formName));
-    console.log(formData);
+    formData.append('name', formName);
+
     try {
-      const response = await updateProfile({ data: formData });
-      if (response) {
-        console.log('added successfully:', response);
-        closeModal();
-      } else {
-        console.log('Failed to add');
-      }
+      await updateProfile({ data: formData });
+      closeModal();
     } catch (error) {
-      console.log('Error adding:', error.message);
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
-console.log(selectedFile);
+
   const handleFileChange = event => {
     const file = event.currentTarget.files[0];
-    setSelectedFile(file);
+    const imageUrl = URL.createObjectURL(file);
+    setSelectedFile(imageUrl);
   };
 
   const handleNameChange = event => {
@@ -37,43 +38,34 @@ console.log(selectedFile);
   };
   return (
     <>
-      <ModalOverplay>
-        <Modal>
-          <button onClick={closeModal}>
-            <CgClose />
+      <Formik
+        initialValues={{
+          name: formName,
+        }}
+        onSubmit={handleFormSubmit}
+      >
+        <Form>
+          <div>
+            <img src={selectedFile} alt="Avatar" />
+            <Field
+              type="file"
+              accept="image/*,.png,.jpg,.web,.gif,.png"
+              name="avatar"
+              onChange={handleFileChange}
+            ></Field>
+          </div>
+          <Field
+            type="text"
+            id="name"
+            name="name"
+            value={formName}
+            onChange={handleNameChange}
+          ></Field>
+          <button type="submit" onClick={handleFormSubmit} disabled={isLoading}>
+            Add
           </button>
-          <Formik
-            initialValues={{
-              name: formName,
-            }}
-            onSubmit={handleFormSubmit}
-          >
-              <form>
-                <div>
-                  <img
-                    src={selectedFile}
-                    alt="Uploaded"
-                    style={{ width: '100%', height: '100%' }}
-                  />
-                  <Field
-                    type="file"
-                    accept="image/*,.png,.jpg,.web,.gif,.png"
-                    name="avatar"
-                    onChange={handleFileChange}
-                  ></Field>
-                </div>
-                <Field
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formName}
-                  onChange={handleNameChange}
-                ></Field>
-                <button type="submit">Add</button>
-              </form>
-          </Formik>
-        </Modal>
-      </ModalOverplay>
+        </Form>
+      </Formik>
     </>
   );
 };
