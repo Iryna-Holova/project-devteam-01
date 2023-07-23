@@ -15,8 +15,7 @@ export const getIngredients = async () => {
       return data;
     } else return null;
   } catch (error) {
-    console.log(error);
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -38,7 +37,6 @@ export const getRecipesByIngredient = async ({
       return data;
     } else return null;
   } catch (error) {
-    console.log(error);
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };

@@ -18,7 +18,10 @@ const Search = () => {
   const [selectedValue, setSelectedValue] = useState('title');
 
   const dispatch = useDispatch();
-  const { recipes, status, isLoading,
+  const {
+    recipes,
+    status,
+    isLoading,
     // error
   } = useSearchBy();
 
@@ -57,7 +60,7 @@ const Search = () => {
   };
 
   return (
-    <div style={{marginBottom: '50px'}}>
+    <div style={{ marginBottom: '50px' }}>
       <MainTitle>Search</MainTitle>
       <Searchbar searchQuery={searchValue} onSubmit={formOnsubmitHandler} />
       {isLoading && <Loader />}

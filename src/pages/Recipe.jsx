@@ -12,6 +12,7 @@ import {
 import { useDispatch } from 'react-redux';
 import useAuth from 'hooks/use-auth';
 import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
+import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 
 const Recipe = () => {
   const { recipeId } = useParams();
@@ -31,6 +32,8 @@ const Recipe = () => {
   useEffect(() => {
     async function fetchData() {
       const recipe = await getRecipeById(recipeId);
+
+      if (Object.keys(recipe).length === 0) return false;
       if (
         recipe?.favorite.findIndex(({ _userId }) => _userId === user._id) >= 0
       )
@@ -56,29 +59,29 @@ const Recipe = () => {
     setIsFavorite(!isFavorite);
   };
 
-  return (
-    recipe && (
-      <>
-        <RecipePageHero
-          title={recipe.title}
-          description={recipe.description}
-          time={recipe.time}
-          isFavorite={isFavorite}
-          handleFavorites={handleFavorites}
-          youtube={recipe.youtube}
-        />
-        <IngredientsTable
-          ingredients={recipe.ingredients}
-          recipeId={recipe._id}
-          recipe={recipe}
-        ></IngredientsTable>
-        <RecipePreparation
-          image={recipe.thumb}
-          instructions={recipe.instructions}
-          title={recipe.title}
-        />
-      </>
-    )
+  return recipe ? (
+    <>
+      <RecipePageHero
+        title={recipe.title}
+        description={recipe.description}
+        time={recipe.time}
+        isFavorite={isFavorite}
+        handleFavorites={handleFavorites}
+        youtube={recipe.youtube}
+      />
+      <IngredientsTable
+        ingredients={recipe.ingredients}
+        recipeId={recipe._id}
+        recipe={recipe}
+      ></IngredientsTable>
+      <RecipePreparation
+        image={recipe.thumb}
+        instructions={recipe.instructions}
+        title={recipe.title}
+      />
+    </>
+  ) : (
+    <NoDataMessage>Recipe not found!</NoDataMessage>
   );
 };
 
