@@ -8,7 +8,7 @@ const ModalRegister = ({ closeModal }) => {
   return (
     <>
       <ModalOverplay>
-        <Modal>
+        <Modal style={{backgroundColor: '#2A2C36'}}>
           <WelcomeWords>You have successfully registered</WelcomeWords>
           <InfoP>Please go to your mail for verification</InfoP>
           <Link to="/start">
