@@ -36,7 +36,7 @@ const Verify = lazy(() => import('pages/Verify'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth();
-  const { device } = useApp();
+  const { device, theme } = useApp();
 
   const handlerOnWindowResize = useCallback(() => {
     const currDevice = getMedia();
@@ -84,91 +84,100 @@ export const App = () => {
     <Loader className={'page'} />
   ) : (
     <Suspense fallback={<Loader className={'page'} />}>
-      <Routes>
-        <Route
-          path="/start"
-          element={<RestrictedRoute redirectTo="/" component={<Start />} />}
-        />
-        <Route
-          path="/register"
-          element={<RestrictedRoute redirectTo="/" component={<Register />} />}
-        />
-        <Route
-          path="/signin"
-          element={<RestrictedRoute redirectTo="/" component={<Signin />} />}
-        />
-        <Route
-          path="/verify/:verificationToken"
-          element={<RestrictedRoute redirectTo="/" component={<Verify />} />}
-        />
-        <Route path="/" element={<SharedLayout />}>
+      <div className="app" data-theme={theme}>
+        <Routes>
           <Route
-            index
-            element={<PrivateRoute redirectTo="/start" component={<Main />} />}
+            path="/start"
+            element={<RestrictedRoute redirectTo="/" component={<Start />} />}
           />
           <Route
-            path="categories/"
+            path="/register"
             element={
-              <PrivateRoute
-                redirectTo="/start"
-                component={<Navigate to="/categories/beef" />}
-              />
+              <RestrictedRoute redirectTo="/" component={<Register />} />
             }
           />
           <Route
-            path="categories/:categoryName"
-            element={
-              <PrivateRoute redirectTo="/start" component={<Categories />} />
-            }
+            path="/signin"
+            element={<RestrictedRoute redirectTo="/" component={<Signin />} />}
           />
           <Route
-            path="/add"
-            element={
-              <PrivateRoute redirectTo="/start" component={<AddRecipe />} />
-            }
+            path="/verify/:verificationToken"
+            element={<RestrictedRoute redirectTo="/" component={<Verify />} />}
           />
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              index
+              element={
+                <PrivateRoute redirectTo="/start" component={<Main />} />
+              }
+            />
+            <Route
+              path="categories/"
+              element={
+                <PrivateRoute
+                  redirectTo="/start"
+                  component={<Navigate to="/categories/beef" />}
+                />
+              }
+            />
+            <Route
+              path="categories/:categoryName"
+              element={
+                <PrivateRoute redirectTo="/start" component={<Categories />} />
+              }
+            />
+            <Route
+              path="/add"
+              element={
+                <PrivateRoute redirectTo="/start" component={<AddRecipe />} />
+              }
+            />
+            <Route
+              path="favorite"
+              element={
+                <PrivateRoute redirectTo="/start" component={<Favorite />} />
+              }
+            />
+            <Route
+              path="recipe/:recipeId"
+              element={
+                <PrivateRoute redirectTo="/start" component={<Recipe />} />
+              }
+            />
+            <Route
+              path="my"
+              element={
+                <PrivateRoute redirectTo="/start" component={<MyRecipes />} />
+              }
+            />
+            <Route
+              path="search/:searchQuery?"
+              element={
+                <PrivateRoute redirectTo="/start" component={<Search />} />
+              }
+            />
+            <Route
+              path="shopping-list"
+              element={
+                <PrivateRoute
+                  redirectTo="/start"
+                  component={<ShoppingList />}
+                />
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <PrivateRoute redirectTo="/start" component={<NotFound />} />
+              }
+            />
+          </Route>
           <Route
-            path="favorite"
-            element={
-              <PrivateRoute redirectTo="/start" component={<Favorite />} />
-            }
+            path="/test"
+            element={<RestrictedRoute redirectTo="/" component={<Test />} />}
           />
-          <Route
-            path="recipe/:recipeId"
-            element={
-              <PrivateRoute redirectTo="/start" component={<Recipe />} />
-            }
-          />
-          <Route
-            path="my"
-            element={
-              <PrivateRoute redirectTo="/start" component={<MyRecipes />} />
-            }
-          />
-          <Route
-            path="search/:searchQuery?"
-            element={
-              <PrivateRoute redirectTo="/start" component={<Search />} />
-            }
-          />
-          <Route
-            path="shopping-list"
-            element={
-              <PrivateRoute redirectTo="/start" component={<ShoppingList />} />
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <PrivateRoute redirectTo="/start" component={<NotFound />} />
-            }
-          />
-        </Route>
-        <Route
-          path="/test"
-          element={<RestrictedRoute redirectTo="/" component={<Test />} />}
-        />
-      </Routes>
+        </Routes>
+      </div>
     </Suspense>
   );
 };

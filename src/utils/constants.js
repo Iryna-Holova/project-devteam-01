@@ -1,5 +1,5 @@
-export const LIGHT = 0;
-export const DARK = 1;
+export const LIGHT = 'light';
+export const DARK = 'dark';
 
 export const MOBILE = 0;
 export const TABLET = 1;
