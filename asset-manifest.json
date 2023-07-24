@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/project-devteam-01/static/css/main.4fb583a6.css",
-    "main.js": "/project-devteam-01/static/js/main.0c829778.js",
+    "main.js": "/project-devteam-01/static/js/main.001c04d0.js",
     "static/js/879.d83312a7.chunk.js": "/project-devteam-01/static/js/879.d83312a7.chunk.js",
     "static/js/437.e06f00ba.chunk.js": "/project-devteam-01/static/js/437.e06f00ba.chunk.js",
     "static/js/526.4bafde40.chunk.js": "/project-devteam-01/static/js/526.4bafde40.chunk.js",
-    "static/js/964.b83c6af2.chunk.js": "/project-devteam-01/static/js/964.b83c6af2.chunk.js",
-    "static/js/819.2f54a0ac.chunk.js": "/project-devteam-01/static/js/819.2f54a0ac.chunk.js",
+    "static/js/964.d6fa2872.chunk.js": "/project-devteam-01/static/js/964.d6fa2872.chunk.js",
+    "static/js/819.9c85a1be.chunk.js": "/project-devteam-01/static/js/819.9c85a1be.chunk.js",
     "static/js/527.b8f42f13.chunk.js": "/project-devteam-01/static/js/527.b8f42f13.chunk.js",
     "static/js/65.e0c887e7.chunk.js": "/project-devteam-01/static/js/65.e0c887e7.chunk.js",
     "static/js/70.24391bb0.chunk.js": "/project-devteam-01/static/js/70.24391bb0.chunk.js",
     "static/js/3.ded27736.chunk.js": "/project-devteam-01/static/js/3.ded27736.chunk.js",
     "static/js/41.7efddb13.chunk.js": "/project-devteam-01/static/js/41.7efddb13.chunk.js",
-    "static/js/301.bfa79313.chunk.js": "/project-devteam-01/static/js/301.bfa79313.chunk.js",
+    "static/js/301.c11cd4f7.chunk.js": "/project-devteam-01/static/js/301.c11cd4f7.chunk.js",
     "static/js/15.51a94810.chunk.js": "/project-devteam-01/static/js/15.51a94810.chunk.js",
     "static/js/105.41e6d745.chunk.js": "/project-devteam-01/static/js/105.41e6d745.chunk.js",
     "static/js/290.7b9a0b2d.chunk.js": "/project-devteam-01/static/js/290.7b9a0b2d.chunk.js",
@@ -96,18 +96,18 @@
     "static/media/bg-registration-tablet.svg": "/project-devteam-01/static/media/bg-registration-tablet.f98227bc0143b57ad73eb9237ffd1e5e.svg",
     "static/media/bg-registration-desktop.svg": "/project-devteam-01/static/media/bg-registration-desktop.d5d5440654b186017ddacb2e9f52c512.svg",
     "main.4fb583a6.css.map": "/project-devteam-01/static/css/main.4fb583a6.css.map",
-    "main.0c829778.js.map": "/project-devteam-01/static/js/main.0c829778.js.map",
+    "main.001c04d0.js.map": "/project-devteam-01/static/js/main.001c04d0.js.map",
     "879.d83312a7.chunk.js.map": "/project-devteam-01/static/js/879.d83312a7.chunk.js.map",
     "437.e06f00ba.chunk.js.map": "/project-devteam-01/static/js/437.e06f00ba.chunk.js.map",
     "526.4bafde40.chunk.js.map": "/project-devteam-01/static/js/526.4bafde40.chunk.js.map",
-    "964.b83c6af2.chunk.js.map": "/project-devteam-01/static/js/964.b83c6af2.chunk.js.map",
-    "819.2f54a0ac.chunk.js.map": "/project-devteam-01/static/js/819.2f54a0ac.chunk.js.map",
+    "964.d6fa2872.chunk.js.map": "/project-devteam-01/static/js/964.d6fa2872.chunk.js.map",
+    "819.9c85a1be.chunk.js.map": "/project-devteam-01/static/js/819.9c85a1be.chunk.js.map",
     "527.b8f42f13.chunk.js.map": "/project-devteam-01/static/js/527.b8f42f13.chunk.js.map",
     "65.e0c887e7.chunk.js.map": "/project-devteam-01/static/js/65.e0c887e7.chunk.js.map",
     "70.24391bb0.chunk.js.map": "/project-devteam-01/static/js/70.24391bb0.chunk.js.map",
     "3.ded27736.chunk.js.map": "/project-devteam-01/static/js/3.ded27736.chunk.js.map",
     "41.7efddb13.chunk.js.map": "/project-devteam-01/static/js/41.7efddb13.chunk.js.map",
-    "301.bfa79313.chunk.js.map": "/project-devteam-01/static/js/301.bfa79313.chunk.js.map",
+    "301.c11cd4f7.chunk.js.map": "/project-devteam-01/static/js/301.c11cd4f7.chunk.js.map",
     "15.51a94810.chunk.js.map": "/project-devteam-01/static/js/15.51a94810.chunk.js.map",
     "105.41e6d745.chunk.js.map": "/project-devteam-01/static/js/105.41e6d745.chunk.js.map",
     "290.7b9a0b2d.chunk.js.map": "/project-devteam-01/static/js/290.7b9a0b2d.chunk.js.map",
@@ -127,6 +127,6 @@
   },
   "entrypoints": [
     "static/css/main.4fb583a6.css",
-    "static/js/main.0c829778.js"
+    "static/js/main.001c04d0.js"
   ]
 }
