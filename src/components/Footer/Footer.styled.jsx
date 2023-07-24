@@ -13,7 +13,7 @@ import mobileBottom2x from '../../assets/images/footer/footer-spinach-bottom-mob
 import mobileTop1x from '../../assets/images/footer/footer-spinach-top-mobile-1x.webp';
 import mobileTop2x from '../../assets/images/footer/footer-spinach-top-mobile-2x.webp';
 
-export const FooterContent = styled.div`
+export const FooterContent = styled.footer`
   background-color: var(--color-footer);
   padding-top: 28px;
   padding-bottom: 18px;

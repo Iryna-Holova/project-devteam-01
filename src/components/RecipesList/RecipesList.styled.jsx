@@ -1,20 +1,46 @@
 import styled from 'styled-components';
 
-export const RecipesListContainer = styled.ul`
+export const RecipesListContainer = styled.div`
   margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+
   @media (min-width: 768px) {
     margin-top: 100px;
-    gap: 40px;
   }
-  @media (min-width: 1440px) {
-    gap: 50px;
+
+  > .recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    @media (min-width: 768px) {
+      gap: 40px;
+    }
+
+    @media (min-width: 1440px) {
+      gap: 50px;
+    }
+  }
+
+  & .item-enter {
+    opacity: 0;
+  }
+
+  & .item-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+
+  & .item-exit {
+    opacity: 1;
+  }
+
+  & .item-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
   }
 `;
 
-export const RecipeItemContainer = styled.li`
+export const RecipeItemContainer = styled.div`
   background-color: var(--color-secondary);
   display: flex;
   padding: 14px 9px;
@@ -125,13 +151,17 @@ export const RecipeItemTitle = styled.div`
     height: 24px;
     border: none;
     border-radius: 4px;
-    background-color: var(--color-accent-secondary);
+    background-color: var(--color-accent-secondary-black);
 
     &.own-recipes {
       background-color: var(--color-accent);
-      >svg {
+      > svg {
         color: var(--color-secondary);
       }
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
 
     @media (min-width: 768px) {

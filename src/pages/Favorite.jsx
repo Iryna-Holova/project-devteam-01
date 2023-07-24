@@ -40,26 +40,29 @@ const Favorite = () => {
   return (
     <>
       <MainTitle>Favorites</MainTitle>
-      {status === PENDING && !isDeleting && <Loader />}
-      {!favorite.length && (
-        <NoDataMessage>
-          You haven't added your favorite recipes yet...
-        </NoDataMessage>
-      )}
-
-      {status === RESOLVED && favorite.length !== 0 && (
+      {status === PENDING ? (
+        <Loader />
+      ) : (
         <>
-          <RecipesList
-            data={favorite.slice((page - 1) * limit, page * limit)}
-            removeRecipe={handleRemoveClick}
-          />
-          <Pagination
-            totalPages={
-              favorite?.length ? Math.ceil(favorite.length / limit) : 0
-            }
-            currentPage={page}
-            onClick={handlePageChange}
-          />
+          {!favorite.length ? (
+            <NoDataMessage>
+              You haven't added your favorite recipes yet...
+            </NoDataMessage>
+          ) : (
+            <>
+              <RecipesList
+                data={favorite.slice((page - 1) * limit, page * limit)}
+                removeRecipe={handleRemoveClick}
+              />
+              <Pagination
+                totalPages={
+                  favorite?.length ? Math.ceil(favorite.length / limit) : 0
+                }
+                currentPage={page}
+                onClick={handlePageChange}
+              />
+            </>
+          )}
         </>
       )}
     </>

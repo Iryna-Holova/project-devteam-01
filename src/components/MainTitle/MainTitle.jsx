@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {BsFillCircleFill, BsFillSquareFill} from 'react-icons/bs'
 
-import Title from './Title.styled';
+import Title from './MainTitle.styled';
 
 const MainTitle = ({ className, children }) => {
   return (

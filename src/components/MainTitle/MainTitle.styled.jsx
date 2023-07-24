@@ -3,10 +3,9 @@ import styled from 'styled-components';
 const Title = styled.div`
   position: relative;
   margin-top: 114px;
-  color: var(--color-text-main);
+  color: var(--color-text-primary);
 
   & h2 {
-    color: var(--color-text-main);
     font-weight: 600;
     font-size: 28px;
     line-height: 28px;
