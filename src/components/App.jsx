@@ -84,7 +84,7 @@ export const App = () => {
     <Loader className={'page'} />
   ) : (
     <Suspense fallback={<Loader className={'page'} />}>
-      <div className="app" data-theme={theme}>
+      <>
         <Routes>
           <Route
             path="/start"
@@ -177,7 +177,7 @@ export const App = () => {
             element={<RestrictedRoute redirectTo="/" component={<Test />} />}
           />
         </Routes>
-      </div>
+      </>
     </Suspense>
   );
 };
