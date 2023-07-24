@@ -14,7 +14,7 @@ import {
 
 const useSearchBy = () => {
   const isLoading = useSelector(selectSearchByLoading);
-  const isError = useSelector(selectSearchByError);
+  const error = useSelector(selectSearchByError);
   const query = useSelector(selectSearchByQuery);
   const data = useSelector(selectSearchByResult);
   const recipes = useSelector(selectSearchByResult);
@@ -27,7 +27,7 @@ const useSearchBy = () => {
 
   return {
     isLoading,
-    isError,
+    error,
     data,
     query,
     page,

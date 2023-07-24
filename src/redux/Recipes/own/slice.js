@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { delOwnRecipesThunk, getOwnRecipesThunk } from './operations';
+import {
+  addOwnRecipesThunk,
+  delOwnRecipesThunk,
+  getOwnRecipesThunk,
+} from './operations';
 import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
 const initialState = {
@@ -23,9 +27,7 @@ export const ownRecipesSlice = createSlice({
     setLimit(state, { payload }) {
       state.limit = payload;
     },
-    setQuery(state, { payload }) {
-      state.query = payload;
-    },
+
     setPage(state, { payload }) {
       state.page = payload;
     },
@@ -60,13 +62,12 @@ export const ownRecipesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         state.items = [];
-        state.page = 1;
-        state.limit = 4;
         state.status = REJECTED;
         state.isError = true;
       })
       .addCase(delOwnRecipesThunk.pending, state => {
         state.isDeleting = true;
+        state.status = PENDING;
       })
       .addCase(delOwnRecipesThunk.fulfilled, (state, { payload }) => {
         // console.log('del', payload);
@@ -82,16 +83,38 @@ export const ownRecipesSlice = createSlice({
       })
       .addCase(delOwnRecipesThunk.rejected, (state, action) => {
         // console.log(action);
-        state.isLoading = false;
+        state.isDeleting = false;
         state.error = action.payload;
-        state.items = [];
-        state.page = 1;
-        state.limit = 4;
+        state.status = REJECTED;
+        state.isError = true;
+      })
+      .addCase(addOwnRecipesThunk.pending, state => {
+        state.isAdding = true;
+        state.status = PENDING;
+        state.error = null;
+        state.isError = false;
+      })
+      .addCase(addOwnRecipesThunk.fulfilled, (state, { payload }) => {
+        console.log('add', payload);
+        state.error = null;
+        state.items = [...payload.items, ...state.items];
+        state.total = state.total + 1;
+        state.pages = Math.ceil(state.total / state.limit);
+        state.isLoading = false;
+        state.isError = false;
+        state.isDeleting = false;
+        state.isAdding = false;
+        state.status = RESOLVED;
+      })
+      .addCase(addOwnRecipesThunk.rejected, (state, action) => {
+        // console.log(action);
+        state.error = action.payload;
+        state.isAdding = false;
         state.status = REJECTED;
         state.isError = true;
       });
   },
 });
 
-export const { setLimit, setPage, setQuery } = ownRecipesSlice.actions;
+export const { setLimit, setPage } = ownRecipesSlice.actions;
 export const ownRecipesReducer = ownRecipesSlice.reducer;

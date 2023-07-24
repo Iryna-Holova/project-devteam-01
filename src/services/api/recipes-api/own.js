@@ -13,7 +13,7 @@ export const getOwnRecipes = async ({ page = 1, limit = 4 }) => {
       return data;
     } else return null;
   } catch (error) {
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -28,7 +28,7 @@ export const deleteOwnRecipe = async ({ id }) => {
       return null;
     }
   } catch (error) {
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -46,6 +46,6 @@ export const addOwnRecipe = async ({ data }) => {
       return null;
     }
   } catch (error) {
-    return Promise.reject(new Error(error.message));
+    return Promise.reject(new Error(error.response.data.message));
   }
 };

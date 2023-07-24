@@ -15,7 +15,7 @@ export const getAllCategories = async () => {
       return data;
     } else return null;
   } catch (error) {
-    console.log(error);
-    return Promise.reject(error.message);
+    // console.log(error);
+    return Promise.reject(new Error(error.response.data.message));
   }
 };

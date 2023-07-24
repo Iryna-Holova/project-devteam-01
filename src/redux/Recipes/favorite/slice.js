@@ -59,9 +59,9 @@ export const favoriteRecipesSlice = createSlice({
           );
 
           state.items.splice(index, 1);
-
           state.total = state.total - 1;
           state.isLoading = false;
+          state.isDeleting = false;
           state.pages = Math.ceil(state.total / state.limit);
           state.status = RESOLVED;
         }
