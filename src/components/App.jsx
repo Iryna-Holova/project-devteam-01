@@ -36,7 +36,7 @@ const Verify = lazy(() => import('pages/Verify'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn, token } = useAuth();
-  const { device, theme } = useApp();
+  const { device } = useApp();
 
   const handlerOnWindowResize = useCallback(() => {
     const currDevice = getMedia();
@@ -84,7 +84,7 @@ export const App = () => {
     <Loader className={'page'} />
   ) : (
     <Suspense fallback={<Loader className={'page'} />}>
-      <div className="app" data-theme={theme}>
+      <>
         <Routes>
           <Route
             path="/start"
@@ -177,7 +177,7 @@ export const App = () => {
             element={<RestrictedRoute redirectTo="/" component={<Test />} />}
           />
         </Routes>
-      </div>
+      </>
     </Suspense>
   );
 };
