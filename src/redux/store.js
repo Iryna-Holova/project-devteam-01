@@ -17,7 +17,7 @@ import { appReducer } from './App/slice';
 import { IngredientsReducer } from './Ingredients/slice';
 import { shoppingListV2Reducer } from './ShoppingListV2/slice';
 //import { searchByNameReducer } from './Recipes/searchByName/slice';
-import shoppingListReducer from './ShoppingList/slice';
+//import shoppingListReducer from './ShoppingList/slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -45,7 +45,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     app: persistReducer(appPersistConfig, appReducer),
     ingredients: IngredientsReducer,
-    shoppingList: shoppingListReducer,
+    //  shoppingList: shoppingListReducer,
     shoppingListV2: shoppingListV2Reducer,
   },
   middleware,

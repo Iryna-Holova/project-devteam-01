@@ -20,12 +20,11 @@ export const getOwnRecipesThunk = createAsyncThunk(
 );
 
 export const addOwnRecipesThunk = createAsyncThunk(
-  'ownRecipes/getOwnRecipes',
-  async ({ limit = 4, page = 1 }, thunkAPI) => {
+  'ownRecipes/addOwnRecipes',
+  async ({ data }, thunkAPI) => {
     try {
-      const response = await recipesServices.getOwnRecipes({
-        limit,
-        page,
+      const response = await recipesServices.addOwnRecipe({
+        data,
       });
       //console.log(response);
       return {
@@ -41,7 +40,7 @@ export const delOwnRecipesThunk = createAsyncThunk(
   'ownRecipes/delOwnRecipes',
   async ({ id }, thunkAPI) => {
     try {
-      console.log('delete');
+      //console.log('delete');
       await recipesServices.deleteOwnRecipe({
         id,
       });

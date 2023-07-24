@@ -7,23 +7,28 @@ import { DARK, LIGHT } from 'utils/constants';
 import { useDispatch } from 'react-redux';
 
 const ThemeToggler = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
   const { theme } = useApp();
+  const [isDarkMode, setDarkMode] = useState(theme === DARK ? true : false);
+
   const dispatch = useDispatch();
 
   const handleThemeToggle = () => {
-    console.log('handleThemeToggle');
-    setDarkMode(!isDarkMode);
-    if (isDarkMode) dispatch(setTheme(DARK));
+    //console.log('handleThemeToggle', isDarkMode, theme);
+    if (!isDarkMode) dispatch(setTheme(DARK));
     else dispatch(setTheme(LIGHT));
+    setDarkMode(!isDarkMode);
   };
 
   // Эффект для чтения состояния из LocalStorage при загрузке компонента
   useEffect(() => {
     //  const storedTheme = localStorage.getItem('theme');
-    console.log('useEffect');
+    // console.log('useEffect', theme);
     if (theme === DARK) {
+      document.body.dataset.theme = 'dark';
       setDarkMode(true);
+    } else {
+      delete document.body.dataset.theme;
+      setDarkMode(false);
     }
   }, [theme]);
 

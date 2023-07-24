@@ -18,7 +18,7 @@ export const getRecipesMain = async ({ limit = 1 }) => {
       return data;
     } else return null;
   } catch (error) {
-    return Promise.reject(`Error no retrive recipes to main page`);
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -38,7 +38,7 @@ export const getRecipesByCategory = async ({
       return data;
     } else return null;
   } catch (error) {
-    return Promise.reject(`Erron on retrive recipes by category ${query}`);
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -52,7 +52,7 @@ export const getRecipe = async ({ id }) => {
       return data;
     } else return null;
   } catch (error) {
-    return Promise.reject(`Error on get recipe by id ${id}`);
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
 
@@ -70,6 +70,6 @@ export const getSearchByTitle = async ({ query = '', limit = 6, page = 1 }) => {
       return data;
     } else return null;
   } catch (error) {
-    return Promise.reject(`Error on search by title ${query}`);
+    return Promise.reject(new Error(error.response.data.message));
   }
 };
