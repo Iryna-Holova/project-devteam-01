@@ -6,7 +6,10 @@ import {
   removeFromFavoriteRecipesThunk,
 } from 'redux/Recipes/favorite/operations';
 import useFavorite from 'hooks/useFavorite';
-import { PENDING, RESOLVED } from 'utils/constants';
+import {
+  PENDING,
+  // RESOLVED
+} from 'utils/constants';
 
 import MainTitle from 'components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
@@ -16,7 +19,9 @@ import { setPage } from 'redux/Recipes/favorite/slice';
 import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 
 const Favorite = () => {
-  const { status, favorite, page, limit, isDeleting } = useFavorite();
+  const { status, favorite, page, limit,
+    // isDeleting
+  } = useFavorite();
   const dispatch = useDispatch();
 
   // useEffect(() => {
