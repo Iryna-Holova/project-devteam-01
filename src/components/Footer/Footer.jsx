@@ -12,9 +12,18 @@ import SubscribeForm from './Subscribe/SubscribeForm';
 import Nav from './Nav/Nav';
 import SocialLinks from '../SocialLinks/SocialLinks';
 import Logo from '../Logo/Logo';
+import { setQuery } from 'redux/Recipes/SearchBy/slice';
+import { useDispatch } from 'react-redux';
+import useSearchBy from 'hooks/useSearchBy';
 
 function Footer() {
-  const handleNavClick = () => {
+  const { query } = useSearchBy();
+  const dispatch = useDispatch();
+  const handleNavClick = e => {
+    if ((e.target.text = 'Ingredients')) {
+      dispatch(setQuery({ param: 'ingredients', value: query.value }));
+    }
+
     scrollToTop();
   };
 

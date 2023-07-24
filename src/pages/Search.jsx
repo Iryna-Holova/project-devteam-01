@@ -8,7 +8,6 @@ import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 import { useDispatch } from 'react-redux';
 import { getSearchByThunk } from '../redux/Recipes/SearchBy/operations';
 import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
-import { Loader } from 'components/loader/loader';
 
 const Search = () => {
   const [searchQuery] = useSearchParams();
@@ -16,21 +15,17 @@ const Search = () => {
     searchQuery.get('title') || searchQuery.get('ingredients') || ''
   );
   const [selectedValue, setSelectedValue] = useState('title');
-
   const dispatch = useDispatch();
-  const {
-    recipes,
-    status,
-    isLoading,
-    // error
-  } = useSearchBy();
+  const { recipes } = useSearchBy();
 
   useEffect(() => {
     const searchWord =
       searchQuery.get('title') || searchQuery.get('ingredients') || '';
-    if (searchWord !== '' && searchWord !== undefined) {
-      setSearchValue(searchWord);
-    }
+    const delayDebounceInput = setTimeout(() => {
+      if (searchWord !== '' && searchWord !== undefined) {
+        setSearchValue(searchWord);
+      }
+    }, 1500);
 
     if (searchValue === '' || searchValue === undefined) {
       return;
@@ -46,6 +41,8 @@ const Search = () => {
         getSearchByThunk({ query: searchValue, method: SEARCH_BY_TITLE })
       );
     }
+
+    return () => clearTimeout(delayDebounceInput);
   }, [searchValue, searchQuery, selectedValue, dispatch]);
 
   // Функция записывает полученные значения из SearchBar в стейт
@@ -63,10 +60,8 @@ const Search = () => {
     <div style={{ marginBottom: '50px' }}>
       <MainTitle>Search</MainTitle>
       <Searchbar searchQuery={searchValue} onSubmit={formOnsubmitHandler} />
-      {isLoading && <Loader />}
-      {status === 2 && <RecipeGallery recipes={recipes} />}
-      {status === 1 && <p>...</p>}
-      {status === 3 && (
+      {recipes && <RecipeGallery recipes={recipes} />}
+      {!recipes.length && (
         <NoDataMessage>Try looking for something else...</NoDataMessage>
       )}
     </div>
