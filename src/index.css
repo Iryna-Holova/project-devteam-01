@@ -55,6 +55,9 @@ html {
 
 body {
   scroll-behavior: smooth;
+  height: 100vh;
+  color: var(--color-text-);
+  background-color: var(--color-main);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Poppins', sans-serif;
   font-size: 14px;
@@ -66,16 +69,10 @@ body {
   }
 }
 
-.app {
-  background-color: var(--color-main);
+div[id='root'] {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh + 100px);
-  /* min-height: 100vh; */
-}
-
-div[id='root'] {
-  /* height: 100%; */
+  height: 100%;
 }
 
 main {
