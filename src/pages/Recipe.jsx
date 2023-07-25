@@ -57,17 +57,27 @@ const Recipe = () => {
   }, [recipeId, user._id]);
 
   const handleFavorites = async () => {
-    const index = recipe.favorite.findIndex(
-      ({ _userId }) => _userId === user._id
-    );
+    const favorite = [...recipe.favorite];
+    const index = favorite.findIndex(({ _userId }) => _userId === user._id);
     if (isFavorite) {
-      dispatch(removeFromFavoriteRecipesThunk(recipeId));
-      if (index >= 0) recipe.favorite.splice(index, 1);
+      if (index >= 0) {
+        favorite.splice(index, 1);
+        Promise.allSettled([
+          dispatch(removeFromFavoriteRecipesThunk(recipeId)),
+          setIsFavorite(!isFavorite),
+          setRecipe({ ...recipe, favorite: [...favorite] }),
+        ]);
+      }
     } else {
-      dispatch(addToFavoriteRecipesThunk(recipe));
-      if (index < 0) recipe.favorite.push({ userId: user._id });
+      if (index < 0) {
+        favorite.push({ _userId: user._id });
+        Promise.allSettled([
+          dispatch(addToFavoriteRecipesThunk(recipe)),
+          setIsFavorite(!isFavorite),
+          setRecipe({ ...recipe, favorite: [...favorite] }),
+        ]);
+      }
     }
-    setIsFavorite(!isFavorite);
   };
 
   return (
