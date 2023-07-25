@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/project-devteam-01/static/css/main.06a8a677.css",
-    "main.js": "/project-devteam-01/static/js/main.be6441dc.js",
+    "main.js": "/project-devteam-01/static/js/main.968cad2b.js",
     "static/js/879.0239c243.chunk.js": "/project-devteam-01/static/js/879.0239c243.chunk.js",
     "static/js/437.d622eab0.chunk.js": "/project-devteam-01/static/js/437.d622eab0.chunk.js",
     "static/js/526.4bafde40.chunk.js": "/project-devteam-01/static/js/526.4bafde40.chunk.js",
-    "static/js/964.4bc74a69.chunk.js": "/project-devteam-01/static/js/964.4bc74a69.chunk.js",
+    "static/js/50.68686128.chunk.js": "/project-devteam-01/static/js/50.68686128.chunk.js",
     "static/js/819.9c85a1be.chunk.js": "/project-devteam-01/static/js/819.9c85a1be.chunk.js",
     "static/js/527.3bde0e8b.chunk.js": "/project-devteam-01/static/js/527.3bde0e8b.chunk.js",
     "static/js/65.87e0a3bc.chunk.js": "/project-devteam-01/static/js/65.87e0a3bc.chunk.js",
@@ -96,11 +96,11 @@
     "static/media/bg-triangle-desktop.svg": "/project-devteam-01/static/media/bg-triangle-desktop.091fd12b87a953a3cfdcc7c0e246296b.svg",
     "static/media/bg-registration-desktop.svg": "/project-devteam-01/static/media/bg-registration-desktop.e7ca1a244dadfbb58ce6b360469f6ca2.svg",
     "main.06a8a677.css.map": "/project-devteam-01/static/css/main.06a8a677.css.map",
-    "main.be6441dc.js.map": "/project-devteam-01/static/js/main.be6441dc.js.map",
+    "main.968cad2b.js.map": "/project-devteam-01/static/js/main.968cad2b.js.map",
     "879.0239c243.chunk.js.map": "/project-devteam-01/static/js/879.0239c243.chunk.js.map",
     "437.d622eab0.chunk.js.map": "/project-devteam-01/static/js/437.d622eab0.chunk.js.map",
     "526.4bafde40.chunk.js.map": "/project-devteam-01/static/js/526.4bafde40.chunk.js.map",
-    "964.4bc74a69.chunk.js.map": "/project-devteam-01/static/js/964.4bc74a69.chunk.js.map",
+    "50.68686128.chunk.js.map": "/project-devteam-01/static/js/50.68686128.chunk.js.map",
     "819.9c85a1be.chunk.js.map": "/project-devteam-01/static/js/819.9c85a1be.chunk.js.map",
     "527.3bde0e8b.chunk.js.map": "/project-devteam-01/static/js/527.3bde0e8b.chunk.js.map",
     "65.87e0a3bc.chunk.js.map": "/project-devteam-01/static/js/65.87e0a3bc.chunk.js.map",
@@ -127,6 +127,6 @@
   },
   "entrypoints": [
     "static/css/main.06a8a677.css",
-    "static/js/main.be6441dc.js"
+    "static/js/main.968cad2b.js"
   ]
 }
