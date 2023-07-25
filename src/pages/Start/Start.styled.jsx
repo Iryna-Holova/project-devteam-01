@@ -114,11 +114,11 @@ export const WrapperBut = styled.div`
     }
 
     &.signin {
-      outline: 1px solid var(--color-start-text);
+      border: 1px solid var(--color-start-text);
 
       &:hover {
         background-color: var(--color-start-text);
-        outline-color: var(--color-accent);
+        border-color: var(--color-accent);
         color: var(--color-accent);
       }
     }

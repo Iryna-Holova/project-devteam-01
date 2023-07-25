@@ -7,7 +7,7 @@ import spinachTablet2x from '../../../assets/images/burger/burger-spinach-tablet
 
 export const BurgerBox = styled.div`
   min-height: 100%;
-  background-color: var(--color-accent-secondary);
+  background-color: var(--color-accent-secondary-black);
   background-image: -webkit-image-set(
     url(${spinachMobile1x}) 1x,
     url(${spinachMobile2x}) 2x
@@ -43,7 +43,7 @@ export const CloseButton = styled.div`
   cursor: pointer;
   width: 32px;
   height: 32px;
-  color: var(--color-text-main);
+  color: var(--color-text-primary);
   transition: color var(--transition-time) var(--cubic);
   :hover {
     color: var(--color-accent);

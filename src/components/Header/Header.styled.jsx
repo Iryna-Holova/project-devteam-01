@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--color-icons);
 
   position: absolute;
   top: 18px;
@@ -32,6 +33,10 @@ export const UserInfo = styled.div`
   gap: 14px;
   align-items: center;
   position: relative;
+  transition: color var(--transition-time) var(--cubic);
+  &:hover {
+    color: var(--color-accent);
+  }
 `;
 
 export const UserPhoto = styled.img`
@@ -56,12 +61,11 @@ export const BurgerButton = styled.div`
   cursor: pointer;
   width: 28px;
   height: 28px;
-  color: var(--color-icons);
-  transition: color var(--transition-time) var(--cubic);
   :hover {
     color: var(--color-accent);
   }
   > svg {
+    transition: color var(--transition-time) var(--cubic);
     color: inherit;
     width: 28px;
     height: 28px;

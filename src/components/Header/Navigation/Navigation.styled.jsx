@@ -36,7 +36,7 @@ export const NavLinkStyled = styled(NavLink)`
   line-height: 50px;
   font-weight: 500;
   letter-spacing: -0.36px;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   text-decoration: none;
   text-align: center;
   transition: color var(--transition-time) var(--cubic);
