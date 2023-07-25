@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
-import { updateProfile } from 'services/api/update-user';
+// import { updateProfile } from 'services/api/update-user';
 import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { updateUser } from 'redux/auth/operations';
 
 const EditProfile = ({ closeModal, name, avatar }) => {
   const [selectedFile, setSelectedFile] = useState(avatar);
   const [formName, setFormName] = useState(name);
-  const [
-    isLoading,
-    setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const [selectedImageURL, setSelectedImageURL] = useState(avatar);
 
   const handleFormSubmit = async () => {
     setIsLoading(true);
@@ -17,7 +19,9 @@ const EditProfile = ({ closeModal, name, avatar }) => {
     formData.append('name', formName);
 
     try {
-      await updateProfile({ data: formData });
+      // await updateProfile({ data: formData });
+
+      await Promise.allSettled([dispatch(updateUser({ data: formData }))]);
       closeModal();
     } catch (error) {
       toast.error(error.message);
@@ -29,7 +33,9 @@ const EditProfile = ({ closeModal, name, avatar }) => {
   const handleFileChange = event => {
     const file = event.currentTarget.files[0];
     const imageUrl = URL.createObjectURL(file);
-    setSelectedFile(imageUrl);
+    //setSelectedFile(imageUrl);
+    setSelectedFile(file);
+    setSelectedImageURL(imageUrl);
   };
 
   const handleNameChange = event => {
@@ -46,7 +52,7 @@ const EditProfile = ({ closeModal, name, avatar }) => {
       >
         <Form>
           <div>
-            <img src={selectedFile} alt="Avatar" />
+            <img src={selectedImageURL} alt="Avatar" />
             <Field
               type="file"
               accept="image/*,.png,.jpg,.web,.gif,.png"

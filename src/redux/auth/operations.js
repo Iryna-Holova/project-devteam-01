@@ -109,3 +109,21 @@ export const verifyUser = createAsyncThunk(
     }
   }
 );
+
+/*
+ * PATCH @ /users/users/verify/:verificationToken
+ *
+ */
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async ({ data }, thunkAPI) => {
+    try {
+      const response = await axios.patch('/api/users/update', data);
+
+      return response.data;
+      //return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
