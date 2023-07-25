@@ -5,6 +5,6 @@ export const getRecipeById = async id => {
     const response = await axios.get(`/api/recipes/${id}`);
     return response.data;
   } catch (error) {
-    return error;
+    return null;
   }
 };

@@ -7,7 +7,7 @@ import {
   InstructionList,
 } from './RecipePreparation.styled';
 
-export const RecipePreparation = ({ image, instructions, title }) => {
+const RecipePreparation = ({ image, instructions, title }) => {
   let items = [];
   if (instructions) {
     items = instructions
@@ -35,7 +35,7 @@ export const RecipePreparation = ({ image, instructions, title }) => {
   }
 
   return (
-    <PreparationWrapper className='container'>
+    <PreparationWrapper className="container">
       <InstructionWrapper>
         <InstructionTitle>Recipe Preparation</InstructionTitle>
         <InstructionList>{items}</InstructionList>
@@ -46,3 +46,5 @@ export const RecipePreparation = ({ image, instructions, title }) => {
     </PreparationWrapper>
   );
 };
+
+export default RecipePreparation;

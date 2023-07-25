@@ -36,7 +36,7 @@ export const NoDataImage = styled.div`
 `;
 
 export const MessageText = styled.p`
-  color: black;
+  color: var(--color-text-primary);
   opacity: 0.5;
   font-weight: 500;
   line-height: 14px;

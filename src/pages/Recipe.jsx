@@ -1,22 +1,27 @@
-import { RecipePageHero } from 'components/Recipe/RecipeHero/RecipeHero';
-import { RecipePreparation } from 'components/Recipe/RecipePreparation/RecipePreparation';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getRecipeById } from 'services/api/getRecipe';
-import { IngredientsTable } from 'components/Recipe/RecipeIngredientsTable/IngredientsTable';
+import { useDispatch } from 'react-redux';
+
 import {
   addToFavoriteRecipesThunk,
   getFavoriteRecipesThunk,
   removeFromFavoriteRecipesThunk,
 } from 'redux/Recipes/favorite/operations';
-import { useDispatch } from 'react-redux';
-import useAuth from 'hooks/use-auth';
 import { getShoppingListV2Thunk } from 'redux/ShoppingListV2/operations';
+import useAuth from 'hooks/use-auth';
+import { getRecipeById } from 'services/api/getRecipe';
+
+import RecipePageHero from 'components/Recipe/RecipeHero/RecipeHero';
+import RecipePreparation from 'components/Recipe/RecipePreparation/RecipePreparation';
+import IngredientsTable from 'components/Recipe/RecipeIngredientsTable/IngredientsTable';
 import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
+import ContentLoader from 'components/loader/ContentLoader';
+import noImage from '../assets/images/no-image-recipe.webp';
 
 const Recipe = () => {
   const { recipeId } = useParams();
-  const [recipe, setRecipe] = useState(null);
+  const [recipe, setRecipe] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -32,15 +37,21 @@ const Recipe = () => {
   useEffect(() => {
     async function fetchData() {
       const recipe = await getRecipeById(recipeId);
-
-      if (Object.keys(recipe).length === 0) return false;
+      if (!recipe) {
+        setRecipe({ title: 'Recipe not found :(' });
+        setIsLoading(false);
+        return;
+      }
       if (
         recipe?.favorite.findIndex(({ _userId }) => _userId === user._id) >= 0
-      )
+      ) {
         setIsFavorite(true);
-      else setIsFavorite(false);
+      } else {
+        setIsFavorite(false);
+      }
 
       setRecipe(recipe);
+      setIsLoading(false);
     }
     fetchData();
   }, [recipeId, user._id]);
@@ -59,7 +70,7 @@ const Recipe = () => {
     setIsFavorite(!isFavorite);
   };
 
-  return recipe ? (
+  return (
     <>
       <RecipePageHero
         title={recipe.title}
@@ -69,19 +80,29 @@ const Recipe = () => {
         handleFavorites={handleFavorites}
         youtube={recipe.youtube}
       />
-      <IngredientsTable
-        ingredients={recipe.ingredients}
-        recipeId={recipe._id}
-        recipe={recipe}
-      ></IngredientsTable>
-      <RecipePreparation
-        image={recipe.thumb}
-        instructions={recipe.instructions}
-        title={recipe.title}
-      />
+      {isLoading ? (
+        <ContentLoader />
+      ) : (
+        <>
+          {!recipe.ingredients ? (
+            <NoDataMessage>Ingredients not found...</NoDataMessage>
+          ) : (
+            <>
+              <IngredientsTable
+                ingredients={recipe.ingredients}
+                recipeId={recipe._id}
+                recipe={recipe}
+              ></IngredientsTable>
+              <RecipePreparation
+                image={recipe.thumb || noImage}
+                instructions={recipe.instructions}
+                title={recipe.title}
+              />
+            </>
+          )}
+        </>
+      )}
     </>
-  ) : (
-    <NoDataMessage>Recipe not found!</NoDataMessage>
   );
 };
 

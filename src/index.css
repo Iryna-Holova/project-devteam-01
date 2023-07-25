@@ -7,6 +7,7 @@
   --color-text-primary: #001833;
   --color-text-secondary: #3e4462;
   --color-text: #23262a;
+  --color-text-transparent: rgba(0, 0, 0, 0.80);
   --color-icons: #22252a;
   --color-icons-light: #c4c4c4;
   --color-accent: #8baa36;
@@ -29,6 +30,7 @@
   --color-text-primary: #fafafa;
   --color-text-secondary: #fafafa;
   --color-text: rgba(250, 250, 250, 0.6);
+  --color-text-transparent: #fafafa;
   --color-icons: #fafafa;
   /* --color-accent: #8baa36; */
   --color-accent-secondary: #2a2c36;

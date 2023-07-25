@@ -8,12 +8,13 @@ import mobile1x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-mobil
 import mobile2x from '../../../assets/images/recipe-hero-bg/my-recipe-hero-mobile-2x.webp';
 
 export const HeroContainer = styled.div`
+  min-height: 455px;
   position: relative;
   text-align: center;
   margin-bottom: 32px;
   padding-top: 144px;
   padding-bottom: 90px;
-  color: var(--color-footer);
+  color: #23262a;
   background-color: #e6e6e4;
   background-size: 767px 509px;
   background-position: top center;
@@ -21,6 +22,7 @@ export const HeroContainer = styled.div`
   background-image: -webkit-image-set(url(${mobile1x}) 1x, url(${mobile2x}) 2x);
 
   @media screen and (min-width: 768px) {
+    min-height: 495px;
     margin-bottom: 50px;
     padding-top: 136px;
     padding-bottom: 32px;
@@ -32,6 +34,7 @@ export const HeroContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    min-height: 493px;
     padding-top: 164px;
     background-size: 1562px 731px;
     background-position: top center;
@@ -45,15 +48,15 @@ export const HeroContainer = styled.div`
     position: absolute;
     top: 90px;
     left: 50%;
-    color: var(--color-icons);
+    color: inherit;
     transform: translate(-50%, 0);
-    transition: color var(--transition-time) var(--cubic);
 
     :hover {
-      color: var(--color-accent)
+      color: var(--color-accent);
     }
 
     & svg {
+      transition: color var(--transition-time) var(--cubic);
       height: 30px;
       width: 30px;
     }

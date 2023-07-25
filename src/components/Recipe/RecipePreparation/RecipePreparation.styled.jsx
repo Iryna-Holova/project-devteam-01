@@ -12,6 +12,7 @@ export const PreparationWrapper = styled.div`
     justify-content: space-between;
   }
 `;
+
 export const InstructionWrapper = styled.div`
   margin-bottom: 40px;
 
@@ -80,7 +81,7 @@ export const InstructionItem = styled.li`
   }
 
   & p {
-    color: rgba(0, 0, 0, 0.8);
+    color: var(--color-text-transparent);
     font-size: 12px;
     line-height: 14px;
     letter-spacing: -0.24px;
