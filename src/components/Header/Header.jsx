@@ -22,6 +22,7 @@ import {
   BurgerButton,
 } from './Header.styled';
 import Modal from 'components/Modal/Modal';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -30,6 +31,9 @@ const Header = () => {
 
   const { user } = useAuth();
 
+  const location = useLocation()
+  const isRecipePage = location.pathname.includes('recipe');
+  
   const toggleBurgerMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -53,7 +57,7 @@ const Header = () => {
       <HeaderContainer className="container">
         <Logo />
         <NavStyle>
-          <Navigation />
+          <Navigation className={ isRecipePage && 'recipe-page'} />
         </NavStyle>
         <HeaderContainerStyle>
           <UserInfo onClick={toggleUserModal}>
