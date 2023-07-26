@@ -12,7 +12,6 @@ export const appSlice = createSlice({
   initialState,
   reducers: {
     setTheme(state, { payload }) {
-      console.log(payload);
       state.theme = payload;
     },
     setDevice(state, { payload }) {
