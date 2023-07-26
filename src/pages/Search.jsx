@@ -8,6 +8,8 @@ import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 import { useDispatch } from 'react-redux';
 import { getSearchByThunk } from '../redux/Recipes/SearchBy/operations';
 import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
+import { setPage } from 'redux/Recipes/SearchBy/slice';
+import Pagination from 'components/Pagination/Pagination';
 
 const Search = () => {
   const [searchQuery] = useSearchParams();
@@ -16,7 +18,7 @@ const Search = () => {
   );
   const [selectedValue, setSelectedValue] = useState('title');
   const dispatch = useDispatch();
-  const { recipes } = useSearchBy();
+  const { recipes, page, limit, pages } = useSearchBy();
 
   useEffect(() => {
     const searchWord =
@@ -33,17 +35,31 @@ const Search = () => {
 
     if (selectedValue === 'ingredients' && searchValue !== '') {
       dispatch(
-        getSearchByThunk({ query: searchValue, method: SEARCH_BY_INGREDIENT })
+        getSearchByThunk({
+          query: searchValue,
+          method: SEARCH_BY_INGREDIENT,
+          limit,
+          page,
+        })
       );
     }
     if (selectedValue === 'title' && searchValue !== '') {
       dispatch(
-        getSearchByThunk({ query: searchValue, method: SEARCH_BY_TITLE })
+        getSearchByThunk({
+          query: searchValue,
+          method: SEARCH_BY_TITLE,
+          limit,
+          page,
+        })
       );
     }
 
     return () => clearTimeout(delayDebounceInput);
-  }, [searchValue, searchQuery, selectedValue, dispatch]);
+  }, [searchValue, searchQuery, selectedValue, dispatch, limit, page]);
+
+  useEffect(() => {
+    if (page > pages) dispatch(setPage(pages));
+  }, [pages, page, dispatch]);
 
   // Функция записывает полученные значения из SearchBar в стейт
   const formOnsubmitHandler = (value, selectValue) => {
@@ -56,6 +72,10 @@ const Search = () => {
     }
   };
 
+  const handlePageChange = pageNumber => {
+    dispatch(setPage(pageNumber));
+  };
+
   return (
     <div style={{ marginBottom: '50px' }}>
       <MainTitle>Search</MainTitle>
@@ -63,6 +83,13 @@ const Search = () => {
       {recipes && <RecipeGallery recipes={recipes} />}
       {!recipes.length && (
         <NoDataMessage>Try looking for something else...</NoDataMessage>
+      )}
+      {pages > 1 && (
+        <Pagination
+          totalPages={pages}
+          currentPage={page}
+          onClick={handlePageChange}
+        />
       )}
     </div>
   );
