@@ -13,14 +13,11 @@ export const NavContainer = styled.ul`
     align-items: center;
     justify-content: center;
     margin-top: 0;
+    gap: 30px;
 
     .active {
       color: var(--color-accent);
     }
-  }
-  @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    gap: 30px;
   }
 `;
 

@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field } from 'formik';
 // import { updateProfile } from 'services/api/update-user';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/auth/operations';
-
+import {
+  StyledForm,
+  AvatarInputWrapper,
+  UserAvatar,
+  AddPicture,
+  NameInputWrapper,
+  NameInput,
+  EditButton
+} from './EditProfileModal.styled';
+import { BsPlus } from 'react-icons/bs';
+import sprite from '../../../assets/sprite.svg';
+import { HiOutlinePencil } from 'react-icons/hi';
 const EditProfile = ({ closeModal, name, avatar }) => {
   const [selectedFile, setSelectedFile] = useState(avatar);
   const [formName, setFormName] = useState(name);
@@ -33,7 +44,6 @@ const EditProfile = ({ closeModal, name, avatar }) => {
   const handleFileChange = event => {
     const file = event.currentTarget.files[0];
     const imageUrl = URL.createObjectURL(file);
-    //setSelectedFile(imageUrl);
     setSelectedFile(file);
     setSelectedImageURL(imageUrl);
   };
@@ -50,27 +60,35 @@ const EditProfile = ({ closeModal, name, avatar }) => {
         }}
         onSubmit={handleFormSubmit}
       >
-        <Form>
-          <div>
-            <img src={selectedImageURL} alt="Avatar" />
-            <Field
+        <StyledForm>
+          <AvatarInputWrapper>
+            <UserAvatar src={selectedImageURL} alt="Avatar" />
+            <BsPlus />
+            <AddPicture
               type="file"
               accept="image/*,.png,.jpg,.web,.gif,.png"
               name="avatar"
               onChange={handleFileChange}
-            ></Field>
-          </div>
-          <Field
-            type="text"
-            id="name"
-            name="name"
-            value={formName}
-            onChange={handleNameChange}
-          ></Field>
-          <button type="submit" onClick={handleFormSubmit} disabled={isLoading}>
-            Add
-          </button>
-        </Form>
+            ></AddPicture>
+          </AvatarInputWrapper>
+          <NameInputWrapper>
+            <NameInput
+              type="text"
+              id="name"
+              name="name"
+              value={formName}
+              onChange={handleNameChange}
+            ></NameInput>
+            <svg>
+              <use href={sprite + '#user'}></use>
+            </svg>
+            <HiOutlinePencil />
+          </NameInputWrapper>
+
+          <EditButton type="submit" onClick={handleFormSubmit} disabled={isLoading}>
+            Save changes
+          </EditButton>
+        </StyledForm>
       </Formik>
     </>
   );
