@@ -7,7 +7,7 @@
   --color-text-primary: #001833;
   --color-text-secondary: #3e4462;
   --color-text: #23262a;
-  --color-text-transparent: rgba(0, 0, 0, 0.80);
+  --color-text-transparent: rgba(0, 0, 0, 0.8);
   --color-icons: #22252a;
   --color-icons-light: #c4c4c4;
   --color-black-accent: #22252a;
@@ -38,7 +38,7 @@
   --color-black-accent: #8baa36;
   /* --color-accent: #8baa36; */
   --color-accent-white: #fafafa;
-  --color-accent-black: #1E1F28;
+  --color-accent-black: #1e1f28;
   --color-accent-secondary: #2a2c36;
   --color-accent-secondary-black: #1e1f28;
   --color-footer: #8baa36;
@@ -71,7 +71,9 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  transition: color var(--transition-time) var(--cubic);
+  transition: background-color var(--transition-time) var(--cubic);
+  
   &.modal-show {
     overflow: hidden;
   }

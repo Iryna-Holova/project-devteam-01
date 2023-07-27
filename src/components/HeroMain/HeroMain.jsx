@@ -1,17 +1,27 @@
 import ChooseBreakfast from './ChooseBreakfast/ChooseBreakfast';
-import { HeroContainer, HeroTitle, HeroText, HeroTitleGreen, NewLine, MainContainer } from './HeroMain.styled';
+import {
+  HeroContainer,
+  HeroTextContainer,
+  HeroTitle,
+  HeroText,
+} from './HeroMain.styled';
 
-const HeroMain = () => {
+const HeroMain = ({ children }) => {
   return (
-    <MainContainer>
-      <HeroContainer>
-        <HeroTitle><HeroTitleGreen>So</HeroTitleGreen>Yummy</HeroTitle>
-        <HeroText>"What to cook?" is not only a recipe app, it is, in fact, your cookbook. You can add your own recipes to save </HeroText><NewLine>them for the future.</NewLine>
-      </HeroContainer>
-      <ChooseBreakfast/>
-    </MainContainer>
-      
-    );
+    <HeroContainer className="container">
+      <HeroTextContainer>
+        <HeroTitle>
+          <span>So</span>Yummy
+        </HeroTitle>
+        <HeroText>
+          "What to cook?" is not only a recipe app, it is, in fact, your
+          cookbook. You can add your own recipes to save them for the future.
+        </HeroText>
+      </HeroTextContainer>
+      <ChooseBreakfast />
+      {children}
+    </HeroContainer>
+  );
 };
 
 export default HeroMain;

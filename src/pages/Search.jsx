@@ -1,7 +1,7 @@
 import MainTitle from 'components/MainTitle/MainTitle';
 import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
 import { useSearchParams } from 'react-router-dom';
-import { Searchbar } from 'components/Searchbar/Searchbar';
+import Searchbar from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import useSearchBy from '../hooks/useSearchBy';
 import NoDataMessage from 'components/NoDataMessage/NoDataMessage';

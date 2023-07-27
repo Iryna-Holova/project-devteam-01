@@ -15,7 +15,7 @@ import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../../utils/constants';
 import { setQuery } from 'redux/Recipes/SearchBy/slice';
 import useSearchBy from 'hooks/useSearchBy';
 
-export function Searchbar({ onSubmit, className, searchQuery }) {
+const  Searchbar = ({ onSubmit, className, searchQuery }) => {
   const { query } = useSearchBy();
   const [value, setValue] = useState(
     searchQuery === undefined ? '' : searchQuery
@@ -125,3 +125,5 @@ export function Searchbar({ onSubmit, className, searchQuery }) {
     </>
   );
 }
+
+export default Searchbar;

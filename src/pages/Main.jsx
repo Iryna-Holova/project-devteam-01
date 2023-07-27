@@ -1,14 +1,14 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import useApp from 'hooks/useApp';
+import utils from 'utils';
+import recipesServices from 'services/api/recipes-api';
 import scrollToTop from 'utils/scroll-to-top';
+import HeroMain from 'components/HeroMain/HeroMain';
+import Searchbar from 'components/Searchbar/Searchbar';
 import CategoriesPreview from 'components/CategoriesPreview/CategoriesPreview';
 import { MainContainer } from 'components/HeroMain/HeroMain.styled';
-import { useEffect, useState } from 'react';
-import useApp from 'hooks/useApp';
-import recipesServices from 'services/api/recipes-api';
-import utils from 'utils';
-import HeroMain from 'components/HeroMain/HeroMain';
-import { Searchbar } from 'components/Searchbar/Searchbar';
-import { MainSearchContainer } from 'components/Searchbar/Searchbar.styled';
 
 const Main = () => {
   const [recipesByCategory, setRecipesByCategory] = useState([]);
@@ -35,10 +35,7 @@ const Main = () => {
 
   return (
     <MainContainer>
-      <HeroMain />
-      <MainSearchContainer className="styles-for-main container">
-        <Searchbar className="styles-for-main" onSubmit={handleSubmit}/>
-      </MainSearchContainer>
+      <HeroMain><Searchbar className="styles-for-main" onSubmit={handleSubmit}/></HeroMain>
       <CategoriesPreview recipesByCategory={recipesByCategory} />
     </MainContainer>
   );

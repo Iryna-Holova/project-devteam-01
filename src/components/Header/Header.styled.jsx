@@ -80,7 +80,7 @@ export const BurgerButton = styled.div`
   }
 
   &.main-page {
-    @media (min-width: 768px) and (max-width: 880px) {
+    @media (min-width: 768px) and (max-width: 857px) {
       color: #22252a;
     }
   }
@@ -111,7 +111,7 @@ export const BurgerButton = styled.div`
 export const ThemeTogglerStyle = styled.div`
   display: none;
   @media (min-width: 1440px) {
-    display: block;
+    display: flex;
   }
 `;
 
