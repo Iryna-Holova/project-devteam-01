@@ -14,10 +14,6 @@ export const NavContainer = styled.ul`
     justify-content: center;
     margin-top: 0;
     gap: 30px;
-
-    .active {
-      color: var(--color-accent);
-    }
   }
 `;
 
@@ -40,13 +36,20 @@ export const NavLinkStyled = styled(NavLink)`
 
   &:hover,
   &.active {
-    font-weight: 600;
     color: var(--color-accent);
   }
 
   & svg {
     width: 20px;
     height: 20px;
+  }
+
+  &.recipe-page {
+    color: #23262a;
+    &:hover,
+    &.active {
+      color: var(--color-accent);
+    }
   }
 
   @media screen and (min-width: 768px) {

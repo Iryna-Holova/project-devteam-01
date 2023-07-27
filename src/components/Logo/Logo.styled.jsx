@@ -7,7 +7,7 @@ export const LogoContainer = styled.div`
   cursor: pointer;
 
   & span {
-    color: var(--color-main);
+    color: #fafafa;
     font-size: 18px;
     font-weight: 700;
     line-height: 18px;
@@ -52,14 +52,14 @@ export const LogoImage = styled.div`
 
   &.footer {
     border-radius: 6px;
-    background-color: var(--color-accent-secondary);
+    background-color: #EBF3D4;
     padding: 6px;
     width: 32px;
     height: 32px;
     > svg {
       width: 20px;
       height: 20px;
-      stroke: var(--color-accent);
+      stroke: #8BAA36;
     }
   }
 

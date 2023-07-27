@@ -34,8 +34,21 @@ export const UserInfo = styled.div`
   align-items: center;
   position: relative;
   transition: color var(--transition-time) var(--cubic);
-  &:hover {
+
+  &:hover,
+  &.recipe-page:hover,
+  &.main-page:hover {
     color: var(--color-accent);
+  }
+
+  &.recipe-page {
+    color: #22252a;
+  }
+
+  &.main-page {
+    @media (min-width: 1440px) and (max-width: 1880px) {
+      color: #22252a;
+    }
   }
 `;
 
@@ -61,6 +74,16 @@ export const BurgerButton = styled.div`
   cursor: pointer;
   width: 28px;
   height: 28px;
+
+  &.recipe-page {
+    color: #22252a;
+  }
+
+  &.main-page {
+    @media (min-width: 768px) and (max-width: 880px) {
+      color: #22252a;
+    }
+  }
   :hover {
     color: var(--color-accent);
   }

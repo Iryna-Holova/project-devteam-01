@@ -30,10 +30,15 @@ const Header = () => {
   const [showProfileModal, setShowEditProfileModal] = useState(false);
 
   const { user } = useAuth();
+  const { pathname } = useLocation();
 
-  const location = useLocation()
-  const isRecipePage = location.pathname.includes('recipe');
-  
+  let className;
+  if (pathname.includes('recipe')) {
+    className = 'recipe-page';
+  } else if (pathname === '/') {
+    className = 'main-page';
+  }
+
   const toggleBurgerMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -57,17 +62,17 @@ const Header = () => {
       <HeaderContainer className="container">
         <Logo />
         <NavStyle>
-          <Navigation className={ isRecipePage && 'recipe-page'} />
+          <Navigation className={className} />
         </NavStyle>
         <HeaderContainerStyle>
-          <UserInfo onClick={toggleUserModal}>
+          <UserInfo onClick={toggleUserModal} className={className}>
             <UserPhoto src={user.avatarURL} alt="User Photo" />
             <UserName>{user.name}</UserName>
             {isUserModalOpen && (
               <UserModal handleEditProfileOpen={openEditProfileModal} />
             )}
           </UserInfo>
-          <BurgerButton onClick={toggleBurgerMenu}>
+          <BurgerButton onClick={toggleBurgerMenu} className={className}>
             <HiMenuAlt2 />
           </BurgerButton>
           <ThemeTogglerStyle>
@@ -75,11 +80,12 @@ const Header = () => {
           </ThemeTogglerStyle>
         </HeaderContainerStyle>
       </HeaderContainer>
-      <BurgerMenu openState={isMenuOpen} handleCloseMenu={toggleBurgerMenu} />
-      <Modal
-        openState={showProfileModal}
-        onModalClose={closeEditProfileModal}
-      >
+      <BurgerMenu
+        openState={isMenuOpen}
+        handleCloseMenu={toggleBurgerMenu}
+        className={className}
+      />
+      <Modal openState={showProfileModal} onModalClose={closeEditProfileModal}>
         <EditProfile
           closeModal={closeEditProfileModal}
           avatar={user.avatarURL}
