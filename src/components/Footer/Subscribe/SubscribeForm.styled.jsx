@@ -44,17 +44,21 @@ export const Form = styled.form`
 export const Input = styled.input`
   box-sizing: border-box;
   color: var(--color-start-text);
-  stroke-width: 1px;
-  stroke: #fff;
   padding: 9px 9px 9px 42px;
   background: transparent;
   border-radius: 6px;
-  border: 1px solid gray;
+  border: 1px solid #fafafa;
   outline: none;
   font-family: Poppins;
   font-size: 10px;
   line-height: 18px;
   letter-spacing: -0.2px;
+  opacity: 0.5;
+  transition: opacity var(--transition-time) var(--cubic);
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 
   @media (min-width: 768px) {
     width: 259px;
@@ -75,7 +79,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: #8baa36;
+  background-color: var(--color-accent-black);
   color: #fafafa;
   font-size: 14px;
   line-height: 16px;
@@ -85,6 +89,10 @@ export const Button = styled.button`
   cursor: pointer;
   transition: color var(--transition-time) var(--cubic);
 
+  &:hover {
+    color: var(--color-black-accent);
+  }
+
   @media (min-width: 768px) {
     padding: 16px 50px;
     font-size: 16px;
@@ -93,10 +101,6 @@ export const Button = styled.button`
 
   @media (min-width: 1440px) {
     padding: 21px 126px;
-  }
-
-  &:hover {
-    color: var(--color-text-primary);
   }
 `;
 
@@ -143,7 +147,7 @@ export const SuccessMessage = styled.p`
   font-size: 12px;
   top: -14px;
   left: 4px;
-  color: var(--color-accent);
+  color: var(--color-accent-black);
   @media (min-width: 768px) {
     font-size: 14px;
   }

@@ -73,7 +73,8 @@ export const FooterText = styled.ul`
 `;
 
 export const FooterBarText = styled.div`
-  padding: 28px 0;
+color: var(--color-icons);
+  padding: 28px 0 20px 0;
   display: flex;
   justify-content: center;
 
@@ -90,8 +91,7 @@ export const FooterBarText = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding-top: 32px;
-    padding-bottom: 46px;
+    padding: 32px 0;
     background-size: 341px 261px;
     background-image: -webkit-image-set(
       url(${tabletBottom1x}) 1x,

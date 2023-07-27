@@ -10,7 +10,10 @@
   --color-text-transparent: rgba(0, 0, 0, 0.80);
   --color-icons: #22252a;
   --color-icons-light: #c4c4c4;
+  --color-black-accent: #22252a;
   --color-accent: #8baa36;
+  --color-accent-white: #8baa36;
+  --color-accent-black: #8baa36;
   --color-accent-secondary: #ebf3d4;
   --color-accent-secondary-black: #ebf3d4;
   --color-footer: #22252a;
@@ -32,7 +35,10 @@
   --color-text: rgba(250, 250, 250, 0.6);
   --color-text-transparent: #fafafa;
   --color-icons: #fafafa;
+  --color-black-accent: #8baa36;
   /* --color-accent: #8baa36; */
+  --color-accent-white: #fafafa;
+  --color-accent-black: #1E1F28;
   --color-accent-secondary: #2a2c36;
   --color-accent-secondary-black: #1e1f28;
   --color-footer: #8baa36;
@@ -129,6 +135,7 @@ a {
 }
 
 .container {
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

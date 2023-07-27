@@ -7,7 +7,7 @@ export const FooterLinks = styled.div`
 `;
 
 export const SocialLink = styled.a`
-  color: var(--color-accent);
+  color: var(--color-accent-white);
   text-decoration: none;
   transition: color var(--transition-time) var(--cubic);
 
