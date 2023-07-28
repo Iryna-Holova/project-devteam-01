@@ -1,15 +1,18 @@
-import MainTitle from 'components/MainTitle/MainTitle';
-import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
-import { useSearchParams } from 'react-router-dom';
-import Searchbar from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
-import useSearchBy from '../hooks/useSearchBy';
-import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
 import { useDispatch } from 'react-redux';
-import { getSearchByThunk } from '../redux/Recipes/SearchBy/operations';
+import { useSearchParams } from 'react-router-dom';
+
 import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../utils/constants';
 import { setPage } from 'redux/Recipes/SearchBy/slice';
+import useSearchBy from '../hooks/useSearchBy';
+import { getSearchByThunk } from '../redux/Recipes/SearchBy/operations';
+
+import MainTitle from 'components/MainTitle/MainTitle';
+import Searchbar from 'components/Searchbar/Searchbar';
+import RecipeGallery from '../components/RecipeGallery/RecipeGallery';
 import Pagination from 'components/Pagination/Pagination';
+import NoDataMessage from 'components/NoDataMessage/NoDataMessage';
+import { SearchPageContainer } from 'components/Searchbar/Searchbar.styled';
 
 const Search = () => {
   const [searchQuery] = useSearchParams();
@@ -77,21 +80,23 @@ const Search = () => {
   };
 
   return (
-    <div style={{ marginBottom: '50px' }}>
+    <>
       <MainTitle>Search</MainTitle>
-      <Searchbar searchQuery={searchValue} onSubmit={formOnsubmitHandler} />
-      {recipes && <RecipeGallery recipes={recipes} />}
-      {!recipes.length && (
-        <NoDataMessage>Try looking for something else...</NoDataMessage>
-      )}
-      {pages > 1 && (
-        <Pagination
-          totalPages={pages}
-          currentPage={page}
-          onClick={handlePageChange}
-        />
-      )}
-    </div>
+      <SearchPageContainer className="container">
+        <Searchbar searchQuery={searchValue} onSubmit={formOnsubmitHandler} />
+        {recipes.length > 0 && <RecipeGallery recipes={recipes} />}
+        {!recipes.length && (
+          <NoDataMessage>Try looking for something else...</NoDataMessage>
+        )}
+        {pages > 1 && (
+          <Pagination
+            totalPages={pages}
+            currentPage={page}
+            onClick={handlePageChange}
+          />
+        )}
+      </SearchPageContainer>
+    </>
   );
 };
 

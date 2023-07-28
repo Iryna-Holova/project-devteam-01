@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../../utils/constants';
+import useSearchBy from 'hooks/useSearchBy';
+import { setQuery } from 'redux/Recipes/SearchBy/slice';
+import { getSearchByThunk } from '../../redux/Recipes/SearchBy/operations';
+
 import {
+  Form,
+  InputWrapper,
   Input,
   Btn,
   Label,
   Select,
   Option,
-  Div,
-  Form,
 } from './Searchbar.styled';
-import { useDispatch } from 'react-redux';
-import { getSearchByThunk } from '../../redux/Recipes/SearchBy/operations';
-import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../../utils/constants';
-import { setQuery } from 'redux/Recipes/SearchBy/slice';
-import useSearchBy from 'hooks/useSearchBy';
 
-const  Searchbar = ({ onSubmit, className, searchQuery }) => {
+const Searchbar = ({ onSubmit, className, searchQuery }) => {
   const { query } = useSearchBy();
   const [value, setValue] = useState(
     searchQuery === undefined ? '' : searchQuery
@@ -92,7 +94,7 @@ const  Searchbar = ({ onSubmit, className, searchQuery }) => {
   return (
     <>
       <Form>
-        <Div>
+        <InputWrapper>
           <Input
             className={className}
             type="text"
@@ -106,7 +108,7 @@ const  Searchbar = ({ onSubmit, className, searchQuery }) => {
           <Btn className={className} onClick={handleSubmit} type="submit">
             Search
           </Btn>
-        </Div>
+        </InputWrapper>
 
         {className !== 'styles-for-main' && (
           <Label>
@@ -124,6 +126,6 @@ const  Searchbar = ({ onSubmit, className, searchQuery }) => {
       </Form>
     </>
   );
-}
+};
 
 export default Searchbar;
