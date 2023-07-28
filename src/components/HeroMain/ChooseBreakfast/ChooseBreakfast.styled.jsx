@@ -18,7 +18,7 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  max-width: 320px;
+  max-width: 100%;
   width: 320px;
   height: 296px;
 
@@ -30,7 +30,6 @@ export const Container = styled.div`
       url(${saladTablet}) 1x,
       url(${saladTablet2x}) 2x
     );
-    max-width: 378px;
     width: 378px;
     height: 351px;
   }
@@ -43,7 +42,6 @@ export const Container = styled.div`
     background-size: 578px 539px;
     background-position: left center;
     margin: 0;
-    max-width: 662px;
     width: 662px;
     height: 539px;
   }
@@ -54,13 +52,15 @@ export const TextContainer = styled.div`
   position: absolute;
   padding: 8px;
   top: 113px;
-  left: 88px;
+  right: 7px;
+  max-width: 100%;
   width: 225px;
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
     padding: 12px;
     top: 213px;
+    right: 0;
     left: 75px;
     width: 260px;
   }
