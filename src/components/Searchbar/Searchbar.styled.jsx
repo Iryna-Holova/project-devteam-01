@@ -15,6 +15,7 @@ export const SearchPageContainer = styled.div`
 `;
 
 export const Form = styled.form`
+max-width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -26,13 +27,14 @@ export const Form = styled.form`
 `;
 
 export const InputWrapper = styled.div`
+max-width: 100%;
   position: relative;
 `;
 
 export const Input = styled.input`
   font-family: inherit;
   padding: 16px 113px 16px 32px;
-  max-width: 295px;
+  max-width: 100%;
   width: 295px;
   font-size: 12px;
   line-height: 21px;
@@ -43,14 +45,12 @@ export const Input = styled.input`
   background-color: var(--color-secondary);
 
   @media screen and (min-width: 768px) {
-    max-width: 368px;
     width: 368px;
     padding: 18px 161px 18px 38px;
     font-size: 16px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 510px;
     width: 510px;
     padding: 23px 161px 23px 48px;
     line-height: 24px;
