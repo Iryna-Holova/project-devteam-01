@@ -1,22 +1,45 @@
 import styled from 'styled-components';
 
+export const SearchPageContainer = styled.div`
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 200px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 50px;
+  }
+`;
+
 export const Form = styled.form`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 28px;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  position: relative;
 `;
 
 export const Input = styled.input`
   font-family: inherit;
-  padding: 17px 113px 17px 32px;
+  padding: 16px 113px 16px 32px;
   max-width: 295px;
   width: 295px;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 21px;
   border: none;
   outline: none;
   border-radius: 24px 44px;
+  color: var(--color-text);
   background-color: var(--color-secondary);
 
   @media screen and (min-width: 768px) {
@@ -24,7 +47,6 @@ export const Input = styled.input`
     width: 368px;
     padding: 18px 161px 18px 38px;
     font-size: 16px;
-    line-height: 23px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -37,19 +59,20 @@ export const Input = styled.input`
 
 export const Btn = styled.button`
   width: 113px;
-  height: 53px;
-  padding: 16px 32px;
+  height: 55px;
+  padding: 17px 32px;
   position: absolute;
   top: -1px;
   right: -1px;
   font-size: 14px;
+  line-height: 21px;
   background-color: var(--color-accent);
   color: var(--color-main);
   border-radius: 24px 44px;
+  transition: background-color var(--transition-time) var(--cubic);
 
   &:hover,
   &:focus {
-    transition: background-color var(--transition-time) var(--cubic);
     background-color: var(--color-icons);
   }
 
@@ -63,29 +86,27 @@ export const Btn = styled.button`
 
   @media screen and (min-width: 1440px) {
     width: 161px;
-    height: 70px;
-    padding: 23px 52px;
+    height: 72px;
+    padding: 24px 52px;
     font-size: 16px;
   }
 
   &.styles-for-main {
-    /* background-color: var(--color-icons); */
+    background-color: var(--color-black-accent);
 
     &:hover,
     &:focus {
-      transition: background-color var(--transition-time) var(--cubic);
-      background-color: var(--color-accent);
+      background-color: var(--color-accent-white);
     }
   }
 `;
 
 export const Label = styled.label`
-  /* margin-bottom: 50px; */
-  /* font-size: 12px;
+  font-size: 12px;
     font-weight: 500;
     color: var(--color-text-primary);
     letter-spacing: -0.24px;
-    line-height: 1.3; */
+    line-height: 1.3;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -128,41 +149,5 @@ export const Option = styled.option`
   @media screen and (min-width: 768px) {
     font-size: 14px;
     letter-spacing: -0.28px;
-  }
-`;
-
-export const Div = styled.div`
-  position: relative;
-  /* margin-top: 50px;
-    margin-bottom: 24px; */
-
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1440px) {
-  }
-`;
-
-export const MainSearchContainer = styled.div`
-  /* margin-bottom: 147px; */
-  /* position: relative;
-    top: -180px;
-    margin-top: 0px;
-    margin-bottom: 0px; */
-
-  @media screen and (min-width: 768px) {
-    width: 362px;
-    height: 59px;
-    top: -390px;
-    left: -150px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 510px;
-    height: 70px;
-    top: -540px;
-    left: -350px;
   }
 `;
