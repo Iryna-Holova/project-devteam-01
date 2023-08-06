@@ -14,7 +14,7 @@ const useDebounce = (callback, wait) => {
     };
 
     return debounce(func, wait);
-  }, []);
+  }, [wait]);
 
   return debouncedCallback;
 };
