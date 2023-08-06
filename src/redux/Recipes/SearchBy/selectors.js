@@ -7,4 +7,4 @@ export const selectSearchByPages = state => state.recipes.searchBy.pages;
 export const selectSearchByLimit = state => state.recipes.searchBy.limit;
 export const selectSearchByLoading = state => state.recipes.searchBy.isLoading;
 export const selectSearchByStatus = state => state.recipes.searchBy.status;
-export const selectSearchByMethod = state => state.recipes.searchBy.method;
+export const selectSearchByMethod = state => state.recipes.searchBy.searchBy;

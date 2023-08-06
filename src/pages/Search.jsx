@@ -21,46 +21,24 @@ const Search = () => {
   );
   const [selectedValue, setSelectedValue] = useState('title');
   const dispatch = useDispatch();
-  const { recipes, page, limit, pages } = useSearchBy();
+  const { recipes, page, limit, pages, query } = useSearchBy();
 
   useEffect(() => {
-    const searchWord =
-      searchQuery.get('title') || searchQuery.get('ingredients') || '';
-    const delayDebounceInput = setTimeout(() => {
-      if (searchWord !== '' && searchWord !== undefined) {
-        setSearchValue(searchWord);
-      }
-    }, 1500);
-
-    if (searchValue === '' || searchValue === undefined) {
-      return;
-    }
-
-    if (selectedValue === 'ingredients' && searchValue !== '') {
+    if (query.value !== '') {
       dispatch(
         getSearchByThunk({
-          query: searchValue,
-          method: SEARCH_BY_INGREDIENT,
+          query: query.value,
+          method:
+            query.param === 'title' ? SEARCH_BY_TITLE : SEARCH_BY_INGREDIENT,
           limit,
           page,
         })
       );
     }
-    if (selectedValue === 'title' && searchValue !== '') {
-      dispatch(
-        getSearchByThunk({
-          query: searchValue,
-          method: SEARCH_BY_TITLE,
-          limit,
-          page,
-        })
-      );
-    }
-
-    return () => clearTimeout(delayDebounceInput);
-  }, [searchValue, searchQuery, selectedValue, dispatch, limit, page]);
+  }, [query, dispatch, limit, page]);
 
   useEffect(() => {
+    if (pages === 0) return;
     if (page > pages) dispatch(setPage(pages));
   }, [pages, page, dispatch]);
 
