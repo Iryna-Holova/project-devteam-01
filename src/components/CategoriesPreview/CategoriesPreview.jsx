@@ -7,7 +7,7 @@ const CategoriesPreview = ({recipesByCategory}) => {
             <Container className="container">
                 <CategoriesList recipesByCategory={recipesByCategory} />
                 <ButtonContainer>
-                    <OtherCategoriesButton to="/categories/beef">Other categories</OtherCategoriesButton>
+                    <OtherCategoriesButton to="/categories/Beef">Other categories</OtherCategoriesButton>
                 </ButtonContainer>
             </Container>
         </>
