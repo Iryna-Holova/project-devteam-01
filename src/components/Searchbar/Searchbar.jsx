@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { SEARCH_BY_TITLE, SEARCH_BY_INGREDIENT } from '../../utils/constants';
-import useSearchBy from 'hooks/useSearchBy';
-import { setQuery } from 'redux/Recipes/SearchBy/slice';
-import { getSearchByThunk } from '../../redux/Recipes/SearchBy/operations';
+import { setPage, setQuery } from 'redux/Recipes/SearchBy/slice';
 
 import {
   Form,
@@ -17,13 +14,14 @@ import {
   Option,
 } from './Searchbar.styled';
 
+import useDebounce from 'hooks/useDebounce';
+
 const Searchbar = ({ onSubmit, className, searchQuery }) => {
-  const { query } = useSearchBy();
   const [value, setValue] = useState(
     searchQuery === undefined ? '' : searchQuery
   );
   const [selectedValue, setSelectedValue] = useState('title');
-  const [isTyping, setIsTyping] = useState(false);
+
   let [searchParams, setSearchParams] = useSearchParams();
   // Fix of deployment
   if (searchParams === ',jgcfkyhmgh,gfj,hfv') {
@@ -31,14 +29,20 @@ const Searchbar = ({ onSubmit, className, searchQuery }) => {
   }
   const dispatch = useDispatch();
 
+  const debouncedSetQuery = useDebounce(() => {
+    dispatch(setQuery({ param: selectedValue, value }));
+    dispatch(setPage(1));
+  }, 1500);
+
   // Функция записывает значение инпута в состояние
   const handleInputChange = ({ target }) => {
     const inputValue = target.value;
+
     if (target.name === 'value') {
       setSearchParams(`?${selectedValue}=${inputValue}`);
       setValue(inputValue);
-      setIsTyping(inputValue !== '');
-      dispatch(setQuery({ param: selectedValue, value: inputValue }));
+
+      debouncedSetQuery();
     }
   };
 
@@ -48,38 +52,8 @@ const Searchbar = ({ onSubmit, className, searchQuery }) => {
     setSearchParams(`?${selectValue}=${value}`);
     setSelectedValue(selectValue);
     dispatch(setQuery({ param: selectValue, value: value }));
+    dispatch(setPage(1));
   };
-
-  useEffect(() => {
-    if (query.param !== undefined) {
-      setSelectedValue(query.param);
-      setSearchParams(`?${query.param}=${query.value || ''}`);
-    }
-
-    if (query.value !== undefined) {
-      setValue(query.value);
-    }
-  }, [query.param, query.value, setSearchParams]);
-  // Ефект для отправки запроса если пользователь сделает паузу при вводе запроса
-  useEffect(() => {
-    if (!isTyping || value.trim() === '') {
-      return;
-    }
-
-    const delayDebounceRequest = setTimeout(() => {
-      if (selectedValue === 'ingredients' && value !== '') {
-        dispatch(
-          getSearchByThunk({ query: value, method: SEARCH_BY_INGREDIENT })
-        );
-      }
-
-      if (selectedValue === 'title' && value !== '') {
-        dispatch(getSearchByThunk({ query: value, method: SEARCH_BY_TITLE }));
-      }
-    }, 1500);
-
-    return () => clearTimeout(delayDebounceRequest);
-  }, [value, selectedValue, isTyping, dispatch]);
 
   // Отправка введенных значений по клику
   const handleSubmit = e => {
@@ -88,7 +62,7 @@ const Searchbar = ({ onSubmit, className, searchQuery }) => {
     if (value.trim() === '') {
       return;
     }
-    setIsTyping(false);
+    //   setIsTyping(false);
     onSubmit(value, selectedValue);
   };
   return (
