@@ -22,14 +22,7 @@ const Categories = () => {
   const dispatch = useDispatch();
   //const { device } = useApp();
   const { categories } = useCategories();
-  const {
-    query,
-    data: recipes,
-    isError,
-    limit,
-    page,
-    pages,
-  } = useSearchByCategory();
+  const { data: recipes, isError, limit, page, pages } = useSearchByCategory();
 
   //const [currentPage, setCurrentPage] = useState(1);
   //const itemsPerPage = 8;

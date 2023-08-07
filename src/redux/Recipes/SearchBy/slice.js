@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   items: [],
-  query: '',
+  query: { param: 'title', value: '' },
   page: 1,
   limit: 6,
   isLoading: false,
@@ -58,7 +58,7 @@ export const searchBySlice = createSlice({
         state.isLoading = false;
         state.error = action?.payload ? action?.payload : 'Error';
         state.items = [];
-        state.query = '';
+        state.query = { param: 'title', value: '' };
         state.page = 1;
         state.limit = 6;
         state.status = REJECTED;
