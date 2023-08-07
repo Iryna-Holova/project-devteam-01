@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getSearchByCategoryThunk } from './operations';
+import { IDLE, PENDING, REJECTED, RESOLVED } from 'utils/constants';
 
 const initialState = {
   items: [],
@@ -10,6 +11,7 @@ const initialState = {
   error: null,
   total: 0,
   pages: 0,
+  status: IDLE,
 };
 
 export const searchByCategorySlice = createSlice({
@@ -31,7 +33,8 @@ export const searchByCategorySlice = createSlice({
       .addCase(getSearchByCategoryThunk.pending, state => {
         state.isLoading = true;
         state.error = null;
-        state.items = [];
+        state.status = PENDING;
+        //state.items = [];
       })
       .addCase(getSearchByCategoryThunk.fulfilled, (state, { payload }) => {
         //console.log('SearchByCategory', payload);
@@ -40,15 +43,17 @@ export const searchByCategorySlice = createSlice({
         state.pages = payload.items.pages;
         state.total = payload.items.total;
         state.isLoading = false;
+        state.status = RESOLVED;
       })
       .addCase(getSearchByCategoryThunk.rejected, (state, action) => {
         //  console.log('SearchByCategory rejected', action);
         state.isLoading = false;
-        state.error = true;
+        state.error = action?.payload ? action?.payload : 'Error';
         state.items = [];
         state.query = '';
         state.page = 1;
-        state.limit = 6;
+        //state.limit = 6;
+        state.status = REJECTED;
       });
   },
 });
