@@ -10,6 +10,7 @@ export const TabsList = styled.ul`
   height: 58px;
   gap: 28px;
   padding-left: 28px;
+  margin-top: 40px;
 
   @media screen and (min-width: 768px) {
     gap: 55px;

@@ -1,22 +1,12 @@
 import React from 'react';
-
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import scrollToTop from 'utils/scroll-to-top';
 
-import {
-  Container,
-  StyledChevronLeft,
-  StyledChevronRight,
-  Page,
-} from './Pagination.styled';
+import { Container, Page, Shevron } from './Pagination.styled';
 
 const MAX_DISPLAYED_PAGE_NUMBERS = 5;
 
-const Pagination = ({
-  totalPages,
-  currentPage,
-  onClick,
-  scrollId = null,
-}) => {
+const Pagination = ({ totalPages, currentPage, onClick }) => {
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -53,7 +43,7 @@ const Pagination = ({
     }
   };
 
-  const handlePageNumberClick = (pageNumber) => {
+  const handlePageNumberClick = pageNumber => {
     if (currentPage !== pageNumber) {
       onClick(pageNumber);
       scrollToTop();
@@ -65,15 +55,17 @@ const Pagination = ({
 
   return (
     <Container>
-      <StyledChevronLeft
-        size={30}
+      <Shevron
         onClick={handlePreviousPageClick}
-        disabled={isPrevDisabled}
-        style={{ opacity: isPrevDisabled ? 0.5 : 1 }}
-      />
-      {displayedPageNumbers.map((page) => (
+        type="button"
+        className={isPrevDisabled && 'disabled'}
+      >
+        <FiChevronLeft size={27} />
+      </Shevron>
+      {displayedPageNumbers.map(page => (
         <Page
           key={page}
+          type="button"
           $active={currentPage === page ? 'true' : 'false'}
           onClick={() => {
             handlePageNumberClick(page);
@@ -82,12 +74,13 @@ const Pagination = ({
           {page}
         </Page>
       ))}
-      <StyledChevronRight
-        size={30}
+      <Shevron
         onClick={handleNextPageClick}
-        disabled={isNextDisabled}
-        style={{ opacity: isNextDisabled ? 0.5 : 1 }}
-      />
+        type="button"
+        className={isNextDisabled && 'disabled'}
+      >
+        <FiChevronRight size={27} />
+      </Shevron>
     </Container>
   );
 };

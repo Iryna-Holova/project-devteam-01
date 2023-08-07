@@ -14,13 +14,13 @@ import CategoriesTabs from 'components/CategoriesTabs/CategoriesTabs';
 import RecipeGallery from 'components/RecipeGallery/RecipeGallery';
 import MainTitle from 'components/MainTitle/MainTitle';
 import Pagination from '../components/Pagination/Pagination';
-import { Loader } from 'components/loader/loader';
+import ContentLoader from 'components/loader/ContentLoader';
 
 const Categories = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
-  const { device } = useApp();
   const dispatch = useDispatch();
+  const { device } = useApp();
   const { categories } = useCategories();
   const { query, data: recipes, isError } = useSearchByCategory();
 
@@ -40,20 +40,22 @@ const Categories = () => {
     dispatch(setQuery(categoryName));
     dispatch(setLimit(50));
 
-    dispatch(getSearchByCategoryThunk({ query: categoryName, limit: 50 })).then(() => {
-      setIsLoading(false);
-    });
+    dispatch(getSearchByCategoryThunk({ query: categoryName, limit: 50 })).then(
+      () => {
+        setIsLoading(false);
+      }
+    );
   }, [dispatch, categoryName, device, query]);
 
   useEffect(() => {
     if (isError) navigate(`/categories/Beef`);
   }, [isError, navigate]);
 
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = category => {
     navigate(`/categories/${category}`);
   };
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
 
@@ -70,24 +72,28 @@ const Categories = () => {
         selectedCategory={categoryName}
         handleCategoryChange={handleCategoryChange}
       />
+      <div className="container page-container">
+        {isLoading ? (
+          <ContentLoader height="323px" />
+        ) : (
+          <>
+            <RecipeGallery
+              recipes={recipes.slice(
+                (currentPage - 1) * itemsPerPage,
+                currentPage * itemsPerPage
+              )}
+            />
 
-      {isLoading || !recipes ? (
-        <Loader />
-      ) : (
-        <>
-          <RecipeGallery
-            recipes={recipes.slice(
-              (currentPage - 1) * itemsPerPage,
-              currentPage * itemsPerPage
+            {totalPages > 1 && (
+              <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                onClick={handlePageChange}
+              />
             )}
-          />
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onClick={handlePageChange}
-          />
-        </>
-      )}
+          </>
+        )}
+      </div>
     </>
   );
 };

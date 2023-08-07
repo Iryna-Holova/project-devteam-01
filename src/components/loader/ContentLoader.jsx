@@ -2,8 +2,8 @@ import React from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import { LoaderContainer } from './LoaderContainer.styled';
 
-const ContentLoader = () => (
-  <LoaderContainer className='container'>
+const ContentLoader = ({height}) => (
+  <LoaderContainer $height={height}  className='container'>
     <ThreeDots
       height="80"
       width="80"
