@@ -16,6 +16,7 @@
   --color-accent-black: #8baa36;
   --color-accent-secondary: #ebf3d4;
   --color-accent-secondary-black: #ebf3d4;
+  --color-accent-secondary-accent: #ebf3d4;
   --color-footer: #22252a;
   --color-input: #d9d9d9;
   --color-start-bg: #2a2c36;
@@ -23,6 +24,7 @@
   --color-warning: #e74a3b;
   --color-placeholder: #d9d9d9;
   --color-tabs: #e0e0e0;
+  --color-pages: #656565;
 
   --transition-time: 250ms;
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
@@ -42,9 +44,11 @@
   --color-accent-black: #1e1f28;
   --color-accent-secondary: #2a2c36;
   --color-accent-secondary-black: #1e1f28;
+  --color-accent-secondary-accent: #8baa36;
   --color-footer: #8baa36;
   --color-input-color: rgba(250, 250, 250, 0.2);
-  --color-tabs: rgba(250, 250, 250, 0.60);
+  --color-tabs: rgba(250, 250, 250, 0.6);
+  --color-pages: rgba(250, 250, 250, 0.60);
 }
 
 html {
@@ -124,7 +128,7 @@ ol {
 
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
@@ -145,6 +149,15 @@ a {
   margin-right: auto;
 }
 
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  align-items: center;
+}
+
 @media screen and (min-width: 343px) {
   .container {
     width: 343px;
@@ -155,9 +168,15 @@ a {
   .container {
     width: 704px;
   }
+
+  .page-container {
+    gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .container {
     width: 1240px;
   }

@@ -1,37 +1,26 @@
 import styled from 'styled-components';
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 
-export const Container = styled.ul`
+export const Container = styled.div`
+list-style-type: none;
   position: relative;
-  z-index: 2;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 60px;
+  display: flex;
+  gap: 18px;
+  padding: 12px 18px;
   background: var(--color-main);
   box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
   border-radius: 26px;
-  margin-top: 40px;
-  margin-bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+
   @media screen and (min-width: 768px) {
-    padding: 14px 72px;
-    margin-top: 50px;
-    margin-bottom: 200px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-top: 50px;
+    gap: 24px;
+    padding: 14px 24px;
   }
 `;
 
-export const Page = styled.li`
-  font-family: 'Poppins', sans-serif;
+export const Page = styled.button`
   font-size: 12px;
-  line-height: calc(18 / 12);
+  line-height: 18px;
   color: ${props =>
-    props.$active === 'true' ? 'var(--color-icons)' : '#656565'};
-
+    props.$active === 'true' ? 'var(--color-icons)' : 'var(--color-pages)'};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,54 +28,39 @@ export const Page = styled.li`
   height: 27px;
   background-color: ${props =>
     props.$active === 'true'
-      ? 'var(--color-accent-secondary)'
-      : 'var(--color-main)'};
+      ? 'var(--color-accent-secondary-accent)'
+      : 'transparent'};
   border-radius: 50%;
-  cursor: pointer;
+  cursor: ${props => (props.$active === 'true' ? 'default' : 'pointer')};
   user-select: none;
-  &:not(:last-of-type) {
-    margin-right: 18px;
-  }
+  transition: color var(--transition-time) var(--cubic),
+    background-color var(--transition-time) var(--cubic);
 
-  &:last-of-type {
-    margin-right: 0;
-  }
-  @media screen and (min-width: 768px) {
-    &:not(:last-of-type) {
-      margin-right: 24px;
-    }
-
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-  @media screen and (min-width: 1440px) {
-    &:not(:last-of-type) {
-      margin-right: 24px;
-    }
-
-    &:last-of-type {
-      margin-right: 0;
-    }
+  &:hover {
+    color: var(--color-icons);
+    background-color: var(--color-accent-secondary-accent);
   }
 `;
 
-export const StyledChevronLeft = styled(BiChevronLeft)`
-  position: absolute;
-  top: 50%;
-  left: 17px;
-  transform: translate(0, -50%);
-  margin-right: 13px;
-  cursor: pointer;
-  fill: var(--color-start-bg);
-`;
+export const Shevron = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--color-pages);
+  background-color: transparent;
+  transition: color var(--transition-time) var(--cubic);
 
-export const StyledChevronRight = styled(BiChevronRight)`
-  position: absolute;
-  top: 50%;
-  right: 17px;
-  transform: translate(0, -50%);
-  margin-left: -5px;
-  cursor: pointer;
-  fill: var(--color-start-bg);
-`;
+  &.disabled {
+    cursor: default;
+    opacity: 0.3;
+
+    &:hover {
+    color: var(--color-pages);
+  }
+  }
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+`

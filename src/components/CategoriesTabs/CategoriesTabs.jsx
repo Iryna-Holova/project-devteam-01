@@ -16,36 +16,38 @@ const CategoriesTabs = ({
   const currentTabRef = useRef(null);
 
   useEffect(() => {
+    const list = ref.current;
+
     const func = () => {
       if (currentTabRef.current) {
-        currentTabRef.current.scrollIntoView({
-          block: 'end',
-          inline: 'center',
+        const tabRect = currentTabRef.current.getBoundingClientRect();
+        const listRect = list.getBoundingClientRect();
+
+        ref.current.scrollTo({
+          left:
+            tabRect.left - listRect.left - (listRect.width - tabRect.width) / 2,
           behavior: 'smooth',
         });
       } else setTimeout(func, 100);
     };
     setTimeout(func, 100);
-  }, []);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (el) {
+    if (list) {
       const onWheel = e => {
         e.preventDefault();
-        el.scrollTo({
-          left: el.scrollLeft + e.deltaY * 2,
+        list.scrollTo({
+          left: list.scrollLeft + e.deltaY * 2,
           behavior: 'smooth',
         });
       };
-      el.addEventListener('wheel', onWheel);
-      return () => el.removeEventListener('wheel', onWheel);
+      list.addEventListener('wheel', onWheel);
+      return () => list.removeEventListener('wheel', onWheel);
     }
   }, []);
 
   const onMouseDown = e => {
-    const el = ref.current;
-    if (ref && ref.current && !ref.current.contains(e.target)) {
+    const list = ref.current;
+    if (ref && list && !list.contains(e.target)) {
       return;
     }
     e.preventDefault();
@@ -54,7 +56,7 @@ const CategoriesTabs = ({
       ...state,
       isScrolling: true,
       clientX: e.clientX,
-      scrollX: el.scrollLeft,
+      scrollX: list.scrollLeft,
     });
   };
 
@@ -100,7 +102,7 @@ const CategoriesTabs = ({
   });
 
   return (
-    <TabsList ref={ref}>
+    <TabsList ref={ref} className="container">
       {categories.map(({ _id, name }) => (
         <Tab
           className={selectedCategory === name && 'active'}

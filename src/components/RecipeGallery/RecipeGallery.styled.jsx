@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const List = styled.ul`
+  list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -8,87 +10,116 @@ export const List = styled.ul`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 32px;
   }
 
-  @media screen and (min-width: 1440px) {
-    gap: 14px;
-    row-gap: 100px;
+  @media screen and (min-width: 1280px) {
+    gap: 40px 14px;
   }
 `;
 
-export const RecipeContainer = styled.div`
-  cursor: pointer;
+export const Recipe = styled.li`
+  width: 100%;
+  height: 323px;
+
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: calc((100% - 3 * 14px) / 4);
+  }
+`;
+
+export const RecipeContainer = styled(Link)`
   position: relative;
-  display: block;
+  width: 100%;
+  height: 100%;
+`;
+
+export const RecipeImg = styled.img`
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform var(--transition-time) var(--cubic);
+
+  ${RecipeContainer}:hover &,
+  ${RecipeContainer}:focus & {
+    transform: scale(1.03);
+  }
+`;
+
+export const FavoriteButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 2px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(250, 250, 250, 0.6);
+  background-color: transparent;
+  transition: color var(--transition-time) var(--cubic),
+    transform var(--transition-time) var(--cubic);
+
+  &:hover {
+    color: var(--color-warning);
+    transform: scale(1.3);
+  }
+
+  &.isFavorite {
+    color: var(--color-warning);
+  }
+
+  > svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+  }
 `;
 
 export const Description = styled.div`
   position: absolute;
-  left: 18px;
-  bottom: 24px;
+  left: 50%;
+  top: 245px;
+  transform: translate(-50%, 0);
+  width: 307px;
+  max-width: 100%;
+  max-height: 52px;
   padding: 16px;
-  width: 275px;
   background: var(--color-secondary);
   color: var(--color-text-secondary);
   border-radius: 8px;
-  overflow: hidden;
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
-  @media screen and (min-width: 768px) {
-    left: 16px;
+  transition: max-height var(--transition-time) var(--cubic),
+    transform var(--transition-time) var(--cubic);
+
+  ${RecipeContainer}:hover &,
+  ${RecipeContainer}:focus & {
+    max-height: 100%;
+    transform: translate(-50%, 27px);
   }
 
-  @media screen and (min-width: 1440px) {
-    width: 253px;
-    padding-right: 0px;
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 268px;
   }
 
   p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: 500;
     font-size: 16px;
-    line-height: 1.25;
+    line-height: 20px;
     letter-spacing: -0.24px;
-    text-align: left;
-    height: 20px;
-    overflow: hidden;
-    transition: opacity 0.5s ease-in;
-  }
-`;
-export const Recipe = styled.li`
-  z-index: 2;
-  overflow: hidden;
-  border-radius: 8px;
-  transition: var(--transition-time) var(--cubic);
 
-  :hover,
-  :focus {
-    transform: scale(1.03);
-    transition: var(--transition-time) var(--cubic);
-    box-shadow: 5px 5px 8px 5px rgba(0, 0, 0, 0.5),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    ${Description} {
-      opacity: 0;
-      transition: opacity 0.5s step-start 0.2s;
+    ${RecipeContainer}:hover &,
+    ${RecipeContainer}:focus & {
+      white-space: wrap;
     }
-  }
-`;
-
-export const RecipeImg = styled.img`
-  width: 343px;
-  height: 323px;
-  object-fit: cover;
-  :hover {
-    transition: var(--transition-time) var(--cubic);
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 299px;
-    gap: 14px;
   }
 `;
