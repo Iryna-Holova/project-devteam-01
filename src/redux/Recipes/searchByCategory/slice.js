@@ -31,7 +31,7 @@ export const searchByCategorySlice = createSlice({
       .addCase(getSearchByCategoryThunk.pending, state => {
         state.isLoading = true;
         state.error = null;
-        state.items = [];
+        //state.items = [];
       })
       .addCase(getSearchByCategoryThunk.fulfilled, (state, { payload }) => {
         //console.log('SearchByCategory', payload);

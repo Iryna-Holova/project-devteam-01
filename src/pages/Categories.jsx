@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import useApp from 'hooks/useApp';
+//import useApp from 'hooks/useApp';
 import useCategories from 'hooks/useCategories';
 import useSearchByCategory from 'hooks/useSearchByCategory';
 
 import { getCategoriesList } from 'redux/Categories/operations';
-import { setLimit, setQuery } from 'redux/Recipes/searchByCategory/slice';
+import { setPage, setQuery } from 'redux/Recipes/searchByCategory/slice';
 import { getSearchByCategoryThunk } from 'redux/Recipes/searchByCategory/operations';
 
 import CategoriesTabs from 'components/CategoriesTabs/CategoriesTabs';
@@ -20,12 +20,19 @@ const Categories = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { device } = useApp();
+  //const { device } = useApp();
   const { categories } = useCategories();
-  const { query, data: recipes, isError } = useSearchByCategory();
+  const {
+    query,
+    data: recipes,
+    isError,
+    limit,
+    page,
+    pages,
+  } = useSearchByCategory();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  //const [currentPage, setCurrentPage] = useState(1);
+  //const itemsPerPage = 8;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,31 +45,34 @@ const Categories = () => {
   useEffect(() => {
     setIsLoading(true);
     dispatch(setQuery(categoryName));
-    dispatch(setLimit(50));
+    //dispatch(setLimit(50));
 
-    dispatch(getSearchByCategoryThunk({ query: categoryName, limit: 50 })).then(
-      () => {
-        setIsLoading(false);
-      }
-    );
-  }, [dispatch, categoryName, device, query]);
+    dispatch(
+      getSearchByCategoryThunk({ query: categoryName, limit, page })
+    ).then(() => {
+      setIsLoading(false);
+    });
+  }, [dispatch, categoryName, limit, page]);
 
   useEffect(() => {
     if (isError) navigate(`/categories/Beef`);
   }, [isError, navigate]);
 
   const handleCategoryChange = category => {
+    dispatch(setPage(1));
+    // setCurrentPage(1);
     navigate(`/categories/${category}`);
   };
 
   const handlePageChange = pageNumber => {
-    setCurrentPage(pageNumber);
+    // setCurrentPage(pageNumber);
+    dispatch(setPage(pageNumber));
   };
 
-  // Вычисление totalPages
-  const totalPages = recipes?.length
-    ? Math.ceil(recipes.length / itemsPerPage)
-    : 0;
+  // // Вычисление totalPages
+  // const totalPages = recipes?.length
+  //   ? Math.ceil(recipes.length / itemsPerPage)
+  //   : 0;
 
   return (
     <>
@@ -77,17 +87,12 @@ const Categories = () => {
           <ContentLoader height="323px" />
         ) : (
           <>
-            <RecipeGallery
-              recipes={recipes.slice(
-                (currentPage - 1) * itemsPerPage,
-                currentPage * itemsPerPage
-              )}
-            />
+            <RecipeGallery recipes={recipes} />
 
-            {totalPages > 1 && (
+            {pages > 1 && (
               <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
+                totalPages={pages}
+                currentPage={page}
                 onClick={handlePageChange}
               />
             )}
