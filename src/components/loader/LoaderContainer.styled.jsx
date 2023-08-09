@@ -4,5 +4,10 @@ export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${props => props.$height || "300px"};
+  height: 171px;
+  height: ${props => props.$height || '171px'};
+
+  @media (min-width: 768px) {
+    height: ${props => props.$height || '281px'};
+  }
 `;

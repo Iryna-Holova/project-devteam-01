@@ -4,7 +4,6 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
   width: 100vw;
   height: 100vh;
-  padding: 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,16 +13,12 @@ export const ModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(3px);
 
-  &.corner {
-    align-items: end;
-    justify-content: end;
-  }
-
   &.my-node-enter {
     background-color: transparent;
     backdrop-filter: blur(0);
     & div {
-      scale: 0;
+      opacity: 0;
+      transform: translate(0, -200%);
     }
   }
   &.my-node-enter-active {
@@ -32,15 +27,18 @@ export const ModalOverlay = styled.div`
     transition: background-color var(--transition-time) var(--cubic),
       backdrop-filter var(--transition-time) var(--cubic);
     & div {
-      scale: 1;
-      transition: scale var(--transition-time) var(--cubic);
+      opacity: 1;
+      transform: translate(0, 0);
+      transition: transform var(--transition-time) var(--cubic),
+        opacity var(--transition-time) var(--cubic);
     }
   }
   &.my-node-exit {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
     & div {
-      scale: 1;
+      opacity: 1;
+      transform: translate(0, 0);
     }
   }
   &.my-node-exit-active {
@@ -49,8 +47,10 @@ export const ModalOverlay = styled.div`
     transition: background-color var(--transition-time) var(--cubic),
       backdrop-filter var(--transition-time) var(--cubic);
     & div {
-      scale: 0;
-      transition: scale var(--transition-time) var(--cubic);
+      opacity: 0;
+      transform: translate(0, 200%);
+      transition: transform var(--transition-time) var(--cubic),
+        opacity var(--transition-time) var(--cubic);
     }
   }
 `;
@@ -58,15 +58,20 @@ export const ModalOverlay = styled.div`
 export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 95%;
+  max-height: 95%;
   padding: 32px 0;
   border-radius: 30px;
   position: relative;
   background-color: var(--color-main);
   color: var(--color-text-primary);
 
+  @media screen and (min-width: 361px) {
+    max-width: 343px;
+  }
+
   @media screen and (min-width: 768px) {
+    max-width: 704px;
     padding: 50px 0;
   }
 `;
@@ -104,21 +109,33 @@ export const ModalClose = styled.button`
   }
 `;
 
-export const ModalTitle = styled.h2``;
+export const ModalTitle = styled.h2`
+  padding: 0 24px;
+  margin-bottom: 8px;
+
+    @media screen and (min-width: 768px) {
+    padding: 0 40px;
+    margin-bottom: 16px;
+    font-size: 32px;
+  }
+`;
 
 export const ModalContent = styled.div`
   padding: 0 24px;
   overflow-x: hidden;
   overflow-y: auto;
+  font-size: 14px;
+  line-height: 20px;
   -ms-overflow-style: none;
   scrollbar-width: 4px;
 
   &::-webkit-scrollbar {
     width: 4px;
-    /* background: transparent; */
   }
 
   @media screen and (min-width: 768px) {
     padding: 0 40px;
+    font-size: 16px;
+    line-height: 24px;
   }
 `;

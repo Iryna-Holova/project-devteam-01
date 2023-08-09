@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const Table = styled.div``;
-
 export const TableHead = styled.div`
   display: flex;
   align-items: center;
@@ -23,7 +21,6 @@ export const TableHead = styled.div`
   & div:nth-child(2) {
     flex: 1 auto;
   }
-
   & div:nth-child(3) {
     width: 70px;
   }
@@ -42,10 +39,6 @@ export const TableHead = styled.div`
     & div:nth-child(1) {
       width: 192px;
     }
-    & div:nth-child(2) {
-      flex: 1 auto;
-    }
-
     & div:nth-child(3) {
       width: 108px;
     }
@@ -54,7 +47,7 @@ export const TableHead = styled.div`
     }
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-bottom: 50px;
 
     & div:nth-child(1) {
@@ -62,10 +55,6 @@ export const TableHead = styled.div`
       text-align: start;
       padding-left: 40px;
     }
-    & div:nth-child(2) {
-      flex: 1 auto;
-    }
-
     & div:nth-child(3) {
       width: 230px;
     }
@@ -76,8 +65,6 @@ export const TableHead = styled.div`
 `;
 
 export const TableBody = styled.ul`
-  margin-bottom: 50px;
-
   & li {
     display: flex;
     align-items: center;
@@ -86,12 +73,22 @@ export const TableBody = styled.ul`
     margin-bottom: 16px;
     border-radius: 8px;
     text-align: center;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     & div:nth-child(1) {
       width: 83px;
       & img {
+        cursor: pointer;
         display: inline;
         width: 57px;
         height: 57px;
+        transition: transform var(--transition-time) var(--cubic);
+
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
     & div:nth-child(2) {
@@ -105,9 +102,10 @@ export const TableBody = styled.ul`
     }
     & div:nth-child(3) {
       width: 70px;
-      text-align: end;
       & span {
+        vertical-align: center;
         display: inline-block;
+        min-width: 37px;
         border-radius: 4px;
         padding: 4px;
         background-color: var(--color-accent);
@@ -118,37 +116,12 @@ export const TableBody = styled.ul`
       }
     }
     & div:nth-child(4) {
+      height: 18px;
       width: 75px;
-
-      & button {
-        display: flex;
-        margin: 0 auto;
-        position: relative;
-        width: 18px;
-        height: 18px;
-        background-color: transparent;
-        border: 2px solid rgba(126, 126, 126, 0.5);
-        border-radius: 4px;
-        transition: border-color var(--transition-time) var(--cubic);
-
-        &:hover {
-          border-color: var(--color-accent);
-        }
-
-        > svg {
-          color: var(--color-accent);
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          width: 18px;
-          height: 18px;
-        }
-      }
     }
   }
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 96px;
     & li {
       min-height: 178px;
       margin-bottom: 24px;
@@ -166,35 +139,21 @@ export const TableBody = styled.ul`
       }
       & div:nth-child(3) {
         width: 108px;
-        text-align: center;
         & span {
-          box-sizing: border-box;
           min-width: 68px;
           min-height: 35px;
-          vertical-align: middle;
           font-size: 18px;
           line-height: 27px;
         }
       }
       & div:nth-child(4) {
+        height: 35px;
         width: 151px;
-
-        & button {
-          width: 35px;
-          height: 35px;
-          border: 4px solid rgba(126, 126, 126, 0.5);
-          & svg {
-            width: 35px;
-            height: 35px;
-            top: -4px;
-            left: -4px;
-          }
-        }
       }
     }
   }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 100px;
+
+  @media screen and (min-width: 1280px) {
     & li {
       min-height: 182px;
 
@@ -207,14 +166,44 @@ export const TableBody = styled.ul`
           height: 128px;
         }
       }
-
       & div:nth-child(3) {
         width: 230px;
       }
-
       & div:nth-child(4) {
         width: 175px;
       }
+    }
+  }
+`;
+
+export const ToggleShoppingList = styled.button`
+display: block;
+margin: 0 auto;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: 2px solid rgba(126, 126, 126, 0.5);
+  border-radius: 4px;
+  transition: border-color var(--transition-time) var(--cubic);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  & svg {
+    color: var(--color-accent);
+    width: 14px;
+    height: 14px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 35px;
+    height: 35px;
+    border: 4px solid rgba(126, 126, 126, 0.5);
+    & svg {
+      width: 27px;
+      height: 27px;
     }
   }
 `;

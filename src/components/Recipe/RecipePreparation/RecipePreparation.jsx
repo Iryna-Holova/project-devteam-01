@@ -1,3 +1,5 @@
+import noImage from '../../../assets/images/no-image-ingredient.webp';
+
 import {
   ImageWrapper,
   PreparationWrapper,
@@ -35,13 +37,23 @@ const RecipePreparation = ({ image, instructions, title }) => {
   }
 
   return (
-    <PreparationWrapper className="container">
+    <PreparationWrapper>
       <InstructionWrapper>
         <InstructionTitle>Recipe Preparation</InstructionTitle>
         <InstructionList>{items}</InstructionList>
       </InstructionWrapper>
       <ImageWrapper>
-        <img src={image} alt={title} />
+        <img
+          src={image || noImage}
+          alt={title}
+          loading="lazy"
+          onError={({ target }) => {
+            if (target.src !== noImage) {
+              target.onerror = null;
+              target.src = noImage;
+            }
+          }}
+        />
       </ImageWrapper>
     </PreparationWrapper>
   );

@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 
 export const PreparationWrapper = styled.div`
-  margin-bottom: 100px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 200px;
-  }
-
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     display: flex;
     justify-content: space-between;
   }
@@ -20,7 +14,7 @@ export const InstructionWrapper = styled.div`
     margin-bottom: 53px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     width: 757px;
     margin-bottom: 0;
   }
@@ -90,9 +84,6 @@ export const InstructionItem = styled.li`
       font-size: 14px;
       line-height: 18px;
       letter-spacing: -0.28px;
-    }
-
-    @media screen and (min-width: 1440px) {
     }
   }
 `;

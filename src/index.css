@@ -48,7 +48,7 @@
   --color-footer: #8baa36;
   --color-input-color: rgba(250, 250, 250, 0.2);
   --color-tabs: rgba(250, 250, 250, 0.6);
-  --color-pages: rgba(250, 250, 250, 0.60);
+  --color-pages: rgba(250, 250, 250, 0.6);
 }
 
 html {
@@ -57,7 +57,7 @@ html {
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     background-color: var(--color-accent-secondary);
   }
 
@@ -65,10 +65,24 @@ html {
     background-color: var(--color-accent);
     border-radius: 10px;
   }
+
+  &.modal-show {
+    overflow: hidden;
+    padding-right: 5px;
+  }
+
+  @media screen and (min-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    &.modal-show {
+      padding-right: 10px;
+    }
+  }
 }
 
 body {
-  scroll-behavior: smooth;
+  position: relative;
   height: 100vh;
   color: var(--color-text-);
   background-color: var(--color-main);
@@ -79,10 +93,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: color var(--transition-time) var(--cubic);
   transition: background-color var(--transition-time) var(--cubic);
-
-  &.modal-show {
-    overflow: hidden;
-  }
 }
 
 div[id='root'] {

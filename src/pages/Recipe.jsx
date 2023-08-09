@@ -79,7 +79,6 @@ const Recipe = () => {
       }
     }
   };
-
   return (
     <>
       <RecipePageHero
@@ -90,28 +89,31 @@ const Recipe = () => {
         handleFavorites={handleFavorites}
         youtube={recipe.youtube}
       />
-      {isLoading ? (
-        <ContentLoader />
-      ) : (
-        <>
-          {!recipe.ingredients ? (
-            <NoDataMessage>Ingredients not found...</NoDataMessage>
-          ) : (
-            <>
-              <IngredientsTable
-                ingredients={recipe.ingredients}
-                recipeId={recipe._id}
-                recipe={recipe}
-              ></IngredientsTable>
-              <RecipePreparation
-                image={recipe.thumb || noImage}
-                instructions={recipe.instructions}
-                title={recipe.title}
-              />
-            </>
-          )}
-        </>
-      )}
+
+      <div className="container page-container">
+        {isLoading
+          ? (<ContentLoader />)
+          : (
+          <>
+            {!recipe.ingredients ? (
+              <NoDataMessage>Ingredients not found...</NoDataMessage>
+            ) : (
+              <>
+                <IngredientsTable
+                  ingredients={recipe.ingredients}
+                  recipeId={recipe._id}
+                  recipe={recipe}
+                ></IngredientsTable>
+                <RecipePreparation
+                  image={recipe.thumb || noImage}
+                  instructions={recipe.instructions}
+                  title={recipe.title}
+                />
+              </>
+            )}
+          </>
+        )}
+      </div>
     </>
   );
 };

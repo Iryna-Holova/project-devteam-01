@@ -11,7 +11,6 @@ export const HeroContainer = styled.div`
   min-height: 455px;
   position: relative;
   text-align: center;
-  margin-bottom: 32px;
   padding-top: 144px;
   padding-bottom: 90px;
   color: #23262a;
@@ -23,7 +22,6 @@ export const HeroContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     min-height: 495px;
-    margin-bottom: 50px;
     padding-top: 136px;
     padding-bottom: 32px;
     background-size: 1108px 697px;
@@ -33,7 +31,7 @@ export const HeroContainer = styled.div`
     );
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     min-height: 493px;
     padding-top: 164px;
     background-size: 1562px 731px;
@@ -65,6 +63,7 @@ export const HeroContainer = styled.div`
 
 export const HeroTitle = styled.h2`
   width: 299px;
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 18px;
@@ -83,7 +82,7 @@ export const HeroTitle = styled.h2`
     letter-spacing: -0.88px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     width: 656px;
   }
 `;
@@ -92,6 +91,7 @@ export const HeroText = styled.p`
   margin-right: auto;
   margin-left: auto;
   width: 299px;
+  max-width: 100%;
   margin-bottom: 24px;
 
   font-size: 12px;
@@ -104,27 +104,24 @@ export const HeroText = styled.p`
     line-height: 24px;
     letter-spacing: -0.36px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-bottom: 30px;
     width: 656px;
   }
 `;
 
 export const HeroBtn = styled.button`
-  cursor: pointer;
   outline: none;
   background-color: transparent;
   border: 1px solid var(--color-accent);
   border-radius: 30px 80px;
   padding: 10px 18px;
   margin-bottom: 42px;
-
-  font-family: Poppins;
   font-size: 10px;
   font-weight: 400;
   line-height: 15px;
-
-  transition: all var(--transition-time) var(--cubic);
+  transition: color var(--transition-time) var(--cubic),
+    background-color var(--transition-time) var(--cubic);
 
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
@@ -134,7 +131,7 @@ export const HeroBtn = styled.button`
     border: 2px solid var(--color-accent);
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-bottom: 48px;
   }
 
@@ -170,5 +167,10 @@ export const Time = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 20px;
+
+    > svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
