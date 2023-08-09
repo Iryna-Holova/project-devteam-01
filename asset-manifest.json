@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/project-devteam-01/static/css/main.ef57588c.css",
-    "main.js": "/project-devteam-01/static/js/main.cde4ada9.js",
+    "main.js": "/project-devteam-01/static/js/main.bb6dd65f.js",
     "static/js/879.c481afd2.chunk.js": "/project-devteam-01/static/js/879.c481afd2.chunk.js",
     "static/js/437.d622eab0.chunk.js": "/project-devteam-01/static/js/437.d622eab0.chunk.js",
     "static/js/526.4bafde40.chunk.js": "/project-devteam-01/static/js/526.4bafde40.chunk.js",
     "static/js/772.566e48a4.chunk.js": "/project-devteam-01/static/js/772.566e48a4.chunk.js",
-    "static/js/477.edfd451f.chunk.js": "/project-devteam-01/static/js/477.edfd451f.chunk.js",
-    "static/js/527.bbc78ca6.chunk.js": "/project-devteam-01/static/js/527.bbc78ca6.chunk.js",
+    "static/js/477.5520f440.chunk.js": "/project-devteam-01/static/js/477.5520f440.chunk.js",
+    "static/js/527.05068521.chunk.js": "/project-devteam-01/static/js/527.05068521.chunk.js",
     "static/js/65.87e0a3bc.chunk.js": "/project-devteam-01/static/js/65.87e0a3bc.chunk.js",
     "static/js/70.b53a764e.chunk.js": "/project-devteam-01/static/js/70.b53a764e.chunk.js",
     "static/js/3.cc520c98.chunk.js": "/project-devteam-01/static/js/3.cc520c98.chunk.js",
     "static/js/41.05c5bd20.chunk.js": "/project-devteam-01/static/js/41.05c5bd20.chunk.js",
-    "static/js/301.0e44b01c.chunk.js": "/project-devteam-01/static/js/301.0e44b01c.chunk.js",
+    "static/js/301.4f17e6d9.chunk.js": "/project-devteam-01/static/js/301.4f17e6d9.chunk.js",
     "static/js/250.2f8440cd.chunk.js": "/project-devteam-01/static/js/250.2f8440cd.chunk.js",
     "static/js/105.41e6d745.chunk.js": "/project-devteam-01/static/js/105.41e6d745.chunk.js",
     "static/js/290.7b9a0b2d.chunk.js": "/project-devteam-01/static/js/290.7b9a0b2d.chunk.js",
@@ -97,18 +97,18 @@
     "static/media/bg-triangle-desktop.svg": "/project-devteam-01/static/media/bg-triangle-desktop.091fd12b87a953a3cfdcc7c0e246296b.svg",
     "static/media/bg-registration-desktop.svg": "/project-devteam-01/static/media/bg-registration-desktop.e7ca1a244dadfbb58ce6b360469f6ca2.svg",
     "main.ef57588c.css.map": "/project-devteam-01/static/css/main.ef57588c.css.map",
-    "main.cde4ada9.js.map": "/project-devteam-01/static/js/main.cde4ada9.js.map",
+    "main.bb6dd65f.js.map": "/project-devteam-01/static/js/main.bb6dd65f.js.map",
     "879.c481afd2.chunk.js.map": "/project-devteam-01/static/js/879.c481afd2.chunk.js.map",
     "437.d622eab0.chunk.js.map": "/project-devteam-01/static/js/437.d622eab0.chunk.js.map",
     "526.4bafde40.chunk.js.map": "/project-devteam-01/static/js/526.4bafde40.chunk.js.map",
     "772.566e48a4.chunk.js.map": "/project-devteam-01/static/js/772.566e48a4.chunk.js.map",
-    "477.edfd451f.chunk.js.map": "/project-devteam-01/static/js/477.edfd451f.chunk.js.map",
-    "527.bbc78ca6.chunk.js.map": "/project-devteam-01/static/js/527.bbc78ca6.chunk.js.map",
+    "477.5520f440.chunk.js.map": "/project-devteam-01/static/js/477.5520f440.chunk.js.map",
+    "527.05068521.chunk.js.map": "/project-devteam-01/static/js/527.05068521.chunk.js.map",
     "65.87e0a3bc.chunk.js.map": "/project-devteam-01/static/js/65.87e0a3bc.chunk.js.map",
     "70.b53a764e.chunk.js.map": "/project-devteam-01/static/js/70.b53a764e.chunk.js.map",
     "3.cc520c98.chunk.js.map": "/project-devteam-01/static/js/3.cc520c98.chunk.js.map",
     "41.05c5bd20.chunk.js.map": "/project-devteam-01/static/js/41.05c5bd20.chunk.js.map",
-    "301.0e44b01c.chunk.js.map": "/project-devteam-01/static/js/301.0e44b01c.chunk.js.map",
+    "301.4f17e6d9.chunk.js.map": "/project-devteam-01/static/js/301.4f17e6d9.chunk.js.map",
     "250.2f8440cd.chunk.js.map": "/project-devteam-01/static/js/250.2f8440cd.chunk.js.map",
     "105.41e6d745.chunk.js.map": "/project-devteam-01/static/js/105.41e6d745.chunk.js.map",
     "290.7b9a0b2d.chunk.js.map": "/project-devteam-01/static/js/290.7b9a0b2d.chunk.js.map",
@@ -128,6 +128,6 @@
   },
   "entrypoints": [
     "static/css/main.ef57588c.css",
-    "static/js/main.cde4ada9.js"
+    "static/js/main.bb6dd65f.js"
   ]
 }
