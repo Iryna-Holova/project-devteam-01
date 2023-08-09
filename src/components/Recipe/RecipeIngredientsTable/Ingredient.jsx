@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { BsCheck, BsCheckLg } from 'react-icons/bs';
+import { BsCheckLg } from 'react-icons/bs';
 
 import {
   addToShoppingListV2Thunk,
