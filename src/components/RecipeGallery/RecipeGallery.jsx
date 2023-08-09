@@ -40,18 +40,20 @@ const RecipeGallery = ({ recipes = null }) => {
                     }
                   }}
                 />
-                <FavoriteButton
-                  className={
-                    favorite.find(({ _userId }) => _userId === user._id) &&
-                    'isFavorite'
-                  }
-                >
-                  <PiHeartFill />
-                </FavoriteButton>
+
                 <Description>
                   <p>{title}</p>
                 </Description>
               </RecipeContainer>
+                              <FavoriteButton
+                  className={
+                    favorite.find(({ _userId }) => _userId === user._id) &&
+                    'isFavorite'
+                  }
+                  onClick={() => console.log('hello')}
+                >
+                  <PiHeartFill />
+                </FavoriteButton>
             </Recipe>
           );
         })}

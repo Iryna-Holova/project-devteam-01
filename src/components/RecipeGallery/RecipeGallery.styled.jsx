@@ -19,6 +19,7 @@ export const List = styled.ul`
 `;
 
 export const Recipe = styled.li`
+position: relative;
   width: 100%;
   height: 323px;
 
