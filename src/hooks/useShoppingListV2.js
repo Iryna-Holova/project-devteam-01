@@ -5,6 +5,7 @@ import {
   selectStatus,
   selectError,
   selectIsDeleting,
+  selectCountInShoppingListByRecipeId,
 } from 'redux/ShoppingListV2/selectors';
 
 const useShoppingListV2 = () => {
@@ -13,6 +14,7 @@ const useShoppingListV2 = () => {
   const status = useSelector(selectStatus);
   const error = useSelector(selectError);
   const isDeleting = useSelector(selectIsDeleting);
+  const countInShoppingList = useSelector(selectCountInShoppingListByRecipeId);
 
   return {
     isInShoppingList,
@@ -20,6 +22,7 @@ const useShoppingListV2 = () => {
     status,
     error,
     isDeleting,
+    countInShoppingList,
   };
 };
 
