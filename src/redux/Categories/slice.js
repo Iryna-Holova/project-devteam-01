@@ -22,7 +22,7 @@ export const categoriesSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getCategoriesList.rejected, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.isLoading = false;
         state.error = true;
         state.items = [];

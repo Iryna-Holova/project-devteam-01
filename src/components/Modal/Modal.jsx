@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { CgClose } from 'react-icons/cg';
 import { CSSTransition } from 'react-transition-group';
 
@@ -12,7 +12,17 @@ import {
 
 const Modal = ({ openState, onModalClose, children, title, className }) => {
   const nodeRef = useRef(null);
-    // console.log(openState);
+
+  useEffect(() => {
+    if (!openState) return;
+    document.querySelector('html').classList.add('modal-show');
+  }, [openState])
+
+  const handleModalClose = () => {
+    onModalClose();
+    document.querySelector('html').classList.remove('modal-show');
+  };
+
   return (
     <CSSTransition
       in={openState}
@@ -21,11 +31,13 @@ const Modal = ({ openState, onModalClose, children, title, className }) => {
       classNames="my-node"
       unmountOnExit
     >
-      <ModalOverlay ref={nodeRef} onClick={onModalClose} className={className}>
-        <ModalBody
-          onClick={e => e.stopPropagation()}
-        >
-          <ModalClose onClick={onModalClose}>
+      <ModalOverlay
+        ref={nodeRef}
+        onClick={handleModalClose}
+        className={className}
+      >
+        <ModalBody onClick={e => e.stopPropagation()}>
+          <ModalClose onClick={handleModalClose}>
             <CgClose />
           </ModalClose>
           {title && (

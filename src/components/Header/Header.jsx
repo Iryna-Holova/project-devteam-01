@@ -49,12 +49,10 @@ const Header = () => {
 
   const openEditProfileModal = () => {
     setShowEditProfileModal(true);
-    document.body.classList.add('modal-show');
   };
 
   const closeEditProfileModal = () => {
     setShowEditProfileModal(false);
-    document.body.classList.remove('modal-show');
   };
 
   return (

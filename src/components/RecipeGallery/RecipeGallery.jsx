@@ -19,7 +19,7 @@ const RecipeGallery = ({ recipes = null }) => {
 
   return (
     recipes && (
-      <List className='container'>
+      <List className="container">
         {recipes.map(({ _id, title, thumb, favorite }) => {
           return (
             <Recipe key={_id}>
@@ -31,12 +31,14 @@ const RecipeGallery = ({ recipes = null }) => {
               >
                 <RecipeImg
                   src={thumb ? thumb : noImage}
-                  loading="lazy"
-                    onError={({ currentTarget }) => {
-    currentTarget.onerror = null; // prevents looping
-    currentTarget.src=noImage;
-  }}
                   alt={title}
+                  loading="lazy"
+                  onError={({ target }) => {
+                    if (target.src !== noImage) {
+                      target.onerror = null;
+                      target.src = noImage;
+                    }
+                  }}
                 />
                 <FavoriteButton
                   className={

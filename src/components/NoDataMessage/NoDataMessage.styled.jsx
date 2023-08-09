@@ -6,8 +6,6 @@ import mobile1x from '../../assets/images/no-data-image/no-data-image-mobile-1x.
 import mobile2x from '../../assets/images/no-data-image/no-data-image-mobile-2x.webp';
 
 export const MessageWrapper = styled.div`
-  margin-top: 50px;
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;

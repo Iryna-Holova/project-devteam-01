@@ -77,7 +77,7 @@ const Categories = () => {
       />
       <div className="container page-container">
         {isLoading ? (
-          <ContentLoader height="323px" />
+          <ContentLoader />
         ) : (
           <>
             <RecipeGallery recipes={recipes} />

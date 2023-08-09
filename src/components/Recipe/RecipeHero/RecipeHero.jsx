@@ -21,7 +21,7 @@ const RecipePageHero = ({
     <HeroContainer>
       <HeroTitle>{title}</HeroTitle>
       <HeroText>{description}</HeroText>
-      {description && (
+      {time && (
         <HeroBtn onClick={handleFavorites} className={isFavorite && 'active'}>
           {isFavorite
             ? 'Remove from favorite recipes'
@@ -35,7 +35,7 @@ const RecipePageHero = ({
         </Time>
       )}
       {youtube && (
-        <a target="blanc" href={youtube}>
+        <a target="_blanc" href={youtube}>
           <BsYoutube />
         </a>
       )}

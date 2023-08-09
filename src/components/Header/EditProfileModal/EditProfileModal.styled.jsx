@@ -47,9 +47,6 @@ export const AddPicture = styled(Field)`
   width: 24px;
   height: 24px;
   border-radius: 12px;
-
-  @media screen and (min-width: 1440px) {
-  }
 `;
 
 export const NameInputWrapper = styled.div`
@@ -87,7 +84,6 @@ export const NameInputWrapper = styled.div`
 `;
 
 export const NameInput = styled(Field)`
-  box-sizing: border-box;
   max-width: 100%;
   width: 282px;
   color: var(--color-icons);

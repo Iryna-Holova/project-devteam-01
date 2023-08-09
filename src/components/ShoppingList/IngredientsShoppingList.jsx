@@ -70,6 +70,13 @@ const IngredientsShoppingList = () => {
                 <IngredientImage
                   src={ingredient.img || noImage}
                   alt={ingredient.name}
+                  loading="lazy"
+                  onError={({ target }) => {
+                    if (target.src !== noImage) {
+                      target.onerror = null;
+                      target.src = noImage;
+                    }
+                  }}
                 />
               </div>
               <IngredientName>{ingredient.name}</IngredientName>
